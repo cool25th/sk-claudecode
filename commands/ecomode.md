@@ -49,7 +49,7 @@ Ecomode routes tasks to lower-tier agents:
 
 ## Setting as Default
 
-Run `/sk-claudecode:omc-setup` to set ecomode as your default parallel execution mode.
+Run `/sk-claudecode:skc-setup` to set ecomode as your default parallel execution mode.
 
 When set as default, saying "fast" or "parallel" will activate ecomode instead of ultrawork.
 

@@ -2,7 +2,7 @@
 description: One-time setup for sk-claudecode (the ONLY command you need to learn)
 ---
 
-# OMC Setup
+# SKC Setup
 
 This is the **only command you need to learn**. After running this, everything else is automatic.
 
@@ -16,7 +16,7 @@ Before starting any step, check for existing state:
 
 ```bash
 # Check for existing setup state
-STATE_FILE=".omc/state/setup-state.json"
+STATE_FILE=".skc/state/setup-state.json"
 
 # Cross-platform ISO date to epoch conversion
 iso_to_epoch() {
@@ -69,7 +69,7 @@ If state exists, use AskUserQuestion to prompt:
 
 If user chooses "Start fresh":
 ```bash
-rm -f ".omc/state/setup-state.json"
+rm -f ".skc/state/setup-state.json"
 echo "Previous state cleared. Starting fresh setup."
 ```
 
@@ -92,7 +92,7 @@ Use the AskUserQuestion tool to prompt the user:
 mkdir -p .claude
 
 # Download fresh CLAUDE.md from GitHub
-curl -fsSL "https://raw.githubusercontent.com/Yeachan-Heo/sk-claudecode/main/docs/CLAUDE.md" -o .claude/CLAUDE.md && \
+curl -fsSL "https://raw.githubusercontent.com/cool25th/sk-claudecode/main/docs/CLAUDE.md" -o .claude/CLAUDE.md && \
 echo "Downloaded CLAUDE.md to .claude/CLAUDE.md"
 ```
 
@@ -100,7 +100,7 @@ echo "Downloaded CLAUDE.md to .claude/CLAUDE.md"
 
 ```bash
 # Download fresh CLAUDE.md to global config
-curl -fsSL "https://raw.githubusercontent.com/Yeachan-Heo/sk-claudecode/main/docs/CLAUDE.md" -o ~/.claude/CLAUDE.md && \
+curl -fsSL "https://raw.githubusercontent.com/cool25th/sk-claudecode/main/docs/CLAUDE.md" -o ~/.claude/CLAUDE.md && \
 echo "Downloaded CLAUDE.md to ~/.claude/CLAUDE.md"
 ```
 
@@ -111,7 +111,7 @@ The HUD shows real-time status in Claude Code's status bar. **Invoke the hud ski
 Use the Skill tool to invoke: `hud` with args: `setup`
 
 This will:
-1. Install the HUD wrapper script to `~/.claude/hud/omc-hud.mjs`
+1. Install the HUD wrapper script to `~/.claude/hud/skc-hud.mjs`
 2. Configure `statusLine` in `~/.claude/settings.json`
 3. Report status and prompt to restart if needed
 
@@ -160,12 +160,12 @@ fi
 
 ## Step 3.6: Install CLI Analytics Tools (Optional)
 
-The OMC CLI provides standalone token analytics commands (`omc stats`, `omc agents`, `omc backfill`, `omc tui`).
+The SKC CLI provides standalone token analytics commands (`skc stats`, `skc agents`, `skc backfill`, `skc tui`).
 
-Ask user: "Would you like to install the OMC CLI for standalone analytics? (Recommended for tracking token usage and costs)"
+Ask user: "Would you like to install the SKC CLI for standalone analytics? (Recommended for tracking token usage and costs)"
 
 **Options:**
-1. **Yes (Recommended)** - Install CLI tools globally for `omc stats`, `omc agents`, etc.
+1. **Yes (Recommended)** - Install CLI tools globally for `skc stats`, `skc agents`, etc.
 2. **No** - Skip CLI installation, use only plugin skills
 
 ### If User Chooses YES:
@@ -173,16 +173,16 @@ Ask user: "Would you like to install the OMC CLI for standalone analytics? (Reco
 ```bash
 # Check for bun (preferred) or npm
 if command -v bun &> /dev/null; then
-  echo "Installing OMC CLI via bun..."
+  echo "Installing SKC CLI via bun..."
   # Clean up npm version if it exists to avoid duplicates
-  if command -v npm &> /dev/null && npm list -g oh-my-claude-sisyphus &>/dev/null; then
+  if command -v npm &> /dev/null && npm list -g sk-claudecode &>/dev/null; then
     echo "Removing existing npm installation to avoid duplicates..."
-    npm uninstall -g oh-my-claude-sisyphus 2>/dev/null
+    npm uninstall -g sk-claudecode 2>/dev/null
   fi
-  bun install -g oh-my-claude-sisyphus
+  bun install -g sk-claudecode
 elif command -v npm &> /dev/null; then
-  echo "Installing OMC CLI via npm..."
-  npm install -g oh-my-claude-sisyphus
+  echo "Installing SKC CLI via npm..."
+  npm install -g sk-claudecode
 else
   echo "ERROR: Neither bun nor npm found. Please install Node.js or Bun first."
   exit 1
@@ -190,8 +190,8 @@ fi
 
 # Verify installation
 if command -v omc &> /dev/null; then
-  echo "✓ OMC CLI installed successfully!"
-  echo "  Try: omc stats, omc agents, omc backfill"
+  echo "✓ SKC CLI installed successfully!"
+  echo "  Try: skc stats, skc agents, skc backfill"
 else
   echo "⚠ CLI installed but 'omc' not in PATH."
   echo "  You may need to restart your terminal or add npm/bun global bin to PATH."
@@ -200,7 +200,7 @@ fi
 
 ### If User Chooses NO:
 
-Skip this step. User can install later with `bun install -g oh-my-claude-sisyphus` or `npm install -g oh-my-claude-sisyphus`.
+Skip this step. User can install later with `bun install -g sk-claudecode` or `npm install -g sk-claudecode`.
 
 ## Step 4: Verify Plugin Installation
 
@@ -292,7 +292,7 @@ If found, this is an upgrade from 2.x.
 ### For New Users:
 
 ```
-OMC Setup Complete!
+SKC Setup Complete!
 
 You don't need to learn any commands. I now have intelligent behaviors that activate automatically.
 
@@ -322,9 +322,9 @@ The status bar now shows OMC state. Restart Claude Code to see it.
 
 CLI ANALYTICS (if installed):
 - omc           - Full dashboard (stats + agents + cost)
-- omc stats     - View token usage and costs
-- omc agents    - See agent breakdown by cost
-- omc tui       - Launch interactive TUI dashboard
+- skc stats     - View token usage and costs
+- skc agents    - See agent breakdown by cost
+- skc tui       - Launch interactive TUI dashboard
 
 AST TOOLS (if installed):
 - ast_grep_search  - Pattern-based AST code search
@@ -337,7 +337,7 @@ That's it! Just use Claude Code normally.
 ### For Users Upgrading from 2.x:
 
 ```
-OMC Setup Complete! (Upgraded from 2.x)
+SKC Setup Complete! (Upgraded from 2.x)
 
 GOOD NEWS: Your existing commands still work!
 - /ralph, /ultrawork, /plan, etc. all still function
@@ -362,9 +362,9 @@ The status bar now shows OMC state. Restart Claude Code to see it.
 
 CLI ANALYTICS (if installed):
 - omc           - Full dashboard (stats + agents + cost)
-- omc stats     - View token usage and costs
-- omc agents    - See agent breakdown by cost
-- omc tui       - Launch interactive TUI dashboard
+- skc stats     - View token usage and costs
+- skc agents    - See agent breakdown by cost
+- skc tui       - Launch interactive TUI dashboard
 
 Your workflow won't break - it just got easier!
 ```
@@ -391,7 +391,7 @@ Use the AskUserQuestion tool to prompt the user:
 If user chooses "Yes, star it!":
 
 ```bash
-gh api -X PUT /user/starred/Yeachan-Heo/sk-claudecode 2>/dev/null && echo "Thanks for starring! ⭐" || echo "Could not star - you can star manually at https://github.com/Yeachan-Heo/sk-claudecode"
+gh api -X PUT /user/starred/cool25th/sk-claudecode 2>/dev/null && echo "Thanks for starring! ⭐" || echo "Could not star - you can star manually at https://github.com/cool25th/sk-claudecode"
 ```
 
 **Note:** Fail gracefully if the API call doesn't work - never block setup completion.
@@ -403,11 +403,11 @@ Skip the AskUserQuestion and just display:
 ```bash
 echo ""
 echo "If you enjoy sk-claudecode, consider starring the repo:"
-echo "  https://github.com/Yeachan-Heo/sk-claudecode"
+echo "  https://github.com/cool25th/sk-claudecode"
 echo ""
 ```
 
 ## Fallback
 
 If curl fails, tell user to manually download from:
-https://raw.githubusercontent.com/Yeachan-Heo/sk-claudecode/main/docs/CLAUDE.md
+https://raw.githubusercontent.com/cool25th/sk-claudecode/main/docs/CLAUDE.md

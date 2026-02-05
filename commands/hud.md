@@ -138,9 +138,9 @@ async function main() {
 
   // 3. Fallback - HUD not found (provide actionable error message)
   if (pluginCacheDir) {
-    console.log(`[OMC] HUD not built. Run: cd "${pluginCacheDir}" && npm install`);
+    console.log(`[SKC] HUD not built. Run: cd "${pluginCacheDir}" && npm install`);
   } else {
-    console.log("[OMC] Plugin not found. Run: /sk-claudecode:omc-setup");
+    console.log("[SKC] Plugin not found. Run: /sk-claudecode:skc-setup");
   }
 }
 
@@ -150,8 +150,7 @@ main();
 **Step 3:** Make it executable:
 ```bash
 chmod +x ~/.claude/hud/omc-hud.mjs
-```
-
+``` 
 **Step 4:** Update settings.json to use the HUD:
 
 Read `~/.claude/settings.json`, then update/add the `statusLine` field.

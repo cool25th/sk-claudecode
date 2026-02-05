@@ -112,6 +112,7 @@ claude
 
 - [**Ultra Suite Guide**](docs/ULTRA-SUITE.md) - Advanced workflow skills (12 skills, 2 agents)
 - [**Ultra vs Ralph**](docs/ULTRA-VS-RALPH.md) - Workflow family comparison
+- **Ontology Suite** - 8 skills for data modeling: ontology, ontology-traditional, ontology-palantir, ontology-storage
 - [AGENTS.md](AGENTS.md) - Complete agent and skill reference
 
 ## 📁 Structure

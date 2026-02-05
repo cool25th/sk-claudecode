@@ -230,4 +230,7 @@ action CreateOrder {
 ## See Also
 
 - `/skill ontology` - Overview
+- `/skill ontology-object-types` - Entity definitions
 - `/skill ontology-functions` - Custom validation logic
+- `/skill ontology-storage` - Storage patterns
+

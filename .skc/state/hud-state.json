@@ -1,27 +1,6 @@
 {
-  "timestamp": "2026-02-05T23:36:40.818Z",
+  "timestamp": "2026-02-05T23:48:51.639Z",
   "backgroundTasks": [
-    {
-      "id": "task-1770331369197-v68rve",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-05T22:42:49.207Z",
-      "status": "failed",
-      "completedAt": "2026-02-05T23:18:05.922Z"
-    },
-    {
-      "id": "task-1770331642169-wtabji",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-05T22:47:22.170Z",
-      "status": "failed",
-      "completedAt": "2026-02-05T23:18:05.922Z"
-    },
-    {
-      "id": "task-1770331663960-bow699",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-05T22:47:43.964Z",
-      "status": "failed",
-      "completedAt": "2026-02-05T23:18:05.922Z"
-    },
     {
       "id": "task-1770331797078-r7c5gi",
       "description": "pkill -f something",
@@ -75,13 +54,15 @@
       "id": "task-1770333485919-73152b",
       "description": "pkill -f something",
       "startedAt": "2026-02-05T23:18:05.922Z",
-      "status": "running"
+      "status": "failed",
+      "completedAt": "2026-02-05T23:48:51.639Z"
     },
     {
       "id": "task-1770333511780-h2yw3d",
       "description": "pkill -f something",
       "startedAt": "2026-02-05T23:18:31.790Z",
-      "status": "running"
+      "status": "failed",
+      "completedAt": "2026-02-05T23:48:51.639Z"
     },
     {
       "id": "task-1770333544461-27pooo",
@@ -117,6 +98,24 @@
       "id": "task-1770334600810-kistel",
       "description": "pkill -f something",
       "startedAt": "2026-02-05T23:36:40.818Z",
+      "status": "running"
+    },
+    {
+      "id": "task-1770335063977-nqog27",
+      "description": "pkill -f something",
+      "startedAt": "2026-02-05T23:44:24.005Z",
+      "status": "running"
+    },
+    {
+      "id": "task-1770335129536-x3bl0i",
+      "description": "pkill -f something",
+      "startedAt": "2026-02-05T23:45:29.540Z",
+      "status": "running"
+    },
+    {
+      "id": "task-1770335331628-77wduc",
+      "description": "pkill -f something",
+      "startedAt": "2026-02-05T23:48:51.639Z",
       "status": "running"
     }
   ]

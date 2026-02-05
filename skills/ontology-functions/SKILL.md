@@ -237,4 +237,7 @@ const customers = await ontology.objects.Customer
 ## See Also
 
 - `/skill ontology` - Overview
+- `/skill ontology-object-types` - Entity definitions
 - `/skill ontology-actions` - Actions that use functions
+- `/skill ontology-storage` - Storage patterns
+

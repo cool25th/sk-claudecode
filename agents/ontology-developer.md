@@ -115,10 +115,13 @@ Build reusable logic that composes:
 ## Related Skills
 
 - `/skill ontology` - Quick ontology design reference
+- `/skill ontology-traditional` - OWL/RDF semantic patterns
+- `/skill ontology-palantir` - Palantir operational patterns
 - `/skill ontology-object-types` - Object Type patterns and examples
 - `/skill ontology-actions` - Action design and implementation
 - `/skill ontology-functions` - TypeScript function development
 - `/skill ontology-links` - Link modeling strategies
+- `/skill ontology-storage` - DB, GraphDB, GraphRAG patterns
 
 ## Related Agents
 

@@ -159,8 +159,83 @@ interface Order {
 }
 ```
 
+## Real-World Examples
+
+### Flight Object Type (Aviation)
+```typescript
+interface Flight {
+  flightId: string;              // PK: "UA2403"
+  flightNumber: string;
+  departureAirport: string;      // "JFK"
+  arrivalAirport: string;        // "SFO"
+  departureDate: date;
+  arrivalDate: date;
+  scheduledDepartureTime: timestamp;
+  actualDepartureTime?: timestamp;
+  scheduledArrivalTime: timestamp;
+  actualArrivalTime?: timestamp;
+  flightStatus: 'on_time' | 'delayed' | 'cancelled';
+  passengerCount: integer;
+}
+```
+
+### Aircraft Object Type (Aviation)
+```typescript
+interface Aircraft {
+  planeId: string;               // PK: "N12345"
+  tailNumber: string;
+  aircraftType: string;          // "Boeing 737"
+  maximumOccupancy: integer;     // 240
+  airline: string;
+  maintenanceStatus: 'operational' | 'maintenance' | 'grounded';
+}
+```
+
+### Customer Object Type (E-Commerce)
+```typescript
+interface Customer {
+  customerId: string;            // PK
+  customerName: string;
+  email: string;
+  phoneNumber?: string;
+  shippingAddress: Address;
+  billingAddress: Address;
+  customerStatus: 'active' | 'vip' | 'churned';
+  registrationDate: date;
+}
+```
+
+### Order Object Type (E-Commerce)
+```typescript
+interface Order {
+  orderId: string;               // PK
+  orderDate: timestamp;
+  customerId: string;            // Link to Customer
+  totalRetailPrice: double;
+  orderStatus: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+  shippingMethod: string;
+  paymentStatus: 'pending' | 'paid' | 'refunded';
+}
+```
+
+### Product Object Type (E-Commerce)
+```typescript
+interface Product {
+  productId: string;             // PK
+  productName: string;
+  description: string;
+  category: string;
+  sku: string;
+  unitPrice: double;
+  currentStockLevel: integer;
+  supplier: string;
+}
+```
+
 ## See Also
 
 - `/skill ontology` - Overview
 - `/skill ontology-links` - Relationship modeling
 - `/skill ontology-actions` - State mutations
+- `/skill ontology-functions` - Custom logic
+- `/skill ontology-storage` - Storage layer selection

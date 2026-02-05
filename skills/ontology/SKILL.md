@@ -88,12 +88,29 @@ function calculateOrderTotal(order: Order): number {
 | Action | State mutation | CreateOrder, UpdateStatus |
 | Function | Computation | calculateTotal() |
 
+## Two Approaches
+
+| Aspect | Traditional (OWL/RDF) | Palantir (Operational) |
+|--------|----------------------|------------------------|
+| **Purpose** | Knowledge representation | Operational execution |
+| **Core Unit** | Triple (S-P-O) | Object + Action |
+| **Query** | SPARQL | TypeScript SDK |
+| **Mutation** | Not built-in | First-class Actions |
+| **Inference** | Automated reasoning | Explicit Functions |
+| **Use Case** | Knowledge graphs | Enterprise operations |
+
 ## Related Skills
 
+**Approach-Specific:**
+- `/skill ontology-traditional` - OWL/RDF/SPARQL patterns
+- `/skill ontology-palantir` - Kinetic layer & digital twin
+
+**Component-Specific:**
 - `/skill ontology-object-types` - Detailed Object Type patterns
 - `/skill ontology-actions` - Action design and validation
 - `/skill ontology-functions` - TypeScript function development
 - `/skill ontology-links` - Link modeling strategies
+- `/skill ontology-storage` - DB, GraphDB, GraphRAG patterns
 
 ## Related Agent
 

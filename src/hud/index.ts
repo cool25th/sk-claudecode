@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * OMC HUD - Main Entry Point
+ * SKC HUD - Main Entry Point
  *
- * Statusline command that visualizes oh-my-claudecode state.
+ * Statusline command that visualizes sk-claudecode state.
  * Receives stdin JSON from Claude Code and outputs formatted statusline.
  */
 
@@ -315,7 +315,7 @@ async function main(): Promise<void> {
 
     if (!stdin) {
       // No stdin - suggest setup
-      console.log("[OMC] run /omc-setup to install properly");
+      console.log("[SKC] run /skc-setup to install properly");
       return;
     }
 
@@ -405,13 +405,13 @@ async function main(): Promise<void> {
         error.message.includes("Cannot find module"));
 
     if (isInstallError) {
-      console.log("[OMC] run /omc-setup to install properly");
+      console.log("[SKC] run /skc-setup to install properly");
     } else {
       // Output fallback message to stdout for status line visibility
-      console.log("[OMC] HUD error - check stderr");
+      console.log("[SKC] HUD error - check stderr");
       // Log actual runtime errors to stderr for debugging
       console.error(
-        "[OMC HUD Error]",
+        "[SKC HUD Error]",
         error instanceof Error ? error.message : error,
       );
     }

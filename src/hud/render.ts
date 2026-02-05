@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Main Renderer
+ * SKC HUD - Main Renderer
  *
  * Composes statusline output from render context.
  */
@@ -174,9 +174,9 @@ export async function render(context: HudRenderContext, config: HudConfig): Prom
     if (modelElement) gitElements.push(modelElement);
   }
 
-  // [OMC] label
+  // [SKC] label
   if (enabledElements.omcLabel) {
-    elements.push(bold('[OMC]'));
+    elements.push(bold('[SKC]'));
   }
 
   // Rate limits (5h and weekly)

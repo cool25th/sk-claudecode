@@ -464,7 +464,7 @@ Optional settings in `.claude/settings.json`:
 
 ```json
 {
-  "omc": {
+  "skc": {
     "research": {
       "maxIterations": 10,
       "maxConcurrentScientists": 5,

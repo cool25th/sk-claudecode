@@ -162,7 +162,7 @@ describe('readHudConfig', () => {
       // Custom value
       expect(config.elements.gitRepo).toBe(true);
       // Default values preserved
-      expect(config.elements.omcLabel).toBe(DEFAULT_HUD_CONFIG.elements.omcLabel);
+      expect(config.elements.skcLabel).toBe(DEFAULT_HUD_CONFIG.elements.skcLabel);
       expect(config.elements.contextBar).toBe(DEFAULT_HUD_CONFIG.elements.contextBar);
       expect(config.preset).toBe(DEFAULT_HUD_CONFIG.preset);
     });

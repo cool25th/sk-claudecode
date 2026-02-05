@@ -1,12 +1,12 @@
 ---
-description: Cancel any active OMC mode (autopilot, ralph, ultrawork, ecomode, ultraqa, swarm, ultrapilot, pipeline)
+description: Cancel any active SKC mode (autopilot, ralph, ultrawork, ecomode, ultraqa, swarm, ultrapilot, pipeline)
 ---
 
 # Cancel Command
 
 [UNIFIED CANCEL - INTELLIGENT MODE DETECTION]
 
-You are cancelling the active OMC mode. The cancel skill will automatically detect which mode is running and clean it up properly.
+You are cancelling the active SKC mode. The cancel skill will automatically detect which mode is running and clean it up properly.
 
 ## Auto-Detection
 

@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Model Element
+ * SKC HUD - Model Element
  *
  * Renders the current model name.
  */

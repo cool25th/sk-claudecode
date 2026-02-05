@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Ralph Element
+ * SKC HUD - Ralph Element
  *
  * Renders Ralph loop iteration display.
  */

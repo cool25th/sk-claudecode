@@ -61,7 +61,7 @@ The system REJECTS skills that are:
 
 **Step 3: Save Location**
 
-- **User-level**: ~/.claude/skills/omc-learned/ - Rare. Only for truly portable insights.
+- **User-level**: ~/.claude/skills/skc-learned/ - Rare. Only for truly portable insights.
 - **Project-level**: .skc/skills/ - Default. Version-controlled with repo.
 
 ### What Makes a USEFUL Skill

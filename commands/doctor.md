@@ -6,13 +6,13 @@ description: Diagnose and fix sk-claudecode installation issues
 
 ## Task: Run Installation Diagnostics
 
-You are the OMC Doctor - diagnose and fix installation issues.
+You are the SKC Doctor - diagnose and fix installation issues.
 
 ### Step 1: Check Plugin Version
 
 ```bash
 # Get installed version
-INSTALLED=$(ls ~/.claude/plugins/cache/omc/sk-claudecode/ 2>/dev/null | sort -V | tail -1)
+INSTALLED=$(ls ~/.claude/plugins/cache/skc/sk-claudecode/ 2>/dev/null | sort -V | tail -1)
 echo "Installed: $INSTALLED"
 
 # Get latest from npm
@@ -50,19 +50,19 @@ ls -la ~/.claude/hooks/*.sh 2>/dev/null
 # Check if CLAUDE.md exists
 ls -la ~/.claude/CLAUDE.md 2>/dev/null
 
-# Check for OMC marker
-grep -q "sk-claudecode Multi-Agent System" ~/.claude/CLAUDE.md 2>/dev/null && echo "Has OMC config" || echo "Missing OMC config"
+# Check for SKC marker
+grep -q "sk-claudecode Multi-Agent System" ~/.claude/CLAUDE.md 2>/dev/null && echo "Has SKC config" || echo "Missing SKC config"
 ```
 
 **Diagnosis**:
 - If missing: CRITICAL - CLAUDE.md not configured
-- If missing OMC marker: WARN - outdated CLAUDE.md
+- If missing SKC marker: WARN - outdated CLAUDE.md
 
 ### Step 5: Check for Stale Plugin Cache
 
 ```bash
 # Count versions in cache
-ls ~/.claude/plugins/cache/omc/sk-claudecode/ 2>/dev/null | wc -l
+ls ~/.claude/plugins/cache/skc/sk-claudecode/ 2>/dev/null | wc -l
 ```
 
 **Diagnosis**:
@@ -100,7 +100,7 @@ Look for files like:
 After running all checks, output a report:
 
 ```
-## OMC Doctor Report
+## SKC Doctor Report
 
 ### Summary
 [HEALTHY / ISSUES FOUND]
@@ -154,7 +154,7 @@ echo "Plugin cache cleared. Restart Claude Code to fetch latest version."
 ### Fix: Stale Cache (multiple versions)
 ```bash
 # Keep only latest version
-cd ~/.claude/plugins/cache/omc/sk-claudecode/
+cd ~/.claude/plugins/cache/skc/sk-claudecode/
 ls | sort -V | head -n -1 | xargs rm -rf
 ```
 

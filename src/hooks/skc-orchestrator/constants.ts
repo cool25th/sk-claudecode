@@ -1,5 +1,5 @@
 /**
- * OMC Orchestrator Constants
+ * SKC Orchestrator Constants
  *
  * Message templates and configuration for orchestrator behavior enforcement.
  *

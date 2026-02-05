@@ -143,7 +143,7 @@ export function recordAgentStart(
 ): void {
   appendReplayEvent(directory, sessionId, {
     agent: agentId.substring(0, 7),
-    agent_type: agentType.replace('oh-my-claudecode:', ''),
+    agent_type: agentType.replace('sk-claudecode:', ''),
     event: 'agent_start',
     task: task?.substring(0, 100),
     parent_mode: parentMode,
@@ -164,7 +164,7 @@ export function recordAgentStop(
 ): void {
   appendReplayEvent(directory, sessionId, {
     agent: agentId.substring(0, 7),
-    agent_type: agentType.replace('oh-my-claudecode:', ''),
+    agent_type: agentType.replace('sk-claudecode:', ''),
     event: 'agent_stop',
     success,
     duration_ms: durationMs,

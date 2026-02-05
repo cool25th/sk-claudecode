@@ -16,7 +16,7 @@ import {
 
 program
   .name('skc-analytics')
-  .description('OMC Analytics CLI - Token tracking, cost reports, and session management')
+  .description('SKC Analytics CLI - Token tracking, cost reports, and session management')
   .version('1.0.0');
 
 // Stats command

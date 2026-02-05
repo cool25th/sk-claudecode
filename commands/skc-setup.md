@@ -123,7 +123,7 @@ Check if the plugin is installed and built:
 
 ```bash
 # Find the installed plugin version
-PLUGIN_DIR="$HOME/.claude/plugins/cache/omc/sk-claudecode"
+PLUGIN_DIR="$HOME/.claude/plugins/cache/skc/sk-claudecode"
 if [ -d "$PLUGIN_DIR" ]; then
   PLUGIN_VERSION=$(ls "$PLUGIN_DIR" 2>/dev/null | sort -V | tail -1)
   if [ -n "$PLUGIN_VERSION" ]; then
@@ -189,11 +189,11 @@ else
 fi
 
 # Verify installation
-if command -v omc &> /dev/null; then
+if command -v skc &> /dev/null; then
   echo "✓ SKC CLI installed successfully!"
   echo "  Try: skc stats, skc agents, skc backfill"
 else
-  echo "⚠ CLI installed but 'omc' not in PATH."
+  echo "⚠ CLI installed but 'skc' not in PATH."
   echo "  You may need to restart your terminal or add npm/bun global bin to PATH."
 fi
 ```
@@ -318,10 +318,10 @@ MCP SERVERS:
 Run /sk-claudecode:mcp-setup to add tools like web search, GitHub, etc.
 
 HUD STATUSLINE:
-The status bar now shows OMC state. Restart Claude Code to see it.
+The status bar now shows SKC state. Restart Claude Code to see it.
 
 CLI ANALYTICS (if installed):
-- omc           - Full dashboard (stats + agents + cost)
+- skc           - Full dashboard (stats + agents + cost)
 - skc stats     - View token usage and costs
 - skc agents    - See agent breakdown by cost
 - skc tui       - Launch interactive TUI dashboard
@@ -358,10 +358,10 @@ MAGIC KEYWORDS (power-user shortcuts):
 | plan | /plan | "plan the endpoints" |
 
 HUD STATUSLINE:
-The status bar now shows OMC state. Restart Claude Code to see it.
+The status bar now shows SKC state. Restart Claude Code to see it.
 
 CLI ANALYTICS (if installed):
-- omc           - Full dashboard (stats + agents + cost)
+- skc           - Full dashboard (stats + agents + cost)
 - skc stats     - View token usage and costs
 - skc agents    - See agent breakdown by cost
 - skc tui       - Launch interactive TUI dashboard

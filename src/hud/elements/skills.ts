@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Skills Element
+ * SKC HUD - Skills Element
  *
  * Renders active skills badge (ultrawork, ralph mode indicators).
  */

@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Session Health Element
+ * SKC HUD - Session Health Element
  *
  * Renders session duration and health indicator.
  */

@@ -239,7 +239,7 @@ export function getActiveModes(cwd: string): ExecutionMode[] {
 }
 
 /**
- * Check if any OMC mode is currently active
+ * Check if any SKC mode is currently active
  *
  * @param cwd - Working directory
  * @returns true if any mode is active
@@ -279,7 +279,7 @@ export function canStartMode(mode: ExecutionMode, cwd: string): CanStartResult {
         return {
           allowed: false,
           blockedBy: exclusiveMode,
-          message: `Cannot start ${MODE_CONFIGS[mode].name} while ${config.name} is active. Cancel ${config.name} first with /oh-my-claudecode:cancel.`
+          message: `Cannot start ${MODE_CONFIGS[mode].name} while ${config.name} is active. Cancel ${config.name} first with /sk-claudecode:cancel.`
         };
       }
     }

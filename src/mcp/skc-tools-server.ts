@@ -1,5 +1,5 @@
 /**
- * OMC Tools Server - In-process MCP server for custom tools
+ * SKC Tools Server - In-process MCP server for custom tools
  *
  * Exposes 18 custom tools (12 LSP, 2 AST, 1 python_repl, 3 skills) via the Claude Agent SDK's
  * createSdkMcpServer helper for use by subagents.
@@ -45,7 +45,7 @@ const sdkTools = allTools.map(t =>
 );
 
 /**
- * In-process MCP server exposing all OMC custom tools
+ * In-process MCP server exposing all SKC custom tools
  *
  * Tools will be available as mcp__t__<tool_name>
  */
@@ -78,7 +78,7 @@ export function getOmcToolNames(options?: {
     if (!includeLsp && name.includes('lsp_')) return false;
     if (!includeAst && name.includes('ast_')) return false;
     if (!includePython && name.includes('python_repl')) return false;
-    if (!includeSkills && (name.includes('load_omc_skills') || name.includes('list_omc_skills'))) return false;
+    if (!includeSkills && (name.includes('load_skc_skills') || name.includes('list_omc_skills'))) return false;
     if (!includeState && name.includes('state_')) return false;
     if (!includeNotepad && name.includes('notepad_')) return false;
     if (!includeMemory && name.includes('memory_')) return false;

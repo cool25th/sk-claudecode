@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Background Tasks Element
+ * SKC HUD - Background Tasks Element
  *
  * Renders background task count display.
  */

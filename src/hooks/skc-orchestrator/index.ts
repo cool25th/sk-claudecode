@@ -1,5 +1,5 @@
 /**
- * OMC Orchestrator Hook
+ * SKC Orchestrator Hook
  *
  * Enforces orchestrator behavior - delegation over direct implementation.
  * When an orchestrator agent tries to directly modify files outside .skc/,

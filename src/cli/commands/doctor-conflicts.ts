@@ -65,7 +65,7 @@ export function checkHookConflicts(): ConflictReport['hookConflicts'] {
 }
 
 /**
- * Check CLAUDE.md for OMC markers and user content
+ * Check CLAUDE.md for SKC markers and user content
  */
 export function checkClaudeMdStatus(): ConflictReport['claudeMdStatus'] {
   const claudeMdPath = join(homedir(), '.claude', 'CLAUDE.md');
@@ -76,19 +76,19 @@ export function checkClaudeMdStatus(): ConflictReport['claudeMdStatus'] {
 
   try {
     const content = readFileSync(claudeMdPath, 'utf-8');
-    const hasStartMarker = content.includes('<!-- OMC:START -->');
-    const hasEndMarker = content.includes('<!-- OMC:END -->');
+    const hasStartMarker = content.includes('<!-- SKC:START -->');
+    const hasEndMarker = content.includes('<!-- SKC:END -->');
     const hasMarkers = hasStartMarker && hasEndMarker;
 
     let hasUserContent = false;
 
     if (hasMarkers) {
       // Extract content outside markers
-      const startIdx = content.indexOf('<!-- OMC:START -->');
-      const endIdx = content.indexOf('<!-- OMC:END -->');
+      const startIdx = content.indexOf('<!-- SKC:START -->');
+      const endIdx = content.indexOf('<!-- SKC:END -->');
 
       const beforeMarker = content.substring(0, startIdx).trim();
-      const afterMarker = content.substring(endIdx + '<!-- OMC:END -->'.length).trim();
+      const afterMarker = content.substring(endIdx + '<!-- SKC:END -->'.length).trim();
 
       hasUserContent = beforeMarker.length > 0 || afterMarker.length > 0;
     } else {
@@ -107,10 +107,10 @@ export function checkClaudeMdStatus(): ConflictReport['claudeMdStatus'] {
 }
 
 /**
- * Check environment flags that affect OMC behavior
+ * Check environment flags that affect SKC behavior
  */
 export function checkEnvFlags(): ConflictReport['envFlags'] {
-  const disableOmc = process.env.DISABLE_OMC === 'true' || process.env.DISABLE_OMC === '1';
+  const disableOmc = process.env.DISABLE_SKC === 'true' || process.env.DISABLE_SKC === '1';
   const skipHooks: string[] = [];
 
   if (process.env.SKC_SKIP_HOOKS) {
@@ -143,7 +143,7 @@ export function checkConfigIssues(): ConflictReport['configIssues'] {
       'permissions',
       'magicKeywords',
       'routing',
-      // SisyphusConfig fields (from auto-update.ts / omc-setup)
+      // SisyphusConfig fields (from auto-update.ts / skc-setup)
       'silentAutoUpdate',
       'configuredAt',
       'configVersion',
@@ -179,11 +179,11 @@ export function runConflictCheck(): ConflictReport {
 
   // Determine if there are actual conflicts
   const hasConflicts =
-    hookConflicts.some(h => !h.isOmc) || // Non-OMC hooks present
-    envFlags.disableOmc || // OMC is disabled
+    hookConflicts.some(h => !h.isOmc) || // Non-SKC hooks present
+    envFlags.disableOmc || // SKC is disabled
     envFlags.skipHooks.length > 0 || // Hooks are being skipped
     configIssues.unknownFields.length > 0; // Unknown config fields
-    // Note: Missing OMC markers is informational (normal for fresh install), not a conflict
+    // Note: Missing SKC markers is informational (normal for fresh install), not a conflict
 
   return {
     hookConflicts,
@@ -215,7 +215,7 @@ export function formatReport(report: ConflictReport, json: boolean): string {
     lines.push(colors.bold('📌 Hook Configuration'));
     lines.push('');
     for (const hook of report.hookConflicts) {
-      const status = hook.isOmc ? colors.green('✓ OMC') : colors.yellow('⚠ Other');
+      const status = hook.isOmc ? colors.green('✓ SKC') : colors.yellow('⚠ Other');
       lines.push(`  ${hook.event.padEnd(20)} ${status}`);
       lines.push(`    ${colors.gray(hook.command)}`);
     }
@@ -232,13 +232,13 @@ export function formatReport(report: ConflictReport, json: boolean): string {
     lines.push('');
 
     if (report.claudeMdStatus.hasMarkers) {
-      lines.push(`  ${colors.green('✓')} OMC markers present`);
+      lines.push(`  ${colors.green('✓')} SKC markers present`);
       if (report.claudeMdStatus.hasUserContent) {
         lines.push(`  ${colors.green('✓')} User content preserved outside markers`);
       }
     } else {
-      lines.push(`  ${colors.yellow('⚠')} No OMC markers found`);
-      lines.push(`    ${colors.gray('Run /oh-my-claudecode:omc-setup to add markers')}`);
+      lines.push(`  ${colors.yellow('⚠')} No SKC markers found`);
+      lines.push(`    ${colors.gray('Run /sk-claudecode:skc-setup to add markers')}`);
       if (report.claudeMdStatus.hasUserContent) {
         lines.push(`  ${colors.blue('ℹ')} User content present - will be preserved`);
       }
@@ -255,9 +255,9 @@ export function formatReport(report: ConflictReport, json: boolean): string {
   lines.push(colors.bold('🔧 Environment Flags'));
   lines.push('');
   if (report.envFlags.disableOmc) {
-    lines.push(`  ${colors.red('✗')} DISABLE_OMC is set - OMC is disabled`);
+    lines.push(`  ${colors.red('✗')} DISABLE_SKC is set - SKC is disabled`);
   } else {
-    lines.push(`  ${colors.green('✓')} DISABLE_OMC not set`);
+    lines.push(`  ${colors.green('✓')} DISABLE_SKC not set`);
   }
 
   if (report.envFlags.skipHooks.length > 0) {
@@ -282,10 +282,10 @@ export function formatReport(report: ConflictReport, json: boolean): string {
   lines.push(colors.gray('━'.repeat(60)));
   if (report.hasConflicts) {
     lines.push(`${colors.yellow('⚠')} Potential conflicts detected`);
-    lines.push(`${colors.gray('Review the issues above and run /oh-my-claudecode:omc-setup if needed')}`);
+    lines.push(`${colors.gray('Review the issues above and run /sk-claudecode:skc-setup if needed')}`);
   } else {
     lines.push(`${colors.green('✓')} No conflicts detected`);
-    lines.push(`${colors.gray('OMC is properly configured')}`);
+    lines.push(`${colors.gray('SKC is properly configured')}`);
   }
   lines.push('');
 

@@ -1,5 +1,5 @@
 /**
- * OMC HUD - State Management
+ * SKC HUD - State Management
  *
  * Manages HUD state file for background task tracking.
  * Follows patterns from ultrawork-state.

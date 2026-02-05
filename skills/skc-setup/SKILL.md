@@ -3,7 +3,7 @@ name: skc-setup
 description: Setup and configure sk-claudecode (the ONLY command you need to learn)
 ---
 
-# OMC Setup
+# SKC Setup
 
 This is the **only command you need to learn**. After running this, everything else is automatic.
 
@@ -13,14 +13,14 @@ This is the **only command you need to learn**. After running this, everything e
 
 ```bash
 # Check if setup was already completed
-CONFIG_FILE="$HOME/.claude/.omc-config.json"
+CONFIG_FILE="$HOME/.claude/.skc-config.json"
 
 if [ -f "$CONFIG_FILE" ]; then
   SETUP_COMPLETED=$(jq -r '.setupCompleted // empty' "$CONFIG_FILE" 2>/dev/null)
   SETUP_VERSION=$(jq -r '.setupVersion // empty' "$CONFIG_FILE" 2>/dev/null)
 
   if [ -n "$SETUP_COMPLETED" ] && [ "$SETUP_COMPLETED" != "null" ]; then
-    echo "OMC setup was already completed on: $SETUP_COMPLETED"
+    echo "SKC setup was already completed on: $SETUP_COMPLETED"
     [ -n "$SETUP_VERSION" ] && echo "Setup version: $SETUP_VERSION"
     ALREADY_CONFIGURED="true"
   fi
@@ -33,7 +33,7 @@ If `ALREADY_CONFIGURED` is true AND the user did NOT pass `--force`, `--local`, 
 
 Use AskUserQuestion to prompt:
 
-**Question:** "OMC is already configured. What would you like to do?"
+**Question:** "SKC is already configured. What would you like to do?"
 
 **Options:**
 1. **Update CLAUDE.md only** - Download latest CLAUDE.md without re-running full setup
@@ -62,7 +62,7 @@ If user passes `--force` flag, skip this check and proceed directly to setup.
 **IMPORTANT**: This setup process saves progress after each step. If interrupted (Ctrl+C or connection loss), the setup can resume from where it left off.
 
 ### State File Location
-- `.omc/state/setup-state.json` - Tracks completed steps
+- `.skc/state/setup-state.json` - Tracks completed steps
 
 ### Resume Detection (Step 0)
 
@@ -70,7 +70,7 @@ Before starting any step, check for existing state:
 
 ```bash
 # Check for existing setup state
-STATE_FILE=".omc/state/setup-state.json"
+STATE_FILE=".skc/state/setup-state.json"
 
 # Cross-platform ISO date to epoch conversion
 iso_to_epoch() {
@@ -123,7 +123,7 @@ If state exists, use AskUserQuestion to prompt:
 
 If user chooses "Start fresh":
 ```bash
-rm -f ".omc/state/setup-state.json"
+rm -f ".skc/state/setup-state.json"
 echo "Previous state cleared. Starting fresh setup."
 ```
 
@@ -135,8 +135,8 @@ After completing each major step, save progress:
 # Save setup progress (call after each step)
 # Usage: save_setup_progress STEP_NUMBER
 save_setup_progress() {
-  mkdir -p .omc/state
-  cat > ".omc/state/setup-state.json" << EOF
+  mkdir -p .skc/state
+  cat > ".skc/state/setup-state.json" << EOF
 {
   "lastCompletedStep": $1,
   "timestamp": "$(date -Iseconds)",
@@ -151,7 +151,7 @@ EOF
 After successful setup completion (Step 7/8), remove the state file:
 
 ```bash
-rm -f ".omc/state/setup-state.json"
+rm -f ".skc/state/setup-state.json"
 echo "Setup completed successfully. State cleared."
 ```
 
@@ -211,63 +211,63 @@ if [ -f "$TARGET_PATH" ]; then
   echo "Backed up existing CLAUDE.md to $BACKUP_PATH"
 fi
 
-# Download fresh OMC content to temp file
-TEMP_OMC=$(mktemp /tmp/omc-claude-XXXXXX.md)
-trap 'rm -f "$TEMP_OMC"' EXIT
-curl -fsSL "https://raw.githubusercontent.com/Yeachan-Heo/sk-claudecode/main/docs/CLAUDE.md" -o "$TEMP_OMC"
+# Download fresh SKC content to temp file
+TEMP_SKC=$(mktemp /tmp/skc-claude-XXXXXX.md)
+trap 'rm -f "$TEMP_SKC"' EXIT
+curl -fsSL "https://raw.githubusercontent.com/Yeachan-Heo/sk-claudecode/main/docs/CLAUDE.md" -o "$TEMP_SKC"
 
-if [ ! -s "$TEMP_OMC" ]; then
+if [ ! -s "$TEMP_SKC" ]; then
   echo "ERROR: Failed to download CLAUDE.md. Aborting."
-  rm -f "$TEMP_OMC"
+  rm -f "$TEMP_SKC"
   return 1
 fi
 
 # Strip existing markers from downloaded content (idempotency)
-if grep -q '<!-- OMC:START -->' "$TEMP_OMC"; then
+if grep -q '<!-- SKC:START -->' "$TEMP_SKC"; then
   # Extract content between markers
-  sed -n '/<!-- OMC:START -->/,/<!-- OMC:END -->/{//!p}' "$TEMP_OMC" > "${TEMP_OMC}.clean"
-  mv "${TEMP_OMC}.clean" "$TEMP_OMC"
+  sed -n '/<!-- SKC:START -->/,/<!-- SKC:END -->/{//!p}' "$TEMP_SKC" > "${TEMP_SKC}.clean"
+  mv "${TEMP_SKC}.clean" "$TEMP_SKC"
 fi
 
 if [ ! -f "$TARGET_PATH" ]; then
   # Fresh install: wrap in markers
   {
-    echo '<!-- OMC:START -->'
-    cat "$TEMP_OMC"
-    echo '<!-- OMC:END -->'
+    echo '<!-- SKC:START -->'
+    cat "$TEMP_SKC"
+    echo '<!-- SKC:END -->'
   } > "$TARGET_PATH"
-  rm -f "$TEMP_OMC"
+  rm -f "$TEMP_SKC"
   echo "Installed CLAUDE.md (fresh)"
 else
-  # Merge: preserve user content outside OMC markers
-  if grep -q '<!-- OMC:START -->' "$TARGET_PATH"; then
-    # Has markers: replace OMC section, keep user content
-    BEFORE_OMC=$(sed -n '1,/<!-- OMC:START -->/{ /<!-- OMC:START -->/!p }' "$TARGET_PATH")
-    AFTER_OMC=$(sed -n '/<!-- OMC:END -->/,${  /<!-- OMC:END -->/!p }' "$TARGET_PATH")
+  # Merge: preserve user content outside SKC markers
+  if grep -q '<!-- SKC:START -->' "$TARGET_PATH"; then
+    # Has markers: replace SKC section, keep user content
+    BEFORE_SKC=$(sed -n '1,/<!-- SKC:START -->/{ /<!-- SKC:START -->/!p }' "$TARGET_PATH")
+    AFTER_SKC=$(sed -n '/<!-- SKC:END -->/,${  /<!-- SKC:END -->/!p }' "$TARGET_PATH")
     {
-      [ -n "$BEFORE_OMC" ] && printf '%s\n' "$BEFORE_OMC"
-      echo '<!-- OMC:START -->'
-      cat "$TEMP_OMC"
-      echo '<!-- OMC:END -->'
-      [ -n "$AFTER_OMC" ] && printf '%s\n' "$AFTER_OMC"
+      [ -n "$BEFORE_SKC" ] && printf '%s\n' "$BEFORE_SKC"
+      echo '<!-- SKC:START -->'
+      cat "$TEMP_SKC"
+      echo '<!-- SKC:END -->'
+      [ -n "$AFTER_SKC" ] && printf '%s\n' "$AFTER_SKC"
     } > "${TARGET_PATH}.tmp"
     mv "${TARGET_PATH}.tmp" "$TARGET_PATH"
-    echo "Updated OMC section (user customizations preserved)"
+    echo "Updated SKC section (user customizations preserved)"
   else
     # No markers: wrap new content in markers, append old content as user section
     OLD_CONTENT=$(cat "$TARGET_PATH")
     {
-      echo '<!-- OMC:START -->'
-      cat "$TEMP_OMC"
-      echo '<!-- OMC:END -->'
+      echo '<!-- SKC:START -->'
+      cat "$TEMP_SKC"
+      echo '<!-- SKC:END -->'
       echo ""
       echo "<!-- User customizations (migrated from previous CLAUDE.md) -->"
       printf '%s\n' "$OLD_CONTENT"
     } > "${TARGET_PATH}.tmp"
     mv "${TARGET_PATH}.tmp" "$TARGET_PATH"
-    echo "Migrated existing CLAUDE.md (added OMC markers, preserved old content)"
+    echo "Migrated existing CLAUDE.md (added SKC markers, preserved old content)"
   fi
-  rm -f "$TEMP_OMC"
+  rm -f "$TEMP_SKC"
 fi
 
 # Extract new version and report
@@ -303,8 +303,8 @@ After completing local configuration, save progress and report:
 
 ```bash
 # Save progress - Step 2 complete (Local config)
-mkdir -p .omc/state
-cat > ".omc/state/setup-state.json" << EOF
+mkdir -p .skc/state
+cat > ".skc/state/setup-state.json" << EOF
 {
   "lastCompletedStep": 2,
   "timestamp": "$(date -Iseconds)",
@@ -313,7 +313,7 @@ cat > ".omc/state/setup-state.json" << EOF
 EOF
 ```
 
-**OMC Project Configuration Complete**
+**SKC Project Configuration Complete**
 - CLAUDE.md: Updated with latest configuration from GitHub at ./.claude/CLAUDE.md
 - Backup: Previous CLAUDE.md backed up to `.claude/CLAUDE.md.backup.YYYY-MM-DD` (if existed)
 - Scope: **PROJECT** - applies only to this project
@@ -325,7 +325,7 @@ EOF
 
 If `--local` flag was used, clear state and **STOP HERE**:
 ```bash
-rm -f ".omc/state/setup-state.json"
+rm -f ".skc/state/setup-state.json"
 ```
 Do not continue to HUD setup or other steps.
 
@@ -350,63 +350,63 @@ if [ -f "$TARGET_PATH" ]; then
   echo "Backed up existing CLAUDE.md to $BACKUP_PATH"
 fi
 
-# Download fresh OMC content to temp file
-TEMP_OMC=$(mktemp /tmp/omc-claude-XXXXXX.md)
-trap 'rm -f "$TEMP_OMC"' EXIT
-curl -fsSL "https://raw.githubusercontent.com/Yeachan-Heo/sk-claudecode/main/docs/CLAUDE.md" -o "$TEMP_OMC"
+# Download fresh SKC content to temp file
+TEMP_SKC=$(mktemp /tmp/skc-claude-XXXXXX.md)
+trap 'rm -f "$TEMP_SKC"' EXIT
+curl -fsSL "https://raw.githubusercontent.com/Yeachan-Heo/sk-claudecode/main/docs/CLAUDE.md" -o "$TEMP_SKC"
 
-if [ ! -s "$TEMP_OMC" ]; then
+if [ ! -s "$TEMP_SKC" ]; then
   echo "ERROR: Failed to download CLAUDE.md. Aborting."
-  rm -f "$TEMP_OMC"
+  rm -f "$TEMP_SKC"
   return 1
 fi
 
 # Strip existing markers from downloaded content (idempotency)
-if grep -q '<!-- OMC:START -->' "$TEMP_OMC"; then
+if grep -q '<!-- SKC:START -->' "$TEMP_SKC"; then
   # Extract content between markers
-  sed -n '/<!-- OMC:START -->/,/<!-- OMC:END -->/{//!p}' "$TEMP_OMC" > "${TEMP_OMC}.clean"
-  mv "${TEMP_OMC}.clean" "$TEMP_OMC"
+  sed -n '/<!-- SKC:START -->/,/<!-- SKC:END -->/{//!p}' "$TEMP_SKC" > "${TEMP_SKC}.clean"
+  mv "${TEMP_SKC}.clean" "$TEMP_SKC"
 fi
 
 if [ ! -f "$TARGET_PATH" ]; then
   # Fresh install: wrap in markers
   {
-    echo '<!-- OMC:START -->'
-    cat "$TEMP_OMC"
-    echo '<!-- OMC:END -->'
+    echo '<!-- SKC:START -->'
+    cat "$TEMP_SKC"
+    echo '<!-- SKC:END -->'
   } > "$TARGET_PATH"
-  rm -f "$TEMP_OMC"
+  rm -f "$TEMP_SKC"
   echo "Installed CLAUDE.md (fresh)"
 else
-  # Merge: preserve user content outside OMC markers
-  if grep -q '<!-- OMC:START -->' "$TARGET_PATH"; then
-    # Has markers: replace OMC section, keep user content
-    BEFORE_OMC=$(sed -n '1,/<!-- OMC:START -->/{ /<!-- OMC:START -->/!p }' "$TARGET_PATH")
-    AFTER_OMC=$(sed -n '/<!-- OMC:END -->/,${  /<!-- OMC:END -->/!p }' "$TARGET_PATH")
+  # Merge: preserve user content outside SKC markers
+  if grep -q '<!-- SKC:START -->' "$TARGET_PATH"; then
+    # Has markers: replace SKC section, keep user content
+    BEFORE_SKC=$(sed -n '1,/<!-- SKC:START -->/{ /<!-- SKC:START -->/!p }' "$TARGET_PATH")
+    AFTER_SKC=$(sed -n '/<!-- SKC:END -->/,${  /<!-- SKC:END -->/!p }' "$TARGET_PATH")
     {
-      [ -n "$BEFORE_OMC" ] && printf '%s\n' "$BEFORE_OMC"
-      echo '<!-- OMC:START -->'
-      cat "$TEMP_OMC"
-      echo '<!-- OMC:END -->'
-      [ -n "$AFTER_OMC" ] && printf '%s\n' "$AFTER_OMC"
+      [ -n "$BEFORE_SKC" ] && printf '%s\n' "$BEFORE_SKC"
+      echo '<!-- SKC:START -->'
+      cat "$TEMP_SKC"
+      echo '<!-- SKC:END -->'
+      [ -n "$AFTER_SKC" ] && printf '%s\n' "$AFTER_SKC"
     } > "${TARGET_PATH}.tmp"
     mv "${TARGET_PATH}.tmp" "$TARGET_PATH"
-    echo "Updated OMC section (user customizations preserved)"
+    echo "Updated SKC section (user customizations preserved)"
   else
     # No markers: wrap new content in markers, append old content as user section
     OLD_CONTENT=$(cat "$TARGET_PATH")
     {
-      echo '<!-- OMC:START -->'
-      cat "$TEMP_OMC"
-      echo '<!-- OMC:END -->'
+      echo '<!-- SKC:START -->'
+      cat "$TEMP_SKC"
+      echo '<!-- SKC:END -->'
       echo ""
       echo "<!-- User customizations (migrated from previous CLAUDE.md) -->"
       printf '%s\n' "$OLD_CONTENT"
     } > "${TARGET_PATH}.tmp"
     mv "${TARGET_PATH}.tmp" "$TARGET_PATH"
-    echo "Migrated existing CLAUDE.md (added OMC markers, preserved old content)"
+    echo "Migrated existing CLAUDE.md (added SKC markers, preserved old content)"
   fi
-  rm -f "$TEMP_OMC"
+  rm -f "$TEMP_SKC"
 fi
 
 # Extract new version and report
@@ -451,8 +451,8 @@ After completing global configuration, save progress and report:
 
 ```bash
 # Save progress - Step 2 complete (Global config)
-mkdir -p .omc/state
-cat > ".omc/state/setup-state.json" << EOF
+mkdir -p .skc/state
+cat > ".skc/state/setup-state.json" << EOF
 {
   "lastCompletedStep": 2,
   "timestamp": "$(date -Iseconds)",
@@ -461,7 +461,7 @@ cat > ".omc/state/setup-state.json" << EOF
 EOF
 ```
 
-**OMC Global Configuration Complete**
+**SKC Global Configuration Complete**
 - CLAUDE.md: Updated with latest configuration from GitHub at ~/.claude/CLAUDE.md
 - Backup: Previous CLAUDE.md backed up to `~/.claude/CLAUDE.md.backup.YYYY-MM-DD` (if existed)
 - Scope: **GLOBAL** - applies to all Claude Code sessions
@@ -473,7 +473,7 @@ EOF
 
 If `--global` flag was used, clear state and **STOP HERE**:
 ```bash
-rm -f ".omc/state/setup-state.json"
+rm -f ".skc/state/setup-state.json"
 ```
 Do not continue to HUD setup or other steps.
 
@@ -486,16 +486,16 @@ The HUD shows real-time status in Claude Code's status bar. **Invoke the hud ski
 Use the Skill tool to invoke: `hud` with args: `setup`
 
 This will:
-1. Install the HUD wrapper script to `~/.claude/hud/omc-hud.mjs`
+1. Install the HUD wrapper script to `~/.claude/hud/skc-hud.mjs`
 2. Configure `statusLine` in `~/.claude/settings.json`
 3. Report status and prompt to restart if needed
 
 After HUD setup completes, save progress:
 ```bash
 # Save progress - Step 3 complete (HUD setup)
-mkdir -p .omc/state
-CONFIG_TYPE=$(cat ".omc/state/setup-state.json" 2>/dev/null | grep -oE '"configType":\s*"[^"]+"' | cut -d'"' -f4 || echo "unknown")
-cat > ".omc/state/setup-state.json" << EOF
+mkdir -p .skc/state
+CONFIG_TYPE=$(cat ".skc/state/setup-state.json" 2>/dev/null | grep -oE '"configType":\s*"[^"]+"' | cut -d'"' -f4 || echo "unknown")
+cat > ".skc/state/setup-state.json" << EOF
 {
   "lastCompletedStep": 3,
   "timestamp": "$(date -Iseconds)",
@@ -510,7 +510,7 @@ Clear old cached plugin versions to avoid conflicts:
 
 ```bash
 # Clear stale plugin cache versions
-CACHE_DIR="$HOME/.claude/plugins/cache/omc/sk-claudecode"
+CACHE_DIR="$HOME/.claude/plugins/cache/skc/sk-claudecode"
 if [ -d "$CACHE_DIR" ]; then
   LATEST=$(ls -1 "$CACHE_DIR" | sort -V | tail -1)
   CLEARED=0
@@ -535,13 +535,13 @@ Notify user if a newer version is available:
 INSTALLED_VERSION=""
 
 # Try cache directory first
-if [ -d "$HOME/.claude/plugins/cache/omc/sk-claudecode" ]; then
-  INSTALLED_VERSION=$(ls -1 "$HOME/.claude/plugins/cache/omc/sk-claudecode" | sort -V | tail -1)
+if [ -d "$HOME/.claude/plugins/cache/skc/sk-claudecode" ]; then
+  INSTALLED_VERSION=$(ls -1 "$HOME/.claude/plugins/cache/skc/sk-claudecode" | sort -V | tail -1)
 fi
 
-# Try .omc-version.json second
-if [ -z "$INSTALLED_VERSION" ] && [ -f ".omc-version.json" ]; then
-  INSTALLED_VERSION=$(grep -oE '"version":\s*"[^"]+' .omc-version.json | cut -d'"' -f4)
+# Try .skc-version.json second
+if [ -z "$INSTALLED_VERSION" ] && [ -f ".skc-version.json" ]; then
+  INSTALLED_VERSION=$(grep -oE '"version":\s*"[^"]+' .skc-version.json | cut -d'"' -f4)
 fi
 
 # Try CLAUDE.md header third (local first, then global)
@@ -583,11 +583,11 @@ Use the AskUserQuestion tool to prompt the user:
 1. **ultrawork (maximum capability)** - Uses all agent tiers including Opus for complex tasks. Best for challenging work where quality matters most. (Recommended)
 2. **ecomode (token efficient)** - Prefers Haiku/Sonnet agents, avoids Opus. Best for pro-plan users who want cost efficiency.
 
-Store the preference in `~/.claude/.omc-config.json`:
+Store the preference in `~/.claude/.skc-config.json`:
 
 ```bash
 # Read existing config or create empty object
-CONFIG_FILE="$HOME/.claude/.omc-config.json"
+CONFIG_FILE="$HOME/.claude/.skc-config.json"
 mkdir -p "$(dirname "$CONFIG_FILE")"
 
 if [ -f "$CONFIG_FILE" ]; then
@@ -614,17 +614,17 @@ echo "Ecomode disabled completely"
 
 ## Step 3.8: Install CLI Analytics Tools (Optional)
 
-The OMC CLI provides standalone token analytics commands (`omc stats`, `omc agents`, `omc tui`).
+The SKC CLI provides standalone token analytics commands (`skc stats`, `skc agents`, `skc tui`).
 
-Ask user: "Would you like to install the OMC CLI for standalone analytics? (Recommended for tracking token usage and costs)"
+Ask user: "Would you like to install the SKC CLI for standalone analytics? (Recommended for tracking token usage and costs)"
 
 **Options:**
-1. **Yes (Recommended)** - Install CLI tools globally for `omc stats`, `omc agents`, etc.
+1. **Yes (Recommended)** - Install CLI tools globally for `skc stats`, `skc agents`, etc.
 2. **No** - Skip CLI installation, use only plugin skills
 
 ### CLI Installation Note
 
-The CLI (`omc` command) is **no longer supported** via npm/bun global install.
+The CLI (`skc` command) is **no longer supported** via npm/bun global install.
 
 All functionality is available through the plugin system:
 - Use `/sk-claudecode:help` for guidance
@@ -677,7 +677,7 @@ If beads or beads-rust is detected, use AskUserQuestion:
 Store the preference:
 
 ```bash
-CONFIG_FILE="$HOME/.claude/.omc-config.json"
+CONFIG_FILE="$HOME/.claude/.skc-config.json"
 mkdir -p "$(dirname "$CONFIG_FILE")"
 
 if [ -f "$CONFIG_FILE" ]; then
@@ -727,7 +727,7 @@ If found, this is an upgrade from 2.x.
 ### For New Users:
 
 ```
-OMC Setup Complete!
+SKC Setup Complete!
 
 You don't need to learn any commands. I now have intelligent behaviors that activate automatically.
 
@@ -754,13 +754,13 @@ MCP SERVERS:
 Run /sk-claudecode:mcp-setup to add tools like web search, GitHub, etc.
 
 HUD STATUSLINE:
-The status bar now shows OMC state. Restart Claude Code to see it.
+The status bar now shows SKC state. Restart Claude Code to see it.
 
 CLI ANALYTICS (if installed):
-- omc           - Full dashboard (stats + agents + cost)
-- omc stats     - View token usage and costs
-- omc agents    - See agent breakdown by cost
-- omc tui       - Launch interactive TUI dashboard
+- skc           - Full dashboard (stats + agents + cost)
+- skc stats     - View token usage and costs
+- skc agents    - See agent breakdown by cost
+- skc tui       - Launch interactive TUI dashboard
 
 That's it! Just use Claude Code normally.
 ```
@@ -768,7 +768,7 @@ That's it! Just use Claude Code normally.
 ### For Users Upgrading from 2.x:
 
 ```
-OMC Setup Complete! (Upgraded from 2.x)
+SKC Setup Complete! (Upgraded from 2.x)
 
 GOOD NEWS: Your existing commands still work!
 - /ralph, /ultrawork, /plan, etc. all still function
@@ -790,13 +790,13 @@ MAGIC KEYWORDS (power-user shortcuts):
 | plan | /plan | "plan the endpoints" |
 
 HUD STATUSLINE:
-The status bar now shows OMC state. Restart Claude Code to see it.
+The status bar now shows SKC state. Restart Claude Code to see it.
 
 CLI ANALYTICS (if installed):
-- omc           - Full dashboard (stats + agents + cost)
-- omc stats     - View token usage and costs
-- omc agents    - See agent breakdown by cost
-- omc tui       - Launch interactive TUI dashboard
+- skc           - Full dashboard (stats + agents + cost)
+- skc stats     - View token usage and costs
+- skc agents    - See agent breakdown by cost
+- skc tui       - Launch interactive TUI dashboard
 
 Your workflow won't break - it just got easier!
 ```
@@ -843,18 +843,18 @@ After Step 8 completes (regardless of star choice), clear the temporary state an
 
 ```bash
 # Setup complete - clear temporary state file
-rm -f ".omc/state/setup-state.json"
+rm -f ".skc/state/setup-state.json"
 
 # Mark setup as completed in persistent config (prevents re-running full setup on updates)
-CONFIG_FILE="$HOME/.claude/.omc-config.json"
+CONFIG_FILE="$HOME/.claude/.skc-config.json"
 mkdir -p "$(dirname "$CONFIG_FILE")"
 
-# Get current OMC version from CLAUDE.md
-OMC_VERSION=""
+# Get current SKC version from CLAUDE.md
+SKC_VERSION=""
 if [ -f ".claude/CLAUDE.md" ]; then
-  OMC_VERSION=$(grep -m1 "^# sk-claudecode" .claude/CLAUDE.md 2>/dev/null | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' || echo "unknown")
+  SKC_VERSION=$(grep -m1 "^# sk-claudecode" .claude/CLAUDE.md 2>/dev/null | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' || echo "unknown")
 elif [ -f "$HOME/.claude/CLAUDE.md" ]; then
-  OMC_VERSION=$(grep -m1 "^# sk-claudecode" "$HOME/.claude/CLAUDE.md" 2>/dev/null | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' || echo "unknown")
+  SKC_VERSION=$(grep -m1 "^# sk-claudecode" "$HOME/.claude/CLAUDE.md" 2>/dev/null | grep -oE 'v[0-9]+\.[0-9]+\.[0-9]+' || echo "unknown")
 fi
 
 if [ -f "$CONFIG_FILE" ]; then
@@ -864,7 +864,7 @@ else
 fi
 
 # Add setupCompleted timestamp and version
-echo "$EXISTING" | jq --arg ts "$(date -Iseconds)" --arg ver "$OMC_VERSION" \
+echo "$EXISTING" | jq --arg ts "$(date -Iseconds)" --arg ver "$SKC_VERSION" \
   '. + {setupCompleted: $ts, setupVersion: $ver}' > "$CONFIG_FILE"
 
 echo "Setup completed successfully!"
@@ -889,7 +889,7 @@ This ensures you have the newest features and agent configurations without the t
 When user runs `/sk-claudecode:skc-setup --help` or just `--help`, display:
 
 ```
-OMC Setup - Configure sk-claudecode
+SKC Setup - Configure sk-claudecode
 
 USAGE:
   /sk-claudecode:skc-setup           Run initial setup wizard (or update if already configured)
@@ -911,14 +911,14 @@ MODES:
     - Downloads fresh CLAUDE.md to ./.claude/
     - Backs up existing CLAUDE.md to .claude/CLAUDE.md.backup.YYYY-MM-DD
     - Project-specific settings
-    - Use this to update project config after OMC upgrades
+    - Use this to update project config after SKC upgrades
 
   Global Configuration (--global)
     - Downloads fresh CLAUDE.md to ~/.claude/
     - Backs up existing CLAUDE.md to ~/.claude/CLAUDE.md.backup.YYYY-MM-DD
     - Applies to all Claude Code sessions
     - Cleans up legacy hooks
-    - Use this to update global config after OMC upgrades
+    - Use this to update global config after SKC upgrades
 
   Force Full Setup (--force)
     - Bypasses the "already configured" check

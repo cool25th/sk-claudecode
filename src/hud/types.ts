@@ -1,5 +1,5 @@
 /**
- * OMC HUD Type Definitions
+ * SKC HUD Type Definitions
  *
  * Type definitions for the HUD state, configuration, and rendering.
  */
@@ -121,7 +121,7 @@ export interface TranscriptData {
 }
 
 // ============================================================================
-// OMC State Types (read from existing files)
+// SKC State Types (read from existing files)
 // ============================================================================
 
 export interface RalphStateForHud {
@@ -252,7 +252,7 @@ export interface HudElementConfig {
   gitRepo: boolean;          // Show git repository name
   gitBranch: boolean;        // Show git branch
   model: boolean;            // Show current model name
-  omcLabel: boolean;
+  skcLabel: boolean;
   rateLimits: boolean;  // Show 5h and weekly rate limits
   ralph: boolean;
   autopilot: boolean;
@@ -307,7 +307,7 @@ export const DEFAULT_HUD_CONFIG: HudConfig = {
     gitRepo: false,           // Disabled by default for backward compatibility
     gitBranch: false,         // Disabled by default for backward compatibility
     model: false,             // Disabled by default for backward compatibility
-    omcLabel: true,
+    skcLabel: true,
     rateLimits: true,  // Show rate limits by default
     ralph: true,
     autopilot: true,
@@ -347,7 +347,7 @@ export const PRESET_CONFIGS: Record<HudPreset, Partial<HudElementConfig>> = {
     gitRepo: false,
     gitBranch: false,
     model: false,
-    omcLabel: true,
+    skcLabel: true,
     rateLimits: true,
     ralph: true,
     autopilot: true,
@@ -376,7 +376,7 @@ export const PRESET_CONFIGS: Record<HudPreset, Partial<HudElementConfig>> = {
     gitRepo: false,
     gitBranch: false,
     model: false,
-    omcLabel: false,
+    skcLabel: false,
     rateLimits: false,
     ralph: false,
     autopilot: false,
@@ -405,7 +405,7 @@ export const PRESET_CONFIGS: Record<HudPreset, Partial<HudElementConfig>> = {
     gitRepo: false,
     gitBranch: false,
     model: false,
-    omcLabel: true,
+    skcLabel: true,
     rateLimits: true,
     ralph: true,
     autopilot: true,
@@ -434,7 +434,7 @@ export const PRESET_CONFIGS: Record<HudPreset, Partial<HudElementConfig>> = {
     gitRepo: false,
     gitBranch: false,
     model: false,
-    omcLabel: true,
+    skcLabel: true,
     rateLimits: true,
     ralph: true,
     autopilot: true,
@@ -463,7 +463,7 @@ export const PRESET_CONFIGS: Record<HudPreset, Partial<HudElementConfig>> = {
     gitRepo: false,
     gitBranch: false,
     model: false,
-    omcLabel: true,
+    skcLabel: true,
     rateLimits: false,
     ralph: true,
     autopilot: true,
@@ -492,7 +492,7 @@ export const PRESET_CONFIGS: Record<HudPreset, Partial<HudElementConfig>> = {
     gitRepo: false,
     gitBranch: false,
     model: false,
-    omcLabel: true,
+    skcLabel: true,
     rateLimits: true,
     ralph: true,
     autopilot: true,

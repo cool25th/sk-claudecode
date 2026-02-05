@@ -15,19 +15,19 @@ Meta-skill for managing sk-claudecode skills via CLI-like commands.
 Show all local skills organized by scope.
 
 **Behavior:**
-1. Scan user skills at `~/.claude/skills/omc-learned/`
-2. Scan project skills at `.omc/skills/`
+1. Scan user skills at `~/.claude/skills/skc-learned/`
+2. Scan project skills at `.skc/skills/`
 3. Parse YAML frontmatter for metadata
 4. Display in organized table format:
 
 ```
-USER SKILLS (~/.claude/skills/omc-learned/):
+USER SKILLS (~/.claude/skills/skc-learned/):
 | Name              | Triggers           | Quality | Usage | Scope |
 |-------------------|--------------------|---------|-------|-------|
 | error-handler     | fix, error         | 95%     | 42    | user  |
 | api-builder       | api, endpoint      | 88%     | 23    | user  |
 
-PROJECT SKILLS (.omc/skills/):
+PROJECT SKILLS (.skc/skills/):
 | Name              | Triggers           | Quality | Usage | Scope   |
 |-------------------|--------------------|---------|-------|---------|
 | test-runner       | test, run          | 92%     | 15    | project |
@@ -51,8 +51,8 @@ Interactive wizard for creating a new skill.
 4. **Ask for argument hint** (optional)
    - Example: "<file> [options]"
 5. **Ask for scope:**
-   - `user` → `~/.claude/skills/omc-learned/<name>/SKILL.md`
-   - `project` → `.omc/skills/<name>/SKILL.md`
+   - `user` → `~/.claude/skills/skc-learned/<name>/SKILL.md`
+   - `project` → `.skc/skills/<name>/SKILL.md`
 6. **Create skill file** with template:
 
 ```yaml
@@ -105,7 +105,7 @@ Triggers (comma-separated): log, logger, logging
 Argument hint (optional): <level> [message]
 Scope (user/project): user
 
-✓ Created skill at ~/.claude/skills/omc-learned/custom-logger/SKILL.md
+✓ Created skill at ~/.claude/skills/skc-learned/custom-logger/SKILL.md
 → Edit with: /skill edit custom-logger
 ```
 
@@ -117,13 +117,13 @@ Remove a skill by name.
 
 **Behavior:**
 1. **Search for skill** in both scopes:
-   - `~/.claude/skills/omc-learned/<name>/SKILL.md`
-   - `.omc/skills/<name>/SKILL.md`
+   - `~/.claude/skills/skc-learned/<name>/SKILL.md`
+   - `.skc/skills/<name>/SKILL.md`
 2. **If found:**
    - Display skill info (name, description, scope)
    - **Ask for confirmation:** "Delete '<name>' skill from <scope>? (yes/no)"
 3. **If confirmed:**
-   - Delete entire skill directory (e.g., `~/.claude/skills/omc-learned/<name>/`)
+   - Delete entire skill directory (e.g., `~/.claude/skills/skc-learned/<name>/`)
    - Report: "✓ Removed skill '<name>' from <scope>"
 4. **If not found:**
    - Report: "✗ Skill '<name>' not found in user or project scope"
@@ -135,7 +135,7 @@ Remove a skill by name.
 User: /skill remove old-logger
 Assistant: Found skill 'old-logger' in user scope:
   Description: Legacy logging utility
-  Scope: user (~/.claude/skills/omc-learned/)
+  Scope: user (~/.claude/skills/skc-learned/)
 
 Delete 'old-logger' skill? (yes/no)
 
@@ -251,13 +251,13 @@ Show detailed information about a skill.
 
 ```
 Skill: custom-logger
-Scope: user (~/.claude/skills/omc-learned/custom-logger/)
+Scope: user (~/.claude/skills/skc-learned/custom-logger/)
 Description: Enhanced logging with structured output
 Triggers: log, logger, logging
 Argument Hint: <level> [message]
 Quality: 95% (if available)
 Usage Count: 42 times (if available)
-File Path: /home/user/.claude/skills/omc-learned/custom-logger/SKILL.md
+File Path: /home/user/.claude/skills/skc-learned/custom-logger/SKILL.md
 
 --- FULL CONTENT ---
 [entire markdown content]
@@ -272,7 +272,7 @@ Assistant: Skill: custom-logger
 Scope: user
 Description: Enhanced logging with structured output
 Triggers: log, logger, logging
-File: ~/.claude/skills/omc-learned/custom-logger/SKILL.md
+File: ~/.claude/skills/skc-learned/custom-logger/SKILL.md
 
 --- CONTENT ---
 # Custom Logger Skill
@@ -290,8 +290,8 @@ Sync skills between user and project scopes.
 
 **Behavior:**
 1. **Scan both scopes:**
-   - User skills: `~/.claude/skills/omc-learned/`
-   - Project skills: `.omc/skills/`
+   - User skills: `~/.claude/skills/skc-learned/`
+   - Project skills: `.skc/skills/`
 2. **Compare and categorize:**
    - User-only skills (not in project)
    - Project-only skills (not in user)
@@ -339,7 +339,7 @@ Assistant: Found 5 user-only skills and 2 project-only skills.
 
 Copy 'error-handler' from user to project? (yes/no/skip)
 User: yes
-Assistant: ✓ Copied 'error-handler' to .omc/skills/
+Assistant: ✓ Copied 'error-handler' to .skc/skills/
 
 Copy 'api-builder' from user to project? (yes/no/skip)
 User: skip

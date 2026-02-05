@@ -7,10 +7,10 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { existsSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'fs';
 import { join } from 'path';
 import { homedir } from 'os';
-import { isOmcHook, install, InstallOptions } from '../index.js';
+import { isSkcHook, install, InstallOptions } from '../index.js';
 
 /**
- * Detect hook conflicts using the real isOmcHook function.
+ * Detect hook conflicts using the real isSkcHook function.
  * Mirrors the install() logic to avoid test duplication.
  */
 function detectConflicts(
@@ -20,7 +20,7 @@ function detectConflicts(
   for (const [eventType, eventHooks] of Object.entries(hooks)) {
     for (const hookGroup of eventHooks) {
       for (const hook of hookGroup.hooks) {
-        if (hook.type === 'command' && !isOmcHook(hook.command)) {
+        if (hook.type === 'command' && !isSkcHook(hook.command)) {
           conflicts.push({ eventType, existingCommand: hook.command });
         }
       }
@@ -32,48 +32,48 @@ function detectConflicts(
 const TEST_CLAUDE_DIR = join(homedir(), '.claude-test-safe-installer');
 const TEST_SETTINGS_FILE = join(TEST_CLAUDE_DIR, 'settings.json');
 
-describe('isOmcHook', () => {
+describe('isSkcHook', () => {
   it('returns true for commands containing "omc"', () => {
-    expect(isOmcHook('node ~/.claude/hooks/omc-hook.mjs')).toBe(true);
-    expect(isOmcHook('bash $HOME/.claude/hooks/omc-detector.sh')).toBe(true);
-    expect(isOmcHook('/usr/bin/omc-tool')).toBe(true);
+    expect(isSkcHook('node ~/.claude/hooks/omc-hook.mjs')).toBe(true);
+    expect(isSkcHook('bash $HOME/.claude/hooks/omc-detector.sh')).toBe(true);
+    expect(isSkcHook('/usr/bin/omc-tool')).toBe(true);
   });
 
   it('returns true for commands containing "oh-my-claudecode"', () => {
-    expect(isOmcHook('node ~/.claude/hooks/oh-my-claudecode-hook.mjs')).toBe(true);
-    expect(isOmcHook('bash $HOME/.claude/hooks/oh-my-claudecode.sh')).toBe(true);
+    expect(isSkcHook('node ~/.claude/hooks/oh-my-claudecode-hook.mjs')).toBe(true);
+    expect(isSkcHook('bash $HOME/.claude/hooks/oh-my-claudecode.sh')).toBe(true);
   });
 
   it('returns false for commands not containing omc or oh-my-claudecode', () => {
-    expect(isOmcHook('node ~/.claude/hooks/other-plugin.mjs')).toBe(false);
-    expect(isOmcHook('bash $HOME/.claude/hooks/beads-hook.sh')).toBe(false);
-    expect(isOmcHook('python /usr/bin/custom-hook.py')).toBe(false);
+    expect(isSkcHook('node ~/.claude/hooks/other-plugin.mjs')).toBe(false);
+    expect(isSkcHook('bash $HOME/.claude/hooks/beads-hook.sh')).toBe(false);
+    expect(isSkcHook('python /usr/bin/custom-hook.py')).toBe(false);
   });
 
   it('is case-insensitive', () => {
-    expect(isOmcHook('node ~/.claude/hooks/OMC-hook.mjs')).toBe(true);
-    expect(isOmcHook('bash $HOME/.claude/hooks/OH-MY-CLAUDECODE.sh')).toBe(true);
+    expect(isSkcHook('node ~/.claude/hooks/SKC-hook.mjs')).toBe(true);
+    expect(isSkcHook('bash $HOME/.claude/hooks/OH-MY-CLAUDECODE.sh')).toBe(true);
   });
 });
 
-describe('isOmcHook detection', () => {
-  it('detects real OMC hooks correctly', () => {
-    expect(isOmcHook('node ~/.claude/hooks/omc-hook.mjs')).toBe(true);
-    expect(isOmcHook('node ~/.claude/hooks/oh-my-claudecode-hook.mjs')).toBe(true);
-    expect(isOmcHook('node ~/.claude/hooks/omc-pre-tool-use.mjs')).toBe(true);
-    expect(isOmcHook('/usr/local/bin/omc')).toBe(true);
+describe('isSkcHook detection', () => {
+  it('detects real SKC hooks correctly', () => {
+    expect(isSkcHook('node ~/.claude/hooks/omc-hook.mjs')).toBe(true);
+    expect(isSkcHook('node ~/.claude/hooks/oh-my-claudecode-hook.mjs')).toBe(true);
+    expect(isSkcHook('node ~/.claude/hooks/omc-pre-tool-use.mjs')).toBe(true);
+    expect(isSkcHook('/usr/local/bin/omc')).toBe(true);
   });
 
-  it('rejects non-OMC hooks correctly', () => {
-    expect(isOmcHook('eslint --fix')).toBe(false);
-    expect(isOmcHook('prettier --write')).toBe(false);
-    expect(isOmcHook('node custom-hook.mjs')).toBe(false);
-    expect(isOmcHook('node ~/.claude/hooks/beads-hook.mjs')).toBe(false);
+  it('rejects non-SKC hooks correctly', () => {
+    expect(isSkcHook('eslint --fix')).toBe(false);
+    expect(isSkcHook('prettier --write')).toBe(false);
+    expect(isSkcHook('node custom-hook.mjs')).toBe(false);
+    expect(isSkcHook('node ~/.claude/hooks/beads-hook.mjs')).toBe(false);
   });
 
   it('uses case-insensitive matching', () => {
-    expect(isOmcHook('node ~/.claude/hooks/OMC-hook.mjs')).toBe(true);
-    expect(isOmcHook('OH-MY-CLAUDECODE-detector.sh')).toBe(true);
+    expect(isSkcHook('node ~/.claude/hooks/SKC-hook.mjs')).toBe(true);
+    expect(isSkcHook('OH-MY-CLAUDECODE-detector.sh')).toBe(true);
   });
 });
 
@@ -98,7 +98,7 @@ describe('Safe Installer - Hook Conflict Detection', () => {
   });
 
   it('detects conflict when PreToolUse is owned by another plugin', () => {
-    // Create settings.json with non-OMC hook
+    // Create settings.json with non-SKC hook
     const existingSettings = {
       hooks: {
         PreToolUse: [
@@ -129,7 +129,7 @@ describe('Safe Installer - Hook Conflict Detection', () => {
     expect(conflicts[0].existingCommand).toBe('node ~/.claude/hooks/beads-hook.mjs');
   });
 
-  it('does not detect conflict when hook is OMC-owned', () => {
+  it('does not detect conflict when hook is SKC-owned', () => {
     const existingSettings = {
       hooks: {
         PreToolUse: [

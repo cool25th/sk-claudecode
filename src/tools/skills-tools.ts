@@ -1,7 +1,7 @@
 /**
  * Skills Tools
  *
- * MCP tools for loading and listing OMC learned skills
+ * MCP tools for loading and listing SKC learned skills
  * from local (.skc/skills/) and global (~/.skc/skills/) directories.
  */
 
@@ -99,9 +99,9 @@ function formatSkillOutput(skills: LearnedSkill[]): string {
   return lines.join('\n');
 }
 
-// Tool 1: load_omc_skills_local
+// Tool 1: load_skc_skills_local
 export const loadLocalTool = {
-  name: 'load_omc_skills_local',
+  name: 'load_skc_skills_local',
   description: 'Load and list skills from the project-local .skc/skills/ directory. Returns skill metadata (id, name, description, triggers, tags) for all discovered project-scoped skills.',
   schema: loadLocalSchema,
   handler: async (args: { projectRoot?: string }) => {
@@ -118,9 +118,9 @@ export const loadLocalTool = {
   },
 };
 
-// Tool 2: load_omc_skills_global
+// Tool 2: load_skc_skills_global
 export const loadGlobalTool = {
-  name: 'load_omc_skills_global',
+  name: 'load_skc_skills_global',
   description: 'Load and list skills from global user directories (~/.skc/skills/ and ~/.claude/skills/omc-learned/). Returns skill metadata for all discovered user-scoped skills.',
   schema: loadGlobalSchema,
   handler: async (_args: Record<string, never>) => {

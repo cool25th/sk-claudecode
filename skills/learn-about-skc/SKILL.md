@@ -1,16 +1,16 @@
 ---
 name: learn-about-skc
-description: Analyze your OMC usage patterns and get personalized recommendations
+description: Analyze your SKC usage patterns and get personalized recommendations
 ---
 
-# Learn About OMC
+# Learn About SKC
 
 Analyzes your sk-claudecode usage and provides tailored recommendations to improve your workflow.
 
 ## What It Does
 
-1. Reads token tracking from `~/.omc/state/token-tracking.jsonl`
-2. Reads session history from `.omc/state/session-history.json`
+1. Reads token tracking from `~/.skc/state/token-tracking.jsonl`
+2. Reads session history from `.skc/state/session-history.json`
 3. Analyzes agent usage patterns
 4. Identifies underutilized features
 5. Recommends configuration changes
@@ -21,11 +21,11 @@ Analyzes your sk-claudecode usage and provides tailored recommendations to impro
 
 ```bash
 # Check for token tracking data
-TOKEN_FILE="$HOME/.omc/state/token-tracking.jsonl"
-SESSION_FILE=".omc/state/session-history.json"
-CONFIG_FILE="$HOME/.claude/.omc-config.json"
+TOKEN_FILE="$HOME/.skc/state/token-tracking.jsonl"
+SESSION_FILE=".skc/state/session-history.json"
+CONFIG_FILE="$HOME/.claude/.skc-config.json"
 
-echo "📊 Analyzing OMC Usage..."
+echo "📊 Analyzing SKC Usage..."
 echo ""
 
 # Check what data is available
@@ -97,16 +97,16 @@ If no data found:
 📊 Limited Usage Data Available
 
 No token tracking found. To enable tracking:
-1. Ensure ~/.omc/state/ directory exists
-2. Run any OMC command to start tracking
+1. Ensure ~/.skc/state/ directory exists
+2. Run any SKC command to start tracking
 
-Tip: Run /skc-setup to configure OMC properly.
+Tip: Run /skc-setup to configure SKC properly.
 ```
 
 ## Example Output
 
 ```
-📊 Your OMC Usage Analysis
+📊 Your SKC Usage Analysis
 
 TOKEN SUMMARY:
 - Total records: 1,234

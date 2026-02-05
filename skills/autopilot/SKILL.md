@@ -44,7 +44,7 @@ These phrases auto-activate autopilot:
 - Analyst (Opus) - Extract requirements
 - Architect (Opus) - Technical specification
 
-**Output:** `.omc/autopilot/spec.md`
+**Output:** `.skc/autopilot/spec.md`
 
 ### Phase 1: Planning
 
@@ -54,7 +54,7 @@ These phrases auto-activate autopilot:
 - Architect (Opus) - Create plan (direct mode, no interview)
 - Critic (Opus) - Validate plan
 
-**Output:** `.omc/plans/autopilot-impl.md`
+**Output:** `.skc/plans/autopilot-impl.md`
 
 ### Phase 2: Execution
 
@@ -97,7 +97,7 @@ Optional settings in `.claude/settings.json`:
 
 ```json
 {
-  "omc": {
+  "skc": {
     "autopilot": {
       "maxIterations": 10,
       "maxQaCycles": 5,
@@ -176,10 +176,10 @@ When autopilot reaches the `complete` phase (all validation passed):
 
 ```bash
 # Delete autopilot and all sub-mode state files
-rm -f .omc/state/autopilot-state.json
-rm -f .omc/state/ralph-state.json
-rm -f .omc/state/ultrawork-state.json
-rm -f .omc/state/ultraqa-state.json
+rm -f .skc/state/autopilot-state.json
+rm -f .skc/state/ralph-state.json
+rm -f .skc/state/ultrawork-state.json
+rm -f .skc/state/ultraqa-state.json
 ```
 
 This ensures clean state for future sessions.
@@ -188,7 +188,7 @@ This ensures clean state for future sessions.
 
 **Stuck in a phase?**
 - Check TODO list for blocked tasks
-- Review `.omc/autopilot-state.json` for state
+- Review `.skc/autopilot-state.json` for state
 - Cancel and resume if needed
 
 **Validation keeps failing?**

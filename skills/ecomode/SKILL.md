@@ -93,7 +93,7 @@ Long-running commands (install, build, test) run in background. Maximum 5 concur
 
 Ecomode can be completely disabled via config. When disabled, all ecomode keywords are ignored.
 
-Set in `~/.claude/.omc-config.json`:
+Set in `~/.claude/.skc-config.json`:
 ```json
 {
   "ecomode": {
@@ -104,6 +104,6 @@ Set in `~/.claude/.omc-config.json`:
 
 ## State Management
 
-Ecomode state is tracked in `.omc/state/ecomode-state.json`.
+Ecomode state is tracked in `.skc/state/ecomode-state.json`.
 
 When work is complete, run `/sk-claudecode:cancel` for clean state cleanup.

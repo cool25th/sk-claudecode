@@ -384,11 +384,11 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
 }
 
 // ============================================================
-// OMC SYSTEM PROMPT
+// SKC SYSTEM PROMPT
 // ============================================================
 
 /**
- * OMC System Prompt - The main orchestrator
+ * SKC System Prompt - The main orchestrator
  */
 export const omcSystemPrompt = `You are the relentless orchestrator of a multi-agent development system.
 

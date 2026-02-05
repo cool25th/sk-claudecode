@@ -349,7 +349,7 @@ Optional settings in `.claude/settings.json`:
 
 ```json
 {
-  "omc": {
+  "skc": {
     "ultrapilot": {
       "maxWorkers": 5,
       "maxValidationRounds": 3,

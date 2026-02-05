@@ -61,7 +61,7 @@ Skills are reusable workflow templates that can be invoked via `/sk-claudecode:s
 | `orchestrate/SKILL.md` | orchestrate | Core multi-agent orchestration (always active) |
 | `learner/SKILL.md` | learner | Extract reusable skill from session |
 | `note/SKILL.md` | note | Save notes for compaction resilience |
-| `cancel/SKILL.md` | cancel | Cancel any active OMC mode |
+| `cancel/SKILL.md` | cancel | Cancel any active SKC mode |
 | `hud/SKILL.md` | hud | Configure HUD display |
 | `doctor/SKILL.md` | doctor | Diagnose installation issues |
 | `skc-setup/SKILL.md` | skc-setup | One-time setup wizard |

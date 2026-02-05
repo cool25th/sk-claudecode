@@ -332,7 +332,7 @@ async function main(): Promise<void> {
     // Record token usage (auto-tracking)
     await recordTokenUsage(stdin, transcriptData);
 
-    // Read OMC state files
+    // Read SKC state files
     const ralph = readRalphStateForHud(cwd);
     const ultrawork = readUltraworkStateForHud(cwd);
     const prd = readPrdStateForHud(cwd);

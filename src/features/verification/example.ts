@@ -2,7 +2,7 @@
  * Verification Module Usage Examples
  *
  * This file demonstrates how to use the verification module
- * in different OMC workflows.
+ * in different SKC workflows.
  */
 
 import {
@@ -54,7 +54,7 @@ export async function exampleRalphVerification(): Promise<void> {
 
   if (validation.valid) {
     // All checks passed - use cancel to cleanly exit the ralph loop
-    console.log('[RALPH VERIFIED] All checks passed. Run /oh-my-claudecode:cancel to exit.');
+    console.log('[RALPH VERIFIED] All checks passed. Run /sk-claudecode:cancel to exit.');
   } else {
     console.log('Verification failed:');
     console.log(validation.issues.join('\n'));
@@ -180,7 +180,7 @@ export async function exampleAutopilotValidation(): Promise<void> {
 
   if (checklist.summary?.verdict === 'approved') {
     // All checks passed - use cancel to cleanly exit autopilot
-    console.log('[AUTOPILOT VERIFIED] All checks passed. Run /oh-my-claudecode:cancel to exit.');
+    console.log('[AUTOPILOT VERIFIED] All checks passed. Run /sk-claudecode:cancel to exit.');
   }
 }
 

@@ -1,7 +1,7 @@
 /**
  * Setup Hook Module
  *
- * Handles OMC initialization and maintenance tasks.
+ * Handles SKC initialization and maintenance tasks.
  * Triggers:
  * - init: Create directory structure, validate configs, set environment
  * - maintenance: Prune old state files, cleanup orphaned state, vacuum SQLite
@@ -106,7 +106,7 @@ export function validateConfigFiles(directory: string): string[] {
 }
 
 /**
- * Set environment variables for OMC initialization
+ * Set environment variables for SKC initialization
  */
 export function setEnvironmentVariables(): string[] {
   const envVars: string[] = [];
@@ -157,7 +157,7 @@ export async function processSetupInit(input: SetupInput): Promise<HookOutput> {
   }
 
   const context = [
-    `OMC initialized:`,
+    `SKC initialized:`,
     `- ${result.directories_created.length} directories created`,
     `- ${result.configs_validated.length} configs validated`,
     result.env_vars_set.length > 0 ? `- Environment variables set: ${result.env_vars_set.join(', ')}` : null,
@@ -331,7 +331,7 @@ export async function processSetupMaintenance(input: SetupInput): Promise<HookOu
   }
 
   const context = [
-    `OMC maintenance completed:`,
+    `SKC maintenance completed:`,
     prunedFiles > 0 ? `- ${prunedFiles} old state files pruned` : null,
     orphanedCleaned > 0 ? `- ${orphanedCleaned} orphaned state files cleaned` : null,
     dbVacuumed ? `- Swarm database vacuumed` : null,

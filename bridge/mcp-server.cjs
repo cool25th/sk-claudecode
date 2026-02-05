@@ -21660,7 +21660,7 @@ function initNotepad(directory) {
     return true;
   }
   const content = `# Notepad
-<!-- Auto-managed by OMC. Manual edits preserved in MANUAL section. -->
+<!-- Auto-managed by SKC. Manual edits preserved in MANUAL section. -->
 
 ${PRIORITY_HEADER}
 <!-- ALWAYS loaded. Keep under 500 chars. Critical discoveries only. -->
@@ -22691,7 +22691,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("OMC Tools MCP Server running on stdio");
+  console.error("SKC Tools MCP Server running on stdio");
 }
 main().catch((error2) => {
   console.error("Failed to start server:", error2);

@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Git Elements
+ * SKC HUD - Git Elements
  *
  * Renders git repository name and branch information.
  */

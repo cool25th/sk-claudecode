@@ -34,7 +34,7 @@ describe('Background Process Guard (issue #302)', () => {
 
   beforeEach(() => {
     process.env = { ...originalEnv };
-    delete process.env.DISABLE_OMC;
+    delete process.env.DISABLE_SKC;
     delete process.env.SKC_SKIP_HOOKS;
     resetSkipHooksCache();
     vi.clearAllMocks();

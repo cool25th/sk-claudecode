@@ -33,7 +33,7 @@ export const TARGET_TOOLS = new Set([
 export const AGENT_TOOLS = new Set([
   'task',
   'call_omo_agent',
-  'omc_task',
+  'skc_task',
 ]);
 
 /** Reminder message shown to users */

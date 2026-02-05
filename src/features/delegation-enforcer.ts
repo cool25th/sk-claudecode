@@ -60,8 +60,8 @@ export function enforceModel(agentInput: AgentInput): EnforcementResult {
     };
   }
 
-  // Extract agent type (strip oh-my-claudecode: prefix if present)
-  const agentType = agentInput.subagent_type.replace(/^oh-my-claudecode:/, '');
+  // Extract agent type (strip sk-claudecode: prefix if present)
+  const agentType = agentInput.subagent_type.replace(/^sk-claudecode:/, '');
 
   // Get agent definition
   const agentDefs = getAgentDefinitions();
@@ -87,7 +87,7 @@ export function enforceModel(agentInput: AgentInput): EnforcementResult {
   // Create warning message (only shown if SKC_DEBUG=true)
   let warning: string | undefined;
   if (process.env.SKC_DEBUG === 'true') {
-    warning = `[OMC] Auto-injecting model: ${sdkModel} for ${agentType}`;
+    warning = `[SKC] Auto-injecting model: ${sdkModel} for ${agentType}`;
   }
 
   return {
@@ -162,12 +162,12 @@ export function processPreToolUse(
 /**
  * Get model for an agent type (for testing/debugging)
  *
- * @param agentType - The agent type (with or without oh-my-claudecode: prefix)
+ * @param agentType - The agent type (with or without sk-claudecode: prefix)
  * @returns The default model for the agent
  * @throws Error if agent type not found or has no model
  */
 export function getModelForAgent(agentType: string): ModelType {
-  const normalizedType = agentType.replace(/^oh-my-claudecode:/, '');
+  const normalizedType = agentType.replace(/^sk-claudecode:/, '');
   const agentDefs = getAgentDefinitions();
   const agentDef = agentDefs[normalizedType];
 

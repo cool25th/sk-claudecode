@@ -175,7 +175,7 @@ export async function render(context: HudRenderContext, config: HudConfig): Prom
   }
 
   // [SKC] label
-  if (enabledElements.omcLabel) {
+  if (enabledElements.skcLabel) {
     elements.push(bold('[SKC]'));
   }
 

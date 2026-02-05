@@ -175,7 +175,7 @@ export {
 } from './rules-injector/index.js';
 
 export {
-  // OMC Orchestrator
+  // SKC Orchestrator
   createSisyphusOrchestratorHook,
   isAllowedPath,
   isWriteEditTool,

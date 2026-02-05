@@ -363,7 +363,7 @@ Examples:
   $ omc init --force             Overwrite existing config`)
   .action(async (options) => {
     console.log(chalk.yellow('⚠️  DEPRECATED: The init command is deprecated.'));
-    console.log(chalk.gray('Configuration is now managed automatically. Use /oh-my-claudecode:omc-setup instead.\n'));
+    console.log(chalk.gray('Configuration is now managed automatically. Use /sk-claudecode:skc-setup instead.\n'));
 
     const paths = getConfigPaths();
     const targetPath = options.global ? paths.user : paths.project;
@@ -1063,7 +1063,7 @@ const teleportCmd = program
   .command('teleport [ref]')
   .description('Create git worktree for isolated development (e.g., omc teleport #123)')
   .option('--worktree', 'Create worktree (default behavior, flag kept for compatibility)')
-  .option('-p, --path <path>', 'Custom worktree path (default: ~/Workspace/omc-worktrees/)')
+  .option('-p, --path <path>', 'Custom worktree path (default: ~/Workspace/skc-worktrees/)')
   .option('-b, --base <branch>', 'Base branch to create from (default: main)')
   .option('--json', 'Output as JSON')
   .addHelpText('after', `
@@ -1104,7 +1104,7 @@ Examples:
 
 teleportCmd
   .command('list')
-  .description('List existing worktrees in ~/Workspace/omc-worktrees/')
+  .description('List existing worktrees in ~/Workspace/skc-worktrees/')
   .option('--json', 'Output as JSON')
   .action(async (options) => {
     await teleportListCommand(options);
@@ -1125,7 +1125,7 @@ teleportCmd
  */
 const doctorCmd = program
   .command('doctor')
-  .description('Diagnostic tools for troubleshooting OMC installation')
+  .description('Diagnostic tools for troubleshooting SKC installation')
   .addHelpText('after', `
 Examples:
   $ omc doctor conflicts         Check for plugin conflicts`);

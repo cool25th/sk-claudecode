@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Todos Element
+ * SKC HUD - Todos Element
  *
  * Renders todo progress display.
  */

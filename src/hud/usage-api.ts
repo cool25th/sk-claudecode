@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Usage API
+ * SKC HUD - Usage API
  *
  * Fetches rate limit usage from Anthropic's OAuth API.
  * Based on claude-hud implementation by jarrodwatts.

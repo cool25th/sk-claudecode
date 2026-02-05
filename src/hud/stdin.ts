@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Stdin Parser
+ * SKC HUD - Stdin Parser
  *
  * Parse stdin JSON from Claude Code statusline interface.
  * Based on claude-hud reference implementation.

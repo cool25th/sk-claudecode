@@ -1,11 +1,11 @@
 # Setup Hook
 
-Handles OMC initialization and maintenance tasks.
+Handles SKC initialization and maintenance tasks.
 
 ## Triggers
 
 ### `init`
-Initializes OMC directory structure and environment on first run or explicit setup.
+Initializes SKC directory structure and environment on first run or explicit setup.
 
 **What it does:**
 - Creates required directories: `.skc/state/`, `.skc/logs/`, `.skc/notepads/`, `.skc/state/checkpoints/`, `.skc/plans/`
@@ -30,13 +30,13 @@ Initializes OMC directory structure and environment on first run or explicit set
   "continue": true,
   "hookSpecificOutput": {
     "hookEventName": "Setup",
-    "additionalContext": "OMC initialized:\n- 5 directories created\n- 1 configs validated\n- Environment variables set: SKC_INITIALIZED"
+    "additionalContext": "SKC initialized:\n- 5 directories created\n- 1 configs validated\n- Environment variables set: SKC_INITIALIZED"
   }
 }
 ```
 
 ### `maintenance`
-Performs periodic maintenance tasks to keep OMC state clean.
+Performs periodic maintenance tasks to keep SKC state clean.
 
 **What it does:**
 - Prunes old state files (default: 7 days old)
@@ -68,7 +68,7 @@ Performs periodic maintenance tasks to keep OMC state clean.
   "continue": true,
   "hookSpecificOutput": {
     "hookEventName": "Setup",
-    "additionalContext": "OMC maintenance completed:\n- 3 old state files pruned\n- 1 orphaned state files cleaned\n- Swarm database vacuumed"
+    "additionalContext": "SKC maintenance completed:\n- 3 old state files pruned\n- 1 orphaned state files cleaned\n- Swarm database vacuumed"
   }
 }
 ```
@@ -78,7 +78,7 @@ Performs periodic maintenance tasks to keep OMC state clean.
 ### Directory Management
 
 #### `ensureDirectoryStructure(directory: string): string[]`
-Creates all required OMC directories.
+Creates all required SKC directories.
 
 **Returns:** Array of created directory paths.
 
@@ -100,7 +100,7 @@ const validated = validateConfigFiles('/path/to/project');
 ### Environment Variables
 
 #### `setEnvironmentVariables(): string[]`
-Sets environment variables for OMC initialization.
+Sets environment variables for SKC initialization.
 
 **Returns:** Array of environment variable names set.
 
@@ -226,7 +226,7 @@ interface HookOutput {
 ```typescript
 import { processSetup } from './hooks/setup';
 
-// Initialize OMC
+// Initialize SKC
 const initResult = await processSetup({
   session_id: 'session-123',
   transcript_path: '/tmp/transcript.md',
@@ -256,7 +256,7 @@ console.log(maintenanceResult.hookSpecificOutput.additionalContext);
 ```bash
 #!/bin/bash
 
-# Initialize OMC
+# Initialize SKC
 INPUT=$(cat <<EOF
 {
   "session_id": "session-123",

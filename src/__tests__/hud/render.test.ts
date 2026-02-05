@@ -26,9 +26,9 @@ describe('limitOutputLines', () => {
     });
 
     it('preserves the first (header) line when truncating', () => {
-      const lines = ['[OMC] Header Line', 'Agents: ...', 'Todos: ...', 'Analytics: ...', 'Extra: ...'];
+      const lines = ['[SKC] Header Line', 'Agents: ...', 'Todos: ...', 'Analytics: ...', 'Extra: ...'];
       const result = limitOutputLines(lines, 3);
-      expect(result[0]).toBe('[OMC] Header Line');
+      expect(result[0]).toBe('[SKC] Header Line');
       expect(result).toHaveLength(3);
       expect(result[2]).toBe('... (+3 lines)');
     });
@@ -138,7 +138,7 @@ describe('limitOutputLines', () => {
   describe('Issue #222 scenario simulation', () => {
     it('prevents input field shrinkage by limiting excessive HUD output', () => {
       const excessiveOutput = [
-        '[OMC] Rate: 45% | Context: 30%',
+        '[SKC] Rate: 45% | Context: 30%',
         'agents: architect(5m) | executor(2m) | explorer',
         'todos: [1/5] Implementing feature X',
         'Analytics: $1.23 | 50k tokens | Cache: 67%',
@@ -151,7 +151,7 @@ describe('limitOutputLines', () => {
       const result = limitOutputLines(excessiveOutput, 4);
 
       expect(result).toHaveLength(4);
-      expect(result[0]).toContain('[OMC]');
+      expect(result[0]).toContain('[SKC]');
       expect(result[3]).toBe('... (+5 lines)');
     });
 

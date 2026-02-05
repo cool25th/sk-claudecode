@@ -29,7 +29,7 @@ First, parse the command to determine what action to take:
 | `status` | Show current session |
 
 Reference formats:
-- `omc#123` - alias + number
+- `skc#123` - alias + number
 - `owner/repo#123` - full repo + number
 - `https://github.com/.../pull/123` - full URL
 - `#123` - number only (use current repo)
@@ -47,7 +47,7 @@ if [[ ! -f ~/.psm/projects.json ]]; then
   cat > ~/.psm/projects.json << 'EOF'
 {
   "aliases": {
-    "omc": {
+    "skc": {
       "repo": "Yeachan-Heo/sk-claudecode",
       "local": "~/Workspace/sk-claudecode",
       "default_base": "main"
@@ -158,15 +158,15 @@ After executing, provide clear output:
 ```
 Session Ready!
 
-  ID:       omc:pr-123
+  ID:       skc:pr-123
   Type:     review
   PR:       #123 - Add webhook support
-  Worktree: ~/.psm/worktrees/omc/pr-123
-  Tmux:     psm:omc:pr-123
+  Worktree: ~/.psm/worktrees/skc/pr-123
+  Tmux:     psm:skc:pr-123
 
 Commands:
-  Attach:  tmux attach -t psm:omc:pr-123
-  Kill:    /psm kill omc:pr-123
+  Attach:  tmux attach -t psm:skc:pr-123
+  Kill:    /psm kill skc:pr-123
   Cleanup: /psm cleanup
 ```
 

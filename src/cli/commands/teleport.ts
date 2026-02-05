@@ -2,7 +2,7 @@
  * Teleport Command - Quick worktree creation for development
  *
  * Creates a git worktree for working on issues/PRs/features in isolation.
- * Default worktree location: ~/Workspace/omc-worktrees/
+ * Default worktree location: ~/Workspace/skc-worktrees/
  */
 
 import chalk from 'chalk';
@@ -27,7 +27,7 @@ export interface TeleportResult {
 }
 
 // Default worktree root directory
-const DEFAULT_WORKTREE_ROOT = join(homedir(), 'Workspace', 'omc-worktrees');
+const DEFAULT_WORKTREE_ROOT = join(homedir(), 'Workspace', 'skc-worktrees');
 
 /**
  * Parse a reference string into components
@@ -408,7 +408,7 @@ export async function teleportListCommand(options: { json?: boolean }): Promise<
         return;
       }
 
-      console.log(chalk.bold('\nOMC Worktrees:\n'));
+      console.log(chalk.bold('\nSKC Worktrees:\n'));
       console.log(chalk.gray('─'.repeat(60)));
 
       for (const wt of worktrees) {

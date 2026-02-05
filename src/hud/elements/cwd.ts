@@ -1,5 +1,5 @@
 /**
- * OMC HUD - CWD Element
+ * SKC HUD - CWD Element
  *
  * Renders current working directory with configurable format.
  */

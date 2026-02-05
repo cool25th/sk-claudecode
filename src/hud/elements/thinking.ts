@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Thinking Indicator Element
+ * SKC HUD - Thinking Indicator Element
  *
  * Renders extended thinking mode indicator with configurable format.
  */

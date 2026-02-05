@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Analytics Display
+ * SKC HUD - Analytics Display
  *
  * Display components for token tracking and cost analytics in the HUD.
  * Now uses SessionHealth as the source of truth instead of TokenTracker.

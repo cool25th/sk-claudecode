@@ -21,7 +21,7 @@ Check if `{{PROMPT}}` contains the flag pattern: `--prd` or `--PRD`
 
 When `--prd` flag detected:
 
-1. **Create PRD File Structure** (`.omc/prd.json` and `.omc/progress.txt`)
+1. **Create PRD File Structure** (`.skc/prd.json` and `.skc/progress.txt`)
 2. **Parse the task** (everything after `--prd` flag)
 3. **Break down into user stories** with this structure:
 
@@ -70,8 +70,8 @@ User input: `--prd build a todo app with React and TypeScript`
 Your workflow:
 1. Detect `--prd` flag
 2. Extract task: "build a todo app with React and TypeScript"
-3. Create `.omc/prd.json` with user stories
-4. Create `.omc/progress.txt`
+3. Create `.skc/prd.json` with user stories
+4. Create `.skc/progress.txt`
 5. Begin ralph loop using user stories as task breakdown
 
 ## ULTRAWORK MODE (AUTO-ACTIVATED)

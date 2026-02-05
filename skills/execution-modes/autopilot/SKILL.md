@@ -97,7 +97,7 @@ Optional settings in `.claude/settings.json`:
 
 ```json
 {
-  "omc": {
+  "skc": {
     "autopilot": {
       "maxIterations": 10,
       "maxQaCycles": 5,

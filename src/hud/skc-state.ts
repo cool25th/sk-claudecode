@@ -1,7 +1,7 @@
 /**
- * OMC HUD - State Readers
+ * SKC HUD - State Readers
  *
- * Read ralph, ultrawork, and PRD state from existing OMC files.
+ * Read ralph, ultrawork, and PRD state from existing SKC files.
  * These are read-only functions that don't modify the state files.
  */
 
@@ -250,7 +250,7 @@ export function readAutopilotStateForHud(directory: string): AutopilotStateForHu
 // ============================================================================
 
 /**
- * Check if any OMC mode is currently active
+ * Check if any SKC mode is currently active
  */
 export function isAnyModeActive(directory: string): boolean {
   const ralph = readRalphStateForHud(directory);

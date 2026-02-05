@@ -3,9 +3,9 @@ name: help
 description: Guide on using sk-claudecode plugin
 ---
 
-# How OMC Works
+# How SKC Works
 
-**You don't need to learn any commands!** OMC enhances Claude Code with intelligent behaviors that activate automatically.
+**You don't need to learn any commands!** SKC enhances Claude Code with intelligent behaviors that activate automatically.
 
 ## What Happens Automatically
 
@@ -41,7 +41,7 @@ I'll figure out what to stop based on context.
 
 ## First Time Setup
 
-If you haven't configured OMC yet:
+If you haven't configured SKC yet:
 
 ```
 /sk-claudecode:skc-setup

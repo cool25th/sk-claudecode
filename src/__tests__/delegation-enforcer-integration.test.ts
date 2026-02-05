@@ -32,7 +32,7 @@ describe.skip('delegation-enforcer integration', () => {
         toolInput: {
           description: 'Test task',
           prompt: 'Do something',
-          subagent_type: 'oh-my-claudecode:executor'
+          subagent_type: 'sk-claudecode:executor'
         }
       };
 
@@ -59,7 +59,7 @@ describe.skip('delegation-enforcer integration', () => {
         toolInput: {
           description: 'Test task',
           prompt: 'Do something',
-          subagent_type: 'oh-my-claudecode:executor',
+          subagent_type: 'sk-claudecode:executor',
           model: 'haiku'
         }
       };
@@ -184,7 +184,7 @@ describe.skip('delegation-enforcer integration', () => {
       await processHook('pre-tool-use', input);
 
       expect(consoleWarnSpy).toHaveBeenCalledWith(
-        expect.stringContaining('[OMC] Auto-injecting model')
+        expect.stringContaining('[SKC] Auto-injecting model')
       );
       expect(consoleWarnSpy).toHaveBeenCalledWith(
         expect.stringContaining('sonnet')

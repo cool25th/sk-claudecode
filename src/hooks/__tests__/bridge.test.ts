@@ -7,7 +7,7 @@ describe('processHook - Environment Kill-Switches', () => {
   beforeEach(() => {
     // Reset environment and cache before each test
     process.env = { ...originalEnv };
-    delete process.env.DISABLE_OMC;
+    delete process.env.DISABLE_SKC;
     delete process.env.SKC_SKIP_HOOKS;
     resetSkipHooksCache();
   });
@@ -18,9 +18,9 @@ describe('processHook - Environment Kill-Switches', () => {
     resetSkipHooksCache();
   });
 
-  describe('DISABLE_OMC flag', () => {
-    it('should return continue:true when DISABLE_OMC=1', async () => {
-      process.env.DISABLE_OMC = '1';
+  describe('DISABLE_SKC flag', () => {
+    it('should return continue:true when DISABLE_SKC=1', async () => {
+      process.env.DISABLE_SKC = '1';
 
       const input: HookInput = {
         sessionId: 'test-session',
@@ -33,8 +33,8 @@ describe('processHook - Environment Kill-Switches', () => {
       expect(result).toEqual({ continue: true });
     });
 
-    it('should return continue:true when DISABLE_OMC=true (string)', async () => {
-      process.env.DISABLE_OMC = 'true';
+    it('should return continue:true when DISABLE_SKC=true (string)', async () => {
+      process.env.DISABLE_SKC = 'true';
 
       const input: HookInput = {
         sessionId: 'test-session',
@@ -47,7 +47,7 @@ describe('processHook - Environment Kill-Switches', () => {
       expect(result).toEqual({ continue: true });
     });
 
-    it('should process normally when DISABLE_OMC is not set', async () => {
+    it('should process normally when DISABLE_SKC is not set', async () => {
       const input: HookInput = {
         sessionId: 'test-session',
         prompt: 'hello world',
@@ -61,8 +61,8 @@ describe('processHook - Environment Kill-Switches', () => {
       // No message because 'hello world' doesn't contain keywords
     });
 
-    it('should process normally when DISABLE_OMC=false', async () => {
-      process.env.DISABLE_OMC = 'false';
+    it('should process normally when DISABLE_SKC=false', async () => {
+      process.env.DISABLE_SKC = 'false';
 
       const input: HookInput = {
         sessionId: 'test-session',
@@ -159,8 +159,8 @@ describe('processHook - Environment Kill-Switches', () => {
   });
 
   describe('Combined flags', () => {
-    it('should respect DISABLE_OMC even if SKC_SKIP_HOOKS is set', async () => {
-      process.env.DISABLE_OMC = '1';
+    it('should respect DISABLE_SKC even if SKC_SKIP_HOOKS is set', async () => {
+      process.env.DISABLE_SKC = '1';
       process.env.SKC_SKIP_HOOKS = 'keyword-detector';
 
       const input: HookInput = {
@@ -171,7 +171,7 @@ describe('processHook - Environment Kill-Switches', () => {
 
       const result = await processHook('keyword-detector', input);
 
-      // DISABLE_OMC takes precedence
+      // DISABLE_SKC takes precedence
       expect(result).toEqual({ continue: true });
     });
   });
@@ -193,8 +193,8 @@ describe('processHook - Environment Kill-Switches', () => {
       expect(duration).toBeLessThan(100);
     });
 
-    it('should have minimal overhead when DISABLE_OMC=1', async () => {
-      process.env.DISABLE_OMC = '1';
+    it('should have minimal overhead when DISABLE_SKC=1', async () => {
+      process.env.DISABLE_SKC = '1';
 
       const input: HookInput = {
         sessionId: 'test-session',
@@ -234,8 +234,8 @@ describe('processHook - Environment Kill-Switches', () => {
       'permission-request'
     ] satisfies HookType[];
 
-    it('should disable all hook types when DISABLE_OMC=1', async () => {
-      process.env.DISABLE_OMC = '1';
+    it('should disable all hook types when DISABLE_SKC=1', async () => {
+      process.env.DISABLE_SKC = '1';
 
       const input: HookInput = {
         sessionId: 'test-session',

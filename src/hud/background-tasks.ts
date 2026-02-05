@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Background Task Management
+ * SKC HUD - Background Task Management
  *
  * Functions for tracking background tasks via hooks.
  * Called from bridge.ts pre-tool-use and post-tool-use handlers.

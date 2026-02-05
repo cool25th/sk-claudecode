@@ -36,7 +36,7 @@ When N > 5 or "aggressive" keyword is used, swarm automatically:
 4. Immediately spawns replacement agents as slots free up
 5. Continues until all tasks complete
 
-**Concurrency Note**: The concurrent agent limit is configurable via `permissions.maxBackgroundTasks` (default 5, max 50). Users can raise this in their OMC config to run more agents in parallel.
+**Concurrency Note**: The concurrent agent limit is configurable via `permissions.maxBackgroundTasks` (default 5, max 50). Users can raise this in their SKC config to run more agents in parallel.
 
 ### Parameters
 
@@ -246,7 +246,7 @@ import { wrapWithPreamble } from '../agents/preamble.js';
 const prompt = wrapWithPreamble(`Your task: ${taskDescription}`);
 ```
 
-**Concurrency Configuration**: Users can increase `permissions.maxBackgroundTasks` in their OMC config to run more agents in parallel (max 50).
+**Concurrency Configuration**: Users can increase `permissions.maxBackgroundTasks` in their SKC config to run more agents in parallel (max 50).
 
 ### 4. File Ownership (Conflict Prevention)
 

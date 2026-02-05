@@ -2,7 +2,7 @@
  * Compatibility Layer Module
  *
  * MCP/Plugin compatibility layer for oh-my-claudecode.
- * Enables OMC to discover, register, and use external plugins, tools, and MCP servers.
+ * Enables SKC to discover, register, and use external plugins, tools, and MCP servers.
  *
  * Usage:
  *   import { initializeCompatibility, getRegistry, getMcpBridge } from './compatibility';

@@ -1,4 +1,4 @@
-# OMC Analytics CLI
+# SKC Analytics CLI
 
 Command-line interface for Oh-My-ClaudeCode analytics, token tracking, cost reports, and session management.
 

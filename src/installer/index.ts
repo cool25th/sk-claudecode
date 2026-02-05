@@ -1,7 +1,7 @@
 /**
  * Installer Module
  *
- * Handles installation of OMC agents, commands, and configuration
+ * Handles installation of SKC agents, commands, and configuration
  * into the Claude Code config directory (~/.claude/).
  *
  * Cross-platform support via Node.js-based hook scripts (.mjs).
@@ -92,7 +92,7 @@ export interface InstallOptions {
  * Detect whether a hook command belongs to oh-my-claudecode.
  *
  * Uses substring matching rather than word-boundary regex.
- * Rationale: Real OMC hooks use compound names where "omc" is embedded
+ * Rationale: Real SKC hooks use compound names where "omc" is embedded
  * (e.g., `omc-pre-tool-use.mjs`, `oh-my-claudecode-hook.mjs`). A word-boundary
  * regex like /\bomc\b/ would fail to match "oh-my-claudecode" since "omc" appears
  * as an interior substring. The theoretical false positives (words containing "omc"
@@ -101,13 +101,14 @@ export interface InstallOptions {
  * @param command - The hook command string
  * @returns true if the command contains 'omc' or 'oh-my-claudecode'
  */
-export function isOmcHook(command: string): boolean {
+export function isSkcHook(command: string): boolean {
   const lowerCommand = command.toLowerCase();
   // Match on path segments or word boundaries, not substrings
-  // Matches: /omc/, /omc-, omc/, -omc, _omc, omc_
+  // Matches: /skc/, /omc-, skc/, -omc, _omc, omc_, -skc, _skc, skc_
   const omcPattern = /(?:^|[\/\\_-])omc(?:$|[\/\\_-])/;
-  const fullNamePattern = /oh-my-claudecode/;
-  return omcPattern.test(lowerCommand) || fullNamePattern.test(lowerCommand);
+  const skcPattern = /(?:^|[\/\\_-])skc(?:$|[\/\\_-])/;
+  const fullNamePattern = /oh-my-claudecode|sk-claudecode/;
+  return omcPattern.test(lowerCommand) || skcPattern.test(lowerCommand) || fullNamePattern.test(lowerCommand);
 }
 
 /**
@@ -250,35 +251,35 @@ function loadClaudeMdContent(): string {
 }
 
 /**
- * Merge OMC content into existing CLAUDE.md using markers
+ * Merge SKC content into existing CLAUDE.md using markers
  * @param existingContent - Existing CLAUDE.md content (null if file doesn't exist)
- * @param omcContent - New OMC content to inject
+ * @param skcContent - New SKC content to inject
  * @returns Merged content with markers
  */
-export function mergeClaudeMd(existingContent: string | null, omcContent: string, version?: string): string {
-  const START_MARKER = '<!-- OMC:START -->';
-  const END_MARKER = '<!-- OMC:END -->';
+export function mergeClaudeMd(existingContent: string | null, skcContent: string, version?: string): string {
+  const START_MARKER = '<!-- SKC:START -->';
+  const END_MARKER = '<!-- SKC:END -->';
   const USER_CUSTOMIZATIONS = '<!-- User customizations -->';
 
-  // Idempotency guard: strip markers from omcContent if already present
+  // Idempotency guard: strip markers from skcContent if already present
   // This handles the case where docs/CLAUDE.md ships with markers
-  let cleanOmcContent = omcContent;
-  const omcStartIdx = findLineAnchoredMarker(omcContent, START_MARKER);
-  const omcEndIdx = findLineAnchoredMarker(omcContent, END_MARKER, true);
+  let cleanSkcContent = skcContent;
+  const omcStartIdx = findLineAnchoredMarker(skcContent, START_MARKER);
+  const omcEndIdx = findLineAnchoredMarker(skcContent, END_MARKER, true);
   if (omcStartIdx !== -1 && omcEndIdx !== -1 && omcStartIdx < omcEndIdx) {
     // Extract content between markers, trimming any surrounding whitespace
-    cleanOmcContent = omcContent
+    cleanSkcContent = skcContent
       .substring(omcStartIdx + START_MARKER.length, omcEndIdx)
       .trim();
   }
 
   // Strip any existing version marker from content and inject current version
-  cleanOmcContent = cleanOmcContent.replace(/<!-- OMC:VERSION:[^\s]*? -->\n?/, '');
-  const versionMarker = version ? `<!-- OMC:VERSION:${version} -->\n` : '';
+  cleanSkcContent = cleanSkcContent.replace(/<!-- SKC:VERSION:[^\s]*? -->\n?/, '');
+  const versionMarker = version ? `<!-- SKC:VERSION:${version} -->\n` : '';
 
-  // Case 1: No existing content - wrap omcContent in markers
+  // Case 1: No existing content - wrap skcContent in markers
   if (!existingContent) {
-    return `${START_MARKER}\n${versionMarker}${cleanOmcContent}\n${END_MARKER}\n`;
+    return `${START_MARKER}\n${versionMarker}${cleanSkcContent}\n${END_MARKER}\n`;
   }
 
   // Case 2: Existing content has both markers - replace content between markers
@@ -291,21 +292,21 @@ export function mergeClaudeMd(existingContent: string | null, omcContent: string
     const beforeMarker = existingContent.substring(0, startIndex);
     const afterMarker = existingContent.substring(endIndex + END_MARKER.length);
 
-    return `${beforeMarker}${START_MARKER}\n${versionMarker}${cleanOmcContent}\n${END_MARKER}${afterMarker}`;
+    return `${beforeMarker}${START_MARKER}\n${versionMarker}${cleanSkcContent}\n${END_MARKER}${afterMarker}`;
   }
 
   // Case 3: Corrupted markers (START without END or vice versa)
   if (startIndex !== -1 || endIndex !== -1) {
     // Handle corrupted state - backup will be created by caller
-    return `${START_MARKER}\n${versionMarker}${cleanOmcContent}\n${END_MARKER}\n\n<!-- User customizations (recovered from corrupted markers) -->\n${existingContent}`;
+    return `${START_MARKER}\n${versionMarker}${cleanSkcContent}\n${END_MARKER}\n\n<!-- User customizations (recovered from corrupted markers) -->\n${existingContent}`;
   }
 
-  // Case 4: No markers - wrap omcContent in markers, preserve existing after user customizations header
-  return `${START_MARKER}\n${versionMarker}${cleanOmcContent}\n${END_MARKER}\n\n${USER_CUSTOMIZATIONS}\n${existingContent}`;
+  // Case 4: No markers - wrap skcContent in markers, preserve existing after user customizations header
+  return `${START_MARKER}\n${versionMarker}${cleanSkcContent}\n${END_MARKER}\n\n${USER_CUSTOMIZATIONS}\n${existingContent}`;
 }
 
 /**
- * Install OMC agents, commands, skills, and hooks
+ * Install SKC agents, commands, skills, and hooks
  */
 export function install(options: InstallOptions = {}): InstallResult {
   const result: InstallResult = {
@@ -440,7 +441,7 @@ export function install(options: InstallOptions = {}): InstallResult {
       const homeMdPath = join(homedir(), 'CLAUDE.md');
 
       if (!existsSync(homeMdPath)) {
-        const omcContent = loadClaudeMdContent();
+        const skcContent = loadClaudeMdContent();
 
         // Read existing content if it exists
         let existingContent: string | null = null;
@@ -456,8 +457,8 @@ export function install(options: InstallOptions = {}): InstallResult {
           log(`Backed up existing CLAUDE.md to ${backupPath}`);
         }
 
-        // Merge OMC content with existing content
-        const mergedContent = mergeClaudeMd(existingContent, omcContent, VERSION);
+        // Merge SKC content with existing content
+        const mergedContent = mergeClaudeMd(existingContent, skcContent, VERSION);
         writeFileSync(claudeMdPath, mergedContent);
 
         if (existingContent) {
@@ -517,7 +518,7 @@ export function install(options: InstallOptions = {}): InstallResult {
       const hudScriptLines = [
         '#!/usr/bin/env node',
         '/**',
-        ' * OMC HUD - Statusline Script',
+        ' * SKC HUD - Statusline Script',
         ' * Wrapper that imports from dev paths, plugin cache, or npm package',
         ' */',
         '',
@@ -550,7 +551,7 @@ export function install(options: InstallOptions = {}): InstallResult {
         '  }',
         '  ',
         '  // 2. Plugin cache (for production installs)',
-        '  const pluginCacheBase = join(home, ".claude/plugins/cache/omc/oh-my-claudecode");',
+        '  const pluginCacheBase = join(home, ".claude/plugins/cache/skc/oh-my-claudecode");',
         '  if (existsSync(pluginCacheBase)) {',
         '    try {',
         '      const versions = readdirSync(pluginCacheBase);',
@@ -585,16 +586,16 @@ export function install(options: InstallOptions = {}): InstallResult {
         '    // Plugin exists but dist/ folder is missing - needs build',
         '    const distDir = join(pluginCacheDir, "dist");',
         '    if (!existsSync(distDir)) {',
-        '      console.log(`[OMC HUD] Plugin installed but not built. Run: cd "${pluginCacheDir}" && npm install && npm run build`);',
+        '      console.log(`[SKC HUD] Plugin installed but not built. Run: cd "${pluginCacheDir}" && npm install && npm run build`);',
         '    } else {',
-        '      console.log(`[OMC HUD] Plugin dist/ exists but HUD not found. Run: cd "${pluginCacheDir}" && npm run build`);',
+        '      console.log(`[SKC HUD] Plugin dist/ exists but HUD not found. Run: cd "${pluginCacheDir}" && npm run build`);',
         '    }',
         '  } else if (existsSync(pluginCacheBase)) {',
         '    // Plugin cache directory exists but no versions',
-        '    console.log(`[OMC HUD] Plugin cache found but no versions installed. Run: /oh-my-claudecode:omc-setup`);',
+        '    console.log(`[SKC HUD] Plugin cache found but no versions installed. Run: /sk-claudecode:skc-setup`);',
         '  } else {',
         '    // No plugin installation found at all',
-        '    console.log("[OMC HUD] Plugin not installed. Run: /oh-my-claudecode:omc-setup");',
+        '    console.log("[SKC HUD] Plugin not installed. Run: /sk-claudecode:skc-setup");',
         '  }',
         '}',
         '',
@@ -645,7 +646,7 @@ export function install(options: InstallOptions = {}): InstallResult {
 
             for (const hookGroup of existingEventHooks) {
               for (const hook of hookGroup.hooks) {
-                if (hook.type === 'command' && !isOmcHook(hook.command)) {
+                if (hook.type === 'command' && !isSkcHook(hook.command)) {
                   hasNonOmcHook = true;
                   nonOmcCommand = hook.command;
                   break;
@@ -656,7 +657,7 @@ export function install(options: InstallOptions = {}): InstallResult {
 
             if (hasNonOmcHook && !options.forceHooks) {
               // Conflict detected - don't overwrite
-              log(`  [OMC] Warning: ${eventType} hook owned by another plugin. Skipping. Use --force-hooks to override.`);
+              log(`  [SKC] Warning: ${eventType} hook owned by another plugin. Skipping. Use --force-hooks to override.`);
               result.hookConflicts.push({ eventType, existingCommand: nonOmcCommand });
             } else if (options.force || options.forceHooks) {
               existingHooks[eventType] = eventHooks;
@@ -727,7 +728,7 @@ export function install(options: InstallOptions = {}): InstallResult {
 }
 
 /**
- * Check if OMC is already installed
+ * Check if SKC is already installed
  */
 export function isInstalled(): boolean {
   return existsSync(VERSION_FILE) && existsSync(AGENTS_DIR) && existsSync(COMMANDS_DIR);

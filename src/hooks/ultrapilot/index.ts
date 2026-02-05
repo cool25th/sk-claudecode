@@ -102,7 +102,7 @@ export async function startUltrapilot(
  *
  * // Call Architect agent (via Task tool in orchestrator)
  * const response = await Task({
- *   subagent_type: 'oh-my-claudecode:architect',
+ *   subagent_type: 'sk-claudecode:architect',
  *   model: 'opus',
  *   prompt
  * });

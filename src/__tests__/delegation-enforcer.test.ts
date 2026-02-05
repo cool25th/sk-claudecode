@@ -31,7 +31,7 @@ describe('delegation-enforcer', () => {
       const input: AgentInput = {
         description: 'Test task',
         prompt: 'Do something',
-        subagent_type: 'oh-my-claudecode:executor',
+        subagent_type: 'sk-claudecode:executor',
         model: 'haiku'
       };
 
@@ -46,7 +46,7 @@ describe('delegation-enforcer', () => {
       const input: AgentInput = {
         description: 'Test task',
         prompt: 'Do something',
-        subagent_type: 'oh-my-claudecode:executor'
+        subagent_type: 'sk-claudecode:executor'
       };
 
       const result = enforceModel(input);
@@ -238,9 +238,9 @@ describe('delegation-enforcer', () => {
 
   describe('getModelForAgent', () => {
     it('returns correct model for agent with prefix', () => {
-      expect(getModelForAgent('oh-my-claudecode:executor')).toBe('sonnet');
-      expect(getModelForAgent('oh-my-claudecode:executor-low')).toBe('haiku');
-      expect(getModelForAgent('oh-my-claudecode:architect')).toBe('opus');
+      expect(getModelForAgent('sk-claudecode:executor')).toBe('sonnet');
+      expect(getModelForAgent('sk-claudecode:executor-low')).toBe('haiku');
+      expect(getModelForAgent('sk-claudecode:architect')).toBe('opus');
     });
 
     it('returns correct model for agent without prefix', () => {

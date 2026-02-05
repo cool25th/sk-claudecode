@@ -91,7 +91,7 @@ export interface SwarmConfig {
  * Enables wave-based spawning with many more tasks than concurrent agents
  */
 export interface AggressiveSwarmConfig extends SwarmConfig {
-  /** Maximum concurrent agents (respects OMC configurable limit, default 5) */
+  /** Maximum concurrent agents (respects SKC configurable limit, default 5) */
   maxConcurrent?: number;
   /** Total tasks to process (can exceed maxConcurrent) */
   totalTasks?: number;

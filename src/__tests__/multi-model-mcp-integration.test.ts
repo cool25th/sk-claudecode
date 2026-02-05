@@ -17,7 +17,7 @@ describe('Multi-Model MCP Integration', () => {
       expect(session.queryOptions.options.mcpServers['g']).toBeDefined();
     });
 
-    it('should include OMC Tools MCP server in mcpServers', () => {
+    it('should include SKC Tools MCP server in mcpServers', () => {
       const session = createSisyphusSession();
 
       expect(session.queryOptions.options.mcpServers).toHaveProperty('t');
@@ -45,7 +45,7 @@ describe('Multi-Model MCP Integration', () => {
       expect(allowedTools).toContain('Task');
     });
 
-    it('should have OMC tools with mcp__t__ prefix', () => {
+    it('should have SKC tools with mcp__t__ prefix', () => {
       const session = createSisyphusSession();
       const allowedTools = session.queryOptions.options.allowedTools;
 
@@ -79,7 +79,7 @@ describe('Multi-Model MCP Integration', () => {
       expect(mcp.geminiToolNames).toContain('ask_gemini');
     });
 
-    it('should export OMC Tools server from mcp module', async () => {
+    it('should export SKC Tools server from mcp module', async () => {
       const mcp = await import('../mcp/index.js');
 
       expect(mcp.omcToolsServer).toBeDefined();

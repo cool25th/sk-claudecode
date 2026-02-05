@@ -9,7 +9,7 @@
  * ```bash
  * #!/bin/bash
  * INPUT=$(cat)
- * echo "$INPUT" | node ~/.claude/omc/hook-bridge.mjs --hook=keyword-detector
+ * echo "$INPUT" | node ~/.claude/skc/hook-bridge.mjs --hook=keyword-detector
  * ```
  */
 
@@ -344,7 +344,7 @@ The task is NOT complete yet. Continue working.
 IMPORTANT:
 - Review your progress so far
 - Continue from where you left off
-- When FULLY complete (after Architect verification), run \`/oh-my-claudecode:cancel\` to cleanly exit and clean up state files. If cancel fails, retry with \`/oh-my-claudecode:cancel --force\`.
+- When FULLY complete (after Architect verification), run \`/sk-claudecode:cancel\` to cleanly exit and clean up state files. If cancel fails, retry with \`/sk-claudecode:cancel --force\`.
 - Do not stop until the task is truly done
 
 Original task:
@@ -673,7 +673,7 @@ export async function processHook(
   input: HookInput,
 ): Promise<HookOutput> {
   // Environment kill-switches for plugin coexistence
-  if (process.env.DISABLE_OMC === "1" || process.env.DISABLE_OMC === "true") {
+  if (process.env.DISABLE_SKC === "1" || process.env.DISABLE_SKC === "true") {
     return { continue: true };
   }
   const skipHooks = getSkipHooks();

@@ -330,7 +330,7 @@ export function createSisyphusSession(options?: SisyphusOptions): SisyphusSessio
     allowedTools.push(`mcp__${serverName}__*`);
   }
 
-  // Add OMC custom tools in MCP format (LSP, AST, python_repl)
+  // Add SKC custom tools in MCP format (LSP, AST, python_repl)
   const omcTools = getOmcToolNames({
     includeLsp: config.features?.lspTools !== false,
     includeAst: config.features?.astTools !== false,

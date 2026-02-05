@@ -68,7 +68,7 @@ export interface StopHookCallbacksConfig {
 }
 
 /**
- * OMC configuration (stored in .skc-config.json)
+ * SKC configuration (stored in .skc-config.json)
  */
 export interface SisyphusConfig {
   /** Whether silent auto-updates are enabled (opt-in for security) */
@@ -86,7 +86,7 @@ export interface SisyphusConfig {
     /** Inject usage instructions at session start (default: true) */
     injectInstructions?: boolean;
   };
-  /** Preferred execution mode for parallel work (set by omc-setup Step 3.7) */
+  /** Preferred execution mode for parallel work (set by skc-setup Step 3.7) */
   defaultExecutionMode?: 'ultrawork' | 'ecomode';
   /** Ecomode-specific configuration */
   ecomode?: {

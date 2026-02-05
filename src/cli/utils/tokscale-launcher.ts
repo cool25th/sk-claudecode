@@ -2,7 +2,7 @@ import { spawn } from 'child_process';
 
 export interface TokscaleLaunchOptions {
   view?: 'overview' | 'models' | 'daily' | 'stats';
-  claude?: boolean; // Default true for OMC
+  claude?: boolean; // Default true for SKC
 }
 
 /**
@@ -41,7 +41,7 @@ export async function launchTokscaleTUI(options: TokscaleLaunchOptions = {}): Pr
 
   const args = ['tokscale@latest', subcommand];
 
-  // Always use --claude flag for OMC (Claude-focused) unless explicitly disabled
+  // Always use --claude flag for SKC (Claude-focused) unless explicitly disabled
   if (options.claude !== false) {
     args.push('--claude');
   }

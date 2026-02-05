@@ -77,8 +77,8 @@ function isSecureRuntimeDir(dir: string): boolean {
  * @example
  * getRuntimeDir();
  * // Linux with XDG: '/run/user/1000/omc'
- * // macOS: '~/Library/Caches/omc/runtime'
- * // Fallback: '/tmp/omc/runtime'
+ * // macOS: '~/Library/Caches/skc/runtime'
+ * // Fallback: '/tmp/skc/runtime'
  */
 export function getRuntimeDir(): string {
   // Priority 1: XDG_RUNTIME_DIR (Linux standard, usually /run/user/{uid})

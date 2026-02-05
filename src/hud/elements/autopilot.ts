@@ -1,5 +1,5 @@
 /**
- * OMC HUD - Autopilot Element
+ * SKC HUD - Autopilot Element
  *
  * Renders autopilot phase and progress display.
  */

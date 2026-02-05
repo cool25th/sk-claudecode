@@ -13,7 +13,7 @@ export const ALLOWED_PATH_PREFIX = '.skc/';
 
 /** Path patterns that orchestrator IS allowed to modify directly */
 export const ALLOWED_PATH_PATTERNS = [
-  /^\.omc\//,                    // .skc/**
+  /^\.skc\//,                    // .skc/**
   /^\.claude\//,                 // .claude/** (local)
   /^~?\/\.claude\//,             // ~/.claude/** (global)
   /\/\.claude\//,                // any /.claude/ path

@@ -14292,7 +14292,7 @@ async function handleAskCodex(args) {
   } catch {
     trustedRootReal = trustedRoot;
   }
-  let baseDir = args.working_directory || process.cwd();
+  const baseDir = args.working_directory || process.cwd();
   let baseDirReal;
   try {
     baseDirReal = (0, import_fs4.realpathSync)(baseDir);

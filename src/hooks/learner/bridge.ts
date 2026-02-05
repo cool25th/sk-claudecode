@@ -340,10 +340,13 @@ function safeRealpathSync(filePath: string): string {
 
 /**
  * Check if a resolved path is within a boundary directory.
+ * Resolves symlinks on boundary to handle macOS /var -> /private/var.
  */
 function isWithinBoundary(realPath: string, boundary: string): boolean {
+  // Also resolve boundary to handle macOS /var -> /private/var symlink
+  const resolvedBoundary = safeRealpathSync(boundary);
   const normalizedReal = realPath.replace(/\\/g, "/").replace(/\/+/g, "/");
-  const normalizedBoundary = boundary.replace(/\\/g, "/").replace(/\/+/g, "/");
+  const normalizedBoundary = resolvedBoundary.replace(/\\/g, "/").replace(/\/+/g, "/");
   return (
     normalizedReal === normalizedBoundary ||
     normalizedReal.startsWith(normalizedBoundary + "/")

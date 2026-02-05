@@ -1,0 +1,29 @@
+{
+    "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+    "name": "sk-claudecode",
+    "description": "Unified agent and skill system - 39 agents, 26+ skills, 141 scientific domains",
+    "owner": {
+        "name": "sk-claudecode contributors"
+    },
+    "plugins": [
+        {
+            "name": "sk-claudecode",
+            "description": "Unified Claude Code agent system with 39 specialized agents, 26+ skill categories, and 141 scientific domains. Includes quant trading, Korean/US market expertise, and comprehensive development workflows.",
+            "version": "1.0.0",
+            "author": {
+                "name": "sk-claudecode contributors"
+            },
+            "source": "./",
+            "category": "productivity",
+            "homepage": "https://github.com/cool25th/sk-claudecode",
+            "tags": [
+                "multi-agent",
+                "scientific",
+                "quant",
+                "trading",
+                "orchestration",
+                "memory"
+            ]
+        }
+    ]
+}

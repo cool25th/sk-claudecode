@@ -1,0 +1,22 @@
+{
+    "name": "sk-claudecode",
+    "version": "1.0.0",
+    "description": "Unified agent and skill system for Claude Code - Merged from oh-my-claudecode, superpowers, claude-scientific-skills, and claude-mem",
+    "author": {
+        "name": "sk-claudecode contributors"
+    },
+    "repository": "https://github.com/cool25th/sk-claudecode",
+    "homepage": "https://github.com/cool25th/sk-claudecode",
+    "license": "MIT",
+    "keywords": [
+        "claude-code",
+        "plugin",
+        "multi-agent",
+        "orchestration",
+        "scientific",
+        "quant",
+        "trading"
+    ],
+    "skills": "./skills/",
+    "agents": "./agents/"
+}

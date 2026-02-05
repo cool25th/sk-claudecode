@@ -18,5 +18,5 @@
         "trading"
     ],
     "skills": "./skills/",
-    "agents": "./agents/"
+    "mcpServers": "./.mcp.json"
 }

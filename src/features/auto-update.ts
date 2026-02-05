@@ -24,7 +24,7 @@ export const GITHUB_RAW_URL = `https://raw.githubusercontent.com/${REPO_OWNER}/$
 
 /** Installation paths */
 export const CLAUDE_CONFIG_DIR = join(homedir(), '.claude');
-export const VERSION_FILE = join(CLAUDE_CONFIG_DIR, '.omc-version.json');
+export const VERSION_FILE = join(CLAUDE_CONFIG_DIR, '.skc-version.json');
 export const CONFIG_FILE = join(CLAUDE_CONFIG_DIR, '.skc-config.json');
 
 /**

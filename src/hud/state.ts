@@ -21,7 +21,7 @@ import { cleanupStaleBackgroundTasks, markOrphanedTasksAsStale } from './backgro
  */
 function getLocalStateFilePath(directory?: string): string {
   const baseDir = directory || process.cwd();
-  const omcStateDir = join(baseDir, '.omc', 'state');
+  const omcStateDir = join(baseDir, '.skc', 'state');
   return join(omcStateDir, 'hud-state.json');
 }
 
@@ -37,7 +37,7 @@ function getSettingsFilePath(): string {
  * Get the HUD config file path (legacy)
  */
 function getConfigFilePath(): string {
-  return join(homedir(), '.claude', '.omc', 'hud-config.json');
+  return join(homedir(), '.claude', '.skc', 'hud-config.json');
 }
 
 /**
@@ -45,7 +45,7 @@ function getConfigFilePath(): string {
  */
 function ensureStateDir(directory?: string): void {
   const baseDir = directory || process.cwd();
-  const omcStateDir = join(baseDir, '.omc', 'state');
+  const omcStateDir = join(baseDir, '.skc', 'state');
   if (!existsSync(omcStateDir)) {
     mkdirSync(omcStateDir, { recursive: true });
   }
@@ -74,7 +74,7 @@ export function readHudState(directory?: string): OmcHudState | null {
 
   // Check legacy local state (.skc/hud-state.json)
   const baseDir = directory || process.cwd();
-  const legacyStateFile = join(baseDir, '.omc', 'hud-state.json');
+  const legacyStateFile = join(baseDir, '.skc', 'hud-state.json');
   if (existsSync(legacyStateFile)) {
     try {
       const content = readFileSync(legacyStateFile, 'utf-8');

@@ -180,7 +180,7 @@ export const projectMemoryAddNoteTool: ToolDefinition<{
       const root = validateWorkingDirectory(workingDirectory);
 
       // Ensure memory exists
-      let memory = await loadProjectMemory(root);
+      const memory = await loadProjectMemory(root);
       if (!memory) {
         return {
           content: [{
@@ -234,7 +234,7 @@ export const projectMemoryAddDirectiveTool: ToolDefinition<{
       const root = validateWorkingDirectory(workingDirectory);
 
       // Ensure memory exists
-      let memory = await loadProjectMemory(root);
+      const memory = await loadProjectMemory(root);
       if (!memory) {
         return {
           content: [{

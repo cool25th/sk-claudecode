@@ -24,7 +24,7 @@ vi.mock('../../lib/worktree-paths.js', async () => {
 
 describe('state-tools', () => {
   beforeEach(() => {
-    mkdirSync(join(TEST_DIR, '.omc', 'state'), { recursive: true });
+    mkdirSync(join(TEST_DIR, '.skc', 'state'), { recursive: true });
   });
 
   afterEach(() => {
@@ -33,7 +33,7 @@ describe('state-tools', () => {
 
   describe('state_read', () => {
     it('should return state when file exists', async () => {
-      const statePath = join(TEST_DIR, '.omc', 'state', 'ralph-state.json');
+      const statePath = join(TEST_DIR, '.skc', 'state', 'ralph-state.json');
       writeFileSync(statePath, JSON.stringify({ active: true, iteration: 3 }));
 
       const result = await stateReadTool.handler({
@@ -64,7 +64,7 @@ describe('state-tools', () => {
       });
 
       expect(result.content[0].text).toContain('Successfully wrote');
-      expect(existsSync(join(TEST_DIR, '.omc', 'state', 'ralph-state.json'))).toBe(true);
+      expect(existsSync(join(TEST_DIR, '.skc', 'state', 'ralph-state.json'))).toBe(true);
     });
 
     it('should add _meta field to written state', async () => {
@@ -81,7 +81,7 @@ describe('state-tools', () => {
 
   describe('state_clear', () => {
     it('should remove state file', async () => {
-      const statePath = join(TEST_DIR, '.omc', 'state', 'ralplan-state.json');
+      const statePath = join(TEST_DIR, '.skc', 'state', 'ralplan-state.json');
       writeFileSync(statePath, JSON.stringify({ active: true }));
 
       const result = await stateClearTool.handler({
@@ -97,11 +97,11 @@ describe('state-tools', () => {
   describe('state_list_active', () => {
     it('should list active modes including ralplan', async () => {
       writeFileSync(
-        join(TEST_DIR, '.omc', 'state', 'ralph-state.json'),
+        join(TEST_DIR, '.skc', 'state', 'ralph-state.json'),
         JSON.stringify({ active: true })
       );
       writeFileSync(
-        join(TEST_DIR, '.omc', 'state', 'ralplan-state.json'),
+        join(TEST_DIR, '.skc', 'state', 'ralplan-state.json'),
         JSON.stringify({ active: true })
       );
 

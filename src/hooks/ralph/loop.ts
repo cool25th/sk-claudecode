@@ -40,7 +40,7 @@ import {
 
 // Forward declaration to avoid circular import - check ultraqa state file directly
 export function isUltraQAActive(directory: string): boolean {
-  const omcDir = join(directory, ".omc");
+  const omcDir = join(directory, ".skc");
   const stateFile = join(omcDir, "state", "ultraqa-state.json");
   if (!existsSync(stateFile)) {
     return false;
@@ -100,7 +100,7 @@ const DEFAULT_MAX_ITERATIONS = 10;
  * Get the state file path for Ralph Loop
  */
 function getStateFilePath(directory: string): string {
-  const omcDir = join(directory, ".omc");
+  const omcDir = join(directory, ".skc");
   return join(omcDir, "state", "ralph-state.json");
 }
 
@@ -108,7 +108,7 @@ function getStateFilePath(directory: string): string {
  * Ensure the .omc directory exists
  */
 function ensureStateDir(directory: string): void {
-  const stateDir = join(directory, ".omc", "state");
+  const stateDir = join(directory, ".skc", "state");
   if (!existsSync(stateDir)) {
     mkdirSync(stateDir, { recursive: true });
   }
@@ -179,7 +179,7 @@ export function clearLinkedUltraworkState(directory: string): boolean {
     return true;
   }
 
-  const omcDir = join(directory, ".omc");
+  const omcDir = join(directory, ".skc");
   const stateFile = join(omcDir, "state", "ultrawork-state.json");
   try {
     unlinkSync(stateFile);

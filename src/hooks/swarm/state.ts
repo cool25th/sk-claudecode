@@ -57,14 +57,14 @@ let db: BetterSqlite3.Database | null = null;
  * Get the database file path
  */
 function getDbPath(cwd: string): string {
-  return join(cwd, ".omc", "state", "swarm.db");
+  return join(cwd, ".skc", "state", "swarm.db");
 }
 
 /**
  * Ensure the state directory exists
  */
 function ensureStateDir(cwd: string): void {
-  const stateDir = join(cwd, ".omc", "state");
+  const stateDir = join(cwd, ".skc", "state");
   if (!existsSync(stateDir)) {
     mkdirSync(stateDir, { recursive: true });
   }
@@ -855,7 +855,7 @@ export function writeSwarmSummary(cwd: string): boolean {
       project_path: cwd,
     };
 
-    const summaryPath = join(cwd, ".omc", "state", "swarm-summary.json");
+    const summaryPath = join(cwd, ".skc", "state", "swarm-summary.json");
     atomicWriteJsonSync(summaryPath, summary);
 
     return true;

@@ -172,8 +172,8 @@ function syncSleep(ms: number): void {
  * Acquire file lock with timeout and stale lock detection
  */
 function acquireLock(directory: string): boolean {
-  const lockPath = join(directory, ".omc", "state", "subagent-tracker.lock");
-  const lockDir = join(directory, ".omc", "state");
+  const lockPath = join(directory, ".skc", "state", "subagent-tracker.lock");
+  const lockDir = join(directory, ".skc", "state");
 
   if (!existsSync(lockDir)) {
     mkdirSync(lockDir, { recursive: true });
@@ -247,7 +247,7 @@ function acquireLock(directory: string): boolean {
  * Release file lock
  */
 function releaseLock(directory: string): void {
-  const lockPath = join(directory, ".omc", "state", "subagent-tracker.lock");
+  const lockPath = join(directory, ".skc", "state", "subagent-tracker.lock");
   try {
     unlinkSync(lockPath);
   } catch {
@@ -259,7 +259,7 @@ function releaseLock(directory: string): void {
  * Get the state file path
  */
 export function getStateFilePath(directory: string): string {
-  const stateDir = join(directory, ".omc", "state");
+  const stateDir = join(directory, ".skc", "state");
   if (!existsSync(stateDir)) {
     mkdirSync(stateDir, { recursive: true });
   }
@@ -363,7 +363,7 @@ export function flushPendingWrites(): void {
  * Detect the current parent mode from state files
  */
 function detectParentMode(directory: string): string {
-  const stateDir = join(directory, ".omc", "state");
+  const stateDir = join(directory, ".skc", "state");
 
   if (!existsSync(stateDir)) {
     return "none";

@@ -66,7 +66,7 @@ function getEnforcementLevel(directory: string): EnforcementLevel {
     return enforcementCache.level;
   }
 
-  const localConfig = path.join(directory, '.omc', 'config.json');
+  const localConfig = path.join(directory, '.skc', 'config.json');
   const globalConfig = path.join(os.homedir(), '.claude', '.skc-config.json');
 
   let level: EnforcementLevel = 'warn'; // Default

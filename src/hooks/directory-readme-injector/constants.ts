@@ -10,7 +10,7 @@ import { join } from 'node:path';
 import { homedir } from 'node:os';
 
 /** Storage directory for directory-readme-injector state */
-export const SKC_STORAGE_DIR = join(homedir(), '.omc');
+export const SKC_STORAGE_DIR = join(homedir(), '.skc');
 export const README_INJECTOR_STORAGE = join(
   SKC_STORAGE_DIR,
   'directory-readme',

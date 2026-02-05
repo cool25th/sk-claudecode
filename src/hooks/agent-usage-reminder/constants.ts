@@ -10,7 +10,7 @@ import { join } from 'path';
 import { homedir } from 'os';
 
 /** Storage directory for agent usage reminder state */
-export const SKC_STORAGE_DIR = join(homedir(), '.omc');
+export const SKC_STORAGE_DIR = join(homedir(), '.skc');
 export const AGENT_USAGE_REMINDER_STORAGE = join(
   SKC_STORAGE_DIR,
   'agent-usage-reminder',

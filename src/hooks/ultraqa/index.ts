@@ -57,7 +57,7 @@ const SAME_FAILURE_THRESHOLD = 3;
  * Get the state file path for UltraQA
  */
 function getStateFilePath(directory: string): string {
-  const omcDir = join(directory, '.omc');
+  const omcDir = join(directory, '.skc');
   return join(omcDir, 'state', 'ultraqa-state.json');
 }
 
@@ -65,7 +65,7 @@ function getStateFilePath(directory: string): string {
  * Ensure the .skc/state directory exists
  */
 function ensureStateDir(directory: string): void {
-  const stateDir = join(directory, '.omc', 'state');
+  const stateDir = join(directory, '.skc', 'state');
   if (!existsSync(stateDir)) {
     mkdirSync(stateDir, { recursive: true });
   }

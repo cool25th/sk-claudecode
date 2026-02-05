@@ -20991,7 +20991,7 @@ var import_child_process8 = require("child_process");
 var import_fs6 = require("fs");
 var import_path7 = require("path");
 var OmcPaths = {
-  ROOT: ".omc",
+  ROOT: ".skc",
   STATE: ".skc/state",
   PLANS: ".skc/plans",
   RESEARCH: ".skc/research",
@@ -21142,7 +21142,7 @@ var MODE_CONFIGS = {
   }
 };
 function getStateDir(cwd) {
-  return (0, import_path8.join)(cwd, ".omc", "state");
+  return (0, import_path8.join)(cwd, ".skc", "state");
 }
 function getStateFilePath(cwd, mode) {
   const config2 = MODE_CONFIGS[mode];
@@ -21644,10 +21644,10 @@ var PRIORITY_HEADER = "## Priority Context";
 var WORKING_MEMORY_HEADER = "## Working Memory";
 var MANUAL_HEADER = "## MANUAL";
 function getNotepadPath(directory) {
-  return (0, import_path9.join)(directory, ".omc", NOTEPAD_FILENAME);
+  return (0, import_path9.join)(directory, ".skc", NOTEPAD_FILENAME);
 }
 function initNotepad(directory) {
-  const omcDir = (0, import_path9.join)(directory, ".omc");
+  const omcDir = (0, import_path9.join)(directory, ".skc");
   if (!(0, import_fs9.existsSync)(omcDir)) {
     try {
       (0, import_fs9.mkdirSync)(omcDir, { recursive: true });
@@ -22272,7 +22272,7 @@ var import_path11 = require("path");
 // src/hooks/rules-injector/constants.ts
 var import_path10 = require("path");
 var import_os = require("os");
-var SKC_STORAGE_DIR = (0, import_path10.join)((0, import_os.homedir)(), ".omc");
+var SKC_STORAGE_DIR = (0, import_path10.join)((0, import_os.homedir)(), ".skc");
 var RULES_INJECTOR_STORAGE = (0, import_path10.join)(SKC_STORAGE_DIR, "rules-injector");
 
 // src/hooks/project-memory/storage.ts
@@ -22281,7 +22281,7 @@ var import_path12 = __toESM(require("path"), 1);
 
 // src/hooks/project-memory/constants.ts
 var MEMORY_FILE = "project-memory.json";
-var MEMORY_DIR = ".omc";
+var MEMORY_DIR = ".skc";
 var CACHE_EXPIRY_MS = 24 * 60 * 60 * 1e3;
 
 // src/hooks/project-memory/storage.ts

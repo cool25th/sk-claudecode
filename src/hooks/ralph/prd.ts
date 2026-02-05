@@ -84,7 +84,7 @@ export function getPrdPath(directory: string): string {
  * Get the path to the prd.json in .omc subdirectory
  */
 export function getOmcPrdPath(directory: string): string {
-  return join(directory, '.omc', PRD_FILENAME);
+  return join(directory, '.skc', PRD_FILENAME);
 }
 
 /**
@@ -136,7 +136,7 @@ export function writePrd(directory: string, prd: PRD): boolean {
   let prdPath = findPrdPath(directory);
 
   if (!prdPath) {
-    const omcDir = join(directory, '.omc');
+    const omcDir = join(directory, '.skc');
     if (!existsSync(omcDir)) {
       try {
         mkdirSync(omcDir, { recursive: true });

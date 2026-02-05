@@ -540,7 +540,7 @@ export function isSwarmActive(cwd: string): boolean {
   }
 
   // Otherwise, check if database file exists and is non-empty
-  const dbPath = join(cwd, '.omc', 'state', 'swarm.db');
+  const dbPath = join(cwd, '.skc', 'state', 'swarm.db');
   if (!existsSync(dbPath)) {
     return false;
   }

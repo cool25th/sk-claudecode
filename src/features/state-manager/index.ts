@@ -38,7 +38,7 @@ const LOCAL_STATE_DIR = OmcPaths.STATE;
  * @deprecated for mode state. Global state directory is only used for analytics and daemon state.
  * Mode state should use LOCAL_STATE_DIR exclusively.
  */
-const GLOBAL_STATE_DIR = path.join(os.homedir(), ".omc", "state");
+const GLOBAL_STATE_DIR = path.join(os.homedir(), ".skc", "state");
 
 // Legacy state locations (for backward compatibility)
 const LEGACY_LOCATIONS: Record<string, string[]> = {

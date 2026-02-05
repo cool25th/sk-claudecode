@@ -18,7 +18,7 @@ const OWNERSHIP_FILE = 'ultrapilot-ownership.json';
  * Get the state file path
  */
 function getStateFilePath(directory: string): string {
-  const omcDir = join(directory, '.omc', 'state');
+  const omcDir = join(directory, '.skc', 'state');
   return join(omcDir, STATE_FILE);
 }
 
@@ -26,7 +26,7 @@ function getStateFilePath(directory: string): string {
  * Get the ownership file path
  */
 function getOwnershipFilePath(directory: string): string {
-  const omcDir = join(directory, '.omc', 'state');
+  const omcDir = join(directory, '.skc', 'state');
   return join(omcDir, OWNERSHIP_FILE);
 }
 
@@ -34,7 +34,7 @@ function getOwnershipFilePath(directory: string): string {
  * Ensure the state directory exists
  */
 function ensureStateDir(directory: string): void {
-  const stateDir = join(directory, '.omc', 'state');
+  const stateDir = join(directory, '.skc', 'state');
   if (!existsSync(stateDir)) {
     mkdirSync(stateDir, { recursive: true });
   }

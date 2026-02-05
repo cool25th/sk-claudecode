@@ -240,7 +240,7 @@ function generateContinuationPrompt(
     planPath: state.planning.plan_path || `${OmcPaths.PLANS}/autopilot-impl.md`
   });
 
-  let continuationPrompt = `<autopilot-continuation>
+  const continuationPrompt = `<autopilot-continuation>
 ${errorGuidance ? errorGuidance + '\n' : ''}
 [AUTOPILOT - PHASE: ${state.phase.toUpperCase()} | ITERATION ${state.iteration}/${state.max_iterations}]
 

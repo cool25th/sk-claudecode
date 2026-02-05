@@ -41,7 +41,7 @@ const _DEFAULT_STATE: UltraworkState = {
  */
 function getStateFilePath(directory?: string): string {
   const baseDir = directory || process.cwd();
-  const omcDir = join(baseDir, '.omc');
+  const omcDir = join(baseDir, '.skc');
   return join(omcDir, 'state', 'ultrawork-state.json');
 }
 
@@ -51,7 +51,7 @@ function getStateFilePath(directory?: string): string {
  */
 function ensureStateDir(directory?: string): void {
   const baseDir = directory || process.cwd();
-  const omcDir = join(baseDir, '.omc', 'state');
+  const omcDir = join(baseDir, '.skc', 'state');
   if (!existsSync(omcDir)) {
     mkdirSync(omcDir, { recursive: true });
   }

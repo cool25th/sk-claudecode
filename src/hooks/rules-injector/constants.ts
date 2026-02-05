@@ -10,7 +10,7 @@ import { join } from 'path';
 import { homedir } from 'os';
 
 /** Storage directory for rules injector state */
-export const SKC_STORAGE_DIR = join(homedir(), '.omc');
+export const SKC_STORAGE_DIR = join(homedir(), '.skc');
 export const RULES_INJECTOR_STORAGE = join(SKC_STORAGE_DIR, 'rules-injector');
 
 /** Project marker files that indicate a project root */

@@ -11,7 +11,7 @@ import { resolve, normalize, relative, sep, join, isAbsolute } from 'path';
 
 /** Standard .omc subdirectories */
 export const OmcPaths = {
-  ROOT: '.omc',
+  ROOT: '.skc',
   STATE: '.skc/state',
   PLANS: '.skc/plans',
   RESEARCH: '.skc/research',

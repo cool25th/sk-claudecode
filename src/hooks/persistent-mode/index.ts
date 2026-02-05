@@ -80,7 +80,7 @@ const todoContinuationAttempts = new Map<string, number>();
  * Returns null if file doesn't exist or error is stale (>60 seconds old).
  */
 export function readLastToolError(directory: string): ToolErrorState | null {
-  const stateDir = join(directory, '.omc', 'state');
+  const stateDir = join(directory, '.skc', 'state');
   const errorPath = join(stateDir, 'last-tool-error.json');
 
   try {
@@ -115,7 +115,7 @@ export function readLastToolError(directory: string): ToolErrorState | null {
  * Clear tool error state file atomically.
  */
 export function clearToolErrorState(directory: string): void {
-  const stateDir = join(directory, '.omc', 'state');
+  const stateDir = join(directory, '.skc', 'state');
   const errorPath = join(stateDir, 'last-tool-error.json');
 
   try {
@@ -357,7 +357,7 @@ async function checkRalphLoop(
     ? `2. Check prd.json - are ALL stories marked passes: true?`
     : `2. Check your todo list - are ALL items marked complete?`;
 
-  let continuationPrompt = `<ralph-continuation>
+  const continuationPrompt = `<ralph-continuation>
 ${errorGuidance ? errorGuidance + '\n' : ''}
 [RALPH - ITERATION ${newState.iteration}/${newState.max_iterations}]
 

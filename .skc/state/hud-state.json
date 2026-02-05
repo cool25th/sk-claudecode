@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-02-05T15:16:51.616Z",
+  "backgroundTasks": [
+    {
+      "id": "task-1770304611612-nzrppj",
+      "description": "pkill -f something",
+      "startedAt": "2026-02-05T15:16:51.616Z",
+      "status": "running"
+    }
+  ]
+}

@@ -151,7 +151,7 @@ export interface BackgroundJobMeta {
  */
 export function getPromptsDir(workingDirectory?: string): string {
   const root = getWorktreeRoot(workingDirectory) || workingDirectory || process.cwd();
-  return join(root, '.omc', 'prompts');
+  return join(root, '.skc', 'prompts');
 }
 
 /**

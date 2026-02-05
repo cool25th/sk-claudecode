@@ -79,7 +79,7 @@ const program = new Command();
 
 // Helper functions for auto-backfill
 async function checkIfBackfillNeeded(): Promise<boolean> {
-  const tokenLogPath = join(homedir(), '.omc', 'state', 'token-tracking.jsonl');
+  const tokenLogPath = join(homedir(), '.skc', 'state', 'token-tracking.jsonl');
   try {
     await fs.access(tokenLogPath);
     const stats = await fs.stat(tokenLogPath);

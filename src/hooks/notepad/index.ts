@@ -91,14 +91,14 @@ export const MANUAL_HEADER = "## MANUAL";
  * Get the path to notepad.md in .omc subdirectory
  */
 export function getNotepadPath(directory: string): string {
-  return join(directory, ".omc", NOTEPAD_FILENAME);
+  return join(directory, ".skc", NOTEPAD_FILENAME);
 }
 
 /**
  * Initialize notepad.md if it doesn't exist
  */
 export function initNotepad(directory: string): boolean {
-  const omcDir = join(directory, ".omc");
+  const omcDir = join(directory, ".skc");
   if (!existsSync(omcDir)) {
     try {
       mkdirSync(omcDir, { recursive: true });

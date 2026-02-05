@@ -10,7 +10,7 @@ import { OmcPaths } from '../../lib/worktree-paths.js';
 export const USER_SKILLS_DIR = join(homedir(), '.claude', 'skills', 'omc-learned');
 
 /** Global skills directory (new preferred location: ~/.skc/skills) */
-export const GLOBAL_SKILLS_DIR = join(homedir(), '.omc', 'skills');
+export const GLOBAL_SKILLS_DIR = join(homedir(), '.skc', 'skills');
 
 /** Project-level skills subdirectory */
 export const PROJECT_SKILLS_SUBDIR = OmcPaths.SKILLS;

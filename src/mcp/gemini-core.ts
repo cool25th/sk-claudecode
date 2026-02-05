@@ -343,7 +343,7 @@ export async function handleAskGemini(args: {
   }
 
   // Derive baseDir from working_directory if provided
-  let baseDir = args.working_directory || process.cwd();
+  const baseDir = args.working_directory || process.cwd();
   let baseDirReal: string;
   try {
     baseDirReal = realpathSync(baseDir);

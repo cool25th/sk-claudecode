@@ -13881,7 +13881,7 @@ function generatePromptId() {
 }
 function getPromptsDir(workingDirectory) {
   const root = getWorktreeRoot(workingDirectory) || workingDirectory || process.cwd();
-  return (0, import_path3.join)(root, ".omc", "prompts");
+  return (0, import_path3.join)(root, ".skc", "prompts");
 }
 function buildPromptFrontmatter(options) {
   const lines = [

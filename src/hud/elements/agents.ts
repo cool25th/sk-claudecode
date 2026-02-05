@@ -262,7 +262,7 @@ function truncateDescription(desc: string | undefined, maxWidth: number = 20): s
  */
 function getShortAgentName(agentType: string): string {
   const parts = agentType.split(':');
-  let name = parts[parts.length - 1] || agentType;
+  const name = parts[parts.length - 1] || agentType;
 
   // Abbreviate common names (aligned with current agent naming)
   const abbrevs: Record<string, string> = {

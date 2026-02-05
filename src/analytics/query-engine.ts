@@ -73,7 +73,7 @@ export class QueryEngine {
 
   // UNUSED: Kept for reference, but tokscale path no longer mixes local JSONL
   // private async convertParsedToEntries(parsed: any[], range: TimeRange): Promise<any[]> {
-  //   const tokenLogPath = path.join(homedir(), '.omc', 'state', 'token-tracking.jsonl');
+  //   const tokenLogPath = path.join(homedir(), '.skc', 'state', 'token-tracking.jsonl');
   //   const entries: any[] = [];
   //
   //   try {
@@ -97,7 +97,7 @@ export class QueryEngine {
 
   private async getCostReportLegacy(period: 'daily' | 'weekly' | 'monthly'): Promise<CostReport> {
     const range = this.calculateTimeRange(period);
-    const tokenLogPath = path.join(homedir(), '.omc', 'state', 'token-tracking.jsonl');
+    const tokenLogPath = path.join(homedir(), '.skc', 'state', 'token-tracking.jsonl');
 
     try {
       const content = await fs.readFile(tokenLogPath, 'utf-8');
@@ -163,7 +163,7 @@ export class QueryEngine {
 
   // Hybrid data merging: Read agent attribution from local JSONL
   private async getAgentCostFromLocalLog(range: TimeRange): Promise<Record<string, number>> {
-    const tokenLogPath = path.join(homedir(), '.omc', 'state', 'token-tracking.jsonl');
+    const tokenLogPath = path.join(homedir(), '.skc', 'state', 'token-tracking.jsonl');
     const byAgent: Record<string, number> = {};
 
     try {
@@ -198,7 +198,7 @@ export class QueryEngine {
   }
 
   async getUsagePatterns(): Promise<UsagePattern> {
-    const tokenLogPath = path.join(homedir(), '.omc', 'state', 'token-tracking.jsonl');
+    const tokenLogPath = path.join(homedir(), '.skc', 'state', 'token-tracking.jsonl');
     const manager = getSessionManager();
     const history = await manager.getHistory();
 

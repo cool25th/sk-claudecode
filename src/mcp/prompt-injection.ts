@@ -15,7 +15,7 @@ export const VALID_AGENT_ROLES = [
   'architect', 'architect-medium', 'architect-low',
   'analyst', 'critic', 'planner',
   'executor', 'executor-high', 'executor-low',
-  'deep-executor',
+  'ultra-executor',
   'designer', 'designer-low', 'designer-high',
   'explore', 'explore-medium', 'explore-high',
   'researcher', 'researcher-low',

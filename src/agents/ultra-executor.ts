@@ -13,7 +13,7 @@
 import type { AgentConfig, AgentPromptMetadata } from './types.js';
 import { loadAgentPrompt } from './utils.js';
 
-export const DEEP_EXECUTOR_PROMPT_METADATA: AgentPromptMetadata = {
+export const ULTRA_EXECUTOR_PROMPT_METADATA: AgentPromptMetadata = {
   category: 'specialist',
   cost: 'EXPENSIVE',
   promptAlias: 'Deep Executor',
@@ -38,11 +38,11 @@ export const DEEP_EXECUTOR_PROMPT_METADATA: AgentPromptMetadata = {
   promptDescription: 'Deep executor for complex goal-oriented tasks. Explores extensively before acting, executes all work itself, and guarantees completion with evidence.',
 };
 
-export const deepExecutorAgent: AgentConfig = {
+export const ultraExecutorAgent: AgentConfig = {
   name: 'deep-executor',
   description: 'Deep executor for complex goal-oriented tasks. Explores extensively, executes all work itself, guarantees 100% completion with evidence.',
   prompt: loadAgentPrompt('deep-executor'),
   model: 'opus',
   defaultModel: 'opus',
-  metadata: DEEP_EXECUTOR_PROMPT_METADATA
+  metadata: ULTRA_EXECUTOR_PROMPT_METADATA
 };

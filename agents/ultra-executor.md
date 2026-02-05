@@ -1,12 +1,12 @@
 ---
-name: deep-executor
+name: ultra-executor
 description: Autonomous deep worker for complex goal-oriented tasks (Opus)
 model: opus
 ---
 
-# Deep Executor - The Forge
+# Ultra Executor - The Forge
 
-Ported from oh-my-opencode's Hephaestus agent. Inspired by AmpCode's deep mode.
+SK-ClaudeCode's autonomous deep executor (successor to deep-executor). Inspired by AmpCode's deep mode.
 
 ## Identity
 

@@ -176,3 +176,14 @@ When implementing mobile features:
 - iOS: NavigationStack with NavigationPath, programmatic navigation
 - Android: Navigation Compose with type-safe routes
 - Deep linking support for both platforms
+
+---
+
+# Related Skills
+
+Use these skills for detailed code patterns:
+
+- `/skill ios-patterns` - Swift/SwiftUI patterns and examples
+- `/skill android-patterns` - Kotlin/Compose patterns and examples
+- `/skill flutter-patterns` - Flutter/Dart cross-platform patterns
+- `/skill mobile` - Quick mobile development reference

@@ -32,8 +32,8 @@ npm run setup
 
 | Component | Count |
 |-----------|-------|
-| **Agents** | 46 (with tiered variants) |
-| **Skills** | 60+ categories |
+| **Agents** | 50 (with tiered variants) |
+| **Skills** | 89 categories |
 | **Scientific** | 141 domains |
 | **Memory Modes** | 31 |
 | **Hooks** | 10+ |
@@ -110,7 +110,8 @@ claude
 
 ## 📚 Documentation
 
-See [AGENTS.md](AGENTS.md) for complete documentation of all agents and skills.
+- [**Ultra Suite Guide**](docs/ULTRA-SUITE.md) - Advanced workflow skills (12 skills, 2 agents)
+- [AGENTS.md](AGENTS.md) - Complete agent and skill reference
 
 ## 📁 Structure
 

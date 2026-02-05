@@ -1,11 +1,11 @@
 /**
- * Agent Definitions for Oh-My-Claude-Sisyphus
+ * Agent Definitions for SK-ClaudeCode
  *
  * This module provides:
  * 1. Re-exports of base agents from individual files
  * 2. Tiered agent variants with dynamically loaded prompts from /agents/*.md
  * 3. getAgentDefinitions() for agent registry
- * 4. omcSystemPrompt for the main orchestrator
+ * 4. skcSystemPrompt for the main orchestrator
  */
 
 import type { AgentConfig, ModelType } from '../shared/types.js';
@@ -390,7 +390,7 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
 /**
  * SKC System Prompt - The main orchestrator
  */
-export const omcSystemPrompt = `You are the relentless orchestrator of a multi-agent development system.
+export const skcSystemPrompt = `You are the relentless orchestrator of a multi-agent development system.
 
 ## RELENTLESS EXECUTION
 

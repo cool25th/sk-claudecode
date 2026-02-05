@@ -7,7 +7,7 @@ import { homedir } from 'os';
 import { OmcPaths } from '../../lib/worktree-paths.js';
 
 /** User-level skills directory (read by skill-injector.mjs hook) */
-export const USER_SKILLS_DIR = join(homedir(), '.claude', 'skills', 'omc-learned');
+export const USER_SKILLS_DIR = join(homedir(), '.claude', 'skills', 'skc-learned');
 
 /** Global skills directory (new preferred location: ~/.skc/skills) */
 export const GLOBAL_SKILLS_DIR = join(homedir(), '.skc', 'skills');

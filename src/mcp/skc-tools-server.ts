@@ -49,7 +49,7 @@ const sdkTools = allTools.map(t =>
  *
  * Tools will be available as mcp__t__<tool_name>
  */
-export const omcToolsServer = createSdkMcpServer({
+export const skcToolsServer = createSdkMcpServer({
   name: "t",
   version: "1.0.0",
   tools: sdkTools
@@ -58,12 +58,12 @@ export const omcToolsServer = createSdkMcpServer({
 /**
  * Tool names in MCP format for allowedTools configuration
  */
-export const omcToolNames = allTools.map(t => `mcp__t__${t.name}`);
+export const skcToolNames = allTools.map(t => `mcp__t__${t.name}`);
 
 /**
  * Get tool names filtered by category
  */
-export function getOmcToolNames(options?: {
+export function getSkcToolNames(options?: {
   includeLsp?: boolean;
   includeAst?: boolean;
   includePython?: boolean;
@@ -74,11 +74,11 @@ export function getOmcToolNames(options?: {
 }): string[] {
   const { includeLsp = true, includeAst = true, includePython = true, includeSkills = true, includeState = true, includeNotepad = true, includeMemory = true } = options || {};
 
-  return omcToolNames.filter(name => {
+  return skcToolNames.filter(name => {
     if (!includeLsp && name.includes('lsp_')) return false;
     if (!includeAst && name.includes('ast_')) return false;
     if (!includePython && name.includes('python_repl')) return false;
-    if (!includeSkills && (name.includes('load_skc_skills') || name.includes('list_omc_skills'))) return false;
+    if (!includeSkills && (name.includes('load_skc_skills') || name.includes('list_skc_skills'))) return false;
     if (!includeState && name.includes('state_')) return false;
     if (!includeNotepad && name.includes('notepad_')) return false;
     if (!includeMemory && name.includes('memory_')) return false;

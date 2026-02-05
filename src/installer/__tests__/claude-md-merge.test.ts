@@ -224,7 +224,7 @@ User added custom stuff here`;
     it('strips markers from skcContent that already has markers', () => {
       // Simulate docs/CLAUDE.md shipping with markers already
       const omcWithMarkers = `<!-- SKC:START -->
-# oh-my-claudecode
+# sk-claudecode
 Agent instructions here
 <!-- SKC:END -->`;
 

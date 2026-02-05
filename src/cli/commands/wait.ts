@@ -3,17 +3,17 @@
  *
  * CLI commands for rate limit wait and auto-resume functionality.
  *
- * Design Philosophy (aligned with oh-my-claudecode values):
- * - Zero learning curve: `omc wait` just works
+ * Design Philosophy (aligned with sk-claudecode values):
+ * - Zero learning curve: `skc wait` just works
  * - Smart defaults: Auto-detects tmux and daemon status
- * - Minimal commands: Most users only need `omc wait`
+ * - Minimal commands: Most users only need `skc wait`
  *
  * Commands:
- *   omc wait               - Smart command: shows status, offers to start daemon if needed
- *   omc wait status        - Show current rate limit and daemon status
- *   omc wait daemon start  - Start the background daemon
- *   omc wait daemon stop   - Stop the daemon
- *   omc wait detect        - Scan for blocked Claude Code sessions
+ *   skc wait               - Smart command: shows status, offers to start daemon if needed
+ *   skc wait status        - Show current rate limit and daemon status
+ *   skc wait daemon start  - Start the background daemon
+ *   skc wait daemon stop   - Stop the daemon
+ *   skc wait detect        - Scan for blocked Claude Code sessions
  */
 
 import chalk from 'chalk';
@@ -102,8 +102,8 @@ export async function waitCommand(options: WaitOptions): Promise<void> {
       console.log(chalk.gray('   apt install tmux   (Linux)\n'));
     } else if (!daemonRunning) {
       console.log(chalk.cyan('💡 Want to auto-resume when the limit clears?'));
-      console.log(chalk.white('   Run: ') + chalk.green('omc wait --start'));
-      console.log(chalk.gray('   (or: omc wait daemon start)\n'));
+      console.log(chalk.white('   Run: ') + chalk.green('skc wait --start'));
+      console.log(chalk.gray('   (or: skc wait daemon start)\n'));
     } else {
       console.log(chalk.green('✓ Auto-resume daemon is running'));
       console.log(chalk.gray('  Your session will resume automatically when the limit clears.\n'));
@@ -114,7 +114,7 @@ export async function waitCommand(options: WaitOptions): Promise<void> {
 
     if (daemonRunning) {
       console.log(chalk.gray('Auto-resume daemon is running (not needed when not rate limited)'));
-      console.log(chalk.gray('Stop with: omc wait --stop\n'));
+      console.log(chalk.gray('Stop with: skc wait --stop\n'));
     }
   }
 }
@@ -219,8 +219,8 @@ export async function waitDaemonCommand(
         console.log(chalk.gray('  • Poll rate limit status every minute'));
         console.log(chalk.gray('  • Track blocked Claude Code sessions in tmux'));
         console.log(chalk.gray('  • Auto-resume sessions when rate limit clears'));
-        console.log(chalk.gray('\nUse "omc wait status" to check daemon status'));
-        console.log(chalk.gray('Use "omc wait daemon stop" to stop the daemon'));
+        console.log(chalk.gray('\nUse "skc wait status" to check daemon status'));
+        console.log(chalk.gray('Use "skc wait daemon stop" to stop the daemon'));
       } else {
         console.error(chalk.red(`✗ ${result.message}`));
         if (result.error) {
@@ -270,7 +270,7 @@ export async function waitDetectCommand(options: WaitDetectOptions): Promise<voi
 
   if (result.state?.blockedPanes && result.state.blockedPanes.length > 0) {
     console.log(chalk.gray('\nTip: Start the daemon to auto-resume when rate limit clears:'));
-    console.log(chalk.gray('  omc wait daemon start'));
+    console.log(chalk.gray('  skc wait daemon start'));
   }
 
   // Also show rate limit status

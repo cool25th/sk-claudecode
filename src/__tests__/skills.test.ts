@@ -128,7 +128,7 @@ describe('Builtin Skills', () => {
     it('should return all skill names', () => {
       const names = listBuiltinSkillNames();
       expect(names).toHaveLength(90);
-      // Core workflow skills (from oh-my-claudecode)
+      // Core workflow skills (from sk-claudecode)
       expect(names).toContain('orchestrate');
       expect(names).toContain('plan');
       expect(names).toContain('autopilot');

@@ -14,7 +14,7 @@ import type { AgentConfig, AgentPromptMetadata } from './types.js';
 const isVerbose = process.env.VERBOSE === '1' || process.env.DEBUG === '1' || process.argv.includes('--verbose');
 if (isVerbose) {
   console.warn(
-    '[oh-my-claudecode] coordinatorAgent and ORCHESTRATOR_SISYPHUS_PROMPT_METADATA are deprecated ' +
+    '[sk-claudecode] coordinatorAgent and ORCHESTRATOR_SISYPHUS_PROMPT_METADATA are deprecated ' +
     'and will be removed in v4.0.0. The coordinator agent was never registered in the runtime agent registry.'
   );
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Oh-My-Claude-Sisyphus CLI
+ * SK-ClaudeCode CLI
  *
  * Command-line interface for the Sisyphus multi-agent system.
  *
@@ -115,7 +115,7 @@ async function displayAnalyticsBanner() {
     const gradient = await import('gradient-string');
     const banner = gradient.default.pastel.multiline([
       '╔═══════════════════════════════════════╗',
-      '║   Oh-My-ClaudeCode - Analytics Dashboard   ║',
+      '║   SK-ClaudeCode - Analytics Dashboard   ║',
       '╚═══════════════════════════════════════╝'
     ].join('\n'));
     console.log(banner);
@@ -123,7 +123,7 @@ async function displayAnalyticsBanner() {
   } catch (error) {
     // Fallback if gradient-string not installed
     console.log('╔═══════════════════════════════════════╗');
-    console.log('║   Oh-My-ClaudeCode - Analytics Dashboard   ║');
+    console.log('║   SK-ClaudeCode - Analytics Dashboard   ║');
     console.log('╚═══════════════════════════════════════╝');
     console.log('');
   }
@@ -299,9 +299,9 @@ program
   .option('--json', 'Output as JSON')
   .addHelpText('after', `
 Examples:
-  $ omc backfill --reset                       Force full re-sync
-  $ omc backfill --project ~/myproject         Backfill specific project
-  $ omc backfill --from 2024-01-01 --verbose   Backfill from date with progress`)
+  $ skc backfill --reset                       Force full re-sync
+  $ skc backfill --project ~/myproject         Backfill specific project
+  $ skc backfill --from 2024-01-01 --verbose   Backfill from date with progress`)
   .action(async (options) => {
     if (!options.reset && !options.project && !options.from && !options.to) {
       console.log(chalk.yellow('Note: Backfill now runs automatically with every omc command.'));
@@ -369,7 +369,7 @@ Examples:
     const targetPath = options.global ? paths.user : paths.project;
     const targetDir = dirname(targetPath);
 
-    console.log(chalk.blue('Oh-My-ClaudeCode Configuration Setup\n'));
+    console.log(chalk.blue('SK-ClaudeCode Configuration Setup\n'));
 
     // Check if config already exists
     if (existsSync(targetPath) && !options.force) {
@@ -385,8 +385,8 @@ Examples:
     }
 
     // Generate config content
-    const configContent = `// Oh-My-ClaudeCode Configuration
-// See: https://github.com/your-repo/oh-my-claudecode for documentation
+    const configContent = `// SK-ClaudeCode Configuration
+// See: https://github.com/your-repo/sk-claudecode for documentation
 {
   "$schema": "./sisyphus-schema.json",
 
@@ -691,7 +691,7 @@ Examples:
   .action(async () => {
     const session = createSisyphusSession();
 
-    console.log(chalk.blue.bold('\nOh-My-ClaudeCode System Information\n'));
+    console.log(chalk.blue.bold('\nSK-ClaudeCode System Information\n'));
     console.log(chalk.gray('━'.repeat(50)));
 
     console.log(chalk.blue('\nAvailable Agents:'));
@@ -768,7 +768,7 @@ Examples:
   $ omc update --force           Force reinstall`)
   .action(async (options) => {
     if (!options.quiet) {
-      console.log(chalk.blue('Oh-My-ClaudeCode Update\n'));
+      console.log(chalk.blue('SK-ClaudeCode Update\n'));
     }
 
     try {
@@ -845,7 +845,7 @@ Examples:
   .action(async () => {
     const installed = getInstalledVersion();
 
-    console.log(chalk.blue.bold('\nOh-My-ClaudeCode Version Information\n'));
+    console.log(chalk.blue.bold('\nSK-ClaudeCode Version Information\n'));
     console.log(chalk.gray('━'.repeat(50)));
 
     console.log(`\n  Package version:   ${chalk.green(version)}`);
@@ -866,7 +866,7 @@ Examples:
     }
 
     console.log(chalk.gray('\n━'.repeat(50)));
-    console.log(chalk.gray('\nTo check for updates, run: oh-my-claudecode update --check'));
+    console.log(chalk.gray('\nTo check for updates, run: sk-claudecode update --check'));
   });
 
 /**
@@ -886,7 +886,7 @@ Examples:
   .action(async (options) => {
     if (!options.quiet) {
       console.log(chalk.blue('╔═══════════════════════════════════════════════════════════╗'));
-      console.log(chalk.blue('║         Oh-My-ClaudeCode Installer                        ║'));
+      console.log(chalk.blue('║         SK-ClaudeCode Installer                        ║'));
       console.log(chalk.blue('║   Multi-Agent Orchestration for Claude Code               ║'));
       console.log(chalk.blue('╚═══════════════════════════════════════════════════════════╝'));
       console.log('');
@@ -984,24 +984,24 @@ Examples:
  * Wait command - Rate limit wait and auto-resume
  *
  * Zero learning curve design:
- * - `omc wait` alone shows status and suggests next action
- * - `omc wait --start` starts the daemon (shortcut)
- * - `omc wait --stop` stops the daemon (shortcut)
+ * - `skc wait` alone shows status and suggests next action
+ * - `skc wait --start` starts the daemon (shortcut)
+ * - `skc wait --stop` stops the daemon (shortcut)
  * - Subcommands available for power users
  */
 const waitCmd = program
   .command('wait')
-  .description('Rate limit wait and auto-resume (just run "omc wait" to get started)')
+  .description('Rate limit wait and auto-resume (just run "skc wait" to get started)')
   .option('--json', 'Output as JSON')
   .option('--start', 'Start the auto-resume daemon')
   .option('--stop', 'Stop the auto-resume daemon')
   .addHelpText('after', `
 Examples:
-  $ omc wait                     Show status and suggestions
-  $ omc wait --start             Start auto-resume daemon
-  $ omc wait --stop              Stop auto-resume daemon
-  $ omc wait status              Show detailed rate limit status
-  $ omc wait detect              Scan for blocked tmux sessions`)
+  $ skc wait                     Show status and suggestions
+  $ skc wait --start             Start auto-resume daemon
+  $ skc wait --stop              Stop auto-resume daemon
+  $ skc wait status              Show detailed rate limit status
+  $ skc wait detect              Scan for blocked tmux sessions`)
   .action(async (options) => {
     await waitCommand(options);
   });
@@ -1022,13 +1022,13 @@ waitCmd
   .option('-i, --interval <seconds>', 'Poll interval in seconds', '60')
   .addHelpText('after', `
 Examples:
-  $ omc wait daemon start            Start background daemon
-  $ omc wait daemon stop             Stop the daemon
-  $ omc wait daemon start -f         Run in foreground`)
+  $ skc wait daemon start            Start background daemon
+  $ skc wait daemon stop             Stop the daemon
+  $ skc wait daemon start -f         Run in foreground`)
   .action(async (action: string, options) => {
     if (action !== 'start' && action !== 'stop') {
       console.error(chalk.red(`Invalid action "${action}". Valid options: start, stop`));
-      console.error(chalk.gray('Example: omc wait daemon start'));
+      console.error(chalk.gray('Example: skc wait daemon start'));
       process.exit(1);
     }
     await waitDaemonCommand(action as 'start' | 'stop', {
@@ -1158,13 +1158,13 @@ program
     });
 
     if (result.success) {
-      console.log(chalk.green('✓ Oh-My-ClaudeCode installed successfully!'));
-      console.log(chalk.gray('  Run "oh-my-claudecode info" to see available agents.'));
+      console.log(chalk.green('✓ SK-ClaudeCode installed successfully!'));
+      console.log(chalk.gray('  Run "sk-claudecode info" to see available agents.'));
       console.log(chalk.yellow('  Run "/sisyphus-default" (project) or "/sisyphus-default-global" (global) in Claude Code.'));
     } else {
       // Don't fail the npm install, just warn
       console.warn(chalk.yellow('⚠ Could not complete Sisyphus setup:'), result.message);
-      console.warn(chalk.gray('  Run "oh-my-claudecode install" manually to complete setup.'));
+      console.warn(chalk.gray('  Run "sk-claudecode install" manually to complete setup.'));
     }
   });
 

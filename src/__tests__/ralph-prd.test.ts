@@ -63,7 +63,7 @@ describe('Ralph PRD Module', () => {
       const omcPath = join(omcDir, PRD_FILENAME);
 
       writeFileSync(rootPath, '{"source": "root"}');
-      writeFileSync(omcPath, '{"source": "omc"}');
+      writeFileSync(omcPath, '{"source": "skc"}');
 
       expect(findPrdPath(testDir)).toBe(rootPath);
     });

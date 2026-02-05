@@ -469,7 +469,7 @@ describe('Installer Constants', () => {
     });
 
     it('should return true when CLAUDE_PLUGIN_ROOT is set', () => {
-      process.env.CLAUDE_PLUGIN_ROOT = '/home/user/.claude/plugins/marketplaces/oh-my-claudecode';
+      process.env.CLAUDE_PLUGIN_ROOT = '/home/user/.claude/plugins/marketplaces/sk-claudecode';
       expect(isRunningAsPlugin()).toBe(true);
     });
 
@@ -501,13 +501,13 @@ describe('Installer Constants', () => {
 
     it('should return false for global plugin installation', () => {
       // Global plugins are under ~/.claude/plugins/
-      process.env.CLAUDE_PLUGIN_ROOT = join(homedir(), '.claude', 'plugins', 'cache', 'omc', 'oh-my-claudecode', '3.9.0');
+      process.env.CLAUDE_PLUGIN_ROOT = join(homedir(), '.claude', 'plugins', 'cache', 'omc', 'sk-claudecode', '3.9.0');
       expect(isProjectScopedPlugin()).toBe(false);
     });
 
     it('should return true for project-scoped plugin installation', () => {
       // Project-scoped plugins are in the project's .claude/plugins/ directory
-      process.env.CLAUDE_PLUGIN_ROOT = '/home/user/myproject/.claude/plugins/oh-my-claudecode';
+      process.env.CLAUDE_PLUGIN_ROOT = '/home/user/myproject/.claude/plugins/sk-claudecode';
       expect(isProjectScopedPlugin()).toBe(true);
     });
 

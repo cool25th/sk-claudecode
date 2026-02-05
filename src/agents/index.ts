@@ -66,10 +66,10 @@ export {
   gitMasterAgent
 } from './definitions.js';
 
-// Core exports (getAgentDefinitions and omcSystemPrompt)
+// Core exports (getAgentDefinitions and skcSystemPrompt)
 export {
   getAgentDefinitions,
-  omcSystemPrompt
+  skcSystemPrompt
 } from './definitions.js';
 
 // Deprecated exports (for backward compatibility)

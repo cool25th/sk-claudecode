@@ -121,7 +121,7 @@ export const loadLocalTool = {
 // Tool 2: load_skc_skills_global
 export const loadGlobalTool = {
   name: 'load_skc_skills_global',
-  description: 'Load and list skills from global user directories (~/.skc/skills/ and ~/.claude/skills/omc-learned/). Returns skill metadata for all discovered user-scoped skills.',
+  description: 'Load and list skills from global user directories (~/.skc/skills/ and ~/.claude/skills/skc-learned/). Returns skill metadata for all discovered user-scoped skills.',
   schema: loadGlobalSchema,
   handler: async (_args: Record<string, never>) => {
     const allSkills = loadAllSkills(null);
@@ -136,9 +136,9 @@ export const loadGlobalTool = {
   },
 };
 
-// Tool 3: list_omc_skills
+// Tool 3: list_skc_skills
 export const listSkillsTool = {
-  name: 'list_omc_skills',
+  name: 'list_skc_skills',
   description: 'List all available skills (both project-local and global user skills). Project skills take priority over user skills with the same ID.',
   schema: listSkillsSchema,
   handler: async (args: { projectRoot?: string }) => {
@@ -158,7 +158,7 @@ export const listSkillsTool = {
     }
 
     if (skills.length === 0) {
-      output = '## No Skills Found\n\nNo skill files were discovered in any searched directories.\n\nSearched:\n- Project: .skc/skills/\n- Global: ~/.skc/skills/\n- Legacy: ~/.claude/skills/omc-learned/';
+      output = '## No Skills Found\n\nNo skill files were discovered in any searched directories.\n\nSearched:\n- Project: .skc/skills/\n- Global: ~/.skc/skills/\n- Legacy: ~/.claude/skills/skc-learned/';
     }
 
     return {

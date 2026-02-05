@@ -452,7 +452,7 @@ export function discoverPlugins(options?: DiscoveryOptions): DiscoveredPlugin[] 
         if (!entry.isDirectory()) continue;
 
         // Skip our own plugin
-        if (entry.name === 'oh-my-claudecode') continue;
+        if (entry.name === 'sk-claudecode') continue;
 
         const pluginPath = join(basePath, entry.name);
         const plugin = discoverPlugin(pluginPath);

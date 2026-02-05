@@ -406,7 +406,7 @@ export class McpBridge extends EventEmitter {
         resources: {},
       },
       clientInfo: {
-        name: 'oh-my-claudecode',
+        name: 'sk-claudecode',
         version: '3.7.2',
       },
     });

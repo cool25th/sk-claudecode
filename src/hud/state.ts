@@ -8,7 +8,7 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { homedir } from 'os';
-import type { OmcHudState, BackgroundTask, HudConfig } from './types.js';
+import type { SkcHudState, BackgroundTask, HudConfig } from './types.js';
 import { DEFAULT_HUD_CONFIG, PRESET_CONFIGS } from './types.js';
 import { cleanupStaleBackgroundTasks, markOrphanedTasksAsStale } from './background-cleanup.js';
 
@@ -21,8 +21,8 @@ import { cleanupStaleBackgroundTasks, markOrphanedTasksAsStale } from './backgro
  */
 function getLocalStateFilePath(directory?: string): string {
   const baseDir = directory || process.cwd();
-  const omcStateDir = join(baseDir, '.skc', 'state');
-  return join(omcStateDir, 'hud-state.json');
+  const skcStateDir = join(baseDir, '.skc', 'state');
+  return join(skcStateDir, 'hud-state.json');
 }
 
 
@@ -45,9 +45,9 @@ function getConfigFilePath(): string {
  */
 function ensureStateDir(directory?: string): void {
   const baseDir = directory || process.cwd();
-  const omcStateDir = join(baseDir, '.skc', 'state');
-  if (!existsSync(omcStateDir)) {
-    mkdirSync(omcStateDir, { recursive: true });
+  const skcStateDir = join(baseDir, '.skc', 'state');
+  if (!existsSync(skcStateDir)) {
+    mkdirSync(skcStateDir, { recursive: true });
   }
 }
 
@@ -60,7 +60,7 @@ function ensureStateDir(directory?: string): void {
 /**
  * Read HUD state from disk (checks new local and legacy local only)
  */
-export function readHudState(directory?: string): OmcHudState | null {
+export function readHudState(directory?: string): SkcHudState | null {
   // Check new local state first (.skc/state/hud-state.json)
   const localStateFile = getLocalStateFilePath(directory);
   if (existsSync(localStateFile)) {
@@ -91,7 +91,7 @@ export function readHudState(directory?: string): OmcHudState | null {
  * Write HUD state to disk (local only)
  */
 export function writeHudState(
-  state: OmcHudState,
+  state: SkcHudState,
   directory?: string
 ): boolean {
   try {
@@ -109,7 +109,7 @@ export function writeHudState(
 /**
  * Create a new empty HUD state
  */
-export function createEmptyHudState(): OmcHudState {
+export function createEmptyHudState(): SkcHudState {
   return {
     timestamp: new Date().toISOString(),
     backgroundTasks: [],
@@ -119,7 +119,7 @@ export function createEmptyHudState(): OmcHudState {
 /**
  * Get running background tasks from state
  */
-export function getRunningTasks(state: OmcHudState | null): BackgroundTask[] {
+export function getRunningTasks(state: SkcHudState | null): BackgroundTask[] {
   if (!state) return [];
   return state.backgroundTasks.filter((task) => task.status === 'running');
 }
@@ -127,7 +127,7 @@ export function getRunningTasks(state: OmcHudState | null): BackgroundTask[] {
 /**
  * Get background task count string (e.g., "3/5")
  */
-export function getBackgroundTaskCount(state: OmcHudState | null): {
+export function getBackgroundTaskCount(state: SkcHudState | null): {
   running: number;
   max: number;
 } {
@@ -147,14 +147,14 @@ export function getBackgroundTaskCount(state: OmcHudState | null): {
  * Priority: settings.json > hud-config.json (legacy) > defaults
  */
 export function readHudConfig(): HudConfig {
-  // 1. Try reading from ~/.claude/settings.json (omcHud key)
+  // 1. Try reading from ~/.claude/settings.json (skcHud key)
   const settingsFile = getSettingsFilePath();
   if (existsSync(settingsFile)) {
     try {
       const content = readFileSync(settingsFile, 'utf-8');
       const settings = JSON.parse(content);
-      if (settings.omcHud) {
-        const config = settings.omcHud as Partial<HudConfig>;
+      if (settings.skcHud) {
+        const config = settings.skcHud as Partial<HudConfig>;
         return mergeWithDefaults(config);
       }
     } catch {
@@ -201,7 +201,7 @@ function mergeWithDefaults(config: Partial<HudConfig>): HudConfig {
 }
 
 /**
- * Write HUD configuration to ~/.claude/settings.json (omcHud key)
+ * Write HUD configuration to ~/.claude/settings.json (skcHud key)
  */
 export function writeHudConfig(config: HudConfig): boolean {
   try {
@@ -214,8 +214,8 @@ export function writeHudConfig(config: HudConfig): boolean {
       settings = JSON.parse(content);
     }
 
-    // Update omcHud key
-    settings.omcHud = config;
+    // Update skcHud key
+    settings.skcHud = config;
     writeFileSync(settingsFile, JSON.stringify(settings, null, 2));
     return true;
   } catch {

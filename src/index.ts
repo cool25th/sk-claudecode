@@ -1,5 +1,5 @@
 /**
- * Oh-My-Claude-Sisyphus
+ * SK-ClaudeCode
  *
  * A multi-agent orchestration system for the Claude Agent SDK.
  * Inspired by oh-my-opencode, reimagined for Claude Code.
@@ -14,9 +14,9 @@
  */
 
 import { loadConfig, findContextFiles, loadContextFromFiles } from './config/loader.js';
-import { getAgentDefinitions, omcSystemPrompt } from './agents/definitions.js';
+import { getAgentDefinitions, skcSystemPrompt } from './agents/definitions.js';
 import { getDefaultMcpServers, toSdkMcpFormat } from './mcp/servers.js';
-import { omcToolsServer, getOmcToolNames } from './mcp/skc-tools-server.js';
+import { skcToolsServer, getSkcToolNames } from './mcp/skc-tools-server.js';
 import { codexMcpServer } from './mcp/codex-server.js';
 import { geminiMcpServer } from './mcp/gemini-server.js';
 import { createMagicKeywordProcessor, detectMagicKeywords } from './features/magic-keywords.js';
@@ -29,10 +29,10 @@ import {
 } from './features/background-tasks.js';
 import type { PluginConfig, SessionState } from './shared/types.js';
 
-export { loadConfig, getAgentDefinitions, omcSystemPrompt };
+export { loadConfig, getAgentDefinitions, skcSystemPrompt };
 export { getDefaultMcpServers, toSdkMcpFormat } from './mcp/servers.js';
 export { lspTools, astTools, allCustomTools } from './tools/index.js';
-export { omcToolsServer, omcToolNames, getOmcToolNames } from './mcp/skc-tools-server.js';
+export { skcToolsServer, skcToolNames, getSkcToolNames } from './mcp/skc-tools-server.js';
 export { createMagicKeywordProcessor, detectMagicKeywords } from './features/magic-keywords.js';
 export {
   createBackgroundTaskManager,
@@ -249,7 +249,7 @@ export interface SisyphusSession {
  *
  * @example
  * ```typescript
- * import { createOmcSession } from 'oh-my-claudecode';
+ * import { createSkcSession } from 'sk-claudecode';
  * import { query } from '@anthropic-ai/claude-agent-sdk';
  *
  * const session = createSisyphusSession();
@@ -281,7 +281,7 @@ export function createSisyphusSession(options?: SisyphusOptions): SisyphusSessio
   }
 
   // Build system prompt
-  let systemPrompt = omcSystemPrompt;
+  let systemPrompt = skcSystemPrompt;
 
   // Add continuation enforcement
   if (config.features?.continuationEnforcement !== false) {
@@ -331,12 +331,12 @@ export function createSisyphusSession(options?: SisyphusOptions): SisyphusSessio
   }
 
   // Add SKC custom tools in MCP format (LSP, AST, python_repl)
-  const omcTools = getOmcToolNames({
+  const skcTools = getSkcToolNames({
     includeLsp: config.features?.lspTools !== false,
     includeAst: config.features?.astTools !== false,
     includePython: true
   });
-  allowedTools.push(...omcTools);
+  allowedTools.push(...skcTools);
 
   // Add Codex and Gemini MCP tool patterns
   allowedTools.push('mcp__x__*');
@@ -362,7 +362,7 @@ export function createSisyphusSession(options?: SisyphusOptions): SisyphusSessio
         agents,
         mcpServers: {
           ...toSdkMcpFormat(externalMcpServers),
-          't': omcToolsServer as any,
+          't': skcToolsServer as any,
           'x': codexMcpServer as any,
           'g': geminiMcpServer as any
         },
@@ -394,11 +394,11 @@ export function enhancePrompt(prompt: string, config?: PluginConfig): string {
 /**
  * Get the system prompt for the orchestrator (for direct use)
  */
-export function getOmcSystemPrompt(options?: {
+export function getSkcSystemPrompt(options?: {
   includeContinuation?: boolean;
   customAddition?: string;
 }): string {
-  let prompt = omcSystemPrompt;
+  let prompt = skcSystemPrompt;
 
   if (options?.includeContinuation !== false) {
     prompt += continuationSystemPromptAddition;

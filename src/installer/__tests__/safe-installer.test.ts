@@ -33,18 +33,18 @@ const TEST_CLAUDE_DIR = join(homedir(), '.claude-test-safe-installer');
 const TEST_SETTINGS_FILE = join(TEST_CLAUDE_DIR, 'settings.json');
 
 describe('isSkcHook', () => {
-  it('returns true for commands containing "omc"', () => {
+  it('returns true for commands containing "skc"', () => {
     expect(isSkcHook('node ~/.claude/hooks/omc-hook.mjs')).toBe(true);
     expect(isSkcHook('bash $HOME/.claude/hooks/omc-detector.sh')).toBe(true);
     expect(isSkcHook('/usr/bin/omc-tool')).toBe(true);
   });
 
-  it('returns true for commands containing "oh-my-claudecode"', () => {
-    expect(isSkcHook('node ~/.claude/hooks/oh-my-claudecode-hook.mjs')).toBe(true);
-    expect(isSkcHook('bash $HOME/.claude/hooks/oh-my-claudecode.sh')).toBe(true);
+  it('returns true for commands containing "sk-claudecode"', () => {
+    expect(isSkcHook('node ~/.claude/hooks/sk-claudecode-hook.mjs')).toBe(true);
+    expect(isSkcHook('bash $HOME/.claude/hooks/sk-claudecode.sh')).toBe(true);
   });
 
-  it('returns false for commands not containing omc or oh-my-claudecode', () => {
+  it('returns false for commands not containing omc or sk-claudecode', () => {
     expect(isSkcHook('node ~/.claude/hooks/other-plugin.mjs')).toBe(false);
     expect(isSkcHook('bash $HOME/.claude/hooks/beads-hook.sh')).toBe(false);
     expect(isSkcHook('python /usr/bin/custom-hook.py')).toBe(false);
@@ -59,7 +59,7 @@ describe('isSkcHook', () => {
 describe('isSkcHook detection', () => {
   it('detects real SKC hooks correctly', () => {
     expect(isSkcHook('node ~/.claude/hooks/omc-hook.mjs')).toBe(true);
-    expect(isSkcHook('node ~/.claude/hooks/oh-my-claudecode-hook.mjs')).toBe(true);
+    expect(isSkcHook('node ~/.claude/hooks/sk-claudecode-hook.mjs')).toBe(true);
     expect(isSkcHook('node ~/.claude/hooks/omc-pre-tool-use.mjs')).toBe(true);
     expect(isSkcHook('/usr/local/bin/omc')).toBe(true);
   });

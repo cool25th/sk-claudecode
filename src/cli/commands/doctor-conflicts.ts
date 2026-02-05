@@ -50,7 +50,7 @@ export function checkHookConflicts(): ConflictReport['hookConflicts'] {
           for (const hook of group.hooks) {
             if (hook.type === 'command' && hook.command) {
               const lowerCmd = hook.command.toLowerCase();
-              const isOmc = lowerCmd.includes('omc') || lowerCmd.includes('oh-my-claudecode');
+              const isOmc = lowerCmd.includes('omc') || lowerCmd.includes('sk-claudecode');
               conflicts.push({ event, command: hook.command, isOmc });
             }
           }
@@ -206,7 +206,7 @@ export function formatReport(report: ConflictReport, json: boolean): string {
   const lines: string[] = [];
 
   lines.push('');
-  lines.push(colors.bold('🔍 Oh-My-ClaudeCode Conflict Diagnostic'));
+  lines.push(colors.bold('🔍 SK-ClaudeCode Conflict Diagnostic'));
   lines.push(colors.gray('━'.repeat(60)));
   lines.push('');
 

@@ -84,24 +84,24 @@ export function getRuntimeDir(): string {
   // Priority 1: XDG_RUNTIME_DIR (Linux standard, usually /run/user/{uid})
   const xdgRuntime = process.env.XDG_RUNTIME_DIR;
   if (xdgRuntime && isSecureRuntimeDir(xdgRuntime)) {
-    return path.join(xdgRuntime, "omc");
+    return path.join(xdgRuntime, "skc");
   }
 
   // Priority 2: Platform-specific user cache directory
   const platform = process.platform;
   if (platform === "darwin") {
-    return path.join(os.homedir(), "Library", "Caches", "omc", "runtime");
+    return path.join(os.homedir(), "Library", "Caches", "skc", "runtime");
   } else if (platform === "linux") {
     // Linux fallback - use /tmp (XDG validation failed)
-    return path.join("/tmp", "omc", "runtime");
+    return path.join("/tmp", "skc", "runtime");
   } else if (platform === "win32") {
     // Windows: use LOCALAPPDATA (e.g., C:\Users\<user>\AppData\Local)
     const localAppData = process.env.LOCALAPPDATA || path.join(os.homedir(), "AppData", "Local");
-    return path.join(localAppData, "omc", "runtime");
+    return path.join(localAppData, "skc", "runtime");
   }
 
   // Priority 3: Final fallback to os.tmpdir() for any other platform
-  return path.join(os.tmpdir(), "omc", "runtime");
+  return path.join(os.tmpdir(), "skc", "runtime");
 }
 
 // =============================================================================

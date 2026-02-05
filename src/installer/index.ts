@@ -89,17 +89,17 @@ export interface InstallOptions {
 }
 
 /**
- * Detect whether a hook command belongs to oh-my-claudecode.
+ * Detect whether a hook command belongs to sk-claudecode.
  *
  * Uses substring matching rather than word-boundary regex.
- * Rationale: Real SKC hooks use compound names where "omc" is embedded
- * (e.g., `omc-pre-tool-use.mjs`, `oh-my-claudecode-hook.mjs`). A word-boundary
- * regex like /\bomc\b/ would fail to match "oh-my-claudecode" since "omc" appears
- * as an interior substring. The theoretical false positives (words containing "omc"
+ * Rationale: Real SKC hooks use compound names where "skc" is embedded
+ * (e.g., `omc-pre-tool-use.mjs`, `sk-claudecode-hook.mjs`). A word-boundary
+ * regex like /\bomc\b/ would fail to match "sk-claudecode" since "skc" appears
+ * as an interior substring. The theoretical false positives (words containing "skc"
  * like "atomic", "socom") are extremely unlikely in real hook command paths.
  *
  * @param command - The hook command string
- * @returns true if the command contains 'omc' or 'oh-my-claudecode'
+ * @returns true if the command contains 'omc' or 'sk-claudecode'
  */
 export function isSkcHook(command: string): boolean {
   const lowerCommand = command.toLowerCase();
@@ -535,9 +535,9 @@ export function install(options: InstallOptions = {}): InstallResult {
         '  // 1. Development paths (only when SKC_DEV=1)',
         '  if (process.env.SKC_DEV === "1") {',
         '    const devPaths = [',
-        '      join(home, "Workspace/oh-my-claudecode/dist/hud/index.js"),',
-        '      join(home, "workspace/oh-my-claudecode/dist/hud/index.js"),',
-        '      join(home, "projects/oh-my-claudecode/dist/hud/index.js"),',
+        '      join(home, "Workspace/sk-claudecode/dist/hud/index.js"),',
+        '      join(home, "workspace/sk-claudecode/dist/hud/index.js"),',
+        '      join(home, "projects/sk-claudecode/dist/hud/index.js"),',
         '    ];',
         '    ',
         '    for (const devPath of devPaths) {',
@@ -553,8 +553,8 @@ export function install(options: InstallOptions = {}): InstallResult {
         '  // 2. Plugin cache (for production installs) - check all possible paths',
         '  const pluginCachePaths = [',
         '    join(home, ".claude/plugins/cache/sk-claudecode/sk-claudecode"),',
-        '    join(home, ".claude/plugins/cache/skc/oh-my-claudecode"),',
-        '    join(home, ".claude/plugins/cache/omc/oh-my-claudecode"),',
+        '    join(home, ".claude/plugins/cache/skc/sk-claudecode"),',
+        '    join(home, ".claude/plugins/cache/omc/sk-claudecode"),',
         '  ];',
         '  for (const pluginCacheBase of pluginCachePaths) {',
         '    if (existsSync(pluginCacheBase)) {',

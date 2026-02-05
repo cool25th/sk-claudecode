@@ -25,7 +25,7 @@ export const USER_SKILLS_DIR = join(
   homedir(),
   ".claude",
   "skills",
-  "omc-learned",
+  "skc-learned",
 );
 export const GLOBAL_SKILLS_DIR = join(homedir(), ".skc", "skills");
 export const PROJECT_SKILLS_SUBDIR = OmcPaths.SKILLS;

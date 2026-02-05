@@ -32,13 +32,13 @@ describe('readHudConfig', () => {
       expect(config).toEqual(DEFAULT_HUD_CONFIG);
     });
 
-    it('reads from settings.json omcHud key first', () => {
+    it('reads from settings.json skcHud key first', () => {
       mockExistsSync.mockImplementation((path) => {
         const s = String(path);
         return /[\\/]Users[\\/]testuser[\\/]\.claude[\\/]settings\.json$/.test(s);
       });
       mockReadFileSync.mockReturnValue(JSON.stringify({
-        omcHud: {
+        skcHud: {
           elements: {
             gitRepo: true,
             gitBranch: true,
@@ -52,7 +52,7 @@ describe('readHudConfig', () => {
       expect(config.elements.gitBranch).toBe(true);
     });
 
-    it('falls back to legacy hud-config.json when settings.json has no omcHud', () => {
+    it('falls back to legacy hud-config.json when settings.json has no skcHud', () => {
       mockExistsSync.mockImplementation((path) => {
         const s = String(path);
         return /[\\/]Users[\\/]testuser[\\/]\.claude[\\/]settings\.json$/.test(s) ||
@@ -84,7 +84,7 @@ describe('readHudConfig', () => {
         const s = String(path);
         if (/[\\/]Users[\\/]testuser[\\/]\.claude[\\/]settings\.json$/.test(s)) {
           return JSON.stringify({
-            omcHud: {
+            skcHud: {
               elements: {
                 gitRepo: true,
               }
@@ -150,7 +150,7 @@ describe('readHudConfig', () => {
         return /[\\/]Users[\\/]testuser[\\/]\.claude[\\/]settings\.json$/.test(s);
       });
       mockReadFileSync.mockReturnValue(JSON.stringify({
-        omcHud: {
+        skcHud: {
           elements: {
             gitRepo: true,
           }
@@ -173,7 +173,7 @@ describe('readHudConfig', () => {
         return /[\\/]Users[\\/]testuser[\\/]\.claude[\\/]settings\.json$/.test(s);
       });
       mockReadFileSync.mockReturnValue(JSON.stringify({
-        omcHud: {
+        skcHud: {
           thresholds: {
             contextWarning: 80,
           }

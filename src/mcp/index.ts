@@ -16,9 +16,9 @@ export type { McpServerConfig, McpServersConfig } from './servers.js';
 
 // SKC Tools Server - in-process MCP server for custom tools
 export {
-  omcToolsServer,
-  omcToolNames,
-  getOmcToolNames
+  skcToolsServer,
+  skcToolNames,
+  getSkcToolNames
 } from './skc-tools-server.js';
 
 // Codex MCP Server - in-process MCP server for Codex CLI integration

@@ -90,7 +90,7 @@ export async function statsCommand(options: { json?: boolean; session?: string }
     } else {
       // Agent tracking is not available when using tokscale
       console.log(colors.gray('\nNo agent data available. Run backfill to enable agent tracking:'));
-      console.log(colors.cyan('  omc backfill'));
+      console.log(colors.cyan('  skc backfill'));
     }
 
     console.log('');

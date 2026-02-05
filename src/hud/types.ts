@@ -24,7 +24,7 @@ export interface BackgroundTask {
   exitCode?: number; // For tracking abnormal termination
 }
 
-export interface OmcHudState {
+export interface SkcHudState {
   timestamp: string;
   backgroundTasks: BackgroundTask[];
 }

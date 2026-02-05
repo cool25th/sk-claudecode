@@ -19593,18 +19593,18 @@ function isSecureRuntimeDir(dir) {
 function getRuntimeDir() {
   const xdgRuntime = process.env.XDG_RUNTIME_DIR;
   if (xdgRuntime && isSecureRuntimeDir(xdgRuntime)) {
-    return path.join(xdgRuntime, "omc");
+    return path.join(xdgRuntime, "skc");
   }
   const platform = process.platform;
   if (platform === "darwin") {
-    return path.join(os.homedir(), "Library", "Caches", "omc", "runtime");
+    return path.join(os.homedir(), "Library", "Caches", "skc", "runtime");
   } else if (platform === "linux") {
-    return path.join("/tmp", "omc", "runtime");
+    return path.join("/tmp", "skc", "runtime");
   } else if (platform === "win32") {
     const localAppData = process.env.LOCALAPPDATA || path.join(os.homedir(), "AppData", "Local");
-    return path.join(localAppData, "omc", "runtime");
+    return path.join(localAppData, "skc", "runtime");
   }
-  return path.join(os.tmpdir(), "omc", "runtime");
+  return path.join(os.tmpdir(), "skc", "runtime");
 }
 function shortenSessionId(sessionId) {
   return crypto.createHash("sha256").update(sessionId).digest("hex").slice(0, SHORT_SESSION_ID_LENGTH);

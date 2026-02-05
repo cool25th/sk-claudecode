@@ -154,13 +154,13 @@ describe('Discovery System', () => {
       expect(plugins).toHaveLength(0);
     });
 
-    it('should skip oh-my-claudecode plugin directory', () => {
-      createTestPlugin('oh-my-claudecode', {
+    it('should skip sk-claudecode plugin directory', () => {
+      createTestPlugin('sk-claudecode', {
         description: 'Should be skipped',
       });
 
       const plugins = discoverPlugins({ pluginPaths: [TEST_PLUGINS_DIR] });
-      const omcPlugin = plugins.find(p => p.name === 'oh-my-claudecode');
+      const omcPlugin = plugins.find(p => p.name === 'sk-claudecode');
       expect(omcPlugin).toBeUndefined();
     });
   });

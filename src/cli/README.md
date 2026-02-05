@@ -1,10 +1,10 @@
 # SKC Analytics CLI
 
-Command-line interface for Oh-My-ClaudeCode analytics, token tracking, cost reports, and session management.
+Command-line interface for SK-ClaudeCode analytics, token tracking, cost reports, and session management.
 
 ## Installation
 
-After installing oh-my-claudecode:
+After installing sk-claudecode:
 
 ```bash
 npm install -g oh-my-claude-sisyphus

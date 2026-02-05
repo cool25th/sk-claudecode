@@ -316,7 +316,7 @@ export function shouldDelegate(toolName: string): boolean {
   }
 
   // Skills and agents from external plugins
-  if ((tool.type === 'skill' || tool.type === 'agent') && tool.source !== 'oh-my-claudecode') {
+  if ((tool.type === 'skill' || tool.type === 'agent') && tool.source !== 'sk-claudecode') {
     return true;
   }
 
@@ -353,7 +353,7 @@ export function getDelegationTarget(toolName: string): {
 
   return {
     type: 'internal',
-    target: 'oh-my-claudecode',
+    target: 'sk-claudecode',
   };
 }
 

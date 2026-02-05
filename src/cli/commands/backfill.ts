@@ -43,7 +43,7 @@ function clearLine(): void {
 }
 
 /**
- * omc backfill command handler
+ * skc backfill command handler
  */
 export async function backfillCommand(options: BackfillCommandOptions): Promise<void> {
   // Handle --reset flag

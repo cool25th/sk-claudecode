@@ -49,8 +49,8 @@ describe('Multi-Model MCP Integration', () => {
       const session = createSisyphusSession();
       const allowedTools = session.queryOptions.options.allowedTools;
 
-      const omcTools = allowedTools.filter((t: string) => t.startsWith('mcp__t__'));
-      expect(omcTools.length).toBeGreaterThan(0);
+      const skcTools = allowedTools.filter((t: string) => t.startsWith('mcp__t__'));
+      expect(skcTools.length).toBeGreaterThan(0);
     });
 
     it('should export Codex and Gemini servers from main module', async () => {
@@ -82,9 +82,9 @@ describe('Multi-Model MCP Integration', () => {
     it('should export SKC Tools server from mcp module', async () => {
       const mcp = await import('../mcp/index.js');
 
-      expect(mcp.omcToolsServer).toBeDefined();
-      expect(mcp.omcToolNames).toBeDefined();
-      expect(mcp.getOmcToolNames).toBeDefined();
+      expect(mcp.skcToolsServer).toBeDefined();
+      expect(mcp.skcToolNames).toBeDefined();
+      expect(mcp.getSkcToolNames).toBeDefined();
     });
   });
 });

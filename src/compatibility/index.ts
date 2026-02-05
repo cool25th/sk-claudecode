@@ -1,7 +1,7 @@
 /**
  * Compatibility Layer Module
  *
- * MCP/Plugin compatibility layer for oh-my-claudecode.
+ * MCP/Plugin compatibility layer for sk-claudecode.
  * Enables SKC to discover, register, and use external plugins, tools, and MCP servers.
  *
  * Usage:

@@ -50,7 +50,7 @@ describe('skills-tools', () => {
 
   describe('listSkillsTool', () => {
     it('should have correct name and description', () => {
-      expect(listSkillsTool.name).toBe('list_omc_skills');
+      expect(listSkillsTool.name).toBe('list_skc_skills');
       expect(listSkillsTool.description).toContain('all available');
     });
 

@@ -1,7 +1,7 @@
 /**
  * Auto-Update System
  *
- * Provides version checking and auto-update functionality for oh-my-claudecode.
+ * Provides version checking and auto-update functionality for sk-claudecode.
  *
  * Features:
  * - Check for new versions from GitHub releases
@@ -18,7 +18,7 @@ import { TaskTool } from '../hooks/beads-context/types.js';
 
 /** GitHub repository information */
 export const REPO_OWNER = 'Yeachan-Heo';
-export const REPO_NAME = 'oh-my-claudecode';
+export const REPO_NAME = 'sk-claudecode';
 export const GITHUB_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
 export const GITHUB_RAW_URL = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}`;
 
@@ -264,7 +264,7 @@ export async function fetchLatestRelease(): Promise<ReleaseInfo> {
   const response = await fetch(`${GITHUB_API_URL}/releases/latest`, {
     headers: {
       'Accept': 'application/vnd.github.v3+json',
-      'User-Agent': 'oh-my-claudecode-updater'
+      'User-Agent': 'sk-claudecode-updater'
     }
   });
 
@@ -272,7 +272,7 @@ export async function fetchLatestRelease(): Promise<ReleaseInfo> {
     // No releases found - try to get version from package.json in repo
     const pkgResponse = await fetch(`${GITHUB_RAW_URL}/main/package.json`, {
       headers: {
-        'User-Agent': 'oh-my-claudecode-updater'
+        'User-Agent': 'sk-claudecode-updater'
       }
     });
 
@@ -390,7 +390,7 @@ export async function performUpdate(options?: {
       throw new Error(
         'Auto-update via npm failed. Please run manually:\n' +
         '  npm install -g oh-my-claude-sisyphus@latest\n' +
-        'Or use: /plugin install oh-my-claudecode\n' +
+        'Or use: /plugin install sk-claudecode\n' +
         `Error: ${npmError instanceof Error ? npmError.message : npmError}`
       );
     }
@@ -411,19 +411,19 @@ export async function performUpdate(options?: {
  */
 export function formatUpdateNotification(checkResult: UpdateCheckResult): string {
   if (!checkResult.updateAvailable) {
-    return `oh-my-claudecode is up to date (v${checkResult.currentVersion ?? 'unknown'})`;
+    return `sk-claudecode is up to date (v${checkResult.currentVersion ?? 'unknown'})`;
   }
 
   const lines = [
     '╔═══════════════════════════════════════════════════════════╗',
-    '║           oh-my-claudecode Update Available!              ║',
+    '║           sk-claudecode Update Available!              ║',
     '╚═══════════════════════════════════════════════════════════╝',
     '',
     `  Current version: ${checkResult.currentVersion ?? 'unknown'}`,
     `  Latest version:  ${checkResult.latestVersion}`,
     '',
     '  To update, run: /update',
-    '  Or reinstall via: /plugin install oh-my-claudecode',
+    '  Or reinstall via: /plugin install sk-claudecode',
     ''
   ];
 
@@ -534,7 +534,7 @@ export interface SilentUpdateConfig {
 }
 
 /** State file for tracking silent update status */
-const SILENT_UPDATE_STATE_FILE = join(CLAUDE_CONFIG_DIR, '.omc-silent-update.json');
+const SILENT_UPDATE_STATE_FILE = join(CLAUDE_CONFIG_DIR, '.skc-silent-update.json');
 
 interface SilentUpdateState {
   lastAttempt?: string;
@@ -609,7 +609,7 @@ export async function silentAutoUpdate(config: SilentUpdateConfig = {}): Promise
   const {
     checkIntervalHours = 24,
     autoApply = true,
-    logFile = join(CLAUDE_CONFIG_DIR, '.omc-update.log'),
+    logFile = join(CLAUDE_CONFIG_DIR, '.skc-update.log'),
     maxRetries = 3
   } = config;
 

@@ -187,7 +187,7 @@ export {
   checkBoulderContinuation,
   processOrchestratorPreTool,
   processOrchestratorPostTool,
-  HOOK_NAME as OMC_ORCHESTRATOR_HOOK_NAME,
+  HOOK_NAME as SKC_ORCHESTRATOR_HOOK_NAME,
   ALLOWED_PATH_PREFIX,
   WRITE_EDIT_TOOLS,
   DIRECT_WORK_REMINDER,
@@ -197,7 +197,7 @@ export {
   SINGLE_TASK_DIRECTIVE,
   type ToolExecuteInput as OrchestratorToolInput,
   type ToolExecuteOutput as OrchestratorToolOutput
-} from './omc-orchestrator/index.js';
+} from './skc-orchestrator/index.js';
 
 export {
   // Auto Slash Command

@@ -1,7 +1,7 @@
 import { readState, writeState, StateLocation } from '../features/state-manager/index.js';
 import { SessionMetadata, SessionAnalytics, SessionHistory, SessionSummary, SessionTag } from './session-types.js';
 import { getTokenTracker } from './token-tracker.js';
-import { getGitDiffStats } from '../hooks/omc-orchestrator/index.js';
+import { getGitDiffStats } from '../hooks/skc-orchestrator/index.js';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 

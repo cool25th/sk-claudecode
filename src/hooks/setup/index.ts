@@ -45,15 +45,15 @@ export interface HookOutput {
 // ============================================================================
 
 const REQUIRED_DIRECTORIES = [
-  '.omc/state',
-  '.omc/logs',
-  '.omc/notepads',
-  '.omc/state/checkpoints',
-  '.omc/plans',
+  '.skc/state',
+  '.skc/logs',
+  '.skc/notepads',
+  '.skc/state/checkpoints',
+  '.skc/plans',
 ];
 
 const CONFIG_FILES = [
-  '.omc-config.json',
+  '.skc-config.json',
 ];
 
 const DEFAULT_STATE_MAX_AGE_DAYS = 7;
@@ -114,9 +114,9 @@ export function setEnvironmentVariables(): string[] {
   // Check if CLAUDE_ENV_FILE is available
   if (process.env.CLAUDE_ENV_FILE) {
     try {
-      const envContent = `export OMC_INITIALIZED=true\n`;
+      const envContent = `export SKC_INITIALIZED=true\n`;
       appendFileSync(process.env.CLAUDE_ENV_FILE, envContent);
-      envVars.push('OMC_INITIALIZED');
+      envVars.push('SKC_INITIALIZED');
     } catch {
       // Silently fail if can't write
     }
@@ -180,10 +180,10 @@ export async function processSetupInit(input: SetupInput): Promise<HookOutput> {
 // ============================================================================
 
 /**
- * Prune old state files from .omc/state directory
+ * Prune old state files from .skc/state directory
  */
 export function pruneOldStateFiles(directory: string, maxAgeDays: number = DEFAULT_STATE_MAX_AGE_DAYS): number {
-  const stateDir = join(directory, '.omc/state');
+  const stateDir = join(directory, '.skc/state');
   if (!existsSync(stateDir)) {
     return 0;
   }
@@ -236,7 +236,7 @@ export function pruneOldStateFiles(directory: string, maxAgeDays: number = DEFAU
  * Clean up orphaned state files (state files without corresponding active sessions)
  */
 export function cleanupOrphanedState(directory: string): number {
-  const stateDir = join(directory, '.omc/state');
+  const stateDir = join(directory, '.skc/state');
   if (!existsSync(stateDir)) {
     return 0;
   }
@@ -279,7 +279,7 @@ export function cleanupOrphanedState(directory: string): number {
  * Run VACUUM on swarm SQLite database if it exists
  */
 export function vacuumSwarmDb(directory: string): boolean {
-  const swarmDbPath = join(directory, '.omc/state/swarm.db');
+  const swarmDbPath = join(directory, '.skc/state/swarm.db');
 
   if (!existsSync(swarmDbPath)) {
     return false; // Database doesn't exist

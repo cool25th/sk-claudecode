@@ -16,7 +16,7 @@
 import { loadConfig, findContextFiles, loadContextFromFiles } from './config/loader.js';
 import { getAgentDefinitions, omcSystemPrompt } from './agents/definitions.js';
 import { getDefaultMcpServers, toSdkMcpFormat } from './mcp/servers.js';
-import { omcToolsServer, getOmcToolNames } from './mcp/omc-tools-server.js';
+import { omcToolsServer, getOmcToolNames } from './mcp/skc-tools-server.js';
 import { codexMcpServer } from './mcp/codex-server.js';
 import { geminiMcpServer } from './mcp/gemini-server.js';
 import { createMagicKeywordProcessor, detectMagicKeywords } from './features/magic-keywords.js';
@@ -32,7 +32,7 @@ import type { PluginConfig, SessionState } from './shared/types.js';
 export { loadConfig, getAgentDefinitions, omcSystemPrompt };
 export { getDefaultMcpServers, toSdkMcpFormat } from './mcp/servers.js';
 export { lspTools, astTools, allCustomTools } from './tools/index.js';
-export { omcToolsServer, omcToolNames, getOmcToolNames } from './mcp/omc-tools-server.js';
+export { omcToolsServer, omcToolNames, getOmcToolNames } from './mcp/skc-tools-server.js';
 export { createMagicKeywordProcessor, detectMagicKeywords } from './features/magic-keywords.js';
 export {
   createBackgroundTaskManager,

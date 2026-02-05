@@ -2,16 +2,16 @@
  * State Manager Types
  *
  * Type definitions for unified state management across
- * local (.omc/state/) and global (~/.omc/state/) locations.
+ * local (.skc/state/) and global (~/.skc/state/) locations.
  */
 
 /**
  * Location where state should be stored
  */
 export enum StateLocation {
-  /** Local project state: .omc/state/{name}.json */
+  /** Local project state: .skc/state/{name}.json */
   LOCAL = 'local',
-  /** Global user state: ~/.omc/state/{name}.json */
+  /** Global user state: ~/.skc/state/{name}.json */
   GLOBAL = 'global'
 }
 

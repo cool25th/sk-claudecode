@@ -41,7 +41,7 @@ describe("Skill Bridge Module", () => {
   });
 
   describe("findSkillFiles", () => {
-    it("should discover skills in project .omc/skills/", () => {
+    it("should discover skills in project .skc/skills/", () => {
       const skillsDir = join(testProjectRoot, ".omc", "skills");
       mkdirSync(skillsDir, { recursive: true });
 

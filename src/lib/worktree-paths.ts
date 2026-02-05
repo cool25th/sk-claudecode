@@ -1,7 +1,7 @@
 /**
  * Worktree Path Enforcement
  *
- * Provides strict path validation and resolution for .omc/ paths,
+ * Provides strict path validation and resolution for .skc/ paths,
  * ensuring all operations stay within the worktree boundary.
  */
 
@@ -12,17 +12,17 @@ import { resolve, normalize, relative, sep, join, isAbsolute } from 'path';
 /** Standard .omc subdirectories */
 export const OmcPaths = {
   ROOT: '.omc',
-  STATE: '.omc/state',
-  PLANS: '.omc/plans',
-  RESEARCH: '.omc/research',
-  NOTEPAD: '.omc/notepad.md',
-  PROJECT_MEMORY: '.omc/project-memory.json',
-  DRAFTS: '.omc/drafts',
-  NOTEPADS: '.omc/notepads',
-  LOGS: '.omc/logs',
-  SCIENTIST: '.omc/scientist',
-  AUTOPILOT: '.omc/autopilot',
-  SKILLS: '.omc/skills',
+  STATE: '.skc/state',
+  PLANS: '.skc/plans',
+  RESEARCH: '.skc/research',
+  NOTEPAD: '.skc/notepad.md',
+  PROJECT_MEMORY: '.skc/project-memory.json',
+  DRAFTS: '.skc/drafts',
+  NOTEPADS: '.skc/notepads',
+  LOGS: '.skc/logs',
+  SCIENTIST: '.skc/scientist',
+  AUTOPILOT: '.skc/autopilot',
+  SKILLS: '.skc/skills',
 } as const;
 
 /** Cache for worktree root to avoid repeated git calls */
@@ -76,10 +76,10 @@ export function validatePath(inputPath: string): void {
 }
 
 /**
- * Resolve a relative path under .omc/ to an absolute path.
+ * Resolve a relative path under .skc/ to an absolute path.
  * Validates the path is within the worktree boundary.
  *
- * @param relativePath - Path relative to .omc/ (e.g., "state/ralph.json")
+ * @param relativePath - Path relative to .skc/ (e.g., "state/ralph.json")
  * @param worktreeRoot - Optional worktree root (auto-detected if not provided)
  * @returns Absolute path
  * @throws Error if path would escape worktree
@@ -125,10 +125,10 @@ export function resolveStatePath(stateName: string, worktreeRoot?: string): stri
 }
 
 /**
- * Ensure a directory exists under .omc/.
+ * Ensure a directory exists under .skc/.
  * Creates parent directories as needed.
  *
- * @param relativePath - Path relative to .omc/
+ * @param relativePath - Path relative to .skc/
  * @param worktreeRoot - Optional worktree root
  * @returns Absolute path to the created directory
  */

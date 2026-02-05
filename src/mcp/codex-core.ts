@@ -39,8 +39,8 @@ function validateModelName(model: string): void {
 }
 
 // Default model can be overridden via environment variable
-export const CODEX_DEFAULT_MODEL = process.env.OMC_CODEX_DEFAULT_MODEL || 'gpt-5.2';
-export const CODEX_TIMEOUT = Math.min(Math.max(5000, parseInt(process.env.OMC_CODEX_TIMEOUT || '3600000', 10) || 3600000), 3600000);
+export const CODEX_DEFAULT_MODEL = process.env.SKC_CODEX_DEFAULT_MODEL || 'gpt-5.2';
+export const CODEX_TIMEOUT = Math.min(Math.max(5000, parseInt(process.env.SKC_CODEX_TIMEOUT || '3600000', 10) || 3600000), 3600000);
 
 // Codex is best for analytical/planning tasks
 export const CODEX_VALID_ROLES = ['architect', 'planner', 'critic', 'analyst', 'code-reviewer', 'security-reviewer', 'tdd-guide'] as const;
@@ -416,7 +416,7 @@ export async function handleAskCodex(args: {
   // Check if deprecated 'prompt' parameter is being used
   if ('prompt' in (args as Record<string, unknown>)) {
     return {
-      content: [{ type: 'text' as const, text: "The 'prompt' parameter has been removed. Write the prompt to a file (recommended: .omc/prompts/) and pass 'prompt_file' instead." }],
+      content: [{ type: 'text' as const, text: "The 'prompt' parameter has been removed. Write the prompt to a file (recommended: .skc/prompts/) and pass 'prompt_file' instead." }],
       isError: true
     };
   }

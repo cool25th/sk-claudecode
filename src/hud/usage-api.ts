@@ -254,7 +254,7 @@ function refreshAccessToken(refreshToken: string): Promise<OAuthCredentials | nu
               // JSON parse failed
             }
           }
-          if (process.env.OMC_DEBUG) {
+          if (process.env.SKC_DEBUG) {
             console.error(`[usage-api] Token refresh failed: HTTP ${res.statusCode}`);
           }
           resolve(null);
@@ -367,7 +367,7 @@ function writeBackCredentials(creds: OAuthCredentials): void {
     }
   } catch {
     // Silent failure - credential write-back is best-effort
-    if (process.env.OMC_DEBUG) {
+    if (process.env.SKC_DEBUG) {
       console.error('[usage-api] Failed to write back refreshed credentials');
     }
   }

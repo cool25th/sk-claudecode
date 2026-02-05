@@ -60,7 +60,7 @@ Output as structured markdown."
 ### Step 3: Save Combined Spec
 
 Combine Analyst requirements + Architect technical spec into a single document.
-Save to: \`.omc/autopilot/spec.md\`
+Save to: \`.skc/autopilot/spec.md\`
 
 ### Step 4: Signal Completion
 
@@ -113,7 +113,7 @@ Generate a comprehensive implementation plan with:
    - Identified risks
    - Mitigation strategies
 
-Save to: .omc/plans/autopilot-impl.md
+Save to: .skc/plans/autopilot-impl.md
 
 Signal completion with: PLAN_CREATED"
 )
@@ -129,7 +129,7 @@ Task(
   model="opus",
   prompt="REVIEW IMPLEMENTATION PLAN
 
-Plan file: .omc/plans/autopilot-impl.md
+Plan file: .skc/plans/autopilot-impl.md
 Original spec: ${specPath}
 
 Verify:
@@ -367,13 +367,13 @@ export function getPhasePrompt(
     case 'expansion':
       return getExpansionPrompt(context.idea || '');
     case 'planning':
-      return getDirectPlanningPrompt(context.specPath || '.omc/autopilot/spec.md');
+      return getDirectPlanningPrompt(context.specPath || '.skc/autopilot/spec.md');
     case 'execution':
-      return getExecutionPrompt(context.planPath || '.omc/plans/autopilot-impl.md');
+      return getExecutionPrompt(context.planPath || '.skc/plans/autopilot-impl.md');
     case 'qa':
       return getQAPrompt();
     case 'validation':
-      return getValidationPrompt(context.specPath || '.omc/autopilot/spec.md');
+      return getValidationPrompt(context.specPath || '.skc/autopilot/spec.md');
     default:
       return '';
   }

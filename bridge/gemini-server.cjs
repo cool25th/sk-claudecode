@@ -14045,8 +14045,8 @@ function validateModelName(model) {
     throw new Error(`Invalid model name: "${model}". Model names must match pattern: alphanumeric start, followed by alphanumeric, dots, hyphens, or underscores (max 64 chars).`);
   }
 }
-var GEMINI_DEFAULT_MODEL = process.env.OMC_GEMINI_DEFAULT_MODEL || "gemini-3-pro-preview";
-var GEMINI_TIMEOUT = Math.min(Math.max(5e3, parseInt(process.env.OMC_GEMINI_TIMEOUT || "3600000", 10) || 36e5), 36e5);
+var GEMINI_DEFAULT_MODEL = process.env.SKC_GEMINI_DEFAULT_MODEL || "gemini-3-pro-preview";
+var GEMINI_TIMEOUT = Math.min(Math.max(5e3, parseInt(process.env.SKC_GEMINI_TIMEOUT || "3600000", 10) || 36e5), 36e5);
 var GEMINI_MODEL_FALLBACKS = [
   "gemini-3-pro-preview",
   "gemini-3-flash-preview",
@@ -14306,7 +14306,7 @@ async function handleAskGemini(args) {
   }
   if ("prompt" in args) {
     return {
-      content: [{ type: "text", text: "The 'prompt' parameter has been removed. Write the prompt to a file (recommended: .omc/prompts/) and pass 'prompt_file' instead." }],
+      content: [{ type: "text", text: "The 'prompt' parameter has been removed. Write the prompt to a file (recommended: .skc/prompts/) and pass 'prompt_file' instead." }],
       isError: true
     };
   }
@@ -14570,8 +14570,8 @@ var spawnedPids2 = /* @__PURE__ */ new Set();
 function isSpawnedPid2(pid) {
   return spawnedPids2.has(pid);
 }
-var CODEX_DEFAULT_MODEL = process.env.OMC_CODEX_DEFAULT_MODEL || "gpt-5.2";
-var CODEX_TIMEOUT = Math.min(Math.max(5e3, parseInt(process.env.OMC_CODEX_TIMEOUT || "3600000", 10) || 36e5), 36e5);
+var CODEX_DEFAULT_MODEL = process.env.SKC_CODEX_DEFAULT_MODEL || "gpt-5.2";
+var CODEX_TIMEOUT = Math.min(Math.max(5e3, parseInt(process.env.SKC_CODEX_TIMEOUT || "3600000", 10) || 36e5), 36e5);
 var MAX_FILE_SIZE2 = 5 * 1024 * 1024;
 
 // src/mcp/job-management.ts
@@ -14960,7 +14960,7 @@ var askGeminiTool = {
       prompt_file: { type: "string", description: "Path to file containing the prompt" },
       output_file: { type: "string", description: "Required. Path to write response. Response content is NOT returned inline - read from this file." },
       files: { type: "array", items: { type: "string" }, description: "File paths to include as context (contents will be prepended to prompt)" },
-      model: { type: "string", description: `Gemini model to use (default: ${GEMINI_DEFAULT_MODEL}). Set OMC_GEMINI_DEFAULT_MODEL env var to change default. Auto-fallback chain: ${GEMINI_MODEL_FALLBACKS.join(" \u2192 ")}.` },
+      model: { type: "string", description: `Gemini model to use (default: ${GEMINI_DEFAULT_MODEL}). Set SKC_GEMINI_DEFAULT_MODEL env var to change default. Auto-fallback chain: ${GEMINI_MODEL_FALLBACKS.join(" \u2192 ")}.` },
       background: { type: "boolean", description: "Run in background (non-blocking). Returns immediately with job metadata and file paths. Check response file for completion." },
       working_directory: { type: "string", description: "Working directory for path resolution and CLI execution. Defaults to process.cwd()." }
     },

@@ -11,7 +11,7 @@ This skill provides a guided wizard for setting up and managing your local learn
 ## Why Local Skills?
 
 Local skills allow you to capture hard-won insights and solutions that are specific to your codebase or workflow:
-- **Project-level skills** (.omc/skills/) - Version-controlled with your repo
+- **Project-level skills** (.skc/skills/) - Version-controlled with your repo
 - **User-level skills** (~/.claude/skills/omc-learned/) - Portable across all your projects
 
 When you solve a tricky bug or discover a non-obvious workaround, you can extract it as a skill. Claude will automatically detect and apply these skills in future conversations when it sees matching triggers.
@@ -33,7 +33,7 @@ else
 fi
 
 # Check and create project-level skills directory
-PROJECT_SKILLS_DIR=".omc/skills"
+PROJECT_SKILLS_DIR=".skc/skills"
 if [ -d "$PROJECT_SKILLS_DIR" ]; then
   echo "Project skills directory exists: $PROJECT_SKILLS_DIR"
 else
@@ -72,15 +72,15 @@ else
 fi
 
 echo ""
-echo "=== PROJECT-LEVEL SKILLS (.omc/skills/) ==="
-if [ -d ".omc/skills" ]; then
-  PROJECT_COUNT=$(find ".omc/skills" -name "*.md" 2>/dev/null | wc -l)
+echo "=== PROJECT-LEVEL SKILLS (.skc/skills/) ==="
+if [ -d ".skc/skills" ]; then
+  PROJECT_COUNT=$(find ".skc/skills" -name "*.md" 2>/dev/null | wc -l)
   echo "Total skills: $PROJECT_COUNT"
 
   if [ $PROJECT_COUNT -gt 0 ]; then
     echo ""
     echo "Skills found:"
-    find ".omc/skills" -name "*.md" -type f -exec sh -c '
+    find ".skc/skills" -name "*.md" -type f -exec sh -c '
       FILE="$1"
       NAME=$(grep -m1 "^name:" "$FILE" 2>/dev/null | sed "s/name: //")
       DESC=$(grep -m1 "^description:" "$FILE" 2>/dev/null | sed "s/description: //")
@@ -168,9 +168,9 @@ if [ -d "$HOME/.claude/skills/omc-learned" ]; then
 fi
 
 # Show project-level skills
-if [ -d ".omc/skills" ]; then
+if [ -d ".skc/skills" ]; then
   echo "PROJECT-LEVEL SKILLS:"
-  find ".omc/skills" -name "*.md" -type f -exec bash -c 'show_skill_details "$0" "project-level"' {} \;
+  find ".skc/skills" -name "*.md" -type f -exec bash -c 'show_skill_details "$0" "project-level"' {} \;
 fi
 ```
 
@@ -192,7 +192,7 @@ Ask user to provide either:
 
 Then ask for scope:
 - **User-level** (~/.claude/skills/omc-learned/) - Available across all projects
-- **Project-level** (.omc/skills/) - Only for this project
+- **Project-level** (.skc/skills/) - Only for this project
 
 Validate the skill format and save to the chosen location.
 
@@ -398,7 +398,7 @@ When introducing the skill system, explain these benefits:
 
 **Automatic Application**: Claude detects triggers and applies skills automatically - no need to remember or search for solutions.
 
-**Version Control**: Project-level skills (.omc/skills/) are committed with your code, so the whole team benefits.
+**Version Control**: Project-level skills (.skc/skills/) are committed with your code, so the whole team benefits.
 
 **Evolving Knowledge**: Skills improve over time as you discover better approaches and refine triggers.
 
@@ -421,7 +421,7 @@ Show users what a typical session looks like:
 
 Checking skill directories...
 ✓ User skills directory exists: ~/.claude/skills/omc-learned/
-✓ Project skills directory exists: .omc/skills/
+✓ Project skills directory exists: .skc/skills/
 
 Scanning for skills...
 

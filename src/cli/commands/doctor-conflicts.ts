@@ -113,8 +113,8 @@ export function checkEnvFlags(): ConflictReport['envFlags'] {
   const disableOmc = process.env.DISABLE_OMC === 'true' || process.env.DISABLE_OMC === '1';
   const skipHooks: string[] = [];
 
-  if (process.env.OMC_SKIP_HOOKS) {
-    skipHooks.push(...process.env.OMC_SKIP_HOOKS.split(',').map(h => h.trim()));
+  if (process.env.SKC_SKIP_HOOKS) {
+    skipHooks.push(...process.env.SKC_SKIP_HOOKS.split(',').map(h => h.trim()));
   }
 
   return { disableOmc, skipHooks };
@@ -125,7 +125,7 @@ export function checkEnvFlags(): ConflictReport['envFlags'] {
  */
 export function checkConfigIssues(): ConflictReport['configIssues'] {
   const unknownFields: string[] = [];
-  const configPath = join(homedir(), '.claude', '.omc-config.json');
+  const configPath = join(homedir(), '.claude', '.skc-config.json');
 
   if (!existsSync(configPath)) {
     return { unknownFields };
@@ -261,7 +261,7 @@ export function formatReport(report: ConflictReport, json: boolean): string {
   }
 
   if (report.envFlags.skipHooks.length > 0) {
-    lines.push(`  ${colors.yellow('⚠')} OMC_SKIP_HOOKS: ${report.envFlags.skipHooks.join(', ')}`);
+    lines.push(`  ${colors.yellow('⚠')} SKC_SKIP_HOOKS: ${report.envFlags.skipHooks.join(', ')}`);
   } else {
     lines.push(`  ${colors.green('✓')} No hooks are being skipped`);
   }
@@ -271,7 +271,7 @@ export function formatReport(report: ConflictReport, json: boolean): string {
   if (report.configIssues.unknownFields.length > 0) {
     lines.push(colors.bold('⚙️  Configuration Issues'));
     lines.push('');
-    lines.push(`  ${colors.yellow('⚠')} Unknown fields in .omc-config.json:`);
+    lines.push(`  ${colors.yellow('⚠')} Unknown fields in .skc-config.json:`);
     for (const field of report.configIssues.unknownFields) {
       lines.push(`    - ${field}`);
     }

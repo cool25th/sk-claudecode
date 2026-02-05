@@ -8,9 +8,9 @@ Handles OMC initialization and maintenance tasks.
 Initializes OMC directory structure and environment on first run or explicit setup.
 
 **What it does:**
-- Creates required directories: `.omc/state/`, `.omc/logs/`, `.omc/notepads/`, `.omc/state/checkpoints/`, `.omc/plans/`
-- Validates existing config files (`.omc-config.json`)
-- Sets environment variables (`OMC_INITIALIZED=true`) if `CLAUDE_ENV_FILE` is available
+- Creates required directories: `.skc/state/`, `.skc/logs/`, `.skc/notepads/`, `.skc/state/checkpoints/`, `.skc/plans/`
+- Validates existing config files (`.skc-config.json`)
+- Sets environment variables (`SKC_INITIALIZED=true`) if `CLAUDE_ENV_FILE` is available
 
 **Example Input:**
 ```json
@@ -30,7 +30,7 @@ Initializes OMC directory structure and environment on first run or explicit set
   "continue": true,
   "hookSpecificOutput": {
     "hookEventName": "Setup",
-    "additionalContext": "OMC initialized:\n- 5 directories created\n- 1 configs validated\n- Environment variables set: OMC_INITIALIZED"
+    "additionalContext": "OMC initialized:\n- 5 directories created\n- 1 configs validated\n- Environment variables set: SKC_INITIALIZED"
   }
 }
 ```
@@ -84,7 +84,7 @@ Creates all required OMC directories.
 
 ```typescript
 const created = ensureDirectoryStructure('/path/to/project');
-// => ['/path/to/project/.omc/state', '/path/to/project/.omc/logs', ...]
+// => ['/path/to/project/.skc/state', '/path/to/project/.skc/logs', ...]
 ```
 
 #### `validateConfigFiles(directory: string): string[]`
@@ -94,7 +94,7 @@ Validates that config files exist and are readable.
 
 ```typescript
 const validated = validateConfigFiles('/path/to/project');
-// => ['/path/to/project/.omc-config.json']
+// => ['/path/to/project/.skc-config.json']
 ```
 
 ### Environment Variables
@@ -108,7 +108,7 @@ Sets environment variables for OMC initialization.
 
 ```typescript
 const envVars = setEnvironmentVariables();
-// => ['OMC_INITIALIZED']
+// => ['SKC_INITIALIZED']
 ```
 
 ### Maintenance

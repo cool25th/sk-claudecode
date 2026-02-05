@@ -20,7 +20,7 @@ import {
   clearRalphState,
   createRalphLoopHook,
 } from "./ralph/index.js";
-import { processOrchestratorPreTool } from "./omc-orchestrator/index.js";
+import { processOrchestratorPreTool } from "./skc-orchestrator/index.js";
 import {
   addBackgroundTask,
   getRunningTaskCount,
@@ -531,7 +531,7 @@ function processPreToolUse(input: HookInput): HookOutput {
           reason:
             `Background process limit reached (${runningCount}/${maxBgTasks}). ` +
             `Wait for running tasks to complete before starting new ones. ` +
-            `Limit is configurable via permissions.maxBackgroundTasks in config or OMC_MAX_BACKGROUND_TASKS env var.`,
+            `Limit is configurable via permissions.maxBackgroundTasks in config or SKC_MAX_BACKGROUND_TASKS env var.`,
         };
       }
     }
@@ -627,8 +627,8 @@ function processAutopilot(input: HookInput): HookOutput {
   // Check phase and inject appropriate prompt
   const context = {
     idea: state.originalIdea,
-    specPath: state.expansion.spec_path || ".omc/autopilot/spec.md",
-    planPath: state.planning.plan_path || ".omc/plans/autopilot-impl.md",
+    specPath: state.expansion.spec_path || ".skc/autopilot/spec.md",
+    planPath: state.planning.plan_path || ".skc/plans/autopilot-impl.md",
   };
 
   const phasePrompt = getPhasePrompt(state.phase, context);
@@ -644,13 +644,13 @@ function processAutopilot(input: HookInput): HookOutput {
 }
 
 /**
- * Cached parsed OMC_SKIP_HOOKS for performance (env vars don't change during process lifetime)
+ * Cached parsed SKC_SKIP_HOOKS for performance (env vars don't change during process lifetime)
  */
 let _cachedSkipHooks: string[] | null = null;
 function getSkipHooks(): string[] {
   if (_cachedSkipHooks === null) {
     _cachedSkipHooks =
-      process.env.OMC_SKIP_HOOKS?.split(",")
+      process.env.SKC_SKIP_HOOKS?.split(",")
         .map((s) => s.trim())
         .filter(Boolean) ?? [];
   }

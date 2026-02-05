@@ -124,11 +124,11 @@ Verify the complete implementation:
 | Track progress | ✓ | |
 | **ANY code change** | ✗ NEVER | executor workers |
 
-**Path Exception**: Only write to `.omc/`, `.claude/`, `CLAUDE.md`, `AGENTS.md`
+**Path Exception**: Only write to `.skc/`, `.claude/`, `CLAUDE.md`, `AGENTS.md`
 
 ## State Management
 
-Track state in `.omc/ultrapilot-state.json`:
+Track state in `.skc/ultrapilot-state.json`:
 
 ```json
 {

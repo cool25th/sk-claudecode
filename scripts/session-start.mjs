@@ -197,8 +197,8 @@ async function checkNpmUpdate(currentVersion) {
 // Check if HUD is properly installed (with retry for race conditions)
 async function checkHudInstallation(retryCount = 0) {
   const hudDir = join(homedir(), '.claude', 'hud');
-  // Support both legacy (sisyphus-hud.mjs) and current (omc-hud.mjs) naming
-  const hudScriptOmc = join(hudDir, 'omc-hud.mjs');
+  // Support both legacy (sisyphus-hud.mjs) and current (skc-hud.mjs) naming
+  const hudScriptOmc = join(hudDir, 'skc-hud.mjs');
   const hudScriptSisyphus = join(hudDir, 'sisyphus-hud.mjs');
   const settingsFile = join(homedir(), '.claude', 'settings.json');
 

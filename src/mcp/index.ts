@@ -19,7 +19,7 @@ export {
   omcToolsServer,
   omcToolNames,
   getOmcToolNames
-} from './omc-tools-server.js';
+} from './skc-tools-server.js';
 
 // Codex MCP Server - in-process MCP server for Codex CLI integration
 export {

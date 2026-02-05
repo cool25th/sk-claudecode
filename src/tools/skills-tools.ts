@@ -2,7 +2,7 @@
  * Skills Tools
  *
  * MCP tools for loading and listing OMC learned skills
- * from local (.omc/skills/) and global (~/.omc/skills/) directories.
+ * from local (.skc/skills/) and global (~/.skc/skills/) directories.
  */
 
 import { z } from 'zod';
@@ -102,7 +102,7 @@ function formatSkillOutput(skills: LearnedSkill[]): string {
 // Tool 1: load_omc_skills_local
 export const loadLocalTool = {
   name: 'load_omc_skills_local',
-  description: 'Load and list skills from the project-local .omc/skills/ directory. Returns skill metadata (id, name, description, triggers, tags) for all discovered project-scoped skills.',
+  description: 'Load and list skills from the project-local .skc/skills/ directory. Returns skill metadata (id, name, description, triggers, tags) for all discovered project-scoped skills.',
   schema: loadLocalSchema,
   handler: async (args: { projectRoot?: string }) => {
     const projectRoot = args.projectRoot ? validateProjectRoot(args.projectRoot) : process.cwd();
@@ -121,7 +121,7 @@ export const loadLocalTool = {
 // Tool 2: load_omc_skills_global
 export const loadGlobalTool = {
   name: 'load_omc_skills_global',
-  description: 'Load and list skills from global user directories (~/.omc/skills/ and ~/.claude/skills/omc-learned/). Returns skill metadata for all discovered user-scoped skills.',
+  description: 'Load and list skills from global user directories (~/.skc/skills/ and ~/.claude/skills/omc-learned/). Returns skill metadata for all discovered user-scoped skills.',
   schema: loadGlobalSchema,
   handler: async (_args: Record<string, never>) => {
     const allSkills = loadAllSkills(null);
@@ -158,7 +158,7 @@ export const listSkillsTool = {
     }
 
     if (skills.length === 0) {
-      output = '## No Skills Found\n\nNo skill files were discovered in any searched directories.\n\nSearched:\n- Project: .omc/skills/\n- Global: ~/.omc/skills/\n- Legacy: ~/.claude/skills/omc-learned/';
+      output = '## No Skills Found\n\nNo skill files were discovered in any searched directories.\n\nSearched:\n- Project: .skc/skills/\n- Global: ~/.skc/skills/\n- Legacy: ~/.claude/skills/omc-learned/';
     }
 
     return {
@@ -170,5 +170,5 @@ export const listSkillsTool = {
   },
 };
 
-/** All skills tools for registration in omc-tools-server */
+/** All skills tools for registration in skc-tools-server */
 export const skillsTools = [loadLocalTool, loadGlobalTool, listSkillsTool];

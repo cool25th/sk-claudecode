@@ -10,7 +10,7 @@ After installing oh-my-claudecode:
 npm install -g oh-my-claude-sisyphus
 ```
 
-The `omc-analytics` command will be available globally.
+The `skc-analytics` command will be available globally.
 
 ## Commands
 
@@ -19,8 +19,8 @@ The `omc-analytics` command will be available globally.
 Show current session statistics including token usage, costs, and top agents.
 
 ```bash
-omc-analytics stats
-omc-analytics stats --json
+skc-analytics stats
+skc-analytics stats --json
 ```
 
 ### Cost Reports
@@ -28,10 +28,10 @@ omc-analytics stats --json
 Generate cost reports for different time periods.
 
 ```bash
-omc-analytics cost daily
-omc-analytics cost weekly
-omc-analytics cost monthly
-omc-analytics cost monthly --json
+skc-analytics cost daily
+skc-analytics cost weekly
+skc-analytics cost monthly
+skc-analytics cost monthly --json
 ```
 
 ### Session History
@@ -39,9 +39,9 @@ omc-analytics cost monthly --json
 View historical session data.
 
 ```bash
-omc-analytics sessions
-omc-analytics sessions --limit 20
-omc-analytics sessions --json
+skc-analytics sessions
+skc-analytics sessions --limit 20
+skc-analytics sessions --json
 ```
 
 ### Agent Usage
@@ -49,9 +49,9 @@ omc-analytics sessions --json
 Show agent usage breakdown by tokens and cost.
 
 ```bash
-omc-analytics agents
-omc-analytics agents --limit 20
-omc-analytics agents --json
+skc-analytics agents
+skc-analytics agents --limit 20
+skc-analytics agents --json
 ```
 
 ### Export Data
@@ -60,15 +60,15 @@ Export analytics data to JSON or CSV format.
 
 ```bash
 # Export cost report
-omc-analytics export cost json ./cost-report.json
-omc-analytics export cost csv ./cost-report.csv --period weekly
+skc-analytics export cost json ./cost-report.json
+skc-analytics export cost csv ./cost-report.csv --period weekly
 
 # Export session history
-omc-analytics export sessions json ./sessions.json
-omc-analytics export sessions csv ./sessions.csv
+skc-analytics export sessions json ./sessions.json
+skc-analytics export sessions csv ./sessions.csv
 
 # Export usage patterns
-omc-analytics export patterns json ./patterns.json
+skc-analytics export patterns json ./patterns.json
 ```
 
 ### Cleanup
@@ -76,16 +76,16 @@ omc-analytics export patterns json ./patterns.json
 Remove old logs and orphaned background tasks.
 
 ```bash
-omc-analytics cleanup
-omc-analytics cleanup --retention 60  # Keep 60 days instead of default 30
+skc-analytics cleanup
+skc-analytics cleanup --retention 60  # Keep 60 days instead of default 30
 ```
 
 ## Data Storage
 
 Analytics data is stored in:
-- `~/.omc/analytics/tokens/` - Token usage logs
-- `~/.omc/analytics/sessions/` - Session history
-- `~/.omc/analytics/metrics/` - Performance metrics
+- `~/.skc/analytics/tokens/` - Token usage logs
+- `~/.skc/analytics/sessions/` - Session history
+- `~/.skc/analytics/metrics/` - Performance metrics
 
 ## JSON Output
 
@@ -93,8 +93,8 @@ All commands support `--json` flag for machine-readable output, useful for integ
 
 ```bash
 # Example: Parse JSON output with jq
-omc-analytics stats --json | jq '.stats.totalCost'
-omc-analytics agents --json | jq '.topAgents[0].agent'
+skc-analytics stats --json | jq '.stats.totalCost'
+skc-analytics agents --json | jq '.topAgents[0].agent'
 ```
 
 ## Examples
@@ -103,35 +103,35 @@ omc-analytics agents --json | jq '.topAgents[0].agent'
 
 ```bash
 # Check today's cost
-omc-analytics cost daily
+skc-analytics cost daily
 
 # Export weekly report
-omc-analytics export cost csv weekly-report.csv --period weekly
+skc-analytics export cost csv weekly-report.csv --period weekly
 ```
 
 ### Session Analysis
 
 ```bash
 # View recent sessions
-omc-analytics sessions --limit 5
+skc-analytics sessions --limit 5
 
 # Export all sessions for analysis
-omc-analytics export sessions json all-sessions.json
+skc-analytics export sessions json all-sessions.json
 ```
 
 ### Agent Performance
 
 ```bash
 # See which agents are most expensive
-omc-analytics agents --limit 10
+skc-analytics agents --limit 10
 
 # Export for spreadsheet analysis
-omc-analytics export patterns csv agent-patterns.csv
+skc-analytics export patterns csv agent-patterns.csv
 ```
 
 ### Maintenance
 
 ```bash
 # Monthly cleanup (keep 90 days of data)
-omc-analytics cleanup --retention 90
+skc-analytics cleanup --retention 90
 ```

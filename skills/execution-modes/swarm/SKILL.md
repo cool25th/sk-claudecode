@@ -96,7 +96,7 @@ import { wrapWithPreamble } from '../agents/preamble.js';
 
 // When spawning each agent:
 const agentPrompt = wrapWithPreamble(`
-Connect to swarm at ${cwd}/.omc/state/swarm.db
+Connect to swarm at ${cwd}/.skc/state/swarm.db
 Claim tasks with claimTask('agent-${n}')
 Complete work with completeTask() or failTask()
 Send heartbeat every 60 seconds
@@ -160,9 +160,9 @@ Exit when ANY of:
 
 ## Storage
 
-### SQLite Database (`.omc/state/swarm.db`)
+### SQLite Database (`.skc/state/swarm.db`)
 
-The swarm uses a single SQLite database stored at `.omc/state/swarm.db`. This provides:
+The swarm uses a single SQLite database stored at `.skc/state/swarm.db`. This provides:
 - **ACID compliance** - All task state transitions are atomic
 - **Concurrent access** - Multiple agents query/update safely
 - **Persistence** - State survives agent crashes
@@ -546,7 +546,7 @@ interface SwarmStats {
   - Prevents false timeout while working on long tasks
 - **Cleanup Interval:** 60 seconds
   - Orchestrator automatically runs `cleanupStaleClaims()` to release orphaned tasks
-- **Database:** SQLite (stored at `.omc/state/swarm.db`)
+- **Database:** SQLite (stored at `.skc/state/swarm.db`)
   - One database per swarm session
   - Survives agent crashes
   - Provides ACID guarantees
@@ -649,9 +649,9 @@ When all tasks are done:
 
 ```bash
 # Delete swarm state files
-rm -f .omc/state/swarm-state.json
-rm -f .omc/state/swarm-tasks.json
-rm -f .omc/state/swarm-claims.json
+rm -f .skc/state/swarm-state.json
+rm -f .skc/state/swarm-tasks.json
+rm -f .skc/state/swarm-claims.json
 ```
 
 ## Implementation Notes

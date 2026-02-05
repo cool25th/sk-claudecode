@@ -140,7 +140,7 @@ async function main() {
       return;
     }
 
-    // Initialize .omc/state directory
+    // Initialize .skc/state directory
     const stateDir = initOmcDir(directory);
     const statePath = join(stateDir, 'last-tool-error.json');
 

@@ -14,8 +14,8 @@ import {
   isWriteEditTool,
   clearEnforcementCache,
   type ToolExecuteInput,
-} from '../hooks/omc-orchestrator/index.js';
-import type { AuditEntry } from '../hooks/omc-orchestrator/audit.js';
+} from '../hooks/skc-orchestrator/index.js';
+import type { AuditEntry } from '../hooks/skc-orchestrator/audit.js';
 
 // Mock fs module
 vi.mock('fs', async () => {
@@ -143,7 +143,7 @@ describe('delegation-enforcement-levels', () => {
       mockExistsSync.mockImplementation((p: unknown) => {
         const s = String(p);
         if (/[\\/]tmp[\\/]test-project[\\/]\.omc[\\/]config\.json$/.test(s)) return true;
-        if (/[\\/]mock[\\/]home[\\/]\.claude[\\/]\.omc-config\.json$/.test(s)) return true;
+        if (/[\\/]mock[\\/]home[\\/]\.claude[\\/]\.skc-config\.json$/.test(s)) return true;
         return false;
       });
       mockReadFileSync.mockImplementation((p: unknown) => {
@@ -151,7 +151,7 @@ describe('delegation-enforcement-levels', () => {
         if (/[\\/]tmp[\\/]test-project[\\/]\.omc[\\/]config\.json$/.test(s)) {
           return JSON.stringify({ delegationEnforcementLevel: 'off' });
         }
-        if (/[\\/]mock[\\/]home[\\/]\.claude[\\/]\.omc-config\.json$/.test(s)) {
+        if (/[\\/]mock[\\/]home[\\/]\.claude[\\/]\.skc-config\.json$/.test(s)) {
           return JSON.stringify({ delegationEnforcementLevel: 'strict' });
         }
         return '';
@@ -166,12 +166,12 @@ describe('delegation-enforcement-levels', () => {
     it('falls back to global config when no local config', () => {
       mockExistsSync.mockImplementation((p: unknown) => {
         const s = String(p);
-        if (/[\\/]mock[\\/]home[\\/]\.claude[\\/]\.omc-config\.json$/.test(s)) return true;
+        if (/[\\/]mock[\\/]home[\\/]\.claude[\\/]\.skc-config\.json$/.test(s)) return true;
         return false;
       });
       mockReadFileSync.mockImplementation((p: unknown) => {
         const s = String(p);
-        if (/[\\/]mock[\\/]home[\\/]\.claude[\\/]\.omc-config\.json$/.test(s)) {
+        if (/[\\/]mock[\\/]home[\\/]\.claude[\\/]\.skc-config\.json$/.test(s)) {
           return JSON.stringify({ delegationEnforcementLevel: 'strict' });
         }
         return '';
@@ -293,7 +293,7 @@ describe('delegation-enforcement-levels', () => {
 
     describe('allowed paths always continue', () => {
       const allowedPaths = [
-        '.omc/plans/test.md',
+        '.skc/plans/test.md',
         '.claude/settings.json',
         'docs/CLAUDE.md',
         'AGENTS.md',
@@ -408,7 +408,7 @@ describe('delegation-enforcement-levels', () => {
       const entry: AuditEntry = {
         timestamp: new Date().toISOString(),
         tool: 'Write',
-        filePath: '.omc/plans/test.md',
+        filePath: '.skc/plans/test.md',
         decision: 'allowed',
         reason: 'allowed_path',
       };
@@ -573,8 +573,8 @@ describe('delegation-enforcement-levels', () => {
   // ─── Helper function unit tests ───
 
   describe('isAllowedPath', () => {
-    it('returns true for .omc/ paths', () => {
-      expect(isAllowedPath('.omc/plans/test.md')).toBe(true);
+    it('returns true for .skc/ paths', () => {
+      expect(isAllowedPath('.skc/plans/test.md')).toBe(true);
     });
 
     it('returns true for .claude/ paths', () => {

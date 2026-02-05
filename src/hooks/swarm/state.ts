@@ -3,7 +3,7 @@
  *
  * SQLite-based persistent state for swarm coordination.
  * Uses better-sqlite3 for synchronous operations with transaction support.
- * All state is stored in .omc/state/swarm.db
+ * All state is stored in .skc/state/swarm.db
  */
 
 import { existsSync, mkdirSync, unlinkSync } from "fs";
@@ -831,7 +831,7 @@ export function getDb(): BetterSqlite3.Database | null {
 }
 
 /**
- * Write swarm summary to .omc/state/swarm-summary.json
+ * Write swarm summary to .skc/state/swarm-summary.json
  * This provides a lightweight JSON sidecar for external monitoring
  */
 export function writeSwarmSummary(cwd: string): boolean {

@@ -186,7 +186,7 @@ export function cleanupTransientState(directory: string): number {
     }
   }
 
-  // Remove .tmp files in .omc/
+  // Remove .tmp files in .skc/
   const removeTmpFiles = (dir: string) => {
     try {
       const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -292,7 +292,7 @@ export function cleanupModeStates(directory: string, sessionId?: string): { file
 }
 
 /**
- * Export session summary to .omc/sessions/
+ * Export session summary to .skc/sessions/
  */
 export function exportSessionSummary(directory: string, metrics: SessionMetrics): void {
   const sessionsDir = path.join(directory, '.omc', 'sessions');
@@ -334,7 +334,7 @@ export async function processSessionEnd(input: SessionEndInput): Promise<HookOut
     cwd: input.cwd,
   });
 
-  // Return simple response - metrics are persisted to .omc/sessions/
+  // Return simple response - metrics are persisted to .skc/sessions/
   return { continue: true };
 }
 

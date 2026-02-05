@@ -97,11 +97,11 @@ export interface DaemonConfig {
   paneLinesToCapture?: number;
   /** Whether to log verbose output (default: false) */
   verbose?: boolean;
-  /** State file path (default: ~/.omc/state/rate-limit-daemon.json) */
+  /** State file path (default: ~/.skc/state/rate-limit-daemon.json) */
   stateFilePath?: string;
-  /** PID file path (default: ~/.omc/state/rate-limit-daemon.pid) */
+  /** PID file path (default: ~/.skc/state/rate-limit-daemon.pid) */
   pidFilePath?: string;
-  /** Log file path (default: ~/.omc/state/rate-limit-daemon.log) */
+  /** Log file path (default: ~/.skc/state/rate-limit-daemon.log) */
   logFilePath?: string;
 }
 

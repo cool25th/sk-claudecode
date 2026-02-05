@@ -16,7 +16,7 @@ import * as path from 'path';
 describe('BackfillEngine Integration', () => {
   const testDir = '.test-backfill-engine';
   const transcriptDir = path.join(testDir, 'transcripts');
-  const stateDir = path.join(testDir, '.omc/state');
+  const stateDir = path.join(testDir, '.skc/state');
 
   // Mock BackfillEngine for integration testing
   class MockBackfillEngine {

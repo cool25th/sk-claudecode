@@ -99,14 +99,14 @@ function activateState(directory, prompt, stateName, sessionId) {
     last_checked_at: new Date().toISOString()
   };
 
-  // Write to local .omc/state directory
+  // Write to local .skc/state directory
   const localDir = join(directory, '.omc', 'state');
   if (!existsSync(localDir)) {
     try { mkdirSync(localDir, { recursive: true }); } catch {}
   }
   try { writeFileSync(join(localDir, `${stateName}-state.json`), JSON.stringify(state, null, 2)); } catch {}
 
-  // Write to global .omc/state directory
+  // Write to global .skc/state directory
   const globalDir = join(homedir(), '.omc', 'state');
   if (!existsSync(globalDir)) {
     try { mkdirSync(globalDir, { recursive: true }); } catch {}

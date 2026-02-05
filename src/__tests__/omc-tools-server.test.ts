@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { omcToolsServer, omcToolNames, getOmcToolNames } from '../mcp/omc-tools-server.js';
+import { omcToolsServer, omcToolNames, getOmcToolNames } from '../mcp/skc-tools-server.js';
 
-describe('omc-tools-server', () => {
+describe('skc-tools-server', () => {
   describe('omcToolNames', () => {
     it('should export 33 tools total', () => {
       expect(omcToolNames).toHaveLength(33);

@@ -34,7 +34,7 @@ function isStateFileStale(filePath: string): boolean {
 }
 
 /**
- * Resolve state file path with fallback from .omc/state/ to .omc/
+ * Resolve state file path with fallback from .skc/state/ to .skc/
  * Returns null if file doesn't exist in either location.
  */
 function resolveStatePath(directory: string, filename: string): string | null {
@@ -104,7 +104,7 @@ interface UltraworkState {
 
 /**
  * Read Ultrawork state for HUD display.
- * Checks only local .omc/state location.
+ * Checks only local .skc/state location.
  */
 export function readUltraworkStateForHud(
   directory: string
@@ -149,7 +149,7 @@ interface PRD {
 
 /**
  * Read PRD state for HUD display.
- * Checks both root prd.json and .omc/prd.json.
+ * Checks both root prd.json and .skc/prd.json.
  */
 export function readPrdStateForHud(directory: string): PrdStateForHud | null {
   // Check root first

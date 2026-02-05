@@ -43,8 +43,8 @@ function validateModelName(model: string): void {
 }
 
 // Default model can be overridden via environment variable
-export const GEMINI_DEFAULT_MODEL = process.env.OMC_GEMINI_DEFAULT_MODEL || 'gemini-3-pro-preview';
-export const GEMINI_TIMEOUT = Math.min(Math.max(5000, parseInt(process.env.OMC_GEMINI_TIMEOUT || '3600000', 10) || 3600000), 3600000);
+export const GEMINI_DEFAULT_MODEL = process.env.SKC_GEMINI_DEFAULT_MODEL || 'gemini-3-pro-preview';
+export const GEMINI_TIMEOUT = Math.min(Math.max(5000, parseInt(process.env.SKC_GEMINI_TIMEOUT || '3600000', 10) || 3600000), 3600000);
 
 // Model fallback chain: try each in order if previous fails
 export const GEMINI_MODEL_FALLBACKS = [
@@ -385,7 +385,7 @@ export async function handleAskGemini(args: {
   // Check if old 'prompt' parameter is used (hard error)
   if ('prompt' in (args as Record<string, unknown>)) {
     return {
-      content: [{ type: 'text' as const, text: "The 'prompt' parameter has been removed. Write the prompt to a file (recommended: .omc/prompts/) and pass 'prompt_file' instead." }],
+      content: [{ type: 'text' as const, text: "The 'prompt' parameter has been removed. Write the prompt to a file (recommended: .skc/prompts/) and pass 'prompt_file' instead." }],
       isError: true
     };
   }

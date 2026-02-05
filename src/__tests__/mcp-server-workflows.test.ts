@@ -285,9 +285,9 @@ describe('MCP Server Workflows', () => {
   });
 
   describe('Timeout and Environment Configuration', () => {
-    it('should respect OMC_CODEX_TIMEOUT environment variable', async () => {
-      const originalTimeout = process.env.OMC_CODEX_TIMEOUT;
-      process.env.OMC_CODEX_TIMEOUT = '120000';
+    it('should respect SKC_CODEX_TIMEOUT environment variable', async () => {
+      const originalTimeout = process.env.SKC_CODEX_TIMEOUT;
+      process.env.SKC_CODEX_TIMEOUT = '120000';
 
       const spawnMock = vi.fn().mockReturnValue({
         stdout: { on: vi.fn() },
@@ -300,12 +300,12 @@ describe('MCP Server Workflows', () => {
       const { codexMcpServer: freshServer } = await import('../mcp/codex-server.js');
       expect(freshServer).toBeDefined();
 
-      process.env.OMC_CODEX_TIMEOUT = originalTimeout;
+      process.env.SKC_CODEX_TIMEOUT = originalTimeout;
     });
 
-    it('should respect OMC_GEMINI_TIMEOUT environment variable', async () => {
-      const originalTimeout = process.env.OMC_GEMINI_TIMEOUT;
-      process.env.OMC_GEMINI_TIMEOUT = '180000';
+    it('should respect SKC_GEMINI_TIMEOUT environment variable', async () => {
+      const originalTimeout = process.env.SKC_GEMINI_TIMEOUT;
+      process.env.SKC_GEMINI_TIMEOUT = '180000';
 
       const spawnMock = vi.fn().mockReturnValue({
         stdout: { on: vi.fn() },
@@ -317,7 +317,7 @@ describe('MCP Server Workflows', () => {
       const { geminiMcpServer: freshServer } = await import('../mcp/gemini-server.js');
       expect(freshServer).toBeDefined();
 
-      process.env.OMC_GEMINI_TIMEOUT = originalTimeout;
+      process.env.SKC_GEMINI_TIMEOUT = originalTimeout;
     });
   });
 });

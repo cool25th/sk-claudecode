@@ -90,7 +90,7 @@ function updateStats(toolName, sessionId) {
 // Read bash history config (default: enabled)
 function getBashHistoryConfig() {
   try {
-    const configPath = join(homedir(), '.claude', '.omc-config.json');
+    const configPath = join(homedir(), '.claude', '.skc-config.json');
     if (existsSync(configPath)) {
       const config = JSON.parse(readFileSync(configPath, 'utf-8'));
       if (config.bashHistory === false) return false;

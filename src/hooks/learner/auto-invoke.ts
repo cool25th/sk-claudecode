@@ -35,10 +35,10 @@ const DEFAULT_CONFIG: InvocationConfig = {
 };
 
 /**
- * Load auto-invocation config from ~/.claude/.omc-config.json
+ * Load auto-invocation config from ~/.claude/.skc-config.json
  */
 export function loadInvocationConfig(): InvocationConfig {
-  const configPath = path.join(os.homedir(), '.claude', '.omc-config.json');
+  const configPath = path.join(os.homedir(), '.claude', '.skc-config.json');
 
   try {
     if (!fs.existsSync(configPath)) {

@@ -35,7 +35,7 @@ export interface EnforcementResult {
   injected: boolean;
   /** The model that was used */
   model: ModelType;
-  /** Warning message (only if OMC_DEBUG=true) */
+  /** Warning message (only if SKC_DEBUG=true) */
   warning?: string;
 }
 
@@ -84,9 +84,9 @@ export function enforceModel(agentInput: AgentInput): EnforcementResult {
     model: sdkModel,
   };
 
-  // Create warning message (only shown if OMC_DEBUG=true)
+  // Create warning message (only shown if SKC_DEBUG=true)
   let warning: string | undefined;
-  if (process.env.OMC_DEBUG === 'true') {
+  if (process.env.SKC_DEBUG === 'true') {
     warning = `[OMC] Auto-injecting model: ${sdkModel} for ${agentType}`;
   }
 

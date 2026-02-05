@@ -40,14 +40,14 @@ Force clear ALL state files:
 
 ## State Files Checked
 
-- `.omc/state/autopilot-state.json` → Autopilot
-- `.omc/state/ralph-state.json` → Ralph
-- `.omc/state/ultrawork-state.json` → Ultrawork
-- `.omc/state/ecomode-state.json` → Ecomode
-- `.omc/state/ultraqa-state.json` → UltraQA
-- `.omc/state/swarm.db` (SQLite) or `.omc/state/swarm-active.marker` → Swarm
-- `.omc/state/ultrapilot-state.json` → Ultrapilot
-- `.omc/state/pipeline-state.json` → Pipeline
+- `.skc/state/autopilot-state.json` → Autopilot
+- `.skc/state/ralph-state.json` → Ralph
+- `.skc/state/ultrawork-state.json` → Ultrawork
+- `.skc/state/ecomode-state.json` → Ecomode
+- `.skc/state/ultraqa-state.json` → UltraQA
+- `.skc/state/swarm.db` (SQLite) or `.skc/state/swarm-active.marker` → Swarm
+- `.skc/state/ultrapilot-state.json` → Ultrapilot
+- `.skc/state/pipeline-state.json` → Pipeline
 
 ## What Gets Preserved
 

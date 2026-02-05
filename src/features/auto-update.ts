@@ -25,7 +25,7 @@ export const GITHUB_RAW_URL = `https://raw.githubusercontent.com/${REPO_OWNER}/$
 /** Installation paths */
 export const CLAUDE_CONFIG_DIR = join(homedir(), '.claude');
 export const VERSION_FILE = join(CLAUDE_CONFIG_DIR, '.omc-version.json');
-export const CONFIG_FILE = join(CLAUDE_CONFIG_DIR, '.omc-config.json');
+export const CONFIG_FILE = join(CLAUDE_CONFIG_DIR, '.skc-config.json');
 
 /**
  * Stop hook callback configuration for file logging
@@ -68,7 +68,7 @@ export interface StopHookCallbacksConfig {
 }
 
 /**
- * OMC configuration (stored in .omc-config.json)
+ * OMC configuration (stored in .skc-config.json)
  */
 export interface SisyphusConfig {
   /** Whether silent auto-updates are enabled (opt-in for security) */
@@ -478,7 +478,7 @@ export function backgroundUpdateCheck(callback?: (result: UpdateCheckResult) => 
     })
     .catch(error => {
       // Silently ignore errors in background checks
-      if (process.env.OMC_DEBUG) {
+      if (process.env.SKC_DEBUG) {
         console.error('Background update check failed:', error);
       }
     });

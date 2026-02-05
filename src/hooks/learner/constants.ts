@@ -9,7 +9,7 @@ import { OmcPaths } from '../../lib/worktree-paths.js';
 /** User-level skills directory (read by skill-injector.mjs hook) */
 export const USER_SKILLS_DIR = join(homedir(), '.claude', 'skills', 'omc-learned');
 
-/** Global skills directory (new preferred location: ~/.omc/skills) */
+/** Global skills directory (new preferred location: ~/.skc/skills) */
 export const GLOBAL_SKILLS_DIR = join(homedir(), '.omc', 'skills');
 
 /** Project-level skills subdirectory */
@@ -40,4 +40,4 @@ export const REQUIRED_METADATA_FIELDS = ['id', 'name', 'description', 'triggers'
 export const MAX_SKILLS_PER_SESSION = 10;
 
 /** Debug mode enabled */
-export const DEBUG_ENABLED = process.env.OMC_DEBUG === '1';
+export const DEBUG_ENABLED = process.env.SKC_DEBUG === '1';

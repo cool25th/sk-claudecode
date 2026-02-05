@@ -47,7 +47,7 @@ function getStateFilePath(directory?: string): string {
 
 
 /**
- * Ensure the .omc/state directory exists
+ * Ensure the .skc/state directory exists
  */
 function ensureStateDir(directory?: string): void {
   const baseDir = directory || process.cwd();

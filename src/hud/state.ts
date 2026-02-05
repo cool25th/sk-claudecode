@@ -17,7 +17,7 @@ import { cleanupStaleBackgroundTasks, markOrphanedTasksAsStale } from './backgro
 // ============================================================================
 
 /**
- * Get the HUD state file path in the project's .omc/state directory
+ * Get the HUD state file path in the project's .skc/state directory
  */
 function getLocalStateFilePath(directory?: string): string {
   const baseDir = directory || process.cwd();
@@ -41,7 +41,7 @@ function getConfigFilePath(): string {
 }
 
 /**
- * Ensure the .omc/state directory exists
+ * Ensure the .skc/state directory exists
  */
 function ensureStateDir(directory?: string): void {
   const baseDir = directory || process.cwd();
@@ -61,7 +61,7 @@ function ensureStateDir(directory?: string): void {
  * Read HUD state from disk (checks new local and legacy local only)
  */
 export function readHudState(directory?: string): OmcHudState | null {
-  // Check new local state first (.omc/state/hud-state.json)
+  // Check new local state first (.skc/state/hud-state.json)
   const localStateFile = getLocalStateFilePath(directory);
   if (existsSync(localStateFile)) {
     try {
@@ -72,7 +72,7 @@ export function readHudState(directory?: string): OmcHudState | null {
     }
   }
 
-  // Check legacy local state (.omc/hud-state.json)
+  // Check legacy local state (.skc/hud-state.json)
   const baseDir = directory || process.cwd();
   const legacyStateFile = join(baseDir, '.omc', 'hud-state.json');
   if (existsSync(legacyStateFile)) {
@@ -95,7 +95,7 @@ export function writeHudState(
   directory?: string
 ): boolean {
   try {
-    // Write to local .omc/state only
+    // Write to local .skc/state only
     ensureStateDir(directory);
     const localStateFile = getLocalStateFilePath(directory);
     writeFileSync(localStateFile, JSON.stringify(state, null, 2));
@@ -162,7 +162,7 @@ export function readHudConfig(): HudConfig {
     }
   }
 
-  // 2. Try reading from ~/.claude/.omc/hud-config.json (legacy)
+  // 2. Try reading from ~/.claude/.skc/hud-config.json (legacy)
   const configFile = getConfigFilePath();
   if (existsSync(configFile)) {
     try {

@@ -15,7 +15,7 @@ import {
 } from './utils/tokscale-launcher.js';
 
 program
-  .name('omc-analytics')
+  .name('skc-analytics')
   .description('OMC Analytics CLI - Token tracking, cost reports, and session management')
   .version('1.0.0');
 

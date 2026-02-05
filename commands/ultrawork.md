@@ -30,7 +30,7 @@ This skill enhances Claude's capabilities by:
 | **UI work** | ✗ NEVER | designer/designer-high |
 | **Docs** | ✗ NEVER | writer |
 
-**Path Exception**: Only write to `.omc/`, `.claude/`, `CLAUDE.md`, `AGENTS.md`
+**Path Exception**: Only write to `.skc/`, `.claude/`, `CLAUDE.md`, `AGENTS.md`
 
 The PreToolUse hook will warn you if you attempt direct code changes.
 

@@ -513,7 +513,7 @@ export function install(options: InstallOptions = {}): InstallResult {
 
       // Build the HUD script content (compiled from src/hud/index.ts)
       // Create a wrapper that checks multiple locations for the HUD module
-      hudScriptPath = join(HUD_DIR, 'omc-hud.mjs');
+      hudScriptPath = join(HUD_DIR, 'skc-hud.mjs');
       const hudScriptLines = [
         '#!/usr/bin/env node',
         '/**',
@@ -531,8 +531,8 @@ export function install(options: InstallOptions = {}): InstallResult {
         '  let pluginCacheVersion = null;',
         '  let pluginCacheDir = null;',
         '  ',
-        '  // 1. Development paths (only when OMC_DEV=1)',
-        '  if (process.env.OMC_DEV === "1") {',
+        '  // 1. Development paths (only when SKC_DEV=1)',
+        '  if (process.env.SKC_DEV === "1") {',
         '    const devPaths = [',
         '      join(home, "Workspace/oh-my-claudecode/dist/hud/index.js"),',
         '      join(home, "workspace/oh-my-claudecode/dist/hud/index.js"),',
@@ -606,7 +606,7 @@ export function install(options: InstallOptions = {}): InstallResult {
       if (!isWindows()) {
         chmodSync(hudScriptPath, 0o755);
       }
-      log('  Installed omc-hud.mjs');
+      log('  Installed skc-hud.mjs');
     } catch (_e) {
       log('  Warning: Could not install HUD statusline script (non-fatal)');
       hudScriptPath = null;

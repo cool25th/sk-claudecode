@@ -20291,8 +20291,8 @@ var BRIDGE_SPAWN_TIMEOUT_MS = 3e4;
 var DEFAULT_GRACE_PERIOD_MS = 5e3;
 var SIGTERM_GRACE_MS = 2500;
 function getBridgeScriptPath() {
-  if (process.env.OMC_BRIDGE_SCRIPT) {
-    return process.env.OMC_BRIDGE_SCRIPT;
+  if (process.env.SKC_BRIDGE_SCRIPT) {
+    return process.env.SKC_BRIDGE_SCRIPT;
   }
   let moduleDir;
   try {
@@ -20992,17 +20992,17 @@ var import_fs6 = require("fs");
 var import_path7 = require("path");
 var OmcPaths = {
   ROOT: ".omc",
-  STATE: ".omc/state",
-  PLANS: ".omc/plans",
-  RESEARCH: ".omc/research",
-  NOTEPAD: ".omc/notepad.md",
-  PROJECT_MEMORY: ".omc/project-memory.json",
-  DRAFTS: ".omc/drafts",
-  NOTEPADS: ".omc/notepads",
-  LOGS: ".omc/logs",
-  SCIENTIST: ".omc/scientist",
-  AUTOPILOT: ".omc/autopilot",
-  SKILLS: ".omc/skills"
+  STATE: ".skc/state",
+  PLANS: ".skc/plans",
+  RESEARCH: ".skc/research",
+  NOTEPAD: ".skc/notepad.md",
+  PROJECT_MEMORY: ".skc/project-memory.json",
+  DRAFTS: ".skc/drafts",
+  NOTEPADS: ".skc/notepads",
+  LOGS: ".skc/logs",
+  SCIENTIST: ".skc/scientist",
+  AUTOPILOT: ".skc/autopilot",
+  SKILLS: ".skc/skills"
 };
 var worktreeCache = null;
 function getWorktreeRoot(cwd) {
@@ -22272,8 +22272,8 @@ var import_path11 = require("path");
 // src/hooks/rules-injector/constants.ts
 var import_path10 = require("path");
 var import_os = require("os");
-var OMC_STORAGE_DIR = (0, import_path10.join)((0, import_os.homedir)(), ".omc");
-var RULES_INJECTOR_STORAGE = (0, import_path10.join)(OMC_STORAGE_DIR, "rules-injector");
+var SKC_STORAGE_DIR = (0, import_path10.join)((0, import_os.homedir)(), ".omc");
+var RULES_INJECTOR_STORAGE = (0, import_path10.join)(SKC_STORAGE_DIR, "rules-injector");
 
 // src/hooks/project-memory/storage.ts
 var import_promises = __toESM(require("fs/promises"), 1);

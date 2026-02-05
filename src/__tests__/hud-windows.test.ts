@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'url';
  * HUD Windows Compatibility Tests
  *
  * These tests verify Windows compatibility fixes for HUD:
- * - File naming (omc-hud.mjs)
+ * - File naming (skc-hud.mjs)
  * - Windows dynamic import() requires file:// URLs (pathToFileURL)
  * - Version sorting (numeric vs lexicographic)
  *
@@ -20,21 +20,21 @@ const packageRoot = join(__dirname, '..', '..');
 
 describe('HUD Windows Compatibility', () => {
   describe('File Naming', () => {
-    it('session-start.mjs should reference omc-hud.mjs', () => {
+    it('session-start.mjs should reference skc-hud.mjs', () => {
       const sessionStartPath = join(packageRoot, 'scripts', 'session-start.mjs');
       expect(existsSync(sessionStartPath)).toBe(true);
 
       const content = readFileSync(sessionStartPath, 'utf-8');
-      expect(content).toContain('omc-hud.mjs');
+      expect(content).toContain('skc-hud.mjs');
       // Note: May also contain 'sisyphus-hud.mjs' for backward compatibility (dual naming)
     });
 
-    it('installer should create omc-hud.mjs', () => {
+    it('installer should create skc-hud.mjs', () => {
       const installerPath = join(packageRoot, 'src', 'installer', 'index.ts');
       expect(existsSync(installerPath)).toBe(true);
 
       const content = readFileSync(installerPath, 'utf-8');
-      expect(content).toContain('omc-hud.mjs');
+      expect(content).toContain('skc-hud.mjs');
       // Note: May also contain 'sisyphus-hud.mjs' for legacy support
     });
   });

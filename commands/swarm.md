@@ -351,9 +351,9 @@ Exit when ANY of:
 
 ## Storage
 
-### SQLite Database (`.omc/state/swarm.db`)
+### SQLite Database (`.skc/state/swarm.db`)
 
-The swarm uses a single SQLite database stored at `.omc/state/swarm.db`. This provides:
+The swarm uses a single SQLite database stored at `.skc/state/swarm.db`. This provides:
 - **ACID compliance** - All task state transitions are atomic
 - **Concurrent access** - Multiple agents query/update safely
 - **Persistence** - State survives agent crashes
@@ -576,7 +576,7 @@ interface SwarmStats {
   - Prevents false timeout while working on long tasks
 - **Cleanup Interval:** 60 seconds
   - Orchestrator automatically runs `cleanupStaleClaims()` to release orphaned tasks
-- **Database:** SQLite (stored at `.omc/state/swarm.db`)
+- **Database:** SQLite (stored at `.skc/state/swarm.db`)
   - One database per swarm session
   - Survives agent crashes
   - Provides ACID guarantees

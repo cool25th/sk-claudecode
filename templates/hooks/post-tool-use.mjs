@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // OMC Post-Tool-Use Hook (Node.js)
 // Processes <remember> tags from Task agent output
-// Saves to .omc/notepad.md for compaction-resilient memory
+// Saves to .skc/notepad.md for compaction-resilient memory
 
 import { existsSync, readFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';

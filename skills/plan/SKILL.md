@@ -27,7 +27,7 @@ You guide users through planning by:
 ### Review Mode
 
 When `--review` is specified or user says "review this plan":
-1. Read the plan file from `.omc/plans/`
+1. Read the plan file from `.skc/plans/`
 2. Spawn Critic agent to review
 3. Return verdict (OKAY or REJECT with improvements)
 
@@ -201,8 +201,8 @@ Plans must meet these standards:
 
 ## Plan Storage
 
-- Drafts are saved to `.omc/drafts/`
-- Final plans are saved to `.omc/plans/`
+- Drafts are saved to `.skc/drafts/`
+- Final plans are saved to `.skc/plans/`
 
 ## Deprecation Notice
 

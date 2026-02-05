@@ -17,7 +17,7 @@ export interface MetricQuery {
   offset?: number;
 }
 
-const METRICS_LOG_FILE = '.omc/logs/metrics.jsonl';
+const METRICS_LOG_FILE = '.skc/logs/metrics.jsonl';
 
 export class MetricsCollector {
   async recordEvent(type: string, data: Record<string, any>, sessionId?: string): Promise<void> {

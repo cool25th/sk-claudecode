@@ -1,6 +1,6 @@
 /**
  * Project Memory Storage
- * Handles loading and saving project memory to .omc/project-memory.json
+ * Handles loading and saving project memory to .skc/project-memory.json
  */
 
 import fs from 'fs/promises';

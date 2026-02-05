@@ -2,8 +2,8 @@
  * State Manager
  *
  * Unified state management that standardizes state file locations:
- * - Local state: .omc/state/{name}.json
- * - Global state: ~/.omc/state/{name}.json
+ * - Local state: .skc/state/{name}.json
+ * - Global state: ~/.skc/state/{name}.json
  *
  * Features:
  * - Type-safe read/write operations
@@ -42,18 +42,18 @@ const GLOBAL_STATE_DIR = path.join(os.homedir(), ".omc", "state");
 
 // Legacy state locations (for backward compatibility)
 const LEGACY_LOCATIONS: Record<string, string[]> = {
-  boulder: [".omc/boulder.json"],
-  autopilot: [".omc/autopilot-state.json"],
-  "autopilot-state": [".omc/autopilot-state.json"],
-  ralph: [".omc/ralph-state.json"],
-  "ralph-state": [".omc/ralph-state.json"],
-  "ralph-verification": [".omc/ralph-verification.json"],
-  ultrawork: [".omc/ultrawork-state.json"],
-  "ultrawork-state": [".omc/ultrawork-state.json"],
-  ultraqa: [".omc/ultraqa-state.json"],
-  "ultraqa-state": [".omc/ultraqa-state.json"],
-  "hud-state": [".omc/hud-state.json"],
-  prd: [".omc/prd.json"],
+  boulder: [".skc/boulder.json"],
+  autopilot: [".skc/autopilot-state.json"],
+  "autopilot-state": [".skc/autopilot-state.json"],
+  ralph: [".skc/ralph-state.json"],
+  "ralph-state": [".skc/ralph-state.json"],
+  "ralph-verification": [".skc/ralph-verification.json"],
+  ultrawork: [".skc/ultrawork-state.json"],
+  "ultrawork-state": [".skc/ultrawork-state.json"],
+  ultraqa: [".skc/ultraqa-state.json"],
+  "ultraqa-state": [".skc/ultraqa-state.json"],
+  "hud-state": [".skc/hud-state.json"],
+  prd: [".skc/prd.json"],
 };
 
 /**

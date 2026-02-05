@@ -169,22 +169,22 @@ export function loadEnvConfig(): Partial<PluginConfig> {
   }
 
   // Feature flags from environment
-  if (process.env.OMC_PARALLEL_EXECUTION !== undefined) {
+  if (process.env.SKC_PARALLEL_EXECUTION !== undefined) {
     config.features = {
       ...config.features,
-      parallelExecution: process.env.OMC_PARALLEL_EXECUTION === 'true'
+      parallelExecution: process.env.SKC_PARALLEL_EXECUTION === 'true'
     };
   }
 
-  if (process.env.OMC_LSP_TOOLS !== undefined) {
+  if (process.env.SKC_LSP_TOOLS !== undefined) {
     config.features = {
       ...config.features,
-      lspTools: process.env.OMC_LSP_TOOLS === 'true'
+      lspTools: process.env.SKC_LSP_TOOLS === 'true'
     };
   }
 
-  if (process.env.OMC_MAX_BACKGROUND_TASKS) {
-    const maxTasks = parseInt(process.env.OMC_MAX_BACKGROUND_TASKS, 10);
+  if (process.env.SKC_MAX_BACKGROUND_TASKS) {
+    const maxTasks = parseInt(process.env.SKC_MAX_BACKGROUND_TASKS, 10);
     if (!isNaN(maxTasks)) {
       config.permissions = {
         ...config.permissions,
@@ -194,15 +194,15 @@ export function loadEnvConfig(): Partial<PluginConfig> {
   }
 
   // Routing configuration from environment
-  if (process.env.OMC_ROUTING_ENABLED !== undefined) {
+  if (process.env.SKC_ROUTING_ENABLED !== undefined) {
     config.routing = {
       ...config.routing,
-      enabled: process.env.OMC_ROUTING_ENABLED === 'true'
+      enabled: process.env.SKC_ROUTING_ENABLED === 'true'
     };
   }
 
-  if (process.env.OMC_ROUTING_DEFAULT_TIER) {
-    const tier = process.env.OMC_ROUTING_DEFAULT_TIER.toUpperCase();
+  if (process.env.SKC_ROUTING_DEFAULT_TIER) {
+    const tier = process.env.SKC_ROUTING_DEFAULT_TIER.toUpperCase();
     if (tier === 'LOW' || tier === 'MEDIUM' || tier === 'HIGH') {
       config.routing = {
         ...config.routing,
@@ -211,10 +211,10 @@ export function loadEnvConfig(): Partial<PluginConfig> {
     }
   }
 
-  if (process.env.OMC_ESCALATION_ENABLED !== undefined) {
+  if (process.env.SKC_ESCALATION_ENABLED !== undefined) {
     config.routing = {
       ...config.routing,
-      escalationEnabled: process.env.OMC_ESCALATION_ENABLED === 'true'
+      escalationEnabled: process.env.SKC_ESCALATION_ENABLED === 'true'
     };
   }
 

@@ -8,7 +8,7 @@ describe('processHook - Environment Kill-Switches', () => {
     // Reset environment and cache before each test
     process.env = { ...originalEnv };
     delete process.env.DISABLE_OMC;
-    delete process.env.OMC_SKIP_HOOKS;
+    delete process.env.SKC_SKIP_HOOKS;
     resetSkipHooksCache();
   });
 
@@ -77,9 +77,9 @@ describe('processHook - Environment Kill-Switches', () => {
     });
   });
 
-  describe('OMC_SKIP_HOOKS flag', () => {
+  describe('SKC_SKIP_HOOKS flag', () => {
     it('should skip single hook type when specified', async () => {
-      process.env.OMC_SKIP_HOOKS = 'pre-tool-use';
+      process.env.SKC_SKIP_HOOKS = 'pre-tool-use';
 
       const input: HookInput = {
         sessionId: 'test-session',
@@ -94,7 +94,7 @@ describe('processHook - Environment Kill-Switches', () => {
     });
 
     it('should skip multiple hook types when comma-separated', async () => {
-      process.env.OMC_SKIP_HOOKS = 'pre-tool-use,persistent-mode';
+      process.env.SKC_SKIP_HOOKS = 'pre-tool-use,persistent-mode';
 
       const preToolInput: HookInput = {
         sessionId: 'test-session',
@@ -114,8 +114,8 @@ describe('processHook - Environment Kill-Switches', () => {
       expect(persistentResult).toEqual({ continue: true });
     });
 
-    it('should handle whitespace in OMC_SKIP_HOOKS', async () => {
-      process.env.OMC_SKIP_HOOKS = ' pre-tool-use , persistent-mode ';
+    it('should handle whitespace in SKC_SKIP_HOOKS', async () => {
+      process.env.SKC_SKIP_HOOKS = ' pre-tool-use , persistent-mode ';
 
       const input: HookInput = {
         sessionId: 'test-session',
@@ -129,7 +129,7 @@ describe('processHook - Environment Kill-Switches', () => {
     });
 
     it('should process normally when hook type is not in skip list', async () => {
-      process.env.OMC_SKIP_HOOKS = 'persistent-mode';
+      process.env.SKC_SKIP_HOOKS = 'persistent-mode';
 
       const input: HookInput = {
         sessionId: 'test-session',
@@ -143,8 +143,8 @@ describe('processHook - Environment Kill-Switches', () => {
       expect(result.continue).toBe(true);
     });
 
-    it('should process normally when OMC_SKIP_HOOKS is empty', async () => {
-      process.env.OMC_SKIP_HOOKS = '';
+    it('should process normally when SKC_SKIP_HOOKS is empty', async () => {
+      process.env.SKC_SKIP_HOOKS = '';
 
       const input: HookInput = {
         sessionId: 'test-session',
@@ -159,9 +159,9 @@ describe('processHook - Environment Kill-Switches', () => {
   });
 
   describe('Combined flags', () => {
-    it('should respect DISABLE_OMC even if OMC_SKIP_HOOKS is set', async () => {
+    it('should respect DISABLE_OMC even if SKC_SKIP_HOOKS is set', async () => {
       process.env.DISABLE_OMC = '1';
-      process.env.OMC_SKIP_HOOKS = 'keyword-detector';
+      process.env.SKC_SKIP_HOOKS = 'keyword-detector';
 
       const input: HookInput = {
         sessionId: 'test-session',

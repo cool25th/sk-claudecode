@@ -38,7 +38,7 @@ const askCodexTool = {
       prompt_file: { type: 'string', description: 'Path to file containing the prompt' },
       output_file: { type: 'string', description: 'Required. Path to write response. Response content is NOT returned inline - read from this file.' },
       context_files: { type: 'array', items: { type: 'string' }, description: 'File paths to include as context (contents will be prepended to prompt)' },
-      model: { type: 'string', description: `Codex model to use (default: ${CODEX_DEFAULT_MODEL}). Set OMC_CODEX_DEFAULT_MODEL env var to change default.` },
+      model: { type: 'string', description: `Codex model to use (default: ${CODEX_DEFAULT_MODEL}). Set SKC_CODEX_DEFAULT_MODEL env var to change default.` },
       background: { type: 'boolean', description: 'Run in background (non-blocking). Returns immediately with job metadata and file paths. Check response file for completion.' },
       working_directory: { type: 'string', description: 'Working directory for path resolution and CLI execution. Defaults to process.cwd().' },
     },

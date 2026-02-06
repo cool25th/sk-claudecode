@@ -83,6 +83,33 @@ Use the AskUserQuestion tool to prompt the user:
 1. **Local (this project)** - Creates `.claude/CLAUDE.md` in current project directory. Best for project-specific configurations.
 2. **Global (all projects)** - Creates `~/.claude/CLAUDE.md` for all Claude Code sessions. Best for consistent behavior everywhere.
 
+## Step 1.5: Select Install Mode
+
+Use the AskUserQuestion tool to prompt the user:
+
+**Question:** "Which install mode would you like?"
+
+**Options:**
+1. **Standard** - Core skills with lazy-loaded scientific (recommended, fast startup)
+2. **Minimal** - Core skills only (~1MB, fastest startup)
+3. **Full** - All skills including scientific (~17MB, complete feature set)
+
+### Save Install Mode Choice
+
+```bash
+# Create config directory
+mkdir -p .skc/config
+
+# Save install mode to config
+case "$INSTALL_MODE" in
+  1|standard) echo '{"installMode":"standard"}' > .skc/config/install-mode.json ;;
+  2|minimal)  echo '{"installMode":"minimal"}' > .skc/config/install-mode.json ;;
+  3|full)     echo '{"installMode":"full"}' > .skc/config/install-mode.json ;;
+esac
+
+echo "Install mode saved: $(jq -r .installMode .skc/config/install-mode.json)"
+```
+
 ## Step 2: Execute Based on Choice
 
 ### If User Chooses LOCAL:

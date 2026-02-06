@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-06T00:07:17.414Z",
+  "timestamp": "2026-02-06T00:09:45.373Z",
   "backgroundTasks": [
     {
       "id": "task-1770333485919-73152b",
@@ -121,6 +121,12 @@
       "id": "task-1770336437408-8lsrlb",
       "description": "pkill -f something",
       "startedAt": "2026-02-06T00:07:17.414Z",
+      "status": "running"
+    },
+    {
+      "id": "task-1770336585367-s2wbjw",
+      "description": "pkill -f something",
+      "startedAt": "2026-02-06T00:09:45.373Z",
       "status": "running"
     }
   ]

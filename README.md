@@ -28,6 +28,14 @@ npm install && npm run build
 npm run setup
 ```
 
+### Install Modes
+
+| Mode | Command | Description |
+|------|---------|-------------|
+| **Standard** | `npm run setup` | Default - Core skills, lazy-loads scientific |
+| **Minimal** | `npm run setup -- --minimal` | Core skills only (~1MB) |
+| **Full** | `npm run setup -- --full` | All skills including scientific (~17MB) |
+
 ## ✨ Features
 
 | Component | Count |

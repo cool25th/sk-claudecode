@@ -1,100 +1,24 @@
 {
-  "timestamp": "2026-02-06T05:22:54.637Z",
+  "timestamp": "2026-02-06T05:58:00.131Z",
   "backgroundTasks": [
-    {
-      "id": "task-1770335129536-x3bl0i",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-05T23:45:29.540Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770335331628-77wduc",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-05T23:48:51.639Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770335914750-cfng1r",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-05T23:58:34.751Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770336198738-rmguby",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-06T00:03:18.740Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770336239472-mdewix",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-06T00:03:59.474Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770336273056-an6f9o",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-06T00:04:33.073Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770336303673-qa1m80",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-06T00:05:03.677Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770336321267-mknvfc",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-06T00:05:21.275Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770336352417-gi1eqf",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-06T00:05:52.422Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770336437408-8lsrlb",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-06T00:07:17.414Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770336585367-s2wbjw",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-06T00:09:45.373Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
-    {
-      "id": "task-1770336900123-xujj0o",
-      "description": "pkill -f something",
-      "startedAt": "2026-02-06T00:15:00.126Z",
-      "status": "failed",
-      "completedAt": "2026-02-06T05:20:34.535Z"
-    },
     {
       "id": "task-1770355234531-vde6wd",
       "description": "pkill -f something",
       "startedAt": "2026-02-06T05:20:34.535Z",
-      "status": "running"
+      "status": "failed",
+      "completedAt": "2026-02-06T05:58:00.130Z"
     },
     {
       "id": "task-1770355374634-kcw04b",
       "description": "pkill -f something",
       "startedAt": "2026-02-06T05:22:54.637Z",
+      "status": "failed",
+      "completedAt": "2026-02-06T05:58:00.131Z"
+    },
+    {
+      "id": "task-1770357480129-wen5av",
+      "description": "pkill -f something",
+      "startedAt": "2026-02-06T05:58:00.131Z",
       "status": "running"
     }
   ]

@@ -14,6 +14,7 @@ export {
     setInstallMode,
     getInstallMode,
     getSkillStats,
-    clearSkillsCache
+    clearSkillsCache,
+    loadInstallModeFromConfig
 } from './skills.js';
 export type { InstallMode } from './skills.js';

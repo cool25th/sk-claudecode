@@ -24,6 +24,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PROJECT_ROOT = join(__dirname, '..', '..', '..');
 const SKILLS_DIR = join(PROJECT_ROOT, 'skills');
+const CONFIG_FILE = '.skc/config/install-mode.json';
 
 // Lazy-loaded skill folders (large skill sets loaded on-demand)
 const LAZY_LOAD_FOLDERS = ['scientific'];
@@ -31,6 +32,39 @@ const LAZY_LOAD_FOLDERS = ['scientific'];
 // Install mode configuration
 export type InstallMode = 'minimal' | 'standard' | 'full';
 let currentInstallMode: InstallMode = 'standard';
+let configLoaded = false;
+
+/**
+ * Load install mode from config file (auto-called on first access)
+ * Searches in current working directory and home directory
+ */
+export function loadInstallModeFromConfig(): InstallMode {
+  if (configLoaded) return currentInstallMode;
+
+  const searchPaths = [
+    join(process.cwd(), CONFIG_FILE),
+    join(process.env.HOME || '', CONFIG_FILE)
+  ];
+
+  for (const configPath of searchPaths) {
+    try {
+      if (existsSync(configPath)) {
+        const content = readFileSync(configPath, 'utf-8');
+        const config = JSON.parse(content);
+        if (config.installMode && ['minimal', 'standard', 'full'].includes(config.installMode)) {
+          currentInstallMode = config.installMode as InstallMode;
+          configLoaded = true;
+          return currentInstallMode;
+        }
+      }
+    } catch {
+      // Continue to next path
+    }
+  }
+
+  configLoaded = true;
+  return currentInstallMode;
+}
 
 /**
  * Set the install mode for skill loading
@@ -40,13 +74,17 @@ let currentInstallMode: InstallMode = 'standard';
  */
 export function setInstallMode(mode: InstallMode): void {
   currentInstallMode = mode;
+  configLoaded = true;
   clearSkillsCache(); // Clear cache when mode changes
 }
 
 /**
- * Get current install mode
+ * Get current install mode (auto-loads from config on first call)
  */
 export function getInstallMode(): InstallMode {
+  if (!configLoaded) {
+    loadInstallModeFromConfig();
+  }
   return currentInstallMode;
 }
 

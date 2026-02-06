@@ -1,10 +1,51 @@
 ---
 description: One-time setup for sk-claudecode (the ONLY command you need to learn)
+argument-hint: "[--minimal | --full]"
 ---
 
 # SKC Setup
 
 This is the **only command you need to learn**. After running this, everything else is automatic.
+
+## Quick Install (One-Liner)
+
+```bash
+# Standard install (recommended)
+/sk-claudecode:skc-setup
+
+# Minimal install (core skills only, ~1MB)
+/sk-claudecode:skc-setup --minimal
+
+# Full install (all skills including scientific, ~17MB)
+/sk-claudecode:skc-setup --full
+```
+
+## CLI Argument Detection (Step 0)
+
+Before any user prompts, detect CLI arguments:
+
+```bash
+# Parse command line arguments
+INSTALL_MODE="standard"  # default
+
+for arg in "$@"; do
+  case "$arg" in
+    --minimal) INSTALL_MODE="minimal" ;;
+    --full)    INSTALL_MODE="full" ;;
+    --standard) INSTALL_MODE="standard" ;;
+  esac
+done
+
+# If mode specified via CLI, skip the install mode prompt (Step 1.5)
+if [ "$INSTALL_MODE" != "standard" ] || echo "$*" | grep -q "\-\-"; then
+  SKIP_MODE_PROMPT=true
+  echo "Install mode: $INSTALL_MODE (from CLI argument)"
+  
+  # Save immediately
+  mkdir -p .skc/config
+  echo "{\"installMode\":\"$INSTALL_MODE\"}" > .skc/config/install-mode.json
+fi
+```
 
 ## Graceful Interrupt Handling
 

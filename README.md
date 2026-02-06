@@ -54,19 +54,6 @@ npm run setup
 - **Persistent Execution** - Won't give up until the job is verified complete
 - **Learn from Experience** - Automatically extracts and reuses problem-solving patterns
 
-### ⚡ Performance Optimization
-
-**Lazy Loading** - Large skill sets (scientific: 16MB) loaded on-demand:
-```typescript
-import { setInstallMode, getBuiltinSkill } from 'sk-claudecode';
-
-// Install modes: 'minimal' | 'standard' | 'full'
-setInstallMode('standard');  // Default - excludes scientific
-
-// Access scientific skills on-demand
-const skill = getBuiltinSkill('scientific');  // Loads when needed
-```
-
 ## 🪄 Magic Keywords
 
 Type these anywhere in your prompt to trigger special behaviors:

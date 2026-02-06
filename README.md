@@ -13,6 +13,15 @@ A comprehensive multi-agent orchestration system merging capabilities from 5 pro
 
 # Install plugin
 /plugin install sk-claudecode
+
+# Run setup (standard install)
+/sk-claudecode:skc-setup
+
+# Minimal install (core skills only, ~1MB)
+/sk-claudecode:skc-setup --minimal
+
+# Full install (all skills including scientific, ~17MB)
+/sk-claudecode:skc-setup --full
 ```
 
 ### Method 2: Direct Plugin Install

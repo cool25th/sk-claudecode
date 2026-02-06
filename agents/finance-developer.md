@@ -102,7 +102,33 @@ async def fetch_market_data(symbols: list[str]) -> pd.DataFrame:
 
 ---
 
-## 4. Broker Integration
+## 4. Broker Integration & Order Execution
+
+### Execution Algorithms
+
+#### TWAP (Time-Weighted Average Price)
+- Split orders evenly over time
+- Best for: Low urgency, avoid timing risk
+- Parameters: duration, interval
+
+#### VWAP (Volume-Weighted Average Price)
+- Match historical volume profile
+- Best for: Benchmark tracking
+- Parameters: participation rate, duration
+
+#### Implementation Shortfall
+- Minimize cost vs. decision price
+- Adaptive to market conditions
+- Parameters: urgency, risk aversion
+
+#### Iceberg Orders
+- Hide large order size, display only portion
+- Parameters: display size, refresh rate
+
+### Market Impact Modeling
+- **Temporary Impact**: Order size / ADV, bid-ask spread
+- **Permanent Impact**: Information leakage, price momentum
+- **Models**: Almgren-Chriss, Square-root impact
 
 ### KIS (Korea Investment & Securities)
 ```python
@@ -117,16 +143,36 @@ class KISClient:
         """보유 종목 조회"""
 ```
 
+### Kiwoom OpenAPI+
+- COM-based API (Windows)
+- Event-driven callbacks
+- Rate limiting (3.6 req/sec)
+
+### Order Management
+```
+PENDING → SUBMITTED → PARTIAL_FILL → FILLED
+                   ↘ CANCELLED
+                   ↘ REJECTED
+```
+
 ### Order Types
 - Market order (시장가)
 - Limit order (지정가)
 - Stop loss (손절)
 - OCO (One-Cancels-Other)
 
-### Real-time Data
+### Pre-Trade Risk Checks
+- [ ] Position limits not exceeded
+- [ ] Order size within daily limits
+- [ ] Price within reasonable range
+- [ ] Symbol is tradeable (not halted)
+- [ ] Market hours check
+
+### Real-time Monitoring
+- Fill rate & slippage tracking
 - WebSocket for quotes
-- REST fallback
 - Reconnection handling
+- Alert on order rejections
 
 ---
 

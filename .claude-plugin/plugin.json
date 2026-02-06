@@ -17,6 +17,8 @@
         "quant",
         "trading"
     ],
+    "commands": "./commands/",
     "skills": "./skills/",
+    "agents": "./agents/",
     "mcpServers": "./.mcp.json"
 }

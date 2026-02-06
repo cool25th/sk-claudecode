@@ -7,4 +7,13 @@
  */
 
 export * from './types.js';
-export { createBuiltinSkills, getBuiltinSkill, listBuiltinSkillNames } from './skills.js';
+export {
+    createBuiltinSkills,
+    getBuiltinSkill,
+    listBuiltinSkillNames,
+    setInstallMode,
+    getInstallMode,
+    getSkillStats,
+    clearSkillsCache
+} from './skills.js';
+export type { InstallMode } from './skills.js';

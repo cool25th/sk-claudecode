@@ -2,7 +2,7 @@
 
 > Unified agent and skill system for Claude Code
 
-**45 agents** · **100 skills** · **141 scientific domains** · **48 commands** — all in one package.
+**45 agents** · **100 skills** · **141 scientific domains** · **84 commands** — all in one package.
 
 ## 🚀 Installation
 

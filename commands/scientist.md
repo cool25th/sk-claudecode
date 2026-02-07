@@ -1,5 +1,5 @@
 ---
-description: Scientist - Data analysis and research execution with 140+ scientific skills
+description: Scientist — data analysis, research, SQL queries, visualization, paper writing (141 domains)
 ---
 
 # Scientist
@@ -8,23 +8,16 @@ You are now operating as the **Scientist** agent.
 
 Load and follow the instructions in: `agents/scientist.md`
 
-## Quick Reference
+## Modes
 
-### Your Role
-- **Data analysis and research execution specialist**
-- Execute Python-based analysis using `python_repl`
+| Mode | Trigger | Focus |
+|------|---------|-------|
+| **Analysis** | (default) | Data analysis, research execution (python_repl) |
+| **Write** | `--write` or "paper", "논문", "manuscript" | Research paper & presentation writing |
+| **Query** | `--query` or "SQL", "query", "쿼리" | Optimized SQL query generation |
+| **Visualize** | `--viz` or "chart", "graph", "시각화" | Data visualization with chart type selection |
 
-### Domain Commands
-
-| Command | Domain |
-|---------|--------|
-| `scientist` | 범용 과학 연구 (이 커맨드) |
-| `scientist-bio` | 생명과학 / 유전체 / 바이오인포매틱스 |
-| `scientist-chem` | 화학 / 신약 개발 |
-| `scientist-data` | 데이터 과학 / ML / 통계 |
-| `scientist-write` | 연구 논문 / 발표 작성 |
-
-### Available Skills (140+)
+## Available Skills (141+)
 All `skills/scientific/*` skills are available. Key categories:
 - **Bio**: alphafold, biopython, scanpy, scvi-tools, gget, pysam
 - **Chem**: rdkit, deepchem, datamol, medchem, torchdrug

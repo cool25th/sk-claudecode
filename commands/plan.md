@@ -1,12 +1,20 @@
 ---
-description: Start a planning session with Planner
+description: Planning — feature planning, PRD/spec writing, roadmap (auto-detects or specify mode)
 ---
 
-# Plan Skill
+# Plan
 
 [PLANNING MODE ACTIVATED]
 
-## Planning Session with Planner
+## Modes
+
+| Mode | Trigger | Focus |
+|------|---------|-------|
+| **Plan** | (default) | Interview → Analysis → Work plan creation |
+| **Spec** | `--spec` or "PRD", "spec", "requirements" | Structured PRD with user stories & acceptance criteria |
+| **Roadmap** | `--roadmap` or "roadmap", "prioritize" | RICE/ICE/MoSCoW prioritization framework |
+
+## Default: Planning Session
 
 You are now in planning mode with Planner, the strategic planning consultant.
 
@@ -33,3 +41,5 @@ Say one of these when you're ready to generate the plan:
 ---
 
 Let's begin. Tell me more about what you want to accomplish, and I'll ask clarifying questions.
+
+{{PROMPT}}

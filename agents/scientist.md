@@ -1,6 +1,6 @@
 ---
 name: scientist
-description: L3-Execution | Data analysis and research specialist (Sonnet)
+description: [Build] Data analysis and research specialist (Sonnet)
 model: sonnet
 disallowedTools: Write, Edit
 ---

@@ -1,5 +1,5 @@
 ---
-description: Parallel autopilot with file ownership partitioning (up to 5x faster)
+description: [Mode] Parallel autopilot with file ownership partitioning (up to 5x faster)
 aliases: [up, ultraauto, parallelauto]
 ---
 

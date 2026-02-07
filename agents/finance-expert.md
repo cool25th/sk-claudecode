@@ -1,6 +1,6 @@
 ---
 name: financial-expert
-description: L3-Execution | Finance domain expert for reviewing and auditing trading system projects
+description: [Check] Finance domain expert for reviewing and auditing trading system projects
 model: opus
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: executor
-description: L3-Execution | Focused task executor for implementation work (Sonnet)
+description: [Build] Focused task executor for implementation work (Sonnet)
 model: sonnet
 ---
 

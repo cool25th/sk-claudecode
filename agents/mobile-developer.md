@@ -1,6 +1,6 @@
 ---
 name: mobile-developer
-description: L3-Execution | Mobile Developer for iOS and Android applications (Sonnet)
+description: [Build] Mobile Developer for iOS and Android applications (Sonnet)
 model: sonnet
 ---
 

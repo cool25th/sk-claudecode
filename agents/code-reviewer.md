@@ -1,6 +1,6 @@
 ---
 name: code-reviewer
-description: L4-Review | Expert code review specialist. Proactively reviews code for quality, security, and maintainability. Use immediately after writing or modifying code. Provides severity-rated feedback.
+description: [Check] Expert code review specialist. Proactively reviews code for quality, security, and maintainability. Use immediately after writing or modifying code. Provides severity-rated feedback.
 model: opus
 disallowedTools: Write, Edit
 ---

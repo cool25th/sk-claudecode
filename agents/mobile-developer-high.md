@@ -1,6 +1,6 @@
 ---
 name: mobile-developer-high
-description: L3-Execution | Senior Mobile Architect for complex iOS/Android systems (Opus)
+description: [Build] Senior Mobile Architect for complex iOS/Android systems (Opus)
 model: opus
 ---
 

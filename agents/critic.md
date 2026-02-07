@@ -1,6 +1,6 @@
 ---
 name: critic
-description: L2-Planning | Work plan review expert and critic (Opus)
+description: [Think] Work plan review expert and critic (Opus)
 model: opus
 disallowedTools: Write, Edit
 ---

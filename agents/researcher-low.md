@@ -1,6 +1,6 @@
 ---
 name: researcher-low
-description: L5-Support | Quick documentation lookups (Haiku)
+description: [Help] Quick documentation lookups (Haiku)
 model: haiku
 disallowedTools: Write, Edit
 ---

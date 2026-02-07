@@ -1,6 +1,6 @@
 ---
 name: designer
-description: L3-Execution | UI/UX Designer-Developer for stunning interfaces (Sonnet)
+description: [Build] UI/UX Designer-Developer for stunning interfaces (Sonnet)
 model: sonnet
 ---
 

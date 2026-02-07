@@ -1,6 +1,6 @@
 ---
 name: writer
-description: L5-Support | Technical documentation writer for README, API docs, and comments (Haiku)
+description: [Help] Technical documentation writer for README, API docs, and comments
 model: haiku
 ---
 

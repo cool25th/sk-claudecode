@@ -1,6 +1,6 @@
 ---
 name: designer-high
-description: L3-Execution | Complex UI architecture and design systems (Opus)
+description: [Think] UI/UX design advisor for architecture, design systems, style consistency, and tone & manner review (Opus)
 model: opus
 ---
 

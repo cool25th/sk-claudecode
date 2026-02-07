@@ -1,6 +1,6 @@
 ---
 name: qa-tester
-description: L4-Review | Interactive CLI testing specialist using tmux (Sonnet)
+description: [Check] Interactive CLI testing specialist using tmux (Sonnet)
 model: sonnet
 ---
 

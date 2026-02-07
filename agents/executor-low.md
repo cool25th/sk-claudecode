@@ -1,6 +1,6 @@
 ---
 name: executor-low
-description: L3-Execution | Simple single-file task executor (Haiku)
+description: [Build] Simple single-file task executor (Haiku)
 model: haiku
 ---
 

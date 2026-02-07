@@ -1,6 +1,6 @@
 ---
 name: security-reviewer-low
-description: L4-Review | Quick security scan specialist (Haiku). Use for fast security checks on small code changes.
+description: [Check] Quick security scan specialist (Haiku). Use for fast security checks on small code changes.
 model: haiku
 disallowedTools: Write, Edit
 ---

@@ -1,6 +1,6 @@
 ---
 name: qa-tester-high
-description: L4-Review | Comprehensive production-ready QA testing with Opus
+description: [Check] Comprehensive production-ready QA testing with Opus
 model: opus
 ---
 

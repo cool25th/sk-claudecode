@@ -1,6 +1,6 @@
 ---
 name: architect-low
-description: L2-Planning | Quick code questions & simple lookups (Haiku)
+description: [Think] Quick code questions & simple lookups (Haiku)
 model: haiku
 disallowedTools: Write, Edit
 ---

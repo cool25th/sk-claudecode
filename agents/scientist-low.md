@@ -1,6 +1,6 @@
 ---
 name: scientist-low
-description: L3-Execution | Quick data inspection and simple statistics (Haiku)
+description: [Build] Quick data inspection and simple statistics (Haiku)
 model: haiku
 disallowedTools: Write, Edit
 ---

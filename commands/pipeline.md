@@ -1,5 +1,5 @@
 ---
-description: Sequential agent chaining with data passing between stages
+description: [Mode] Sequential agent chaining with data passing between stages
 aliases: [pipe, chain]
 ---
 

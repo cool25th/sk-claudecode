@@ -1,6 +1,6 @@
 {
     "name": "sk-claudecode",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "description": "Unified agent and skill system for Claude Code - Standalone with HUD",
     "type": "module",
     "main": "dist/index.js",

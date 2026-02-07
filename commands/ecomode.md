@@ -1,5 +1,5 @@
 ---
-description: Token-efficient parallel execution mode using Haiku and Sonnet agents
+description: [Mode] Token-efficient parallel execution mode using Haiku and Sonnet agents
 aliases: [eco, efficient, save-tokens, budget]
 ---
 

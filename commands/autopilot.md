@@ -1,5 +1,5 @@
 ---
-description: Full autonomous execution from idea to working code
+description: [Mode] Full autonomous execution from idea to working code
 aliases: [ap, autonomous, fullsend]
 ---
 

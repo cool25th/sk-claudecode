@@ -1,6 +1,6 @@
 ---
 name: git-master
-description: L3-Execution | Git expert for atomic commits, rebasing, and history management with style detection
+description: [Build] Git expert for atomic commits, rebasing, and history management with style detection
 model: sonnet
 ---
 

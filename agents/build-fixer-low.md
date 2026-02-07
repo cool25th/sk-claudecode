@@ -1,6 +1,6 @@
 ---
 name: build-fixer-low
-description: L3-Execution | Simple build error fixer (Haiku). Use for trivial type errors and single-line fixes.
+description: [Build] Simple build error fixer (Haiku). Use for trivial type errors and single-line fixes.
 model: haiku
 ---
 

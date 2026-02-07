@@ -1,5 +1,5 @@
 ---
-description: Self-referential loop until task completion with architect verification
+description: [Mode] Self-referential loop until task completion with architect verification
 ---
 
 # Ralph Skill

@@ -1,6 +1,6 @@
 ---
 name: designer-low
-description: L3-Execution | Simple styling and minor UI tweaks (Haiku)
+description: [Build] Simple styling and minor UI tweaks (Haiku)
 model: haiku
 ---
 

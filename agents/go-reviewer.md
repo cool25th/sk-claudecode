@@ -1,6 +1,6 @@
 ---
 name: go-reviewer
-description: L4-Review | Expert Go code reviewer specializing in idiomatic Go, concurrency patterns, error handling, and performance. Use for all Go code changes. MUST BE USED for Go projects.
+description: [Check] Expert Go code reviewer specializing in idiomatic Go, concurrency patterns, error handling, and performance. Use for all Go code changes. MUST BE USED for Go projects.
 tools: ["Read", "Grep", "Glob", "Bash"]
 model: opus
 ---

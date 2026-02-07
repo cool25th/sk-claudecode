@@ -2,168 +2,261 @@
 
 > Unified agent and skill system for Claude Code
 
-A comprehensive multi-agent orchestration system merging capabilities from 5 projects: oh-my-claudecode, oh-my-opencode, superpowers, claude-scientific-skills, and claude-mem.
+42 specialized agents + 89 skills + 141 scientific domains in one package.
 
 ## 🚀 Installation
 
-### Method 1: Claude Marketplace (Recommended)
 ```bash
-# Add marketplace source
-/plugin marketplace add https://github.com/cool25th/sk-claudecode
-
-# Install plugin
+# Marketplace (Recommended)
 /plugin install sk-claudecode
-
-# Run setup (standard install)
 /sk-claudecode:skc-setup
 
-# Minimal install (core skills only, ~1MB)
-/sk-claudecode:skc-setup --minimal
-
-# Full install (all skills including scientific, ~17MB)
-/sk-claudecode:skc-setup --full
-```
-
-### Method 2: Direct Plugin Install
-```bash
+# Direct
 claude /install-plugin https://github.com/cool25th/sk-claudecode
+
+# Local
+git clone https://github.com/cool25th/sk-claudecode && cd sk-claudecode
+npm install && npm run build && npm run setup
 ```
 
-### Method 3: Local Install
+| Install Mode | Command | Size |
+|-------------|---------|------|
+| **Standard** | `/sk-claudecode:skc-setup` | ~2MB |
+| **Minimal** | `/sk-claudecode:skc-setup --minimal` | ~1MB |
+| **Full** | `/sk-claudecode:skc-setup --full` | ~17MB |
+
+---
+
+## 💡 Recommended Workflow
+
+The best results come from following the **Think → Build → Check** cycle:
+
+```
+🧠 Think          ⚡ Build          🔍 Check
+ ┌──────────┐     ┌──────────┐     ┌──────────┐
+ │ architect │────▶│ executor │────▶│ reviewer │
+ │ planner   │     │ designer │     │ qa-tester│
+ │ critic    │     │ builder  │     │ security │
+ └──────────┘     └──────────┘     └──────────┘
+       ▲                                 │
+       └─────────────────────────────────┘
+                  Iterate
+```
+
+**Example workflow:**
 ```bash
-git clone https://github.com/cool25th/sk-claudecode
-cd sk-claudecode
-npm install && npm run build
-npm run setup
+# Step 1: Think — Plan the approach
+@planner "Design authentication with JWT and OAuth2"
+@critic "Review this plan for security gaps"
+
+# Step 2: Build — Implement
+@executor "Implement the auth middleware from the plan"
+@designer "Build the login page with dark mode"
+
+# Step 3: Check — Verify quality
+@code-reviewer "Review all changes in src/auth/"
+@security-reviewer "Audit the new auth endpoints"
+@qa-tester "Test the login flow end-to-end"
+
+# Iterate: Fix issues found in Check
+@build-fixer "Fix the type errors from code review"
 ```
 
-### Install Modes
+> 💡 **Tip:** Use `/sk-claudecode:ralph` to automate this entire cycle — it keeps iterating until everything passes.
 
-| Mode | npm Command | Plugin Command | Size |
-|------|-------------|----------------|------|
-| **Standard** | `npm run setup` | `/sk-claudecode:skc-setup` | ~2MB |
-| **Minimal** | `npm run setup -- --minimal` | `/sk-claudecode:skc-setup --minimal` | ~1MB |
-| **Full** | `npm run setup -- --full` | `/sk-claudecode:skc-setup --full` | ~17MB |
+---
 
-## ✨ Features
+## 🤖 Agent Guide — "What do I use?"
 
-| Component | Count |
-|-----------|-------|
-| **Agents** | 50 (with tiered variants) |
-| **Skills** | 89 categories |
-| **Scientific** | 141 domains |
-| **Memory Modes** | 31 |
-| **Hooks** | 10+ |
+All 42 agents fall into 4 categories based on **what you want to do**:
 
-### 🔥 Core Capabilities
+### 🧠 Think — Plan before you build
 
-- **Real-time HUD** - Status line shows what's happening under the hood
-- **Smart Model Routing** - Saves 30-50% on tokens with intelligent routing
-- **Automatic Parallelization** - Complex tasks distributed across specialized agents
-- **Persistent Execution** - Won't give up until the job is verified complete
-- **Learn from Experience** - Automatically extracts and reuses problem-solving patterns
+> Use when you need to analyze, design, or review a plan.
+
+| Agent | Model | When to use |
+|-------|-------|-------------|
+| `architect` | Opus | System architecture, debugging strategy |
+| `architect-medium` | Sonnet | Medium-complexity design questions |
+| `architect-low` | Haiku | Quick code questions |
+| `planner` | Opus | Feature planning, requirements analysis |
+| `critic` | Opus | Review and challenge a work plan |
+| `designer-high` | Opus | UI/UX design planning, style & tone review |
+| `ontology-expert` | Opus | Ontology architecture & domain analysis |
+
+```bash
+@planner "Design authentication system with JWT and OAuth2"
+@architect "Review the database schema for scalability issues"
+@designer-high "Review the UI for design consistency and tone"
+@critic "Review this implementation plan for gaps"
+```
+
+---
+
+### ⚡ Build — Write and implement code
+
+> Use when you need to create, modify, or fix code.
+
+| Agent | Model | When to use |
+|-------|-------|-------------|
+| `executor` | Sonnet | General implementation tasks |
+| `executor-low` | Haiku | Simple single-file changes |
+| `ultra-executor` | Opus | Complex multi-file autonomous tasks |
+| `designer` | Sonnet | UI/UX development |
+| `designer-low` | Haiku | Minor styling tweaks |
+| `build-fixer` | Sonnet | Fix build errors (TS, Go, etc.) |
+| `build-fixer-low` | Haiku | Trivial type errors |
+| `git-master` | Sonnet | Commits, rebasing, history management |
+| `mobile-developer` | Sonnet | iOS / Android apps |
+| `mobile-developer-high` | Opus | Complex mobile architecture |
+| `mobile-developer-low` | Haiku | Quick mobile fixes |
+| `scientist` | Sonnet | Data analysis, research |
+| `scientist-high` | Opus | ML, hypothesis testing |
+| `scientist-low` | Haiku | Quick data inspection |
+| `finance-developer` | Opus | Trading systems development |
+| `ontology-developer` | Sonnet | Ontology implementation |
+
+```bash
+@executor "Add user authentication middleware"
+@ultra-executor "Refactor the entire API layer to use async/await"
+@designer "Build a dashboard with charts and dark mode"
+@build-fixer "Fix all TypeScript errors in src/"
+```
+
+---
+
+### 🔍 Check — Review and test code
+
+> Use when you need to verify quality, security, or correctness.
+
+| Agent | Model | When to use |
+|-------|-------|-------------|
+| `code-reviewer` | Opus | Comprehensive code review |
+| `code-reviewer-low` | Haiku | Quick review of small changes |
+| `security-reviewer` | Opus | Security vulnerabilities (OWASP Top 10) |
+| `security-reviewer-low` | Haiku | Fast security scan |
+| `go-reviewer` | Opus | Go-specific best practices |
+| `python-reviewer` | Opus | Python-specific (PEP 8, type hints) |
+| `database-reviewer` | Opus | SQL optimization, schema design |
+| `qa-tester` | Sonnet | Interactive CLI testing (tmux) |
+| `qa-tester-high` | Opus | Production-ready QA |
+| `tdd-guide` | Opus | Test-Driven Development |
+| `tdd-guide-low` | Haiku | Quick test suggestions |
+| `e2e-runner` | Opus | End-to-end browser testing |
+| `finance-expert` | Opus | Finance domain audit (KR/US markets) |
+
+```bash
+@code-reviewer "Review the changes in src/auth/"
+@security-reviewer "Audit the API endpoints for vulnerabilities"
+@database-reviewer "Optimize slow queries in src/db"
+@qa-tester "Test the login flow end-to-end"
+```
+
+---
+
+### 📚 Help — Search and document
+
+> Use when you need to find information or write documentation.
+
+| Agent | Model | When to use |
+|-------|-------|-------------|
+| `explore` | Sonnet | Search codebase for files and patterns |
+| `researcher` | Sonnet | External docs and reference research |
+| `researcher-low` | Haiku | Quick documentation lookups |
+| `writer` | Sonnet | README, API docs, comments |
+| `vision` | Sonnet | Analyze images, PDFs, diagrams |
+| `refactor-cleaner` | Opus | Find and remove dead code |
+
+```bash
+@explore "Find all authentication patterns in the codebase"
+@researcher "How does Next.js 15 handle server components?"
+@writer "Document the REST API endpoints in src/api/"
+@vision "Analyze this wireframe and suggest component structure"
+```
+
+---
+
+## 🚀 Execution Modes — How to run tasks
+
+Instead of using agents directly, you can use **modes** for complex workflows:
+
+| Mode | What it does | Command |
+|------|-------------|---------|
+| **ralph** | Keeps going until task is verified complete | `/sk-claudecode:ralph` |
+| **autopilot** | Full autonomous execution from idea to code | `/sk-claudecode:autopilot` |
+| **ultrawork** | Maximum parallel agent execution | `/sk-claudecode:ultrawork` |
+| **ultrapilot** | Parallel with file ownership partitioning | `/sk-claudecode:ultrapilot` |
+| **swarm** | N coordinated agents on shared tasks | `/sk-claudecode:swarm` |
+| **ecomode** | Token-efficient mode (saves 60%+) | `/sk-claudecode:ecomode` |
+| **pipeline** | Sequential agent chaining | `/sk-claudecode:pipeline` |
+| **ultraqa** | QA cycling until goal met | `/sk-claudecode:ultraqa` |
+
+```bash
+# "Just make it work" — ralph keeps retrying until verified
+/sk-claudecode:ralph implement user profile page with avatar upload
+
+# Maximum speed — parallel agents
+/sk-claudecode:ultrawork refactor authentication to use OAuth2
+
+# Save tokens — uses smaller models
+/sk-claudecode:ecomode fix all lint errors in src/
+```
+
+---
 
 ## 🪄 Magic Keywords
 
-Type these anywhere in your prompt to trigger special behaviors:
+Type these anywhere in your prompt — no slash command needed:
 
 | Keyword | Effect |
 |---------|--------|
-| `ultrawork` | Maximum parallel agent execution |
-| `ultrapilot` | File ownership-based parallelization |
+| `ultrawork` | Activates parallel agent execution |
+| `ultrapilot` | File ownership parallelization |
 | `search` | Deep codebase search mode |
 | `analyze` | Comprehensive code analysis |
 | `research` | Extended research workflow |
 
-**Example:**
-```
-ultrawork implement authentication with JWT and OAuth2
-```
-
-## 📖 Quick Start
-
-```bash
-# Start Claude Code in your project
-claude
-
-# Invoke an agent
-@planner "Design a new API endpoint"
-
-# Use a skill
-/sk-claudecode:ultra-plan
-
-# Use a specialized agent
-@financial-expert "Analyze risk for momentum strategy"
-@database-reviewer "Optimize slow SQL queries in src/db"
-@executor "Create REST API for user management"
-```
-
-## 🤖 Featured Agents
-
-| Agent | Role |
-|-------|------|
-| `planner` | Task planning and breakdown |
-| `executor` / `ultra-executor` | Task execution |
-| `designer` | Frontend UI/UX |
-| `database-reviewer` | SQL & Schema optimization |
-| `e2e-runner` | End-to-end testing |
-| `financial-expert` | Quant strategies, risk management |
-| `financial-execution` | Trade order execution |
-| `go-reviewer` / `python-reviewer` | Language-specific review |
-| `code-reviewer` | General code quality review |
+---
 
 ## 🛠 Key Skills
 
-| Skill | Purpose |
-|-------|---------|
-| `plan` / `ultra-plan` | Project planning |
-| `quality/tdd` / `quality/ultratdd` | Test-driven development |
-| `quant` | Quantitative trading |
-| `trading` | Trade execution |
-| `market-kr` / `market-us` | Market regulations |
-| `backend` | Backend development |
-| `frontend-ui-ux` | Frontend design |
+| Skill | Command | Purpose |
+|-------|---------|---------|
+| Planning | `/sk-claudecode:ultra-plan` | High-density project planning |
+| TDD | `/sk-claudecode:test-driven-development` | Test-first workflow |
+| Verification | `/sk-claudecode:verification-loop` | Build/test/lint verification |
+| Memory | `/sk-claudecode:memory` | Persistent cross-session context |
+| Backend | `/sk-claudecode:backend` | Backend development patterns |
+| Frontend | `/sk-claudecode:frontend-ui-ux` | UI/UX design patterns |
+| Scientific | `/sk-claudecode:scientist` | 141 scientific domains |
+| Quant | `/sk-claudecode:quant` | Quantitative trading strategies |
 
-## 📚 Documentation
+## ✨ Highlights
 
-- [**Ultra Suite Guide**](docs/ULTRA-SUITE.md) - Advanced workflow skills (12 skills, 2 agents)
-- [**Ultra vs Ralph**](docs/ULTRA-VS-RALPH.md) - Workflow family comparison
-- **Ontology Suite** - 8 skills for data modeling: ontology, ontology-traditional, ontology-palantir, ontology-storage
-- [AGENTS.md](AGENTS.md) - Complete agent and skill reference
+- **Real-time HUD** — Status line shows active agents and progress
+- **Smart Model Routing** — Saves 30-50% on tokens automatically
+- **Automatic Parallelization** — Complex tasks distributed across agents
+- **Persistent Execution** — Won't give up until the job is verified complete
+- **Learn from Experience** — Extracts and reuses problem-solving patterns
 
-## 📁 Structure
+## 📚 More Documentation
 
-```
-sk-claudecode/
-├── agents/           # 39 agent definitions
-├── skills/           # 26+ skill categories
-│   ├── quality/      # TDD, code review, security
-│   ├── quant/        # Quant strategies
-│   ├── trading/      # Trade execution
-│   ├── scientific/   # 141 scientific domains
-│   └── ...
-├── hooks/            # Event-driven behaviors
-├── .claude-plugin/   # Plugin configuration
-├── package.json      # NPM package
-└── scripts/          # Setup scripts
-```
+- [Ultra Suite Guide](docs/ULTRA-SUITE.md) — Advanced workflow skills
+- [AGENTS.md](AGENTS.md) — Complete agent reference
 
 ## 🙏 Inspired By
 
-This project combines the best ideas from these amazing projects:
-
-| Project | Contribution | Author |
-|---------|--------------|--------|
-| [oh-my-claudecode](https://github.com/code-yeongyu/oh-my-claudecode) | HUD, Model Routing, Swarm hooks | [@code-yeongyu](https://github.com/code-yeongyu) |
-| [superpowers](https://github.com/obra/superpowers) | Workflow skills, execution modes | [@obra](https://github.com/obra) |
-| [claude-scientific-skills](https://github.com/K-Dense-AI/claude-scientific-skills) | 141 scientific domains | [@K-Dense-AI](https://github.com/K-Dense-AI) |
-| [claude-mem](https://github.com/thedotmack/claude-mem) | Persistent memory system | [@thedotmack](https://github.com/thedotmack) |
-| [everything-claude-code](https://github.com) | Language patterns, reviewers | Community |
-| [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode) | Sisyphus prompt patterns | [@code-yeongyu](https://github.com/code-yeongyu) |
+| Project | Contribution |
+|---------|-------------|
+| [oh-my-claudecode](https://github.com/code-yeongyu/oh-my-claudecode) | HUD, Model Routing, Swarm |
+| [superpowers](https://github.com/obra/superpowers) | Workflow skills, execution modes |
+| [claude-scientific-skills](https://github.com/K-Dense-AI/claude-scientific-skills) | 141 scientific domains |
+| [claude-mem](https://github.com/thedotmack/claude-mem) | Persistent memory system |
+| [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode) | Sisyphus prompt patterns |
 
 ## 📜 License
 
-MIT License - Components retain their original licenses.
+MIT License — Components retain their original licenses.
 
 ---
 

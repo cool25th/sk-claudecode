@@ -1,6 +1,6 @@
 ---
 name: code-reviewer-low
-description: L4-Review | Quick code quality checker (Haiku). Use for fast review of small changes.
+description: [Check] Quick code quality checker (Haiku). Use for fast review of small changes.
 model: haiku
 disallowedTools: Write, Edit
 ---

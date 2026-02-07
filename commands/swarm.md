@@ -1,5 +1,5 @@
 ---
-description: N coordinated agents on shared task list with SQLite-based atomic claiming
+description: [Mode] N coordinated agents on shared task list with SQLite-based atomic claiming
 aliases: [swarm-agents]
 ---
 

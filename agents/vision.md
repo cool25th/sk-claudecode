@@ -1,6 +1,6 @@
 ---
 name: vision
-description: L5-Support | Visual/media file analyzer for images, PDFs, and diagrams (Sonnet)
+description: [Help] Visual/media file analyzer for images, PDFs, and diagrams (Sonnet)
 model: sonnet
 disallowedTools: Write, Edit
 ---

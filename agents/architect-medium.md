@@ -1,6 +1,6 @@
 ---
 name: architect-medium
-description: L2-Planning | Architecture Advisor - Medium complexity (Sonnet)
+description: [Think] Architecture Advisor - Medium complexity (Sonnet)
 model: sonnet
 disallowedTools: Write, Edit
 ---

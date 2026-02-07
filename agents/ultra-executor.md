@@ -1,6 +1,6 @@
 ---
 name: ultra-executor
-description: L3-Execution | Autonomous deep worker for complex goal-oriented tasks (Opus)
+description: [Build] Autonomous deep worker for complex goal-oriented tasks (Opus)
 model: opus
 ---
 

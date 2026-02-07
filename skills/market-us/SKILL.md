@@ -41,4 +41,4 @@ Reference for US market (NYSE/NASDAQ) regulations, trading hours, and SEC rules.
 - 30-day window for tax purposes
 
 ## Related Agent
-- `domain-expert-us`
+- `finance-expert`

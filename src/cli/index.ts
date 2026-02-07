@@ -944,7 +944,6 @@ Examples:
         console.log('    writer              - Technical writing (Haiku)');
         console.log('    vision              - Visual analysis (Sonnet)');
         console.log('    critic               - Plan review (Opus)');
-        console.log('    analyst               - Pre-planning analysis (Opus)');
         console.log('    orchestrator-sisyphus - Todo coordination (Opus)');
         console.log('    executor            - Focused execution (Sonnet)');
         console.log('    planner          - Strategic planning (Opus)');
@@ -955,7 +954,6 @@ Examples:
         console.log('    executor-high       - Complex tasks (Opus)');
         console.log('    executor-low        - Trivial tasks (Haiku)');
         console.log('    researcher-low       - Quick lookups (Haiku)');
-        console.log('    explore-medium      - Thorough search (Sonnet)');
         console.log('    designer-high       - Design systems (Opus)');
         console.log('    designer-low        - Simple styling (Haiku)');
         console.log('');

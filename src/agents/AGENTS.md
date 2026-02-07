@@ -68,7 +68,7 @@ const agents = getAgentDefinitions();
 | Simple fixes | `executor-low` | haiku | Read, Glob, Grep, Edit, Write, Bash, TodoWrite |
 | Complex refactoring | `executor-high` | opus | Read, Glob, Grep, Edit, Write, Bash, TodoWrite |
 | Fast file search | `explore` | haiku | Read, Glob, Grep |
-| Thorough search | `explore-medium` | sonnet | Read, Glob, Grep |
+| Thorough search | `explore` | sonnet | Read, Glob, Grep |
 | Architectural discovery | `researcher` | opus | Read, Glob, Grep |
 | UI components | `designer` | sonnet | Read, Glob, Grep, Edit, Write, Bash |
 | Simple styling | `designer-low` | haiku | Read, Glob, Grep, Edit, Write, Bash |
@@ -237,7 +237,7 @@ None - pure TypeScript definitions.
 |----------|--------|---------|
 | Analysis | architect, architect-medium, architect-low | Debugging, architecture |
 | Execution | executor, executor-low, executor-high | Code implementation |
-| Search | explore, explore-medium, researcher | Codebase exploration |
+| Search | explore, researcher | Codebase exploration |
 | Research | researcher, researcher-low | External documentation |
 | Frontend | designer, designer-low, designer-high | UI/UX work |
 | Documentation | writer | Technical writing |

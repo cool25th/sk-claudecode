@@ -132,4 +132,4 @@ async processOrder(order: Order): Promise<Result> {
 
 - `ontology-expert` - Ontology architecture and design
 - `database-reviewer` - Schema optimization
-- `backend-developer` - API integration
+- `executor` - API integration

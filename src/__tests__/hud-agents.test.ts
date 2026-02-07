@@ -267,7 +267,6 @@ describe('Agents Element', () => {
       { type: 'architect-low', model: 'haiku', expected: 'a' },
       { type: 'architect-medium', model: 'sonnet', expected: 'a' },
       { type: 'explore', model: 'haiku', expected: 'e' },
-      { type: 'explore-medium', model: 'sonnet', expected: 'e' },
       { type: 'executor', model: 'sonnet', expected: 'x' },
       { type: 'executor-low', model: 'haiku', expected: 'x' },
       { type: 'ultra-executor', model: 'opus', expected: 'U' },
@@ -277,7 +276,6 @@ describe('Agents Element', () => {
       { type: 'writer', model: 'haiku', expected: 'w' },
       { type: 'planner', model: 'opus', expected: 'P' },
       { type: 'critic', model: 'opus', expected: 'C' },
-      { type: 'analyst', model: 'opus', expected: 'T' },
       { type: 'qa-tester', model: 'sonnet', expected: 'q' },
       { type: 'vision', model: 'sonnet', expected: 'v' },
     ];

@@ -93,7 +93,6 @@ describe('Installer Constants', () => {
         'writer.md',
         'vision.md',
         'critic.md',
-        'analyst.md',
         'executor.md',
         'planner.md',
         'qa-tester.md',
@@ -112,7 +111,6 @@ describe('Installer Constants', () => {
         'architect-low.md',
         'executor-low.md',
         'researcher-low.md',
-        'explore-medium.md',
         'designer-low.md',
         'designer-high.md',
       ];
@@ -166,8 +164,7 @@ describe('Installer Constants', () => {
         'architect-low.md': 'haiku',
         'researcher.md': 'sonnet',
         'researcher-low.md': 'haiku',
-        'explore.md': 'haiku',
-        'explore-medium.md': 'sonnet',
+        'explore.md': 'sonnet',
         'executor.md': 'sonnet',
         'executor-low.md': 'haiku',
         'designer.md': 'sonnet',
@@ -176,7 +173,6 @@ describe('Installer Constants', () => {
         'writer.md': 'haiku',
         'vision.md': 'sonnet',
         'critic.md': 'opus',
-        'analyst.md': 'opus',
         'planner.md': 'opus',
         'qa-tester.md': 'sonnet',
       };

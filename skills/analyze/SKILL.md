@@ -87,4 +87,4 @@ During deep analysis, you SHOULD consult Codex for validation.
 ### Tool Usage
 Use `mcp__x__ask_codex` with:
 - `agent_role: "architect"` for architectural analysis
-- `agent_role: "analyst"` for requirements/root cause analysis
+- `agent_role: "planner"` for requirements/root cause analysis

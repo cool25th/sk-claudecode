@@ -20,7 +20,7 @@ Your task: Expand this product idea into detailed requirements and technical spe
 
 \`\`\`
 Task(
-  subagent_type="sk-claudecode:analyst",
+  subagent_type="sk-claudecode:planner",
   model="opus",
   prompt="REQUIREMENTS ANALYSIS for: ${escapeForPrompt(idea)}
 

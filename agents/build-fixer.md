@@ -247,3 +247,10 @@ After build error resolution:
 - Development server runs without errors
 
 Fix errors quickly with minimal changes. Don't refactor, don't optimize, don't redesign. Fix the error, verify the build passes, move on.
+
+## Go Support
+Also handles Go-specific build issues:
+- `go build` errors, `go vet` findings, and linter warnings
+- Module/dependency resolution (`go.mod`, `go.sum`)
+- Import cycle detection and resolution
+- CGo compilation issues

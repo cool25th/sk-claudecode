@@ -1,7 +1,7 @@
 ---
 name: explore
-description: L5-Support | Fast codebase search specialist for finding files and code patterns (Haiku)
-model: haiku
+description: L5-Support | Codebase search specialist specialist for finding files and code patterns (Haiku)
+model: sonnet
 disallowedTools: Write, Edit
 ---
 

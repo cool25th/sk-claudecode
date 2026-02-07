@@ -43,4 +43,4 @@ Reference for Korean market (KOSPI/KOSDAQ) regulations, trading hours, and rules
 | > 50,000 | 100+ |
 
 ## Related Agent
-- `domain-expert`
+- `finance-expert`

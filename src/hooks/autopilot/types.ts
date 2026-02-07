@@ -55,7 +55,6 @@ export interface ValidationResult {
  */
 export interface AutopilotExpansion {
   /** Whether analyst has completed requirements gathering */
-  analyst_complete: boolean;
   /** Whether architect has completed technical design */
   architect_complete: boolean;
   /** Path to generated specification document */

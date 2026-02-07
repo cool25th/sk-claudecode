@@ -19,7 +19,7 @@ export { designerAgent } from './designer.js';
 export { writerAgent } from './writer.js';
 export { visionAgent } from './vision.js';
 export { criticAgent } from './critic.js';
-export { analystAgent } from './analyst.js';
+// analyst removed — requirements analysis absorbed into planner
 export { executorAgent } from './executor.js';
 export { plannerAgent } from './planner.js';
 export { ultraExecutorAgent } from './ultra-executor.js';
@@ -34,7 +34,7 @@ import { designerAgent } from './designer.js';
 import { writerAgent } from './writer.js';
 import { visionAgent } from './vision.js';
 import { criticAgent } from './critic.js';
-import { analystAgent } from './analyst.js';
+// analyst removed — use planner for requirements analysis
 import { executorAgent } from './executor.js';
 import { plannerAgent } from './planner.js';
 import { ultraExecutorAgent } from './ultra-executor.js';
@@ -101,13 +101,7 @@ export const researcherLowAgent: AgentConfig = {
 /**
  * Explore-Medium Agent - Thorough Search (Sonnet)
  */
-export const exploreMediumAgent: AgentConfig = {
-  name: 'explore-medium',
-  description: 'Thorough codebase search with reasoning (Sonnet). Use when search requires more reasoning.',
-  prompt: loadAgentPrompt('explore-medium'),
-  model: 'sonnet',
-  defaultModel: 'sonnet'
-};
+// explore-medium removed — explore upgraded to Sonnet
 
 // explore-high removed — use researcher for deep exploration
 
@@ -281,11 +275,10 @@ export const gitMasterAgent: AgentConfig = {
  * | Agent | Role | What They Do | What They Don't Do |
  * |-------|------|--------------|-------------------|
  * | architect | code-analysis | Analyze code, debug, verify | Requirements, plan creation, plan review |
- * | analyst | requirements-analysis | Find requirement gaps | Code analysis, planning, plan review |
- * | planner | plan-creation | Create work plans | Requirements, code analysis, plan review |
+ * | planner | plan-creation + requirements | Create work plans, find requirement gaps | Code analysis, plan review |
  * | critic | plan-review | Review plan quality | Requirements, code analysis, plan creation |
  *
- * Workflow: explore → analyst → planner → critic → executor → architect (verify)
+ * Workflow: explore → planner → critic → executor → architect (verify)
  */
 
 /**
@@ -312,9 +305,9 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
     // Role: plan-review
     // NotFor: requirements-gathering, plan-creation, code-analysis
     critic: criticAgent,
-    // Role: requirements-analysis
-    // NotFor: code-analysis, plan-creation, plan-review
-    analyst: analystAgent,
+    // analyst removed — use planner
+    // Role: requirements-analysis + plan-creation
+    // NotFor: code-analysis, plan-review
     executor: executorAgent,
     // Role: plan-creation
     // NotFor: requirements-gathering, code-analysis, plan-review
@@ -328,7 +321,7 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
     // executor-high removed — use ultra-executor
     'executor-low': executorLowAgent,
     'researcher-low': researcherLowAgent,
-    'explore-medium': exploreMediumAgent,
+    // explore-medium removed — explore upgraded to Sonnet
     // explore-high removed — use researcher
     'designer-low': designerLowAgent,
     'designer-high': designerHighAgent,

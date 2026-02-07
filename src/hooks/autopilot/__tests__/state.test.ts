@@ -48,7 +48,6 @@ describe('AutopilotState', () => {
       expect(state!.active).toBe(true);
       expect(state!.phase).toBe('expansion');
       expect(state!.originalIdea).toBe('build a cli tool');
-      expect(state!.expansion.analyst_complete).toBe(false);
     });
   });
 
@@ -84,9 +83,7 @@ describe('AutopilotState', () => {
   describe('phase updates', () => {
     it('should update expansion data', () => {
       initAutopilot(testDir, 'test');
-      updateExpansion(testDir, { analyst_complete: true });
       const state = readAutopilotState(testDir);
-      expect(state?.expansion.analyst_complete).toBe(true);
     });
 
     it('should update execution data', () => {

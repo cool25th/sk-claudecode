@@ -31,7 +31,7 @@ export { designerAgent, FRONTEND_ENGINEER_PROMPT_METADATA } from './designer.js'
 export { writerAgent, DOCUMENT_WRITER_PROMPT_METADATA } from './writer.js';
 export { visionAgent, MULTIMODAL_LOOKER_PROMPT_METADATA } from './vision.js';
 export { criticAgent, CRITIC_PROMPT_METADATA } from './critic.js';
-export { analystAgent, ANALYST_PROMPT_METADATA } from './analyst.js';
+// analyst removed — use planner for requirements analysis
 export { plannerAgent, PLANNER_PROMPT_METADATA } from './planner.js';
 export { qaTesterAgent, QA_TESTER_PROMPT_METADATA } from './qa-tester.js';
 export { scientistAgent, SCIENTIST_PROMPT_METADATA } from './scientist.js';
@@ -43,7 +43,6 @@ export {
   architectLowAgent,
   executorLowAgent,
   researcherLowAgent,
-  exploreMediumAgent,
   designerLowAgent,
   designerHighAgent,
   qaTesterHighAgent,

@@ -47,7 +47,7 @@ Before any execution, Ultra Executor uses tools like `Glob`, `Grep`, and `ast_gr
 Automatically discovers and follows existing code patterns, naming conventions, and error handling styles.
 
 ### 3. Parallel Exploration
-Can spawn up to 3 parallel exploration agents to gather context faster (explore, explore-medium, researcher).
+Can spawn up to 3 parallel exploration agents to gather context faster (explore, researcher).
 
 ### 4. Strict Verification
 Every change is verified with:
@@ -69,4 +69,4 @@ Built-in escalation protocol after 3 failed attempts - consults architect-medium
 
 - `ultra-executor` - This skill's primary agent (Opus)
 - `architect-medium` - Consulted for escalation
-- `explore` / `explore-medium` / `researcher (deep exploration)` - For parallel exploration
+- `explore` / `researcher` - For parallel exploration

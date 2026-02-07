@@ -15,9 +15,9 @@ describe('Prompt Generation', () => {
       expect(prompt).toContain('build a CLI tool');
     });
 
-    it('should include analyst Task invocation', () => {
+    it('should include planner Task invocation', () => {
       const prompt = getExpansionPrompt('test');
-      expect(prompt).toContain('sk-claudecode:analyst');
+      expect(prompt).toContain('sk-claudecode:planner');
     });
 
     it('should include architect Task invocation', () => {

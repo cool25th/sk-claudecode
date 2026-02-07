@@ -121,7 +121,6 @@ describe('delegation-enforcer', () => {
         { agent: 'ultra-executor', expectedModel: 'opus' },
         { agent: 'executor-low', expectedModel: 'haiku' },
         { agent: 'explore', expectedModel: 'haiku' },
-        { agent: 'explore-medium', expectedModel: 'sonnet' },
         { agent: 'designer', expectedModel: 'sonnet' },
         { agent: 'designer-high', expectedModel: 'opus' },
         { agent: 'designer-low', expectedModel: 'haiku' }

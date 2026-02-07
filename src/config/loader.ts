@@ -27,7 +27,7 @@ export const DEFAULT_CONFIG: PluginConfig = {
     multimodalLooker: { model: 'claude-sonnet-4-5-20250929', enabled: true },
     // New agents from oh-my-opencode
     critic: { model: 'claude-opus-4-5-20251101', enabled: true },
-    analyst: { model: 'claude-opus-4-5-20251101', enabled: true },
+        // analyst removed - use planner
     orchestratorSisyphus: { model: 'claude-sonnet-4-5-20250929', enabled: true },
     sisyphusJunior: { model: 'claude-sonnet-4-5-20250929', enabled: true },
     planner: { model: 'claude-opus-4-5-20251101', enabled: true }
@@ -70,7 +70,7 @@ export const DEFAULT_CONFIG: PluginConfig = {
       architect: { tier: 'HIGH', reason: 'Advisory agent requires deep reasoning' },
       planner: { tier: 'HIGH', reason: 'Strategic planning requires deep reasoning' },
       critic: { tier: 'HIGH', reason: 'Critical review requires deep reasoning' },
-      analyst: { tier: 'HIGH', reason: 'Pre-planning analysis requires deep reasoning' },
+            // analyst removed - use planner
       explore: { tier: 'LOW', reason: 'Exploration is search-focused' },
       'writer': { tier: 'LOW', reason: 'Documentation is straightforward' }
     },

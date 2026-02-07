@@ -10,7 +10,7 @@ SK-ClaudeCode is a unified agent and skill system combining:
 
 | Source | Contribution |
 |--------|--------------|
-| **sk-claudecode** | 46 agents (with tier variants), execution modes |
+| **sk-claudecode** | 42 agents (with tier variants), execution modes |
 | **everything-claude-code**| Language-specific patterns, specialized reviewers, continuous learning |
 | **claude-scientific-skills** | 141 scientific skill categories |
 | **claude-mem** | Persistent memory system |
@@ -23,7 +23,7 @@ SK-ClaudeCode is a unified agent and skill system combining:
 ```
 sk-claudecode/
 ├── AGENTS.md               # This file
-├── agents/                  # 46 agents (including tiered variants)
+├── agents/                  # 42 agents (including tiered variants)
 ├── skills/
 │   ├── workflow/           # Workflow skills
 │   ├── execution-modes/    # 8 execution modes
@@ -42,16 +42,16 @@ sk-claudecode/
 
 ---
 
-## Agents (46 total)
+## Agents (42 total)
 
 | Category | Agents | Purpose |
 |----------|--------|---------|
 | **Orchestration** | `planner`, `architect` (base, low, medium) | Strategic planning and system design |
-| **Execution** | `executor` (base, low, high), `ultra-executor`, `financial-execution` | Task execution and trade execution |
-| **Specialized Dev** | `backend-developer`, `designer` (base, low, high), `vision`, `e2e-runner` | Feature implementation and specialized tasks |
+| **Execution** | `executor` (base, low), `ultra-executor` | Task execution |
+| **Specialized Dev** | `designer` (base, low, high), `vision`, `e2e-runner` | Feature implementation and specialized tasks |
 | **Review & Quality**| `code-reviewer` (base, low), `database-reviewer`, `go-reviewer`, `python-reviewer`, `security-reviewer` (base, low), `qa-tester` (base, high) | Multi-layered quality assurance |
 | **Research & Docs** | `researcher` (base, low), `scientist` (base, low, high), `writer` | Analysis and documentation maintenance |
-| **Tools & Fixes** | `build-fixer` (base, low), `refactor-cleaner`, `git-master`, `go-build-resolver`, `critic` | Maintenance and problem resolution |
+| **Tools & Fixes** | `build-fixer` (base, low), `refactor-cleaner`, `git-master`, `critic` | Maintenance and problem resolution |
 
 ---
 

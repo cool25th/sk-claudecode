@@ -43,7 +43,7 @@ export const CODEX_DEFAULT_MODEL = process.env.SKC_CODEX_DEFAULT_MODEL || 'gpt-5
 export const CODEX_TIMEOUT = Math.min(Math.max(5000, parseInt(process.env.SKC_CODEX_TIMEOUT || '3600000', 10) || 3600000), 3600000);
 
 // Codex is best for analytical/planning tasks
-export const CODEX_VALID_ROLES = ['architect', 'planner', 'critic', 'analyst', 'code-reviewer', 'security-reviewer', 'tdd-guide'] as const;
+export const CODEX_VALID_ROLES = ['architect', 'planner', 'critic', 'code-reviewer', 'security-reviewer', 'tdd-guide'] as const;
 
 export const MAX_CONTEXT_FILES = 20;
 export const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB per file

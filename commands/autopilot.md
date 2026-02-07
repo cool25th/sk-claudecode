@@ -33,7 +33,7 @@ Spawn the Analyst agent:
 
 ```
 Task(
-  subagent_type="sk-claudecode:analyst",
+  subagent_type="sk-claudecode:planner",
   model="opus",
   prompt="REQUIREMENTS ANALYSIS
 

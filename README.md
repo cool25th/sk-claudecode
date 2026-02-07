@@ -95,7 +95,7 @@ claude
 # Use a specialized agent
 @financial-expert "Analyze risk for momentum strategy"
 @database-reviewer "Optimize slow SQL queries in src/db"
-@backend-developer "Create REST API for user management"
+@executor "Create REST API for user management"
 ```
 
 ## 🤖 Featured Agents
@@ -105,7 +105,6 @@ claude
 | `planner` | Task planning and breakdown |
 | `executor` / `ultra-executor` | Task execution |
 | `designer` | Frontend UI/UX |
-| `backend-developer` | API, DB, server logic |
 | `database-reviewer` | SQL & Schema optimization |
 | `e2e-runner` | End-to-end testing |
 | `financial-expert` | Quant strategies, risk management |

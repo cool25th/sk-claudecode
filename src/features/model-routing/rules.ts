@@ -100,9 +100,9 @@ export const DEFAULT_ROUTING_RULES: RoutingRule[] = [
 
   // Analyst: Simple impact → LOW, dependency mapping → MEDIUM, risk analysis → HIGH
   {
-    name: 'analyst-simple-impact',
+    name: 'planner-simple-impact',
     condition: (ctx, signals) =>
-      ctx.agentType === 'analyst' &&
+      ctx.agentType === 'planner' &&
       signals.structural.impactScope === 'local' &&
       !signals.lexical.hasRiskKeywords,
     action: { tier: 'LOW', reason: 'Analyst: Simple impact analysis' },
@@ -110,9 +110,9 @@ export const DEFAULT_ROUTING_RULES: RoutingRule[] = [
   },
 
   {
-    name: 'analyst-risk-analysis',
+    name: 'planner-risk-analysis',
     condition: (ctx, signals) =>
-      ctx.agentType === 'analyst' &&
+      ctx.agentType === 'planner' &&
       (signals.lexical.hasRiskKeywords || signals.structural.impactScope === 'system-wide'),
     action: { tier: 'HIGH', reason: 'Analyst: Risk analysis and unknown-unknowns detection' },
     priority: 75,

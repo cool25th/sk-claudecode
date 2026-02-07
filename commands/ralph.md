@@ -46,7 +46,7 @@ Ralph automatically activates Ultrawork for maximum parallel execution. You MUST
 |--------|-------------|-----------------|-------------|
 | **Analysis** | `architect-low` | `architect-medium` | `architect` |
 | **Execution** | `executor-low` | `executor` | `executor-high` |
-| **Search** | `explore` | `explore-medium` | - |
+| **Search** | `explore` | `explore` | - |
 | **Research** | `researcher-low` | `researcher` | - |
 | **Frontend** | `designer-low` | `designer` | `designer-high` |
 | **Docs** | `writer` | - | - |

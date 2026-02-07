@@ -145,7 +145,7 @@ export function initAutopilot(
     originalIdea: idea,
 
     expansion: {
-      analyst_complete: false,
+            // analyst removed
       architect_complete: false,
       spec_path: null,
       requirements_summary: '',

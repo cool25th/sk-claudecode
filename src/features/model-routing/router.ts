@@ -214,7 +214,7 @@ export function quickTierForAgent(agentType: string): ComplexityTier | null {
     architect: 'HIGH',
     planner: 'HIGH',
     critic: 'HIGH',
-    analyst: 'HIGH',
+        // analyst removed - use planner
     explore: 'LOW',
     'writer': 'LOW',
     researcher: 'MEDIUM',

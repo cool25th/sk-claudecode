@@ -47,7 +47,10 @@ export {
   designerHighAgent,
   qaTesterHighAgent,
   scientistLowAgent,
-  scientistHighAgent
+  scientistHighAgent,
+  scientistReviewerAgent,
+  designerReviewerAgent,
+  ontologyReviewerAgent
 } from './definitions.js';
 
 // Specialized agents (Security, Build, TDD, Code Review, Git)

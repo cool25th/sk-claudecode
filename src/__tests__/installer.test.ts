@@ -112,6 +112,7 @@ describe('Installer Constants', () => {
         'executor-low.md',
         'researcher-low.md',
         'designer-low.md',
+    'designer-reviewer.md',
         'designer-high.md',
       ];
 

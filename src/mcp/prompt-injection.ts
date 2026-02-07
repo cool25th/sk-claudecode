@@ -25,6 +25,7 @@ export const VALID_AGENT_ROLES = [
   'security-reviewer', 'security-reviewer-low',
   'build-fixer', 'build-fixer-low',
   'tdd-guide', 'tdd-guide-low',
+  'scientist-reviewer', 'designer-reviewer', 'ontology-reviewer',
   'code-reviewer', 'code-reviewer-low',
   'git-master',
 ] as const;

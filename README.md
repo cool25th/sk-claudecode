@@ -68,7 +68,7 @@ The best results come from following the **Think → Build → Check** cycle:
 
 ## 🤖 Agent Guide — "What do I use?"
 
-All 42 agents fall into 4 categories based on **what you want to do**:
+All 45 agents fall into 4 categories based on **what you want to do**:
 
 ### 🧠 Think — Plan before you build
 
@@ -82,6 +82,7 @@ All 42 agents fall into 4 categories based on **what you want to do**:
 | `planner` | Opus | Feature planning, requirements analysis |
 | `critic` | Opus | Review and challenge a work plan |
 | `designer-high` | Opus | UI/UX design planning, style & tone review |
+| `scientist-high` | Opus | Research planning, experiment design |
 | `ontology-expert` | Opus | Ontology architecture & domain analysis |
 
 ```bash
@@ -111,7 +112,6 @@ All 42 agents fall into 4 categories based on **what you want to do**:
 | `mobile-developer-high` | Opus | Complex mobile architecture |
 | `mobile-developer-low` | Haiku | Quick mobile fixes |
 | `scientist` | Sonnet | Data analysis, research |
-| `scientist-high` | Opus | ML, hypothesis testing |
 | `scientist-low` | Haiku | Quick data inspection |
 | `finance-developer` | Opus | Trading systems development |
 | `ontology-developer` | Sonnet | Ontology implementation |
@@ -144,6 +144,9 @@ All 42 agents fall into 4 categories based on **what you want to do**:
 | `tdd-guide-low` | Haiku | Quick test suggestions |
 | `e2e-runner` | Opus | End-to-end browser testing |
 | `finance-expert` | Opus | Finance domain audit (KR/US markets) |
+| `scientist-reviewer` | Opus | Research methodology & statistics validation |
+| `designer-reviewer` | Opus | UI/UX accessibility, consistency, responsiveness |
+| `ontology-reviewer` | Opus | Ontology schema validation & consistency |
 
 ```bash
 @code-reviewer "Review the changes in src/auth/"

@@ -23,7 +23,7 @@ SK-ClaudeCode is a unified agent and skill system combining:
 ```
 sk-claudecode/
 ├── AGENTS.md               # This file
-├── agents/                  # 42 agents (including tiered variants)
+├── agents/                  # 45 agents (including tiered variants)
 ├── skills/
 │   ├── workflow/           # Workflow skills
 │   ├── execution-modes/    # 8 execution modes

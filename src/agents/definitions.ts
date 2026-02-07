@@ -154,8 +154,41 @@ export const scientistLowAgent: AgentConfig = {
  */
 export const scientistHighAgent: AgentConfig = {
   name: 'scientist-high',
-  description: 'Complex research, hypothesis testing, and ML specialist (Opus). Use for deep analysis.',
+  description: 'Research planner for experiment design, hypothesis formulation, and methodology planning (Opus). Use for deep analysis.',
   prompt: loadAgentPrompt('scientist-high'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Scientist-Reviewer Agent - Research Methodology Review (Opus)
+ */
+export const scientistReviewerAgent: AgentConfig = {
+  name: 'scientist-reviewer',
+  description: 'Research methodology reviewer for validating experimental design and statistical rigor (Opus).',
+  prompt: loadAgentPrompt('scientist-reviewer'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Designer-Reviewer Agent - UI/UX Design Review (Opus)
+ */
+export const designerReviewerAgent: AgentConfig = {
+  name: 'designer-reviewer',
+  description: 'UI/UX design reviewer for accessibility, consistency, and design system compliance (Opus).',
+  prompt: loadAgentPrompt('designer-reviewer'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Ontology-Reviewer Agent - Ontology Validation (Opus)
+ */
+export const ontologyReviewerAgent: AgentConfig = {
+  name: 'ontology-reviewer',
+  description: 'Ontology reviewer for schema validation, consistency, and best practice compliance (Opus).',
+  prompt: loadAgentPrompt('ontology-reviewer'),
   model: 'opus',
   defaultModel: 'opus'
 };
@@ -328,6 +361,9 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
     'qa-tester-high': qaTesterHighAgent,
     'scientist-low': scientistLowAgent,
     'scientist-high': scientistHighAgent,
+    'scientist-reviewer': scientistReviewerAgent,
+    'designer-reviewer': designerReviewerAgent,
+    'ontology-reviewer': ontologyReviewerAgent,
     // Specialized agents (Security, Build, TDD, Code Review)
     'security-reviewer': securityReviewerAgent,
     'security-reviewer-low': securityReviewerLowAgent,

@@ -123,13 +123,21 @@ async processOrder(order: Order): Promise<Result> {
 
 # Related Skills
 
+**Implementation:**
 - `ontology-object-types` - Object Type patterns and examples
+- `ontology-links` - Link modeling strategies
 - `ontology-actions` - Action design and implementation
 - `ontology-functions` - TypeScript function development
-- `ontology-links` - Link modeling strategies
+
+**Architecture Reference (from ontology-expert):**
+- `ontology` - General ontology design patterns
+- `ontology-traditional` - OWL/RDF semantic patterns
+- `ontology-palantir` - Palantir Foundry operational patterns
+- `ontology-storage` - DB, GraphDB, GraphRAG storage patterns
 
 # Related Agents
 
-- `ontology-expert` - Ontology architecture and design
-- `database-reviewer` - Schema optimization
+- `ontology-expert` - [Think] Ontology architecture and design
+- `ontology-reviewer` - [Check] Validate consistency & completeness
+- `database-reviewer` - [Check] Database schema review
 - `executor` - API integration

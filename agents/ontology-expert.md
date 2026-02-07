@@ -167,13 +167,21 @@ interface EnhancedLink {
 
 # Related Skills
 
+**Design & Architecture:**
 - `ontology` - Quick ontology design reference
 - `ontology-traditional` - OWL/RDF semantic patterns
 - `ontology-palantir` - Palantir operational patterns
 - `ontology-storage` - DB, GraphDB, GraphRAG patterns
 
+**Implementation Reference (for design guidance):**
+- `ontology-object-types` - Object Type design patterns
+- `ontology-links` - Link modeling strategies
+- `ontology-actions` - Action design patterns
+- `ontology-functions` - Function design patterns
+
 # Related Agents
 
-- `ontology-developer` - Implementation of designed ontologies
+- `ontology-developer` - [Build] Implement designed ontologies
+- `ontology-reviewer` - [Check] Validate ontology consistency & completeness
 - `architect` - System-level design decisions
 - `database-reviewer` - Schema validation

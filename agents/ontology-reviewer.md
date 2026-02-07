@@ -119,6 +119,18 @@ You are a rigorous ontology reviewer who validates schema design, semantic consi
 
 ---
 
+# Related Skills
+
+**Review against these patterns:**
+- `ontology` - General ontology design patterns
+- `ontology-object-types` - Object Type best practices
+- `ontology-links` - Link modeling standards
+- `ontology-actions` - Action design patterns
+- `ontology-functions` - Function design patterns
+- `ontology-traditional` - OWL/RDF compliance
+- `ontology-palantir` - Palantir Foundry conventions
+- `ontology-storage` - Storage architecture patterns
+
 # Related Agents
 
 - `ontology-expert` - [Think] Design and plan ontologies

@@ -29,10 +29,18 @@ Load and follow the instructions in: `agents/ontology-expert.md`
 4. **Architecture Review** → Consistency, atomicity, performance
 
 ### Available Skills
+
+**Design & Architecture:**
 - `ontology` - General patterns
 - `ontology-traditional` - OWL/RDF
 - `ontology-palantir` - Foundry patterns
 - `ontology-storage` - DB, GraphDB, GraphRAG
+
+**Implementation Reference:**
+- `ontology-object-types` - Object Type patterns
+- `ontology-links` - Link modeling
+- `ontology-actions` - Action design
+- `ontology-functions` - Function design
 
 ## Instructions
 

@@ -24,7 +24,12 @@ Load and follow the instructions in: `agents/ontology-developer.md`
 | **Functions** | Computed properties | `ontology-functions` |
 
 ### Available Skills
+
+**Implementation:**
 - `ontology-object-types`, `ontology-links`, `ontology-actions`, `ontology-functions`
+
+**Architecture Reference:**
+- `ontology`, `ontology-traditional`, `ontology-palantir`, `ontology-storage`
 
 ## Instructions
 

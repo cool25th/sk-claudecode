@@ -246,6 +246,7 @@ Type these anywhere in your prompt — no slash command needed:
 ## 📚 More Documentation
 
 - [Ultra Suite Guide](docs/ULTRA-SUITE.md) — Advanced workflow skills
+- [Ontology Guide](docs/Agents-ontology-explain.md) — Ontology development step-by-step
 - [AGENTS.md](AGENTS.md) — Complete agent reference
 
 ## 🙏 Inspired By

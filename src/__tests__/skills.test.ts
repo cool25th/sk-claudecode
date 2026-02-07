@@ -12,7 +12,7 @@ describe('Builtin Skills', () => {
       const skills = createBuiltinSkills();
       // 90 skills including: core workflow skills (autopilot, ralph, ultrawork, etc.)
       // plus domain-specific skills (django-patterns, golang-patterns, trading, mobile, etc.)
-      expect(skills).toHaveLength(97);
+      expect(skills).toHaveLength(100);
     });
 
     it('should return an array of BuiltinSkill objects', () => {
@@ -87,7 +87,7 @@ describe('Builtin Skills', () => {
       const actualSkillNames = skills.map((s) => s.name);
       expect(actualSkillNames).toEqual(expect.arrayContaining(expectedCoreSkills));
       // Total skill count
-      expect(actualSkillNames.length).toBe(97);
+      expect(actualSkillNames.length).toBe(100);
     });
 
     it('should not have duplicate skill names', () => {
@@ -127,7 +127,7 @@ describe('Builtin Skills', () => {
   describe('listBuiltinSkillNames()', () => {
     it('should return all skill names', () => {
       const names = listBuiltinSkillNames();
-      expect(names).toHaveLength(97);
+      expect(names).toHaveLength(100);
       // Core workflow skills (from sk-claudecode)
       expect(names).toContain('orchestrate');
       expect(names).toContain('plan');

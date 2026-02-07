@@ -43,23 +43,32 @@ The best results come from following the **Think → Build → Check** cycle:
                   Iterate
 ```
 
-**Example workflow:**
+**Example workflows by domain:**
 ```bash
-# Step 1: Think — Plan the approach
+# 💻 Code — Think → Build → Check
 @planner "Design authentication with JWT and OAuth2"
-@critic "Review this plan for security gaps"
-
-# Step 2: Build — Implement
 @executor "Implement the auth middleware from the plan"
-@designer "Build the login page with dark mode"
-
-# Step 3: Check — Verify quality
 @code-reviewer "Review all changes in src/auth/"
-@security-reviewer "Audit the new auth endpoints"
-@qa-tester "Test the login flow end-to-end"
 
-# Iterate: Fix issues found in Check
-@build-fixer "Fix the type errors from code review"
+# 📋 Product Management — Think → Build → Check
+@planner "/plan:write-spec — Design the onboarding feature"
+@executor "Implement the spec from PRD.md"
+@critic "Review implementation against the PRD"
+
+# 🔬 Data Science — Think → Build → Check
+@scientist-high "Plan the churn analysis methodology"
+@scientist "/scientist:write-query — Monthly churn by cohort"
+@scientist-reviewer "Validate query logic and statistics"
+
+# 🎨 Design — Think → Build → Check
+@designer-high "Plan the dashboard layout and design system"
+@designer "Build the dashboard with charts and dark mode"
+@designer-reviewer "Audit accessibility, consistency, responsiveness"
+
+# 🗂️ Ontology — Think → Build → Check
+@ontology-expert "Design the object type hierarchy"
+@ontology-developer "Implement the ontology schema"
+@ontology-reviewer "Validate schema consistency and completeness"
 ```
 
 > 💡 **Tip:** Use `/sk-claudecode:ralph` to automate this entire cycle — it keeps iterating until everything passes.
@@ -179,30 +188,104 @@ All 45 agents fall into 4 categories based on **what you want to do**:
 
 ---
 
-## 🚀 Execution Modes — How to run tasks
+## 🚀 Orchestration — How modes connect Think → Build → Check
 
-Instead of using agents directly, you can use **modes** for complex workflows:
+Agents do one thing well. **Orchestration modes** chain them into complete workflows by automating the Think → Build → Check cycle.
 
-| Mode | What it does | Command |
-|------|-------------|---------|
-| **ralph** | Keeps going until task is verified complete | `/sk-claudecode:ralph` |
-| **autopilot** | Full autonomous execution from idea to code | `/sk-claudecode:autopilot` |
-| **ultrawork** | Maximum parallel agent execution | `/sk-claudecode:ultrawork` |
-| **ultrapilot** | Parallel with file ownership partitioning | `/sk-claudecode:ultrapilot` |
-| **swarm** | N coordinated agents on shared tasks | `/sk-claudecode:swarm` |
-| **ecomode** | Token-efficient mode (saves 60%+) | `/sk-claudecode:ecomode` |
-| **pipeline** | Sequential agent chaining | `/sk-claudecode:pipeline` |
-| **ultraqa** | QA cycling until goal met | `/sk-claudecode:ultraqa` |
+```
+             ┌──────────────────────────────────────────────────────┐
+             │               Orchestration Mode                     │
+             │  (ralph / autopilot / ultrawork / pipeline / ...)    │
+             └──────┬──────────────┬──────────────┬────────────────┘
+                    │              │              │
+              🧠 Think        ⚡ Build        🔍 Check       📚 Help
+            ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
+            │ planner   │   │ executor │   │ reviewer │   │ explore  │
+            │ architect │──▶│ designer │──▶│ qa-tester│   │ writer   │
+            │ critic    │   │ builder  │   │ security │   │researcher│
+            └──────────┘   └──────────┘   └──────────┘   └──────────┘
+                  ▲                              │
+                  └──────────────────────────────┘
+                         Iterate until ✅
+```
+
+### Mode Selection Guide
+
+| Command | Covers | How it works |
+|---------|--------|-------------|
+| | **🔄 Full Cycle (Think → Build → Check)** | |
+| `/sk-claudecode:ralph` | 🧠→⚡→🔍 **+ retry** | Runs full cycle, **retries Build→Check until all pass** |
+| `/sk-claudecode:autopilot` | 🧠→⚡→🔍 auto | Auto-selects best agents for each phase |
+| `/sk-claudecode:pipeline` | 🧠→⚡→🔍 chain | You define the agent chain explicitly |
+| `/sk-claudecode:ecomode` | 🧠→⚡→🔍 cheap | Same full cycle, routes to Haiku/Sonnet (60%+ cheaper) |
+| | **⚡ Parallel Execution** | |
+| `/sk-claudecode:ultrawork` | 🧠⚡🔍 **∥ parallel** | All phases run in parallel across files |
+| `/sk-claudecode:ultrapilot` | ⚡🔍 **∥ partitioned** | Splits files by owner, parallel Build+Check per partition |
+| `/sk-claudecode:swarm` | 🧠⚡🔍 **∥ N agents** | N coordinated agents share Think→Build→Check |
+| | **🔍 Check-Focused** | |
+| `/sk-claudecode:ultraqa` | ⚡→🔍 **loop** | Build → Check → **loops Check until all pass** |
+
+### How Each Mode Runs the Cycle
+
+**`/sk-claudecode:ralph`** — 🧠→⚡→🔍 + retry loop
+```
+@planner "Plan auth system"     🧠 Think
+    ↓
+@executor "Implement auth"      ⚡ Build
+    ↓
+@code-reviewer "Review auth"    🔍 Check ── fail? ──→ @build-fixer ──→ 🔍 Check again
+    ↓ pass
+Done ✅
+```
+
+**`/sk-claudecode:ultrawork`** — 🧠⚡🔍 all parallel
+```
+┌─ @planner "Plan auth"  ──→ @executor "Implement auth"  ──→ @code-reviewer
+├─ @planner "Plan API"   ──→ @executor "Implement API"   ──→ @security-reviewer
+└─ @designer "Plan UI"   ──→ @designer "Build UI"        ──→ @designer-reviewer
+                                     All in parallel
+```
+
+**`/sk-claudecode:pipeline`** — 🧠→⚡→🔍 explicit chain
+```
+@architect ──→ @planner ──→ @executor ──→ @code-reviewer ──→ @qa-tester
+ (Analyze)    (Plan)       (Build)      (Review)           (Test)
+```
+
+### Domain-Specific Orchestrations
+
+| Domain | 🧠 Think | ⚡ Build | 🔍 Check | 📚 Help |
+|--------|---------|---------|---------|--------|
+| **Code** | `architect` `planner` | `executor` `ultra-executor` | `code-reviewer` `security-reviewer` | `explore` `researcher` |
+| **Product** | `planner` + `/plan:write-spec` | `executor` | `critic` | `writer` + `stakeholder-comms` |
+| **Data** | `scientist-high` | `scientist` + `/scientist:write-query` | `scientist-reviewer` | `researcher` |
+| **Design** | `designer-high` | `designer` | `designer-reviewer` | `vision` |
+| **Mobile** | `mobile-developer-high` | `mobile-developer` | `code-reviewer` | `researcher` |
+| **Finance** | `finance-expert` | `finance-developer` | `code-reviewer` | `researcher` |
+| **Ontology** | `ontology-expert` | `ontology-developer` | `ontology-reviewer` | `explore` |
+
+### 📋 Slash Commands
 
 ```bash
-# "Just make it work" — ralph keeps retrying until verified
+# 🔄 Full Cycle — "just make it work"
 /sk-claudecode:ralph implement user profile page with avatar upload
 
-# Maximum speed — parallel agents
+# ⚡ Parallel — maximum speed across files
 /sk-claudecode:ultrawork refactor authentication to use OAuth2
 
-# Save tokens — uses smaller models
+# 🔗 Pipeline — explicit agent chain
+/sk-claudecode:pipeline architect → planner → executor → code-reviewer
+
+# 💰 Eco — save tokens (60%+ cheaper)
 /sk-claudecode:ecomode fix all lint errors in src/
+
+# 📋 Product — PRD + roadmap workflows
+/sk-claudecode:ralph @planner "/plan:write-spec — Design the payment flow"
+/sk-claudecode:ralph @planner "/plan:roadmap — Q2 feature prioritization"
+
+# 🔬 Data — query + visualize workflows
+/sk-claudecode:ralph @scientist "/scientist:write-query — Monthly churn by cohort"
+/sk-claudecode:ralph @scientist "/scientist:visualize — Revenue trends by region"
 ```
 
 ---

@@ -12,22 +12,29 @@ import { loadAgentPrompt } from '../agents/utils.js';
  * Matches the agent prompt files in agents/*.md
  */
 export const VALID_AGENT_ROLES = [
+  // Think — Plan before you build
   'architect', 'architect-medium', 'architect-low',
   'critic', 'planner',
-  'executor', 'executor-low',
-  'ultra-executor',
-  'designer', 'designer-low', 'designer-high',
-  'explore',
-  'researcher', 'researcher-low',
-  'writer', 'vision',
-  'qa-tester', 'qa-tester-high',
-  'scientist', 'scientist-low', 'scientist-high',
-  'security-reviewer', 'security-reviewer-low',
+  'designer-high', 'scientist-high',
+  'ontology-expert', 'finance-expert',
+  // Build — Write and implement
+  'executor', 'executor-low', 'ultra-executor',
+  'designer', 'designer-low',
+  'scientist', 'scientist-low',
   'build-fixer', 'build-fixer-low',
+  'git-master',
+  'mobile-developer', 'mobile-developer-high', 'mobile-developer-low',
+  'ontology-developer', 'finance-developer',
+  // Check — Review and test
+  'code-reviewer', 'code-reviewer-low',
+  'security-reviewer', 'security-reviewer-low',
+  'database-reviewer', 'go-reviewer', 'python-reviewer',
+  'qa-tester', 'qa-tester-high', 'e2e-runner',
   'tdd-guide', 'tdd-guide-low',
   'scientist-reviewer', 'designer-reviewer', 'ontology-reviewer',
-  'code-reviewer', 'code-reviewer-low',
-  'git-master',
+  // Help — Search and document
+  'explore', 'researcher', 'researcher-low',
+  'writer', 'vision', 'refactor-cleaner',
 ] as const;
 
 export type AgentRole = typeof VALID_AGENT_ROLES[number];

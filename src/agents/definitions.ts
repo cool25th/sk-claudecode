@@ -194,8 +194,140 @@ export const ontologyReviewerAgent: AgentConfig = {
 };
 
 // ============================================================
-// SPECIALIZED AGENTS (Security, Build, TDD, Code Review)
+// SPECIALIZED AGENTS (Security, Build, TDD, Code Review, Domain)
 // ============================================================
+
+/**
+ * Database-Reviewer Agent - SQL & Schema Review (Opus)
+ */
+export const databaseReviewerAgent: AgentConfig = {
+  name: 'database-reviewer',
+  description: 'Database schema design and SQL optimization reviewer (Opus).',
+  prompt: loadAgentPrompt('database-reviewer'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * E2E-Runner Agent - End-to-End Browser Testing (Opus)
+ */
+export const e2eRunnerAgent: AgentConfig = {
+  name: 'e2e-runner',
+  description: 'End-to-end browser testing specialist (Opus). Playwright, Cypress, Selenium.',
+  prompt: loadAgentPrompt('e2e-runner'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Finance-Developer Agent - Trading Systems (Opus)
+ */
+export const financeDeveloperAgent: AgentConfig = {
+  name: 'finance-developer',
+  description: 'Trading systems and financial infrastructure developer (Opus).',
+  prompt: loadAgentPrompt('finance-developer'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Finance-Expert Agent - Finance Domain Audit (Opus)
+ */
+export const financeExpertAgent: AgentConfig = {
+  name: 'finance-expert',
+  description: 'Finance domain expert for market analysis, risk, and audit (Opus).',
+  prompt: loadAgentPrompt('finance-expert'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Go-Reviewer Agent - Go Best Practices (Opus)
+ */
+export const goReviewerAgent: AgentConfig = {
+  name: 'go-reviewer',
+  description: 'Go-specific code reviewer for idioms, concurrency, and performance (Opus).',
+  prompt: loadAgentPrompt('go-reviewer'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Python-Reviewer Agent - Python Best Practices (Opus)
+ */
+export const pythonReviewerAgent: AgentConfig = {
+  name: 'python-reviewer',
+  description: 'Python-specific code reviewer for PEP 8, type hints, and patterns (Opus).',
+  prompt: loadAgentPrompt('python-reviewer'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Mobile-Developer Agent - Mobile Development (Sonnet)
+ */
+export const mobileDeveloperAgent: AgentConfig = {
+  name: 'mobile-developer',
+  description: 'iOS/Android mobile app developer (Sonnet).',
+  prompt: loadAgentPrompt('mobile-developer'),
+  model: 'sonnet',
+  defaultModel: 'sonnet'
+};
+
+/**
+ * Mobile-Developer-High Agent - Complex Mobile Architecture (Opus)
+ */
+export const mobileDeveloperHighAgent: AgentConfig = {
+  name: 'mobile-developer-high',
+  description: 'Complex mobile architecture and cross-platform specialist (Opus).',
+  prompt: loadAgentPrompt('mobile-developer-high'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Mobile-Developer-Low Agent - Quick Mobile Fixes (Haiku)
+ */
+export const mobileDeveloperLowAgent: AgentConfig = {
+  name: 'mobile-developer-low',
+  description: 'Quick mobile fixes and simple UI changes (Haiku).',
+  prompt: loadAgentPrompt('mobile-developer-low'),
+  model: 'haiku',
+  defaultModel: 'haiku'
+};
+
+/**
+ * Ontology-Developer Agent - Ontology Implementation (Sonnet)
+ */
+export const ontologyDeveloperAgent: AgentConfig = {
+  name: 'ontology-developer',
+  description: 'Ontology schema implementation and development specialist (Sonnet).',
+  prompt: loadAgentPrompt('ontology-developer'),
+  model: 'sonnet',
+  defaultModel: 'sonnet'
+};
+
+/**
+ * Ontology-Expert Agent - Ontology Architecture (Opus)
+ */
+export const ontologyExpertAgent: AgentConfig = {
+  name: 'ontology-expert',
+  description: 'Ontology architecture and domain analysis expert (Opus).',
+  prompt: loadAgentPrompt('ontology-expert'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
+
+/**
+ * Refactor-Cleaner Agent - Dead Code Removal (Opus)
+ */
+export const refactorCleanerAgent: AgentConfig = {
+  name: 'refactor-cleaner',
+  description: 'Dead code detection, refactoring, and cleanup specialist (Opus).',
+  prompt: loadAgentPrompt('refactor-cleaner'),
+  model: 'opus',
+  defaultModel: 'opus'
+};
 
 /**
  * Security-Reviewer Agent - Security Vulnerability Detection (Opus)
@@ -373,7 +505,20 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
     'tdd-guide-low': tddGuideLowAgent,
     'code-reviewer': codeReviewerAgent,
     'code-reviewer-low': codeReviewerLowAgent,
-    'git-master': gitMasterAgent
+    'git-master': gitMasterAgent,
+    // Domain agents (Finance, Mobile, Ontology, Language-specific)
+    'database-reviewer': databaseReviewerAgent,
+    'e2e-runner': e2eRunnerAgent,
+    'finance-developer': financeDeveloperAgent,
+    'finance-expert': financeExpertAgent,
+    'go-reviewer': goReviewerAgent,
+    'python-reviewer': pythonReviewerAgent,
+    'mobile-developer': mobileDeveloperAgent,
+    'mobile-developer-high': mobileDeveloperHighAgent,
+    'mobile-developer-low': mobileDeveloperLowAgent,
+    'ontology-developer': ontologyDeveloperAgent,
+    'ontology-expert': ontologyExpertAgent,
+    'refactor-cleaner': refactorCleanerAgent
   };
 
   const result: Record<string, { description: string; prompt: string; tools?: string[]; disallowedTools?: string[]; model?: ModelType; defaultModel?: ModelType }> = {};

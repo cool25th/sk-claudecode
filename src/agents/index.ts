@@ -66,6 +66,22 @@ export {
   gitMasterAgent
 } from './definitions.js';
 
+// Domain agents (Finance, Mobile, Ontology, Language-specific, E2E)
+export {
+  databaseReviewerAgent,
+  e2eRunnerAgent,
+  financeDeveloperAgent,
+  financeExpertAgent,
+  goReviewerAgent,
+  pythonReviewerAgent,
+  mobileDeveloperAgent,
+  mobileDeveloperHighAgent,
+  mobileDeveloperLowAgent,
+  ontologyDeveloperAgent,
+  ontologyExpertAgent,
+  refactorCleanerAgent
+} from './definitions.js';
+
 // Core exports (getAgentDefinitions and skcSystemPrompt)
 export {
   getAgentDefinitions,

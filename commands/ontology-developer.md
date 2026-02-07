@@ -1,5 +1,5 @@
 ---
-description: Ontology Developer - Design and implement ontology systems (Palantir/Traditional)
+description: Ontology Developer - Implement Object Types, Links, Actions, and Functions
 ---
 
 # Ontology Developer
@@ -11,17 +11,10 @@ Load and follow the instructions in: `agents/ontology-developer.md`
 ## Quick Reference
 
 ### Your Role
-- **Ontology systems architect and developer**
-- Design and implement both Traditional (OWL/RDF) and Palantir-style ontologies
+- **Ontology implementation specialist**
+- Build Object Types, Links, Actions, Functions using TypeScript SDK
 
-### Approach Selection
-
-| Project Type | Approach | Use When |
-|--------------|----------|----------|
-| **Traditional** | OWL/RDF/RDFS | Semantic web, knowledge graphs, academic research |
-| **Palantir-style** | Object Types, Links, Actions, Functions | Operational systems, enterprise data, Foundry |
-
-### Palantir Ontology Components
+### Ontology Components
 
 | Component | Purpose | Skill |
 |-----------|---------|-------|
@@ -29,22 +22,12 @@ Load and follow the instructions in: `agents/ontology-developer.md`
 | **Link Types** | Relationships | `ontology-links` |
 | **Actions** | Mutations/operations | `ontology-actions` |
 | **Functions** | Computed properties | `ontology-functions` |
-| **Storage** | Persistence patterns | `ontology-storage` |
-
-### Traditional Ontology
-- OWL for rich semantics
-- RDF/RDFS for graph modeling
-- SPARQL for querying
 
 ### Available Skills
-- `ontology` - General patterns
-- `ontology-traditional` - OWL/RDF
-- `ontology-palantir` - Foundry patterns
-- `ontology-object-types`, `ontology-links`, `ontology-actions`, `ontology-functions`, `ontology-storage`
+- `ontology-object-types`, `ontology-links`, `ontology-actions`, `ontology-functions`
 
 ## Instructions
 
-Design or implement ontology systems based on the requirements.
-Recommend the appropriate approach (Traditional vs Palantir) based on use case.
+Implement ontology components based on the design from ontology-expert. Write type-safe code with proper validations and tests.
 
 {{PROMPT}}

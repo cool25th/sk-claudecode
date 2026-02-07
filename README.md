@@ -150,13 +150,13 @@ Which agents to use for each domain, organized by Think → Build → Check → 
 
 | Domain | 🧠 Think | ⚡ Build | 🔍 Check | 📚 Help |
 |--------|---------|---------|---------|--------|
-| **Code** | `architect` `planner` | `executor` `ultra-executor` | `code-reviewer` `security-reviewer` | `explore` `researcher` |
-| **Product** | `planner` + `/plan:write-spec` | `executor` | `critic` | `writer` + `stakeholder-comms` |
-| **Data** | `scientist-high` | `scientist` + `/scientist:write-query` | `scientist-reviewer` | `researcher` |
-| **Design** | `designer-high` | `designer` | `designer-reviewer` | `vision` |
-| **Mobile** | `mobile-developer-high` | `mobile-developer` | `code-reviewer` | `researcher` |
-| **Finance** | `finance-expert` | `finance-developer` | `code-reviewer` | `researcher` |
-| **Ontology** | `ontology-expert` | `ontology-developer` | `ontology-reviewer` | `explore` |
+| **Code** | `architect` `planner` | `executor` `ultra-executor` | `/code-review` `/code-review --security` | `explore` `researcher` |
+| **Product** | `planner` + `/plan --spec` | `executor` | `critic` | `writer` + `stakeholder-comms` |
+| **Data** | `scientist-high` | `/scientist` `/scientist --query` | `/code-review` | `researcher` |
+| **Design** | `designer-high` | `designer` | `/code-review` | `/explore --vision` |
+| **Mobile** | `mobile-developer-high` | `mobile-developer` | `/code-review` | `researcher` |
+| **Finance** | `/finance` (audit) | `/finance --build` | `/code-review` | `researcher` |
+| **Ontology** | `/ontology` (design) | `/ontology --build` | `/ontology --review` | `explore` |
 
 ---
 
@@ -166,10 +166,10 @@ Which agents to use for each domain, organized by Think → Build → Check → 
 
 | Command | Category | What it does |
 |---------|----------|--------------|
-| `/plan:write-spec` | 🧠 Think | Structured PRD with user stories & acceptance criteria |
-| `/plan:roadmap` | 🧠 Think | Roadmap planning with RICE/ICE/MoSCoW prioritization |
-| `/scientist:write-query` | ⚡ Build | Optimized SQL query generation |
-| `/scientist:visualize` | ⚡ Build | Data visualization with chart type selection |
+| `/plan --spec` | 🧠 Think | Structured PRD with user stories & acceptance criteria |
+| `/roadmap` | 🧠 Think | Roadmap planning with RICE/ICE/MoSCoW prioritization |
+| `/scientist --query` | ⚡ Build | Optimized SQL query generation |
+| `/scientist --viz` | ⚡ Build | Data visualization with chart type selection |
 
 ### Key Skills
 
@@ -182,9 +182,9 @@ Which agents to use for each domain, organized by Think → Build → Check → 
 | Backend | `/sk-claudecode:code-review` | Backend code review patterns |
 | Frontend | `/sk-claudecode:build-fix` | Build error resolution |
 | Scientific | `/sk-claudecode:scientist` | 141 scientific domains |
-| Finance | `/sk-claudecode:finance-expert` | KR/US market audit |
+| Finance | `/sk-claudecode:finance` | KR/US market audit & development |
 | Mobile | `/sk-claudecode:mobile` | iOS / Android / Flutter |
-| Ontology | `/sk-claudecode:ontology-expert` | Palantir-style ontology |
+| Ontology | `/sk-claudecode:ontology` | Palantir-style ontology (design/build/review) |
 
 ---
 
@@ -218,12 +218,12 @@ Type these anywhere in your prompt — no slash command needed:
 /sk-claudecode:ecomode fix all lint errors in src/
 
 # 📋 Product — PRD + roadmap
-/sk-claudecode:ralph @planner "/plan:write-spec — Design the payment flow"
-/sk-claudecode:ralph @planner "/plan:roadmap — Q2 feature prioritization"
+/sk-claudecode:plan --spec Design the payment flow
+/sk-claudecode:roadmap Q2 feature prioritization
 
 # 🔬 Data — query + visualize
-/sk-claudecode:ralph @scientist "/scientist:write-query — Monthly churn by cohort"
-/sk-claudecode:ralph @scientist "/scientist:visualize — Revenue trends by region"
+/sk-claudecode:scientist --query Monthly churn by cohort
+/sk-claudecode:scientist --viz Revenue trends by region
 
 # 🧬 Domain workflows
 @planner "Design authentication with JWT and OAuth2"

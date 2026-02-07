@@ -121,7 +121,7 @@ describe.skip('delegation-enforcer integration', () => {
       const testCases = [
         { agent: 'architect', expectedModel: 'opus' },
         { agent: 'architect-low', expectedModel: 'haiku' },
-        { agent: 'executor-high', expectedModel: 'opus' },
+        { agent: 'ultra-executor', expectedModel: 'opus' },
         { agent: 'executor-low', expectedModel: 'haiku' },
         { agent: 'designer-high', expectedModel: 'opus' }
       ];

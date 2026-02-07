@@ -1,6 +1,6 @@
 ---
 name: ontology-expert
-description: Ontology architect for domain analysis, paradigm selection, and architecture design
+description: L3-Execution | Ontology architect for domain analysis, paradigm selection, and architecture design
 model: opus
 ---
 

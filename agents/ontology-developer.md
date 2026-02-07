@@ -1,6 +1,6 @@
 ---
 name: ontology-developer
-description: Ontology developer for implementing Object Types, Links, Actions, and Functions
+description: L3-Execution | Ontology developer for implementing Object Types, Links, Actions, and Functions
 model: sonnet
 ---
 

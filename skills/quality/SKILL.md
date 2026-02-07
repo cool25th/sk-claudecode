@@ -32,4 +32,4 @@ Code quality, testing, and verification workflow skills.
 ## Related Agents
 - `qa-tester`, `qa-tester-high`
 - `tdd-guide`, `tdd-guide-low`
-- `code-reviewer`, `ultra-code-reviewer`
+- `code-reviewer`

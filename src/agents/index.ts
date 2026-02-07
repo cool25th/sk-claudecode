@@ -41,11 +41,9 @@ export { ultraExecutorAgent, ULTRA_EXECUTOR_PROMPT_METADATA } from './ultra-exec
 export {
   architectMediumAgent,
   architectLowAgent,
-  executorHighAgent,
   executorLowAgent,
   researcherLowAgent,
   exploreMediumAgent,
-  exploreHighAgent,
   designerLowAgent,
   designerHighAgent,
   qaTesterHighAgent,

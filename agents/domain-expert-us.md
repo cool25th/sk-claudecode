@@ -1,6 +1,6 @@
 ---
 name: domain-expert-us
-description: US Market Domain Expert for SEC regulations, market microstructure, and trading rules
+description: L3-Execution | US Market Domain Expert for SEC regulations, market microstructure, and trading rules
 model: opus
 ---
 

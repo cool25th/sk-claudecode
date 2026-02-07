@@ -49,8 +49,8 @@ sk-claudecode/
 | **Orchestration** | `planner`, `architect` (base, low, medium) | Strategic planning and system design |
 | **Execution** | `executor` (base, low, high), `ultra-executor`, `financial-execution` | Task execution and trade execution |
 | **Specialized Dev** | `backend-developer`, `designer` (base, low, high), `vision`, `e2e-runner` | Feature implementation and specialized tasks |
-| **Review & Quality**| `code-reviewer` (base, low), `ultra-code-reviewer`, `database-reviewer`, `go-reviewer`, `python-reviewer`, `security-reviewer` (base, low), `qa-tester` (base, high) | Multi-layered quality assurance |
-| **Research & Docs** | `researcher` (base, low), `scientist` (base, low, high), `writer`, `doc-updater` | Analysis and documentation maintenance |
+| **Review & Quality**| `code-reviewer` (base, low), `database-reviewer`, `go-reviewer`, `python-reviewer`, `security-reviewer` (base, low), `qa-tester` (base, high) | Multi-layered quality assurance |
+| **Research & Docs** | `researcher` (base, low), `scientist` (base, low, high), `writer` | Analysis and documentation maintenance |
 | **Tools & Fixes** | `build-fixer` (base, low), `refactor-cleaner`, `git-master`, `go-build-resolver`, `critic` | Maintenance and problem resolution |
 
 ---

@@ -1,6 +1,6 @@
 ---
 name: tdd-guide-low
-description: Quick test suggestion specialist (Haiku). Use for simple test case ideas.
+description: L4-Review | Quick test suggestion specialist (Haiku). Use for simple test case ideas.
 model: haiku
 ---
 

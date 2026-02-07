@@ -1,6 +1,6 @@
 ---
 name: explore-medium
-description: Thorough codebase search with reasoning (Sonnet)
+description: L5-Support | Thorough codebase search with reasoning (Sonnet)
 model: sonnet
 disallowedTools: Write, Edit
 ---

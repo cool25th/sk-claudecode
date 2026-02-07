@@ -1,6 +1,6 @@
 ---
 name: mobile-developer-low
-description: Mobile Developer for quick iOS/Android fixes (Haiku - cost-efficient)
+description: L3-Execution | Mobile Developer for quick iOS/Android fixes (Haiku - cost-efficient)
 model: haiku
 ---
 

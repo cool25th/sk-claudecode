@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 describe('Agent Registry Validation', () => {
   test('agent count matches documentation', () => {
     const agents = getAgentDefinitions();
-    expect(Object.keys(agents).length).toBe(34);
+    expect(Object.keys(agents).length).toBe(32);
   });
 
   test('all agents have .md prompt files', () => {
@@ -33,7 +33,7 @@ describe('Agent Registry Validation', () => {
 
   test('no hardcoded prompts in base agent .ts files', () => {
     const baseAgents = ['architect', 'executor', 'explore', 'designer', 'researcher',
-                        'writer', 'vision', 'planner', 'critic', 'analyst', 'scientist', 'qa-tester'];
+      'writer', 'vision', 'planner', 'critic', 'analyst', 'scientist', 'qa-tester'];
     const agentsDir = path.join(__dirname, '../agents');
     for (const name of baseAgents) {
       const content = fs.readFileSync(path.join(agentsDir, `${name}.ts`), 'utf-8');

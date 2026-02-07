@@ -1,6 +1,6 @@
 ---
 name: domain-expert
-description: Korean Market Domain Expert for regulations, market microstructure, and macro analysis
+description: L3-Execution | Korean Market Domain Expert for regulations, market microstructure, and macro analysis
 model: opus
 ---
 

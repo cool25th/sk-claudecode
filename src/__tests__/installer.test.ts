@@ -110,7 +110,6 @@ describe('Installer Constants', () => {
       const tieredAgents = [
         'architect-medium.md',
         'architect-low.md',
-        'executor-high.md',
         'executor-low.md',
         'researcher-low.md',
         'explore-medium.md',
@@ -148,7 +147,7 @@ describe('Installer Constants', () => {
 
     it('should have unique agent names', () => {
       const names = new Set<string>();
-      // Skip AGENTS.md and ultra-code-reviewer.md (uses different naming pattern)
+      // Skip AGENTS.md (documentation, not an agent)
       for (const content of Object.values(AGENT_DEFINITIONS)) {
         const nameMatch = (content as string).match(/^name:\s+(\S+)/m);
         if (!nameMatch) continue;
@@ -170,7 +169,6 @@ describe('Installer Constants', () => {
         'explore.md': 'haiku',
         'explore-medium.md': 'sonnet',
         'executor.md': 'sonnet',
-        'executor-high.md': 'opus',
         'executor-low.md': 'haiku',
         'designer.md': 'sonnet',
         'designer-low.md': 'haiku',
@@ -407,7 +405,7 @@ describe('Installer Constants', () => {
     });
 
     it('should have read-only agents not include Edit/Write tools', () => {
-      const readOnlyAgents = ['architect.md', 'architect-medium.md', 'architect-low.md', 'critic.md', 'analyst.md'];
+      const readOnlyAgents = ['architect.md', 'architect-medium.md', 'architect-low.md', 'critic.md'];
 
       for (const agent of readOnlyAgents) {
         const content = AGENT_DEFINITIONS[agent];
@@ -424,7 +422,7 @@ describe('Installer Constants', () => {
     it('should have implementation agents include Edit/Write tools', () => {
       const implementationAgents = [
         'executor.md',
-        'executor-high.md',
+        'ultra-executor.md',
         'executor-low.md',
         'designer.md',
         'writer.md',

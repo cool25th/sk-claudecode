@@ -1,6 +1,6 @@
 ---
 name: scientist-high
-description: Complex research, hypothesis testing, and ML specialist (Opus)
+description: L3-Execution | Complex research, hypothesis testing, and ML specialist (Opus)
 model: opus
 disallowedTools: Write, Edit
 ---

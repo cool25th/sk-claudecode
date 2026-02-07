@@ -270,7 +270,7 @@ describe('Agents Element', () => {
       { type: 'explore-medium', model: 'sonnet', expected: 'e' },
       { type: 'executor', model: 'sonnet', expected: 'x' },
       { type: 'executor-low', model: 'haiku', expected: 'x' },
-      { type: 'executor-high', model: 'opus', expected: 'X' },
+      { type: 'ultra-executor', model: 'opus', expected: 'U' },
       { type: 'designer', model: 'sonnet', expected: 'd' },
       { type: 'designer-high', model: 'opus', expected: 'D' },
       { type: 'researcher', model: 'sonnet', expected: 'r' },

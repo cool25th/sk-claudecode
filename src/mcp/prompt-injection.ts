@@ -14,10 +14,10 @@ import { loadAgentPrompt } from '../agents/utils.js';
 export const VALID_AGENT_ROLES = [
   'architect', 'architect-medium', 'architect-low',
   'analyst', 'critic', 'planner',
-  'executor', 'executor-high', 'executor-low',
+  'executor', 'executor-low',
   'ultra-executor',
   'designer', 'designer-low', 'designer-high',
-  'explore', 'explore-medium', 'explore-high',
+  'explore', 'explore-medium',
   'researcher', 'researcher-low',
   'writer', 'vision',
   'qa-tester', 'qa-tester-high',

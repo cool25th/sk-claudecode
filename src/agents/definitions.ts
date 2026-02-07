@@ -74,16 +74,7 @@ export const architectLowAgent: AgentConfig = {
   defaultModel: 'haiku'
 };
 
-/**
- * Executor-High Agent - Complex Execution (Opus)
- */
-export const executorHighAgent: AgentConfig = {
-  name: 'executor-high',
-  description: 'Complex task executor for multi-file changes (Opus). Use for tasks requiring deep reasoning.',
-  prompt: loadAgentPrompt('executor-high'),
-  model: 'opus',
-  defaultModel: 'opus'
-};
+// executor-high removed — use ultra-executor for complex Opus execution
 
 /**
  * Executor-Low Agent - Simple Execution (Haiku)
@@ -118,16 +109,7 @@ export const exploreMediumAgent: AgentConfig = {
   defaultModel: 'sonnet'
 };
 
-/**
- * Explore-High Agent - Complex Architectural Search (Opus)
- */
-export const exploreHighAgent: AgentConfig = {
-  name: 'explore-high',
-  description: 'Complex architectural search for deep system understanding (Opus). Use for architectural mapping and design pattern discovery.',
-  prompt: loadAgentPrompt('explore-high'),
-  model: 'opus',
-  defaultModel: 'opus'
-};
+// explore-high removed — use researcher for deep exploration
 
 /**
  * Designer-Low Agent - Simple UI Tasks (Haiku)
@@ -343,11 +325,11 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
     // Tiered variants (prompts loaded from /agents/*.md)
     'architect-medium': architectMediumAgent,
     'architect-low': architectLowAgent,
-    'executor-high': executorHighAgent,
+    // executor-high removed — use ultra-executor
     'executor-low': executorLowAgent,
     'researcher-low': researcherLowAgent,
     'explore-medium': exploreMediumAgent,
-    'explore-high': exploreHighAgent,
+    // explore-high removed — use researcher
     'designer-low': designerLowAgent,
     'designer-high': designerHighAgent,
     'qa-tester-high': qaTesterHighAgent,

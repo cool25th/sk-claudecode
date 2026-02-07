@@ -26,7 +26,6 @@ Agents are available at different tiers based on task complexity:
 | `executor-low` | Low | Haiku | Simple changes |
 | `explore` | Low | Haiku | Code exploration |
 | `explore-medium` | Medium | Sonnet | Deeper exploration |
-| `explore-high` | High | Opus | Complex research |
 | `designer` | Medium | Sonnet | UI/UX implementation |
 | `designer-low` | Low | Haiku | Simple UI changes |
 | `designer-high` | High | Opus | Complex UI design |

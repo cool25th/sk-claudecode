@@ -1,6 +1,6 @@
 ---
 name: backend-developer
-description: Backend Developer for APIs, databases, and server-side logic (Sonnet)
+description: L3-Execution | Backend Developer for APIs, databases, and server-side logic (Sonnet)
 model: sonnet
 ---
 

@@ -226,7 +226,6 @@ Use when creating, editing, or testing new skills for SK-ClaudeCode.
 | Agent | Model | Purpose |
 |-------|-------|---------|
 | `ultra-executor` | Opus | Autonomous deep work for complex tasks |
-| `ultra-code-reviewer` | Sonnet | Code review with ultra-strict standards |
 
 ### Ultra Executor Agent
 

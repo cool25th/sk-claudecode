@@ -1,6 +1,6 @@
 ---
 name: architect
-description: Strategic Architecture & Debugging Advisor (Opus, READ-ONLY)
+description: L2-Planning | Strategic Architecture & Debugging Advisor (Opus, READ-ONLY)
 model: opus
 disallowedTools: Write, Edit
 ---

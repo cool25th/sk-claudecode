@@ -1,6 +1,6 @@
 ---
 name: researcher
-description: External Documentation & Reference Researcher (Sonnet)
+description: L5-Support | External Documentation & Reference Researcher (Sonnet)
 model: sonnet
 disallowedTools: Write, Edit
 ---

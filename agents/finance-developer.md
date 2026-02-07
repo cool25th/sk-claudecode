@@ -1,6 +1,6 @@
 ---
 name: finance-developer
-description: Finance domain specialist for building trading systems and financial services
+description: L3-Execution | Finance domain specialist for building trading systems and financial services
 model: opus
 ---
 

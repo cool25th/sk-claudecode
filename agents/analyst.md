@@ -1,6 +1,6 @@
 ---
 name: analyst
-description: Pre-planning consultant for requirements analysis (Opus)
+description: L2-Planning | Pre-planning consultant for requirements analysis (Opus)
 model: opus
 disallowedTools: Write, Edit
 ---

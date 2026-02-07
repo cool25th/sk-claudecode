@@ -2,7 +2,7 @@
 
 > Unified agent and skill system for Claude Code
 
-42 specialized agents + 89 skills + 141 scientific domains in one package.
+**45 agents** · **100 skills** · **141 scientific domains** · **48 commands** — all in one package.
 
 ## 🚀 Installation
 
@@ -27,61 +27,27 @@ npm install && npm run build && npm run setup
 
 ---
 
-## 💡 Recommended Workflow
+## 💡 Core Concept: Think → Build → Check
 
-The best results come from following the **Think → Build → Check** cycle:
+Every workflow follows the same cycle. Pick agents from each phase, or let an **orchestration mode** do it for you.
 
 ```
-🧠 Think          ⚡ Build          🔍 Check
- ┌──────────┐     ┌──────────┐     ┌──────────┐
- │ architect │────▶│ executor │────▶│ reviewer │
- │ planner   │     │ designer │     │ qa-tester│
- │ critic    │     │ builder  │     │ security │
- └──────────┘     └──────────┘     └──────────┘
-       ▲                                 │
-       └─────────────────────────────────┘
-                  Iterate
+🧠 Think          ⚡ Build          🔍 Check          📚 Help
+┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐
+│ architect │     │ executor │     │ reviewer │     │ explore  │
+│ planner   │────▶│ designer │────▶│ qa-tester│     │ writer   │
+│ critic    │     │ scientist│     │ security │     │researcher│
+└──────────┘     └──────────┘     └──────────┘     └──────────┘
+      ▲                                 │
+      └─────────────────────────────────┘
+                 Iterate until ✅
 ```
-
-**Example workflows by domain:**
-```bash
-# 💻 Code — Think → Build → Check
-@planner "Design authentication with JWT and OAuth2"
-@executor "Implement the auth middleware from the plan"
-@code-reviewer "Review all changes in src/auth/"
-
-# 📋 Product Management — Think → Build → Check
-@planner "/plan:write-spec — Design the onboarding feature"
-@executor "Implement the spec from PRD.md"
-@critic "Review implementation against the PRD"
-
-# 🔬 Data Science — Think → Build → Check
-@scientist-high "Plan the churn analysis methodology"
-@scientist "/scientist:write-query — Monthly churn by cohort"
-@scientist-reviewer "Validate query logic and statistics"
-
-# 🎨 Design — Think → Build → Check
-@designer-high "Plan the dashboard layout and design system"
-@designer "Build the dashboard with charts and dark mode"
-@designer-reviewer "Audit accessibility, consistency, responsiveness"
-
-# 🗂️ Ontology — Think → Build → Check
-@ontology-expert "Design the object type hierarchy"
-@ontology-developer "Implement the ontology schema"
-@ontology-reviewer "Validate schema consistency and completeness"
-```
-
-> 💡 **Tip:** Use `/sk-claudecode:ralph` to automate this entire cycle — it keeps iterating until everything passes.
 
 ---
 
-## 🤖 Agent Guide — "What do I use?"
-
-All 45 agents fall into 4 categories based on **what you want to do**:
+## 🤖 Agents (45)
 
 ### 🧠 Think — Plan before you build
-
-> Use when you need to analyze, design, or review a plan.
 
 | Agent | Model | When to use |
 |-------|-------|-------------|
@@ -93,19 +59,9 @@ All 45 agents fall into 4 categories based on **what you want to do**:
 | `designer-high` | Opus | UI/UX design planning, style & tone review |
 | `scientist-high` | Opus | Research planning, experiment design |
 | `ontology-expert` | Opus | Ontology architecture & domain analysis |
-
-```bash
-@planner "Design authentication system with JWT and OAuth2"
-@architect "Review the database schema for scalability issues"
-@designer-high "Review the UI for design consistency and tone"
-@critic "Review this implementation plan for gaps"
-```
-
----
+| `finance-expert` | Opus | Finance domain audit (KR/US markets) |
 
 ### ⚡ Build — Write and implement code
-
-> Use when you need to create, modify, or fix code.
 
 | Agent | Model | When to use |
 |-------|-------|-------------|
@@ -117,26 +73,15 @@ All 45 agents fall into 4 categories based on **what you want to do**:
 | `build-fixer` | Sonnet | Fix build errors (TS, Go, etc.) |
 | `build-fixer-low` | Haiku | Trivial type errors |
 | `git-master` | Sonnet | Commits, rebasing, history management |
+| `scientist` | Sonnet | Data analysis, research |
+| `scientist-low` | Haiku | Quick data inspection |
 | `mobile-developer` | Sonnet | iOS / Android apps |
 | `mobile-developer-high` | Opus | Complex mobile architecture |
 | `mobile-developer-low` | Haiku | Quick mobile fixes |
-| `scientist` | Sonnet | Data analysis, research |
-| `scientist-low` | Haiku | Quick data inspection |
 | `finance-developer` | Opus | Trading systems development |
 | `ontology-developer` | Sonnet | Ontology implementation |
 
-```bash
-@executor "Add user authentication middleware"
-@ultra-executor "Refactor the entire API layer to use async/await"
-@designer "Build a dashboard with charts and dark mode"
-@build-fixer "Fix all TypeScript errors in src/"
-```
-
----
-
 ### 🔍 Check — Review and test code
-
-> Use when you need to verify quality, security, or correctness.
 
 | Agent | Model | When to use |
 |-------|-------|-------------|
@@ -144,31 +89,19 @@ All 45 agents fall into 4 categories based on **what you want to do**:
 | `code-reviewer-low` | Haiku | Quick review of small changes |
 | `security-reviewer` | Opus | Security vulnerabilities (OWASP Top 10) |
 | `security-reviewer-low` | Haiku | Fast security scan |
+| `database-reviewer` | Opus | SQL optimization, schema design |
 | `go-reviewer` | Opus | Go-specific best practices |
 | `python-reviewer` | Opus | Python-specific (PEP 8, type hints) |
-| `database-reviewer` | Opus | SQL optimization, schema design |
 | `qa-tester` | Sonnet | Interactive CLI testing (tmux) |
 | `qa-tester-high` | Opus | Production-ready QA |
 | `tdd-guide` | Opus | Test-Driven Development |
 | `tdd-guide-low` | Haiku | Quick test suggestions |
 | `e2e-runner` | Opus | End-to-end browser testing |
-| `finance-expert` | Opus | Finance domain audit (KR/US markets) |
 | `scientist-reviewer` | Opus | Research methodology & statistics validation |
 | `designer-reviewer` | Opus | UI/UX accessibility, consistency, responsiveness |
 | `ontology-reviewer` | Opus | Ontology schema validation & consistency |
 
-```bash
-@code-reviewer "Review the changes in src/auth/"
-@security-reviewer "Audit the API endpoints for vulnerabilities"
-@database-reviewer "Optimize slow queries in src/db"
-@qa-tester "Test the login flow end-to-end"
-```
-
----
-
 ### 📚 Help — Search and document
-
-> Use when you need to find information or write documentation.
 
 | Agent | Model | When to use |
 |-------|-------|-------------|
@@ -179,80 +112,41 @@ All 45 agents fall into 4 categories based on **what you want to do**:
 | `vision` | Sonnet | Analyze images, PDFs, diagrams |
 | `refactor-cleaner` | Opus | Find and remove dead code |
 
-```bash
-@explore "Find all authentication patterns in the codebase"
-@researcher "How does Next.js 15 handle server components?"
-@writer "Document the REST API endpoints in src/api/"
-@vision "Analyze this wireframe and suggest component structure"
+---
+
+## 🚀 Orchestration Modes
+
+Agents do one thing well. **Modes** chain them into complete Think → Build → Check workflows automatically.
+
+| Command | Covers | How it works |
+|---------|--------|-------------|
+| | **🔄 Full Cycle** | |
+| `/sk-claudecode:ralph` | 🧠→⚡→🔍 **+ retry** | Full cycle, **retries until all checks pass** |
+| `/sk-claudecode:autopilot` | 🧠→⚡→🔍 auto | Auto-selects best agents for each phase |
+| `/sk-claudecode:pipeline` | 🧠→⚡→🔍 chain | You define the agent chain explicitly |
+| `/sk-claudecode:ecomode` | 🧠→⚡→🔍 cheap | Same cycle, Haiku/Sonnet only (60%+ cheaper) |
+| | **⚡ Parallel** | |
+| `/sk-claudecode:ultrawork` | 🧠⚡🔍 **∥** | All phases in parallel across files |
+| `/sk-claudecode:ultrapilot` | ⚡🔍 **∥ partitioned** | Splits files by owner, parallel per partition |
+| `/sk-claudecode:swarm` | 🧠⚡🔍 **∥ N agents** | N coordinated agents share the cycle |
+| | **🔍 Check-Focused** | |
+| `/sk-claudecode:ultraqa` | ⚡→🔍 **loop** | Build → Check → **loops until all pass** |
+
+### How Modes Run the Cycle
+
+```
+ralph:       @planner → @executor → @code-reviewer ── fail? → @build-fixer → retry
+ultrawork:   ┌─ @planner → @executor → @code-reviewer     (all 3 lanes
+             ├─ @planner → @executor → @security-reviewer   run in
+             └─ @designer → @designer → @designer-reviewer  parallel)
+pipeline:    @architect → @planner → @executor → @code-reviewer → @qa-tester
 ```
 
 ---
 
-## 🚀 Orchestration — How modes connect Think → Build → Check
+## 🗂 Domain Matrix
 
-Agents do one thing well. **Orchestration modes** chain them into complete workflows by automating the Think → Build → Check cycle.
-
-```
-             ┌──────────────────────────────────────────────────────┐
-             │               Orchestration Mode                     │
-             │  (ralph / autopilot / ultrawork / pipeline / ...)    │
-             └──────┬──────────────┬──────────────┬────────────────┘
-                    │              │              │
-              🧠 Think        ⚡ Build        🔍 Check       📚 Help
-            ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
-            │ planner   │   │ executor │   │ reviewer │   │ explore  │
-            │ architect │──▶│ designer │──▶│ qa-tester│   │ writer   │
-            │ critic    │   │ builder  │   │ security │   │researcher│
-            └──────────┘   └──────────┘   └──────────┘   └──────────┘
-                  ▲                              │
-                  └──────────────────────────────┘
-                         Iterate until ✅
-```
-
-### Mode Selection Guide
-
-| Command | Covers | How it works |
-|---------|--------|-------------|
-| | **🔄 Full Cycle (Think → Build → Check)** | |
-| `/sk-claudecode:ralph` | 🧠→⚡→🔍 **+ retry** | Runs full cycle, **retries Build→Check until all pass** |
-| `/sk-claudecode:autopilot` | 🧠→⚡→🔍 auto | Auto-selects best agents for each phase |
-| `/sk-claudecode:pipeline` | 🧠→⚡→🔍 chain | You define the agent chain explicitly |
-| `/sk-claudecode:ecomode` | 🧠→⚡→🔍 cheap | Same full cycle, routes to Haiku/Sonnet (60%+ cheaper) |
-| | **⚡ Parallel Execution** | |
-| `/sk-claudecode:ultrawork` | 🧠⚡🔍 **∥ parallel** | All phases run in parallel across files |
-| `/sk-claudecode:ultrapilot` | ⚡🔍 **∥ partitioned** | Splits files by owner, parallel Build+Check per partition |
-| `/sk-claudecode:swarm` | 🧠⚡🔍 **∥ N agents** | N coordinated agents share Think→Build→Check |
-| | **🔍 Check-Focused** | |
-| `/sk-claudecode:ultraqa` | ⚡→🔍 **loop** | Build → Check → **loops Check until all pass** |
-
-### How Each Mode Runs the Cycle
-
-**`/sk-claudecode:ralph`** — 🧠→⚡→🔍 + retry loop
-```
-@planner "Plan auth system"     🧠 Think
-    ↓
-@executor "Implement auth"      ⚡ Build
-    ↓
-@code-reviewer "Review auth"    🔍 Check ── fail? ──→ @build-fixer ──→ 🔍 Check again
-    ↓ pass
-Done ✅
-```
-
-**`/sk-claudecode:ultrawork`** — 🧠⚡🔍 all parallel
-```
-┌─ @planner "Plan auth"  ──→ @executor "Implement auth"  ──→ @code-reviewer
-├─ @planner "Plan API"   ──→ @executor "Implement API"   ──→ @security-reviewer
-└─ @designer "Plan UI"   ──→ @designer "Build UI"        ──→ @designer-reviewer
-                                     All in parallel
-```
-
-**`/sk-claudecode:pipeline`** — 🧠→⚡→🔍 explicit chain
-```
-@architect ──→ @planner ──→ @executor ──→ @code-reviewer ──→ @qa-tester
- (Analyze)    (Plan)       (Build)      (Review)           (Test)
-```
-
-### Domain-Specific Orchestrations
+Which agents to use for each domain, organized by Think → Build → Check → Help:
 
 | Domain | 🧠 Think | ⚡ Build | 🔍 Check | 📚 Help |
 |--------|---------|---------|---------|--------|
@@ -264,29 +158,33 @@ Done ✅
 | **Finance** | `finance-expert` | `finance-developer` | `code-reviewer` | `researcher` |
 | **Ontology** | `ontology-expert` | `ontology-developer` | `ontology-reviewer` | `explore` |
 
-### 📋 Slash Commands
+---
 
-```bash
-# 🔄 Full Cycle — "just make it work"
-/sk-claudecode:ralph implement user profile page with avatar upload
+## 📋 Commands
 
-# ⚡ Parallel — maximum speed across files
-/sk-claudecode:ultrawork refactor authentication to use OAuth2
+### Product Management
 
-# 🔗 Pipeline — explicit agent chain
-/sk-claudecode:pipeline architect → planner → executor → code-reviewer
+| Command | Category | What it does |
+|---------|----------|--------------|
+| `/plan:write-spec` | 🧠 Think | Structured PRD with user stories & acceptance criteria |
+| `/plan:roadmap` | 🧠 Think | Roadmap planning with RICE/ICE/MoSCoW prioritization |
+| `/scientist:write-query` | ⚡ Build | Optimized SQL query generation |
+| `/scientist:visualize` | ⚡ Build | Data visualization with chart type selection |
 
-# 💰 Eco — save tokens (60%+ cheaper)
-/sk-claudecode:ecomode fix all lint errors in src/
+### Key Skills
 
-# 📋 Product — PRD + roadmap workflows
-/sk-claudecode:ralph @planner "/plan:write-spec — Design the payment flow"
-/sk-claudecode:ralph @planner "/plan:roadmap — Q2 feature prioritization"
-
-# 🔬 Data — query + visualize workflows
-/sk-claudecode:ralph @scientist "/scientist:write-query — Monthly churn by cohort"
-/sk-claudecode:ralph @scientist "/scientist:visualize — Revenue trends by region"
-```
+| Skill | Command | Purpose |
+|-------|---------|---------| 
+| Planning | `/sk-claudecode:plan` | High-density project planning |
+| TDD | `/sk-claudecode:tdd` | Test-first workflow |
+| Verification | `/sk-claudecode:ultraqa` | Build/test/lint verification loop |
+| Memory | `/sk-claudecode:learner` | Persistent cross-session learning |
+| Backend | `/sk-claudecode:code-review` | Backend code review patterns |
+| Frontend | `/sk-claudecode:build-fix` | Build error resolution |
+| Scientific | `/sk-claudecode:scientist` | 141 scientific domains |
+| Finance | `/sk-claudecode:finance-expert` | KR/US market audit |
+| Mobile | `/sk-claudecode:mobile` | iOS / Android / Flutter |
+| Ontology | `/sk-claudecode:ontology-expert` | Palantir-style ontology |
 
 ---
 
@@ -304,18 +202,38 @@ Type these anywhere in your prompt — no slash command needed:
 
 ---
 
-## 🛠 Key Skills
+## 💻 Usage Examples
 
-| Skill | Command | Purpose |
-|-------|---------|---------|
-| Planning | `/sk-claudecode:ultra-plan` | High-density project planning |
-| TDD | `/sk-claudecode:test-driven-development` | Test-first workflow |
-| Verification | `/sk-claudecode:verification-loop` | Build/test/lint verification |
-| Memory | `/sk-claudecode:memory` | Persistent cross-session context |
-| Backend | `/sk-claudecode:backend` | Backend development patterns |
-| Frontend | `/sk-claudecode:frontend-ui-ux` | UI/UX design patterns |
-| Scientific | `/sk-claudecode:scientist` | 141 scientific domains |
-| Quant | `/sk-claudecode:quant` | Quantitative trading strategies |
+```bash
+# 🔄 Full Cycle — "just make it work"
+/sk-claudecode:ralph implement user profile page with avatar upload
+
+# ⚡ Parallel — maximum speed across files
+/sk-claudecode:ultrawork refactor authentication to use OAuth2
+
+# 🔗 Pipeline — explicit agent chain
+/sk-claudecode:pipeline architect → planner → executor → code-reviewer
+
+# 💰 Eco — save tokens (60%+ cheaper)
+/sk-claudecode:ecomode fix all lint errors in src/
+
+# 📋 Product — PRD + roadmap
+/sk-claudecode:ralph @planner "/plan:write-spec — Design the payment flow"
+/sk-claudecode:ralph @planner "/plan:roadmap — Q2 feature prioritization"
+
+# 🔬 Data — query + visualize
+/sk-claudecode:ralph @scientist "/scientist:write-query — Monthly churn by cohort"
+/sk-claudecode:ralph @scientist "/scientist:visualize — Revenue trends by region"
+
+# 🧬 Domain workflows
+@planner "Design authentication with JWT and OAuth2"
+@executor "Implement the auth middleware from the plan"
+@code-reviewer "Review all changes in src/auth/"
+```
+
+> 💡 **Tip:** Use `/sk-claudecode:ralph` to automate the entire Think → Build → Check cycle — it keeps iterating until everything passes.
+
+---
 
 ## ✨ Highlights
 

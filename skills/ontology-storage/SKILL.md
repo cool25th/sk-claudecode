@@ -282,3 +282,10 @@ class HybridOntologyStore {
 - `/skill ontology-traditional` - Triple store patterns
 - `/skill ontology-palantir` - Operational DB patterns
 - `/agent ultra-ontology` - Hybrid ontology design
+
+---
+
+## Related Agents
+
+- `ontology-developer` - Ontology implementation (Sonnet)
+- `ontology-expert` - Ontology architecture (Opus)

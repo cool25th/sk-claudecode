@@ -234,3 +234,10 @@ action CreateOrder {
 - `/skill ontology-functions` - Custom validation logic
 - `/skill ontology-storage` - Storage patterns
 
+
+---
+
+## Related Agents
+
+- `ontology-developer` - Ontology implementation (Sonnet)
+- `ontology-expert` - Ontology architecture (Opus)

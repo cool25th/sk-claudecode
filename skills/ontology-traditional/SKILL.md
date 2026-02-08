@@ -188,3 +188,9 @@ Check:
 
 - `/skill ontology-palantir` - Palantir operational ontology
 - `/skill ontology` - General ontology overview
+
+---
+
+## Related Agents
+
+- `ontology-developer` - Ontology implementation (Sonnet)

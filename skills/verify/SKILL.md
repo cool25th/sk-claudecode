@@ -137,3 +137,11 @@ From 24 failure memories:
 Run the command. Read the output. THEN claim the result.
 
 This is non-negotiable.
+
+---
+
+## Related Agents
+
+- `qa-tester` - Quality assurance (Sonnet)
+- `qa-tester-high` - Complex QA (Opus)
+- `e2e-runner` - E2E test execution

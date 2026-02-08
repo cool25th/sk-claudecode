@@ -300,3 +300,12 @@ If 3+ fix attempts fail for the same issue:
 | "Test flaky" | Re-running until pass | What state is shared between tests? |
 | "Works locally" | "It's the CI" | What environment difference matters? |
 </Systematic_Debugging_Protocol>
+
+---
+
+## Related Skills
+
+- `/skill plan` - Structured planning workflow
+- `/skill analyze` - Codebase analysis
+- `/skill orchestrate` - Multi-agent orchestration
+- `/skill pipeline` - CI/CD pipeline design

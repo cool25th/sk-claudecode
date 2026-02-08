@@ -83,3 +83,10 @@ async def submit_order(order: Order) -> OrderResult:
 - Alert on repeated failures
 - Cancel on timeout
 - Never retry duplicate orders
+
+---
+
+## Related Agents
+
+- `finance-developer` - Finance development (Sonnet)
+- `finance-expert` - Financial analysis (Opus)

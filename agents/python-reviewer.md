@@ -467,3 +467,11 @@ pytest --cov=app --cov-report=term-missing
 - **Async generators**: Proper async iteration
 
 Review with the mindset: "Would this code pass review at a top Python shop or open-source project?"
+
+---
+
+## Related Skills
+
+- `/skill python-patterns` - Python best practices
+- `/skill python-testing` - Python testing patterns
+- `/skill code-review` - Code review workflow

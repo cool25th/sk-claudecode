@@ -304,3 +304,11 @@ After cleanup session:
 ---
 
 **Remember**: Dead code is technical debt. Regular cleanup keeps the codebase maintainable and fast. But safety first - never remove code without understanding why it exists.
+
+---
+
+## Related Skills
+
+- `/skill code-review` - Code review workflow
+- `/skill coding-standards` - Code quality standards
+- `/skill quality` - Quality assurance

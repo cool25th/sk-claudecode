@@ -239,3 +239,10 @@ interface Product {
 - `/skill ontology-actions` - State mutations
 - `/skill ontology-functions` - Custom logic
 - `/skill ontology-storage` - Storage layer selection
+
+---
+
+## Related Agents
+
+- `ontology-developer` - Ontology implementation (Sonnet)
+- `ontology-expert` - Ontology architecture (Opus)

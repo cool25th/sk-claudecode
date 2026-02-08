@@ -241,3 +241,10 @@ const customers = await ontology.objects.Customer
 - `/skill ontology-actions` - Actions that use functions
 - `/skill ontology-storage` - Storage patterns
 
+
+---
+
+## Related Agents
+
+- `ontology-developer` - Ontology implementation (Sonnet)
+- `ontology-expert` - Ontology architecture (Opus)

@@ -121,3 +121,10 @@ Keeps trying until build passes, even if it takes multiple iterations.
 /pipeline debug "build is failing"
 ```
 Uses: explore → architect → build-fixer workflow.
+
+---
+
+## Related Agents
+
+- `build-fixer` - Build error resolution (Sonnet)
+- `build-fixer-low` - Simple build fixes (Haiku)

@@ -302,3 +302,10 @@ Use Spring’s `@Scheduled` or integrate with queues (e.g., Kafka, SQS, RabbitMQ
 - Enforce null-safety via `@NonNull` and `Optional` where appropriate
 
 **Remember**: Keep controllers thin, services focused, repositories simple, and errors handled centrally. Optimize for maintainability and testability.
+
+---
+
+## Related Agents
+
+- `executor` - Task execution (Sonnet)
+- `architect` - System architecture

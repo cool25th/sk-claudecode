@@ -254,3 +254,10 @@ Also handles Go-specific build issues:
 - Module/dependency resolution (`go.mod`, `go.sum`)
 - Import cycle detection and resolution
 - CGo compilation issues
+
+---
+
+## Related Skills
+
+- `/skill build-fix` - Build error resolution
+- `/skill doctor` - Project diagnostics

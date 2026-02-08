@@ -256,3 +256,9 @@ plt.savefig('.skc/scientist/figures/quick_bar.png')
 - NO custom styling or formatting
 - Keep it simple and fast
 </Fast_Viz_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill research` - Research workflow

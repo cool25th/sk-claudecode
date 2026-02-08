@@ -102,3 +102,11 @@ The tdd-guide agent SHOULD consult Codex for test strategy validation.
 Use `mcp__x__ask_codex` with `agent_role: "tdd-guide"`.
 
 **Remember:** The discipline IS the value. Shortcuts destroy the benefit.
+
+---
+
+## Related Agents
+
+- `tdd-guide` - TDD specialist (Sonnet)
+- `tdd-guide-low` - Simple TDD (Haiku)
+- `qa-tester` - Quality assurance

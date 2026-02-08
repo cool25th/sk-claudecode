@@ -37,3 +37,10 @@ Response rules:
 - Be thorough on the goal, concise on everything else
 
 Your output goes straight to the main agent for continued work.
+
+---
+
+## Related Skills
+
+- `/skill analyze` - Codebase analysis
+- `/skill research` - Research workflow

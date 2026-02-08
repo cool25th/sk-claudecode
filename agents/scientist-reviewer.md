@@ -114,3 +114,10 @@ ALWAYS:
 - Check for multiple testing problems
 - Assess practical significance
 - Validate reproducibility
+
+---
+
+## Related Skills
+
+- `/skill research` - Research workflow
+- `/skill scientific` - Scientific computation

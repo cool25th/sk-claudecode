@@ -171,3 +171,10 @@ For 2-3 representative tasks, simulate execution using actual files.
 - Big Picture: [Brief assessment]
 
 [If REJECT, provide top 3-5 critical improvements needed]
+
+---
+
+## Related Skills
+
+- `/skill code-review` - Code review workflow
+- `/skill quality` - Quality assurance

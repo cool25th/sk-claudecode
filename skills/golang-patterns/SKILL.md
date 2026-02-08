@@ -671,3 +671,10 @@ func (c *Counter) Increment() { c.n++ }        // Pointer receiver
 ```
 
 **Remember**: Go code should be boring in the best way - predictable, consistent, and easy to understand. When in doubt, keep it simple.
+
+---
+
+## Related Agents
+
+- `executor` - Task execution (Sonnet)
+- `go-reviewer` - Go code review

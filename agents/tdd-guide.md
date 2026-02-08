@@ -278,3 +278,11 @@ npm test -- --coverage --ci
 ```
 
 **Remember**: No code without tests. Tests are not optional. They are the safety net that enables confident refactoring, rapid development, and production reliability.
+
+---
+
+## Related Skills
+
+- `/skill tdd` - Test-driven development
+- `/skill tdd-workflow` - TDD workflow patterns
+- `/skill verify` - Verification workflow

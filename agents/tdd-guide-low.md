@@ -78,3 +78,10 @@ ALWAYS:
 - Identify key edge cases
 - Recommend escalation when needed
 </Anti_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill tdd` - Test-driven development
+- `/skill tdd-workflow` - TDD workflow patterns

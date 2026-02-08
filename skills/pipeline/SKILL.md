@@ -428,3 +428,11 @@ This skill activates when:
 "First explore the codebase, then architect should analyze it, then executor implements"
 ```
 → Automatically creates pipeline: explore → architect → executor
+
+---
+
+## Related Agents
+
+- `architect` - System architecture (Sonnet)
+- `executor` - Task execution (Sonnet)
+- `qa-tester` - Quality assurance

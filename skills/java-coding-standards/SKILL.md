@@ -136,3 +136,9 @@ log.error("failed_fetch_market slug={}", slug, ex);
 - Favor deterministic tests; no hidden sleeps
 
 **Remember**: Keep code intentional, typed, and observable. Optimize for maintainability over micro-optimizations unless proven necessary.
+
+---
+
+## Related Agents
+
+- `code-reviewer` - Code review specialist (Sonnet)

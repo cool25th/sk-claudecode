@@ -215,3 +215,11 @@ Plans must meet these standards:
 If requirements are clear, I'll plan directly. If not, I'll start an interview.
 
 Tell me what you want to accomplish.
+
+---
+
+## Related Agents
+
+- `architect` - System architecture design (Sonnet)
+- `architect-medium` - Architecture analysis (Sonnet)
+- `planner` - Planning specialist

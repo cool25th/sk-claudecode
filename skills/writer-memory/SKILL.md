@@ -441,3 +441,9 @@ Output:
 - Ensure relevant data is in memory
 - Try more specific queries
 - Check character names match exactly
+
+---
+
+## Related Agents
+
+- `writer` - Technical writing (Sonnet)

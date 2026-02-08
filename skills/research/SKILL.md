@@ -508,3 +508,11 @@ Progress is preserved in `.skc/research/{session-id}/` for resume.
 - Verify figures/ directory exists
 - Check [FIGURE:] tags in findings
 - Ensure paths are relative to session directory
+
+---
+
+## Related Agents
+
+- `researcher` - Research specialist (Sonnet)
+- `researcher-low` - Quick research (Haiku)
+- `scientist` - Scientific research (Sonnet)

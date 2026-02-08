@@ -114,3 +114,10 @@ After saving the plan, offer execution choice:
 **If Parallel Session chosen:**
 - Guide them to open new session in worktree
 - **REQUIRED SUB-SKILL:** New session uses sk-claudecode:executing-plans
+
+---
+
+## Related Agents
+
+- `architect` - System architecture (Sonnet)
+- `planner` - Planning specialist

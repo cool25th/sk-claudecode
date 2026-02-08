@@ -42,3 +42,10 @@ Reference for US market (NYSE/NASDAQ) regulations, trading hours, and SEC rules.
 
 ## Related Agent
 - `finance-expert`
+
+---
+
+## Related Agents
+
+- `finance-developer` - Finance development (Sonnet)
+- `finance-expert` - Financial analysis (Opus)

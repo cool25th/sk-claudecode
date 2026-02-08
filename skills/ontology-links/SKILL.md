@@ -276,3 +276,9 @@ order → supplier (direct link for common access)
 - `/skill ontology-actions` - State mutations
 - `/skill ontology-functions` - Custom logic
 - `/skill ontology-storage` - Storage layer patterns
+
+---
+
+## Related Agents
+
+- `ontology-developer` - Ontology implementation (Sonnet)

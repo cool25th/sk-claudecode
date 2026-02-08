@@ -117,3 +117,9 @@ http
 - [ ] Logs free of sensitive data
 
 **Remember**: Deny by default, validate inputs, least privilege, and secure-by-configuration first.
+
+---
+
+## Related Agents
+
+- `security-reviewer` - Security review (Sonnet)

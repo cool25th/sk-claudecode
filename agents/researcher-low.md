@@ -82,3 +82,10 @@ ALWAYS:
 - Note version info
 - Keep it concise
 </Anti_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill research` - Research workflow
+- `/skill deepsearch` - Deep search patterns

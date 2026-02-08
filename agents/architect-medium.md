@@ -145,3 +145,10 @@ ALWAYS:
 - Consider dependencies and side effects
 - Recommend escalation when appropriate
 </Anti_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill plan` - Structured planning workflow
+- `/skill analyze` - Codebase analysis

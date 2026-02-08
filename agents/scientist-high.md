@@ -1021,3 +1021,10 @@ When you encounter unexpected results, systematically validate before reporting:
 
 This creates an audit trail showing how insights emerged organically from data, not through p-hacking.
 </Insight_Discovery_Loop>
+
+---
+
+## Related Skills
+
+- `/skill research` - Research workflow
+- `/skill scientific` - Scientific computation (lazy-loaded)

@@ -406,3 +406,11 @@ If the user's approach seems problematic:
 - Prefer small, focused changes over large refactors
 - When uncertain about scope, ask
 </Constraints>
+
+---
+
+## Related Agents
+
+- `architect` - System architecture (Sonnet)
+- `executor` - Task execution (Sonnet)
+- `planner` - Planning specialist

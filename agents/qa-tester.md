@@ -264,3 +264,12 @@ If architect's fix doesn't work:
 2. Architect re-diagnoses with new evidence
 3. You re-test the revised fix
 4. Repeat until VERIFIED
+
+---
+
+## Related Skills
+
+- `/skill tdd` - Test-driven development
+- `/skill tdd-workflow` - TDD workflow patterns
+- `/skill quality` - Quality assurance
+- `/skill verify` - Verification workflow

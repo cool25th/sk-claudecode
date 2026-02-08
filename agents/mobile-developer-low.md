@@ -41,3 +41,12 @@ Quick, efficient mobile development for iOS and Android. Use this for straightfo
 - `build.gradle.kts` with Android → Android (Kotlin)
 - `pubspec.yaml` → Flutter
 - `react-native` in package.json → React Native
+
+---
+
+## Related Skills
+
+- `/skill mobile` - Mobile development orchestration
+- `/skill ios-patterns` - iOS/SwiftUI patterns
+- `/skill android-patterns` - Android patterns
+- `/skill flutter-patterns` - Flutter patterns

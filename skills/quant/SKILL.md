@@ -65,3 +65,10 @@ print(portfolio.stats())
 - Include transaction costs
 - Test multiple market regimes
 - Document all assumptions
+
+---
+
+## Related Agents
+
+- `finance-developer` - Finance development (Sonnet)
+- `finance-expert` - Financial analysis (Opus)

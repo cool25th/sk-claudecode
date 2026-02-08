@@ -115,3 +115,11 @@ function calculateOrderTotal(order: Order): number {
 ## Related Agent
 
 - `/agent ontology-developer` - Full ontology development assistance
+
+---
+
+## Related Agents
+
+- `ontology-developer` - Ontology implementation (Sonnet)
+- `ontology-expert` - Ontology architecture (Opus)
+- `ontology-reviewer` - Ontology review (Opus)

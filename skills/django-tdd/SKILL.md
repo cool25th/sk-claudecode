@@ -726,3 +726,9 @@ open htmlcov/index.html
 | `mail.outbox` | Check sent emails |
 
 Remember: Tests are documentation. Good tests explain how your code should work. Keep them simple, readable, and maintainable.
+
+---
+
+## Related Agents
+
+- `tdd-guide` - TDD specialist (Sonnet)

@@ -46,6 +46,32 @@ Before coding, commit to a **BOLD aesthetic direction**:
 **Key**: Choose a clear direction and execute with precision.
 </Design_Process>
 
+<Data_Driven_Design>
+## BM25 Search Engine
+
+Always generate a design system before starting complex UI work:
+
+```bash
+# Full design system (pattern + style + colors + typography + effects)
+python3 skills/frontend-ui-ux/scripts/search.py "<product_type> <industry>" --design-system -p "Project Name"
+
+# Persist for multi-page projects (Master + Overrides pattern)
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --design-system --persist -p "Project Name" --page "dashboard"
+```
+
+**Detailed domain searches** for architecture decisions:
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --domain style       # 96KB+ style database
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --domain typography  # Font pairings with CSS imports
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --domain color       # Palettes by product type
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --domain ux          # Accessibility & UX rules
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --domain react       # React performance patterns
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --stack <framework>  # 13 framework stacks
+```
+
+Use these results to inform token architecture, component hierarchy, and animation systems.
+</Data_Driven_Design>
+
 <Architecture_Standards>
 - Component hierarchy with clear responsibilities
 - Proper separation of concerns (presentation vs logic)

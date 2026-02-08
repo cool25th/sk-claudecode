@@ -452,3 +452,10 @@ final class MarketFlowUITests: XCTestCase {
 ## Related Agent
 - `mobile-developer`
 - `mobile-developer-high`
+
+---
+
+## Related Agents
+
+- `mobile-developer` - Mobile development (Sonnet)
+- `mobile-developer-high` - Complex mobile arch (Opus)

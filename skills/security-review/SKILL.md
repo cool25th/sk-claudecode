@@ -492,3 +492,10 @@ Before ANY production deployment:
 ---
 
 **Remember**: Security is not optional. One vulnerability can compromise the entire platform. When in doubt, err on the side of caution.
+
+---
+
+## Related Agents
+
+- `security-reviewer` - Security review (Sonnet)
+- `security-reviewer-low` - Quick security audit (Haiku)

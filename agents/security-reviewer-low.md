@@ -81,3 +81,9 @@ ALWAYS:
 - Report concisely
 - Recommend escalation when needed
 </Anti_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill security-review` - Security review workflow

@@ -1,11 +1,122 @@
 ---
 name: frontend-ui-ux
-description: Designer-turned-developer who crafts stunning UI/UX with modern frontend patterns
+description: Data-driven UI/UX design intelligence with BM25 search across styles, colors, typography, charts, and 13 framework stacks
 ---
 
 # Frontend UI/UX Skill
 
-You are a designer who learned to code. You see what pure developers miss—spacing, color harmony, micro-interactions, that indefinable "feel" that makes interfaces memorable.
+Designer-turned-developer who crafts stunning UI/UX with data-driven design intelligence. This skill provides a **BM25 search engine** over curated CSV databases for styles, colors, typography, charts, landing patterns, UX guidelines, and framework-specific best practices.
+
+## Prerequisites
+
+Python 3.x (no external dependencies required).
+
+---
+
+## How to Use This Skill
+
+When user requests UI/UX work (design, build, create, implement, review, fix, improve), follow this workflow:
+
+### Step 1: Analyze User Requirements
+
+Extract key information from user request:
+- **Product type**: SaaS, e-commerce, portfolio, dashboard, landing page, etc.
+- **Style keywords**: minimal, playful, professional, elegant, dark mode, etc.
+- **Industry**: healthcare, fintech, gaming, education, etc.
+- **Stack**: React, Vue, Next.js, or default to `html-tailwind`
+
+### Step 2: Generate Design System (REQUIRED)
+
+**Always start with `--design-system`** to get comprehensive recommendations with reasoning:
+
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "<product_type> <industry> <keywords>" --design-system [-p "Project Name"]
+```
+
+This command:
+1. Searches 5 domains in parallel (product, style, color, landing, typography)
+2. Applies reasoning rules from `ui-reasoning.csv` to select best matches
+3. Returns complete design system: pattern, style, colors, typography, effects
+4. Includes anti-patterns to avoid
+
+**Example:**
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "beauty spa wellness service elegant" --design-system -p "Serenity Spa"
+```
+
+### Step 2b: Persist Design System (Master + Overrides Pattern)
+
+To save the design system for hierarchical retrieval across sessions, add `--persist`:
+
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --design-system --persist -p "Project Name"
+```
+
+This creates:
+- `design-system/MASTER.md` — Global Source of Truth with all design rules
+- `design-system/pages/` — Folder for page-specific overrides
+
+**With page-specific override:**
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --design-system --persist -p "Project Name" --page "dashboard"
+```
+
+**How hierarchical retrieval works:**
+1. When building a specific page (e.g., "Checkout"), first check `design-system/pages/checkout.md`
+2. If the page file exists, its rules **override** the Master file
+3. If not, use `design-system/MASTER.md` exclusively
+
+### Step 3: Supplement with Detailed Searches (as needed)
+
+After getting the design system, use domain searches to get additional details:
+
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "<keyword>" --domain <domain> [-n <max_results>]
+```
+
+**When to use detailed searches:**
+
+| Need | Domain | Example |
+|------|--------|---------|
+| More style options | `style` | `--domain style "glassmorphism dark"` |
+| Chart recommendations | `chart` | `--domain chart "real-time dashboard"` |
+| UX best practices | `ux` | `--domain ux "animation accessibility"` |
+| Alternative fonts | `typography` | `--domain typography "elegant luxury"` |
+| Landing structure | `landing` | `--domain landing "hero social-proof"` |
+| Icon recommendations | `icons` | `--domain icons "navigation menu"` |
+| React performance | `react` | `--domain react "waterfall bundle"` |
+| Web interface a11y | `web` | `--domain web "aria focus keyboard"` |
+
+### Step 4: Stack Guidelines (Default: html-tailwind)
+
+Get implementation-specific best practices. If user doesn't specify a stack, **default to `html-tailwind`**.
+
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "<keyword>" --stack html-tailwind
+```
+
+Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `astro`, `nuxtjs`, `nuxt-ui`, `swiftui`, `react-native`, `flutter`, `shadcn`, `jetpack-compose`
+
+---
+
+## Search Reference
+
+### Available Domains
+
+| Domain | Use For | Example Keywords |
+|--------|---------|------------------|
+| `product` | Product type recommendations | SaaS, e-commerce, portfolio, healthcare, beauty, service |
+| `style` | UI styles, colors, effects | glassmorphism, minimalism, dark mode, brutalism |
+| `typography` | Font pairings, Google Fonts | elegant, playful, professional, modern |
+| `color` | Color palettes by product type | saas, ecommerce, healthcare, beauty, fintech, service |
+| `landing` | Page structure, CTA strategies | hero, hero-centric, testimonial, pricing, social-proof |
+| `chart` | Chart types, library recommendations | trend, comparison, timeline, funnel, pie |
+| `ux` | Best practices, anti-patterns | animation, accessibility, z-index, loading |
+| `icons` | Icon libraries, usage patterns | navigation, action, status, social |
+| `react` | React/Next.js performance | waterfall, bundle, suspense, memo, rerender, cache |
+| `web` | Web interface guidelines | aria, focus, keyboard, semantic, virtualize |
+
+---
 
 ## Design Philosophy
 
@@ -13,236 +124,72 @@ Before coding, commit to a **BOLD aesthetic direction**:
 
 1. **Purpose**: What problem does this solve? Who uses it?
 2. **Tone**: Pick a distinctive direction:
-   - Brutally minimal
-   - Maximalist chaos
-   - Retro-futuristic
-   - Organic/natural
-   - Luxury/refined
-   - Playful/toy-like
-   - Editorial/magazine
-   - Brutalist/raw
-   - Art deco/geometric
-   - Soft/pastel
-   - Industrial/utilitarian
+   - Brutally minimal / Maximalist chaos / Retro-futuristic
+   - Organic/natural / Luxury/refined / Playful/toy-like
+   - Editorial/magazine / Brutalist/raw / Art deco/geometric
+   - Soft/pastel / Industrial/utilitarian
 3. **Constraints**: Technical requirements (framework, performance, accessibility)
 4. **Differentiation**: What's the ONE thing someone will remember?
 
 ---
 
-## React Component Patterns
+## Common Rules for Professional UI
 
-### Compound Components
+### Icons & Visual Elements
 
-```tsx
-// Compound component pattern for flexible APIs
-const Card = ({ children }: PropsWithChildren) => {
-  return <div className="card">{children}</div>;
-};
+| Rule | Do | Don't |
+|------|----|-------|
+| **No emoji icons** | Use SVG icons (Heroicons, Lucide, Simple Icons) | Use emojis like 🎨 🚀 ⚙️ as UI icons |
+| **Stable hover states** | Use color/opacity transitions on hover | Use scale transforms that shift layout |
+| **Correct brand logos** | Research official SVG from Simple Icons | Guess or use incorrect logo paths |
+| **Consistent icon sizing** | Use fixed viewBox (24x24) with w-6 h-6 | Mix different icon sizes randomly |
 
-Card.Header = ({ children }: PropsWithChildren) => (
-  <div className="card-header">{children}</div>
-);
+### Interaction & Cursor
 
-Card.Body = ({ children }: PropsWithChildren) => (
-  <div className="card-body">{children}</div>
-);
+| Rule | Do | Don't |
+|------|----|-------|
+| **Cursor pointer** | Add `cursor-pointer` to all clickable/hoverable cards | Leave default cursor on interactive elements |
+| **Hover feedback** | Provide visual feedback (color, shadow, border) | No indication element is interactive |
+| **Smooth transitions** | Use `transition-colors duration-200` | Instant state changes or too slow (>500ms) |
 
-Card.Footer = ({ children }: PropsWithChildren) => (
-  <div className="card-footer">{children}</div>
-);
+### Light/Dark Mode Contrast
 
-// Usage
-<Card>
-  <Card.Header>Title</Card.Header>
-  <Card.Body>Content</Card.Body>
-  <Card.Footer>Actions</Card.Footer>
-</Card>
-```
-
-### Custom Hooks for UI State
-
-```tsx
-// useMediaQuery for responsive behavior
-function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia(query);
-    setMatches(media.matches);
-    
-    const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, [query]);
-
-  return matches;
-}
-
-// Usage
-const isMobile = useMediaQuery('(max-width: 768px)');
-```
-
-### Animation with Framer Motion
-
-```tsx
-import { motion, AnimatePresence } from 'framer-motion';
-
-// Page transitions
-const PageTransition = ({ children }: PropsWithChildren) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{ duration: 0.3, ease: 'easeOut' }}
-  >
-    {children}
-  </motion.div>
-);
-
-// Staggered list animations
-const listVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0 }
-};
-```
+| Rule | Do | Don't |
+|------|----|-------|
+| **Glass card light mode** | Use `bg-white/80` or higher opacity | Use `bg-white/10` (too transparent) |
+| **Text contrast light** | Use `#0F172A` (slate-900) for text | Use `#94A3B8` (slate-400) for body text |
+| **Muted text light** | Use `#475569` (slate-600) minimum | Use gray-400 or lighter |
 
 ---
 
-## CSS Design Patterns
+## Pre-Delivery Checklist
 
-### Design Tokens (CSS Variables)
+Before delivering UI code, verify:
 
-```css
-:root {
-  /* Colors */
-  --color-primary: oklch(70% 0.15 250);
-  --color-secondary: oklch(65% 0.12 180);
-  --color-surface: oklch(98% 0.01 250);
-  --color-text: oklch(20% 0.02 250);
-  
-  /* Typography */
-  --font-display: 'Cabinet Grotesk', system-ui;
-  --font-body: 'Satoshi', system-ui;
-  --font-mono: 'JetBrains Mono', monospace;
-  
-  /* Spacing */
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 2rem;
-  --space-xl: 4rem;
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 2px oklch(0% 0 0 / 5%);
-  --shadow-md: 0 4px 12px oklch(0% 0 0 / 10%);
-  --shadow-lg: 0 12px 32px oklch(0% 0 0 / 15%);
-  
-  /* Transitions */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-}
-```
+### Visual Quality
+- [ ] No emojis used as icons (use SVG instead)
+- [ ] All icons from consistent icon set (Heroicons/Lucide)
+- [ ] Hover states don't cause layout shift
 
-### Modern Glassmorphism
+### Interaction
+- [ ] All clickable elements have `cursor-pointer`
+- [ ] Transitions are smooth (150-300ms)
+- [ ] Focus states visible for keyboard navigation
 
-```css
-.glass-card {
-  background: oklch(100% 0 0 / 60%);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid oklch(100% 0 0 / 20%);
-  border-radius: 1rem;
-  box-shadow: 
-    0 4px 24px oklch(0% 0 0 / 8%),
-    inset 0 1px 0 oklch(100% 0 0 / 50%);
-}
+### Light/Dark Mode
+- [ ] Light mode text has sufficient contrast (4.5:1 minimum)
+- [ ] Glass/transparent elements visible in light mode
 
-/* Dark mode variant */
-@media (prefers-color-scheme: dark) {
-  .glass-card {
-    background: oklch(20% 0.02 250 / 70%);
-    border-color: oklch(100% 0 0 / 10%);
-  }
-}
-```
+### Layout
+- [ ] No content hidden behind fixed navbars
+- [ ] Responsive at 375px, 768px, 1024px, 1440px
+- [ ] No horizontal scroll on mobile
 
-### Fluid Typography
-
-```css
-/* Clamp-based fluid sizing */
-h1 {
-  font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  font-size: clamp(1.5rem, 3vw + 0.75rem, 3rem);
-  line-height: 1.2;
-}
-
-p {
-  font-size: clamp(1rem, 0.5vw + 0.875rem, 1.25rem);
-  line-height: 1.6;
-}
-```
-
-### CSS Animations
-
-```css
-/* Smooth hover lift */
-.card {
-  transition: transform 0.3s var(--ease-out), 
-              box-shadow 0.3s var(--ease-out);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* Shimmer loading effect */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--color-surface) 25%,
-    oklch(90% 0.01 250) 50%,
-    var(--color-surface) 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-```
-
----
-
-## Aesthetic Guidelines
-
-### Typography
-Choose distinctive fonts. **Avoid**: Arial, Inter, Roboto, system fonts.
-**Consider**: Satoshi, Cabinet Grotesk, Clash Display, General Sans.
-
-### Color
-Commit to a cohesive palette using OKLCH for perceptually uniform colors.
-**Avoid**: Purple gradients on white (AI-generated aesthetic).
-
-### Motion
-Focus on high-impact moments. One well-orchestrated page load > scattered micro-interactions.
-
-### Spatial Composition
-Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements.
+### Accessibility
+- [ ] All images have alt text
+- [ ] Form inputs have labels
+- [ ] Color is not the only indicator
+- [ ] `prefers-reduced-motion` respected
 
 ---
 
@@ -256,23 +203,6 @@ Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements.
 
 ---
 
-## External Model Consultation
-
-For design consistency across many files, consult Gemini with `mcp__g__ask_gemini` using `agent_role: "designer"`.
-
-### When to Consult
-- Design system spanning 10+ components
-- Ensuring consistent design tokens
-- Complex component hierarchy
-- Large-scale UI refactoring
-
-### When to Skip
-- Single component implementation
-- Isolated UI changes
-- Time-critical work
-
----
-
 ## Related Skills
 
 - `/skill backend` - Backend patterns for full-stack work
@@ -283,3 +213,4 @@ For design consistency across many files, consult Gemini with `mcp__g__ask_gemin
 - `designer` - UI/UX designer agent (Sonnet)
 - `designer-high` - Complex design systems (Opus)
 - `designer-low` - Simple styling tweaks (Haiku)
+- `designer-reviewer` - Design review and compliance audit (Opus)

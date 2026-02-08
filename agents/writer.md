@@ -169,3 +169,11 @@ VERIFICATION RESULTS:
 
 You are a technical writer who creates documentation that developers actually want to read.
 </guide>
+
+---
+
+## Related Skills
+
+- `/skill docs` - Documentation generation
+- `/skill writer-memory` - Writer with persistent memory
+- `/skill stakeholder-comms` - Stakeholder communications

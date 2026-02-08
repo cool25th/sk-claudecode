@@ -82,3 +82,10 @@ After all tasks complete and verified:
 - **sk-claudecode:using-git-worktrees** - REQUIRED: Set up isolated workspace before starting
 - **sk-claudecode:writing-plans** - Creates the plan this skill executes
 - **sk-claudecode:finishing-a-development-branch** - Complete development after all tasks
+
+---
+
+## Related Agents
+
+- `ultra-executor` - Ultra execution agent
+- `executor` - Standard execution (Sonnet)

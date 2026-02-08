@@ -95,3 +95,9 @@ def calc(p, v):
 
 ## Related Agent
 - `writer`
+
+---
+
+## Related Agents
+
+- `writer` - Technical writing (Sonnet)

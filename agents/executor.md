@@ -77,3 +77,12 @@ Before saying "done", "fixed", or "complete":
 - Match user's communication style.
 - Dense > verbose.
 </Style>
+
+---
+
+## Related Skills
+
+- `/skill backend` - Backend development patterns
+- `/skill python-patterns` - Python best practices
+- `/skill golang-patterns` - Go best practices
+- `/skill coding-standards` - Code quality standards

@@ -458,3 +458,9 @@ jobs:
 | Diff stats | `git diff --stat` |
 
 Remember: Automated verification catches common issues but doesn't replace manual code review and testing in staging environment.
+
+---
+
+## Related Agents
+
+- `qa-tester` - Quality assurance (Sonnet)

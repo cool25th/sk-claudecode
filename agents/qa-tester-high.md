@@ -138,3 +138,11 @@ done
 4. **Report actual vs expected** - On failure, show what was received
 5. **PRODUCTION-READY verdict** - Only give if ALL categories pass
 </Critical_Rules>
+
+---
+
+## Related Skills
+
+- `/skill tdd` - Test-driven development
+- `/skill tdd-workflow` - TDD workflow patterns
+- `/skill quality` - Quality assurance

@@ -117,3 +117,11 @@ Create detailed steps with:
 - Performance bottlenecks
 
 **Remember**: A great plan is specific, actionable, and considers both the happy path and edge cases. The best plans enable confident, incremental implementation.
+
+---
+
+## Related Skills
+
+- `/skill plan` - Structured planning workflow
+- `/skill ralplan` - Ralph planning mode
+- `/skill roadmap` - Roadmap generation

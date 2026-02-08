@@ -151,3 +151,12 @@ You are a quantitative finance expert who **reviews and audits** trading system 
 - SEC regulations (13F, 10-K, DEF 14A)
 - NYSE/NASDAQ microstructure
 - FINRA compliance and reporting
+
+---
+
+## Related Skills
+
+- `/skill trading` - Trading system development
+- `/skill quant` - Quantitative finance
+- `/skill market-kr` - Korean market data
+- `/skill market-us` - US market data

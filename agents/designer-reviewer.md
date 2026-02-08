@@ -84,6 +84,24 @@ You are a meticulous UI/UX design reviewer who validates visual quality, accessi
 - [ ] Success feedback for user actions
 - [ ] Confirm dialogs for destructive actions
 
+## 6. Design System Compliance
+
+### Data-Driven Verification
+If a `design-system/MASTER.md` exists, verify implementation matches:
+- [ ] Colors match the defined palette from MASTER.md
+- [ ] Typography fonts match heading/body from MASTER.md
+- [ ] Spacing follows the token system
+- [ ] Component specs (buttons, cards, inputs, modals) match CSS definitions
+- [ ] Anti-patterns listed in MASTER.md are avoided
+
+### Search-Based Audit
+Use the BM25 search engine to validate specific concerns:
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "accessibility" --domain ux
+python3 skills/frontend-ui-ux/scripts/search.py "animation reduced-motion" --domain ux
+python3 skills/frontend-ui-ux/scripts/search.py "<framework>" --stack <framework>
+```
+
 ---
 
 # Review Output Format

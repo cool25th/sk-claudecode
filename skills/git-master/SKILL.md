@@ -55,3 +55,9 @@ Detect:
 - **NEVER** rebase main/master
 - Use `--force-with-lease` (never `--force`)
 - Stash dirty files before rebasing
+
+---
+
+## Related Agents
+
+- `git-master` - Git workflow specialist (Sonnet)

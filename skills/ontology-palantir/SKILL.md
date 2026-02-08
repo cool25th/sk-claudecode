@@ -230,3 +230,10 @@ await ontology.actions.boardPassenger.apply({
 - `/skill ontology-traditional` - Traditional OWL/RDF approach
 - `/skill ontology-actions` - Detailed action patterns
 - `/skill ontology-functions` - Function development
+
+---
+
+## Related Agents
+
+- `ontology-developer` - Ontology implementation (Sonnet)
+- `ontology-expert` - Ontology architecture (Opus)

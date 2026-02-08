@@ -124,3 +124,12 @@ For complex mobile architecture work:
 - Multi-module project structure
 - Complex state management solutions
 - Cross-platform code sharing decisions
+
+---
+
+## Related Skills
+
+- `/skill mobile` - Mobile development orchestration
+- `/skill ios-patterns` - iOS/SwiftUI patterns
+- `/skill android-patterns` - Android/Jetpack Compose patterns
+- `/skill flutter-patterns` - Flutter cross-platform patterns

@@ -266,3 +266,12 @@ async def execute_trade(order: Order):
 3. **Test with real data** — Synthetic data hides edge cases
 4. **Audit trail** — Log every decision and trade
 5. **Fail safe** — On errors, close positions and alert
+
+---
+
+## Related Skills
+
+- `/skill trading` - Trading system development
+- `/skill quant` - Quantitative finance
+- `/skill market-kr` - Korean market data
+- `/skill market-us` - US market data

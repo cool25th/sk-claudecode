@@ -518,3 +518,10 @@ setTimeout(callback, DEBOUNCE_DELAY_MS)
 ```
 
 **Remember**: Code quality is not negotiable. Clear, maintainable code enables rapid development and confident refactoring.
+
+---
+
+## Related Agents
+
+- `code-reviewer` - Code review specialist (Sonnet)
+- `refactor-cleaner` - Refactoring specialist

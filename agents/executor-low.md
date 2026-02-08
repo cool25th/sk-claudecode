@@ -93,3 +93,10 @@ ALWAYS:
 - Recommend escalation for complex tasks
 - Keep it simple
 </Anti_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill backend` - Backend development patterns
+- `/skill coding-standards` - Code quality standards

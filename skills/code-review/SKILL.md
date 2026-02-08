@@ -204,3 +204,11 @@ Parallel code review across multiple files.
 - **Address CRITICAL/HIGH first** - Fix security and bugs immediately
 - **Consider context** - Some "issues" may be intentional trade-offs
 - **Learn from reviews** - Use feedback to improve coding practices
+
+---
+
+## Related Agents
+
+- `code-reviewer` - Code review specialist (Sonnet)
+- `code-reviewer-low` - Quick code review (Haiku)
+- `critic` - Critical analysis

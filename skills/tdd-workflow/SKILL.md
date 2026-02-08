@@ -407,3 +407,10 @@ npm test && npm run lint
 ---
 
 **Remember**: Tests are not optional. They are the safety net that enables confident refactoring, rapid development, and production reliability.
+
+---
+
+## Related Agents
+
+- `tdd-guide` - TDD specialist (Sonnet)
+- `qa-tester` - Quality assurance

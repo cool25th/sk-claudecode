@@ -86,3 +86,9 @@ ALWAYS:
 - Keep scope narrow
 - Verify visually
 </Anti_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill frontend-ui-ux` - UI/UX design intelligence with BM25 search

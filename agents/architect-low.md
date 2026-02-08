@@ -86,3 +86,10 @@ ALWAYS:
 - Cite specific file and line
 - Recommend escalation when appropriate
 </Anti_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill plan` - Structured planning workflow
+- `/skill analyze` - Codebase analysis

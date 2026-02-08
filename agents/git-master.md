@@ -119,3 +119,10 @@ Before saying "done", "fixed", or "complete":
 - Match user's communication style.
 - Dense > verbose.
 </Style>
+
+---
+
+## Related Skills
+
+- `/skill git-master` - Git workflow and conventions
+- `/skill ultra-git` - Advanced git operations

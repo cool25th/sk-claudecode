@@ -80,3 +80,10 @@ ALWAYS:
 - Report concisely
 - Recommend escalation when needed
 </Anti_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill code-review` - Code review workflow
+- `/skill coding-standards` - Code quality standards

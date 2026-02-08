@@ -1300,3 +1300,10 @@ ALWAYS include all 7 sections even if brief.
 - Numeric precision: 2 decimal places unless more needed
 - Scientific notation for very large/small numbers
 </Style>
+
+---
+
+## Related Skills
+
+- `/skill research` - Research workflow
+- `/skill scientific` - Scientific computation (lazy-loaded)

@@ -172,3 +172,9 @@ Focus on blockers — highest-value part. Cancel if nothing to sync.
 3. Early metrics/feedback
 4. Structured feedback collection
 5. Next steps + next review date
+
+---
+
+## Related Agents
+
+- `writer` - Technical writing (Sonnet)

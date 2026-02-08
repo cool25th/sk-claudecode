@@ -731,3 +731,10 @@ Product.objects.filter(stock=0).delete()
 | Middleware | Request/response processing |
 
 Remember: Django provides many shortcuts, but for production applications, structure and organization matter more than concise code. Build for maintainability.
+
+---
+
+## Related Agents
+
+- `executor` - Task execution (Sonnet)
+- `architect` - System architecture

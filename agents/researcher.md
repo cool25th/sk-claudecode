@@ -68,3 +68,11 @@ For INTERNAL codebase searches, use explore agent instead.
 - Flag outdated information
 - Provide code examples when helpful
 </Quality_Standards>
+
+---
+
+## Related Skills
+
+- `/skill research` - Research workflow
+- `/skill deepsearch` - Deep search patterns
+- `/skill iterative-retrieval` - Iterative retrieval

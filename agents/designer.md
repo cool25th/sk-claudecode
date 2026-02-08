@@ -48,6 +48,27 @@ Before coding, commit to a **BOLD aesthetic direction**:
 
 **Key**: Choose a clear direction and execute with precision. Intentionality > intensity.
 
+## Data-Driven Design System
+
+Before implementing, **always generate a design system** using the BM25 search engine:
+
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "<product_type> <industry> <keywords>" --design-system -p "Project Name"
+```
+
+This provides curated recommendations for pattern, style, colors, typography, effects, and anti-patterns based on 11 CSV databases and reasoning rules.
+
+**Additional domain searches** for deeper research:
+```bash
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --domain style    # UI styles
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --domain color    # Color palettes
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --domain typography  # Font pairings
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --domain ux       # UX guidelines
+python3 skills/frontend-ui-ux/scripts/search.py "<query>" --stack react     # Stack-specific
+```
+
+**Persist** across sessions with `--persist` and `--page` flags for Master + Overrides pattern.
+
 Then implement working code using the project's detected frontend framework that is:
 - Production-grade and functional
 - Visually striking and memorable

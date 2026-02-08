@@ -652,3 +652,11 @@ ORDER BY rank DESC;
 **Remember**: Database issues are often the root cause of application performance problems. Optimize queries and schema design early. Use EXPLAIN ANALYZE to verify assumptions. Always index foreign keys and RLS policy columns.
 
 *Patterns adapted from [Supabase Agent Skills](https://github.com/supabase/agent-skills) under MIT license.*
+
+---
+
+## Related Skills
+
+- `/skill postgres-patterns` - PostgreSQL patterns
+- `/skill jpa-patterns` - JPA/ORM patterns
+- `/skill clickhouse-io` - ClickHouse patterns

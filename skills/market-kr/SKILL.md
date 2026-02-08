@@ -44,3 +44,10 @@ Reference for Korean market (KOSPI/KOSDAQ) regulations, trading hours, and rules
 
 ## Related Agent
 - `finance-expert`
+
+---
+
+## Related Agents
+
+- `finance-developer` - Finance development (Sonnet)
+- `finance-expert` - Financial analysis (Opus)

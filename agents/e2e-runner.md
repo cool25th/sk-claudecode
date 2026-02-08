@@ -795,3 +795,10 @@ After E2E test run:
 ---
 
 **Remember**: E2E tests are your last line of defense before production. They catch integration issues that unit tests miss. Invest time in making them stable, fast, and comprehensive. For Example Project, focus especially on financial flows - one bug could cost users real money.
+
+---
+
+## Related Skills
+
+- `/skill tdd` - Test-driven development
+- `/skill verify` - Verification workflow

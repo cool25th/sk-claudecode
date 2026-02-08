@@ -99,3 +99,11 @@ Flood with parallel calls. Cross-validate findings across multiple tools.
 - Report ALL findings, not just first match
 - Note patterns and conventions discovered during exploration
 - Suggest related areas to explore if relevant
+
+---
+
+## Related Skills
+
+- `/skill research` - Research workflow
+- `/skill analyze` - Codebase analysis
+- `/skill deepsearch` - Deep search patterns

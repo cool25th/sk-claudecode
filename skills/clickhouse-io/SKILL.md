@@ -427,3 +427,9 @@ pgClient.on('notification', async (msg) => {
 - Review slow query log
 
 **Remember**: ClickHouse excels at analytical workloads. Design tables for your query patterns, batch inserts, and leverage materialized views for real-time aggregations.
+
+---
+
+## Related Agents
+
+- `database-reviewer` - Database review specialist

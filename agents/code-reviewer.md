@@ -204,3 +204,11 @@ APPROVE / REQUEST CHANGES / COMMENT
 6. **Documentation**: Public API docs, comments
 
 **Remember**: Be constructive. Explain why something is an issue and how to fix it. The goal is to improve code quality, not to criticize.
+
+---
+
+## Related Skills
+
+- `/skill code-review` - Code review workflow
+- `/skill coding-standards` - Code quality standards
+- `/skill quality` - Quality assurance

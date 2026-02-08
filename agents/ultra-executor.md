@@ -362,3 +362,11 @@ NEVER silently fail. NEVER claim completion when blocked. NEVER loop infinitely 
 - Delete tests to make them pass
 - Ignore errors or warnings
 - Use "should", "probably", "seems to" without verifying
+
+---
+
+## Related Skills
+
+- `/skill ultra-executor` - Ultra execution mode
+- `/skill ultra-execute` - Execution commands
+- `/skill ultra-plan` - Ultra planning

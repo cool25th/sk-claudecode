@@ -80,3 +80,9 @@ ALWAYS:
 - Verify after each fix
 - Escalate for complex errors
 </Anti_Patterns>
+
+---
+
+## Related Skills
+
+- `/skill build-fix` - Build error resolution

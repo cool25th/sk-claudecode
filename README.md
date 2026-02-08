@@ -2,7 +2,7 @@
 
 > Unified agent and skill system for Claude Code
 
-**45 agents** · **100 skills** · **141 scientific domains** · **35 commands** — all in one package.
+**46 agents** · **102 skills** · **141 scientific domains** · **35 commands** — all in one package.
 
 ## 🚀 Installation
 
@@ -45,7 +45,7 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 
 ---
 
-## 🤖 Agents (45)
+## 🤖 Agents (46)
 
 ### 🧠 Think — Plan before you build
 
@@ -80,6 +80,7 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | `mobile-developer-low` | Haiku | Quick mobile fixes |
 | `finance-developer` | Opus | Trading systems development |
 | `ontology-developer` | Sonnet | Ontology implementation |
+| `document-writer` | Sonnet | Document creation/editing (PDF, PPTX, XLSX, DOCX) |
 
 ### 🔍 Check — Review and test code
 
@@ -108,7 +109,7 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | `explore` | Sonnet | Search codebase for files and patterns |
 | `researcher` | Sonnet | External docs and reference research |
 | `researcher-low` | Haiku | Quick documentation lookups |
-| `writer` | Sonnet | README, API docs, comments |
+| `writer` | Haiku | README, API docs, comments |
 | `vision` | Sonnet | Analyze images, PDFs, diagrams |
 | `refactor-cleaner` | Opus | Find and remove dead code |
 
@@ -157,6 +158,7 @@ Which agents to use for each domain, organized by Think → Build → Check → 
 | **Mobile** | `mobile-developer-high` | `mobile-developer` | `/code-review` | `researcher` |
 | **Finance** | `/finance` (audit) | `/finance --build` | `/code-review` | `researcher` |
 | **Ontology** | `/ontology` (design) | `/ontology --build` | `/ontology --review` | `explore` |
+| **Document** | — | `document-writer` | — | `writer` + `humanizer` |
 
 ---
 
@@ -185,6 +187,8 @@ Which agents to use for each domain, organized by Think → Build → Check → 
 | Finance | `/sk-claudecode:finance` | KR/US market audit & development |
 | Mobile | `/sk-claudecode:mobile` | iOS / Android / Flutter |
 | Ontology | `/sk-claudecode:ontology` | Palantir-style ontology (design/build/review) |
+| Document | `@document-writer` | PDF, PPTX, XLSX, DOCX, CSV creation & analysis |
+| Humanizer | `/sk-claudecode:humanizer` | Remove AI writing patterns from text |
 
 ---
 

@@ -30,7 +30,7 @@ Route to different agents based on output conditions.
 
 ```
 explore -> {
-  if "complex refactoring" -> architect -> executor-high
+  if "complex refactoring" -> architect -> executor
   if "simple change" -> executor-low
   if "UI work" -> designer -> executor
 }
@@ -121,7 +121,7 @@ parallel(explore, researcher) -> architect -> executor
 **Stages:**
 1. `explore` - Find all usages and dependencies
 2. `architect-medium` - Design refactoring strategy
-3. `executor-high` - Execute refactoring
+3. `executor` - Execute refactoring
 4. `qa-tester` - Verify no regressions
 
 **Use for:** Architectural changes, API redesigns

@@ -10,7 +10,7 @@ SK-ClaudeCode is a unified agent and skill system combining:
 
 | Source | Contribution |
 |--------|--------------|
-| **sk-claudecode** | 42 agents (with tier variants), execution modes |
+| **sk-claudecode** | 46 agents (with tier variants), execution modes |
 | **everything-claude-code**| Language-specific patterns, specialized reviewers, continuous learning |
 | **claude-scientific-skills** | 141 scientific skill categories |
 | **claude-mem** | Persistent memory system |
@@ -23,7 +23,7 @@ SK-ClaudeCode is a unified agent and skill system combining:
 ```
 sk-claudecode/
 ├── AGENTS.md               # This file
-├── agents/                  # 45 agents (including tiered variants)
+├── agents/                  # 46 agents (including tiered variants)
 ├── skills/
 │   ├── workflow/           # Workflow skills
 │   ├── execution-modes/    # 8 execution modes
@@ -42,20 +42,21 @@ sk-claudecode/
 
 ---
 
-## Agents (42 total)
+## Agents (46 total)
 
 | Category | Agents | Purpose |
 |----------|--------|---------|
-| **Orchestration** | `planner`, `architect` (base, low, medium) | Strategic planning and system design |
+| **Orchestration** | `planner`, `architect` (base, low, medium), `critic` | Strategic planning and system design |
 | **Execution** | `executor` (base, low), `ultra-executor` | Task execution |
 | **Specialized Dev** | `designer` (base, low, high), `vision`, `e2e-runner` | Feature implementation and specialized tasks |
-| **Review & Quality**| `code-reviewer` (base, low), `database-reviewer`, `go-reviewer`, `python-reviewer`, `security-reviewer` (base, low), `qa-tester` (base, high) | Multi-layered quality assurance |
-| **Research & Docs** | `researcher` (base, low), `scientist` (base, low, high), `writer` | Analysis and documentation maintenance |
-| **Tools & Fixes** | `build-fixer` (base, low), `refactor-cleaner`, `git-master`, `critic` | Maintenance and problem resolution |
+| **Review & Quality**| `code-reviewer` (base, low), `database-reviewer`, `go-reviewer`, `python-reviewer`, `security-reviewer` (base, low), `qa-tester` (base, high), `tdd-guide` (base, low), `designer-reviewer`, `ontology-reviewer`, `scientist-reviewer` | Multi-layered quality assurance |
+| **Research & Docs** | `researcher` (base, low), `scientist` (base, low, high), `writer`, `document-writer` | Analysis and documentation |
+| **Tools & Fixes** | `build-fixer` (base, low), `refactor-cleaner`, `git-master` | Maintenance and problem resolution |
+| **Domain** | `mobile-developer` (base, low, high), `finance-developer`, `finance-expert`, `ontology-developer`, `ontology-expert` | Domain-specific expertise |
 
 ---
 
-## Skills (60+ total)
+## Skills (102 total)
 
 ### Core Workflow & Execution
 
@@ -74,11 +75,12 @@ sk-claudecode/
 | Domain | Skills Included |
 |--------|-----------------|
 | **Backend** | `backend` (consolidated), `springboot-*`, `django-*`, `jpa-patterns` |
-| **Frontend** | `frontend` (consolidated), `frontend-patterns`, `ui-ux` |
+| **Frontend** | `frontend` (consolidated), `frontend-patterns`, `frontend-ui-ux` (BM25 data-driven) |
 | **Database** | `postgres-patterns`, `clickhouse-io` |
 | **Languages** | `golang-*`, `python-*`, `java-coding-standards` |
 | **Quality** | `verify`, `verification-loop`, `tdd-workflow`, `security-review` |
 | **Markets** | `market-kr`, `market-us`, `trading`, `quant` |
+| **Document** | `document-processing` (PDF, PPTX, XLSX, DOCX, CSV), `humanizer` |
 
 ### Scientific Skills (141 categories)
 Categories include: `biopython`, `rdkit`, `pytorch-lightning`, `scanpy`, `pubmed-database`, `literature-review`, `statistical-analysis`, and 134 more.
@@ -95,10 +97,6 @@ Categories include: `biopython`, `rdkit`, `pytorch-lightning`, `scanpy`, `pubmed
 | `pipeline` | Sequential chaining |
 | `ultrapilot` | Parallel with file ownership |
 | `ultraqa` | QA cycling until goal met |
-
-### Scientific Skills (141 categories)
-
-Categories include: `biopython`, `rdkit`, `pytorch-lightning`, `scanpy`, `pubmed-database`, `literature-review`, `statistical-analysis`, and 134 more.
 
 ### Memory System (from claude-mem)
 
@@ -165,4 +163,4 @@ Agents are automatically selected based on task context, or explicitly via:
 
 ---
 
-*Generated: 2026-02-05*
+*Updated: 2026-02-08*

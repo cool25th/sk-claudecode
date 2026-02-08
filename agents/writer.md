@@ -177,3 +177,6 @@ You are a technical writer who creates documentation that developers actually wa
 - `/skill docs` - Documentation generation
 - `/skill writer-memory` - Writer with persistent memory
 - `/skill stakeholder-comms` - Stakeholder communications
+
+- `/skill document-processing` - Document creation (PDF, PPTX, XLSX, DOCX)
+- `/skill humanizer` - Remove AI writing patterns

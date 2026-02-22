@@ -1,12 +1,6 @@
 ---
 name: data-crawling
-description: Web data crawling, scraping, and extraction patterns. API reverse engineering and MCP server wrapping.
-triggers:
-  - "crawl"
-  - "scrape"
-  - "extract"
-  - "web data"
-  - "spider"
+description: Web data crawling, scraping, and extraction patterns. API reverse engineering and MCP server wrapping. Triggers on crawl, scrape, extract, web data, or spider tasks.
 ---
 
 # Data Crawling & Scraping Skill

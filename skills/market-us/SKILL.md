@@ -1,11 +1,6 @@
 ---
 name: market-us
-description: US market trading rules and regulations
-triggers:
-  - "nyse"
-  - "nasdaq"
-  - "us market"
-  - "sec"
+description: US market trading rules and regulations. Triggers on nyse, nasdaq, us market, or sec topics.
 ---
 
 # US Market Skill

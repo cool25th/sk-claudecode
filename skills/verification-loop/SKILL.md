@@ -1,3 +1,8 @@
+---
+name: verification-loop
+description: Comprehensive verification system for Claude Code sessions. Use after completing a feature, before creating a PR, or after refactoring. Runs build, type check, lint, test suite, security scan, and diff review phases to produce a verification report.
+---
+
 # Verification Loop Skill
 
 A comprehensive verification system for Claude Code sessions.

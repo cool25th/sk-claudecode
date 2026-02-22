@@ -156,7 +156,7 @@ export function readPrdStateForHud(directory: string): PrdStateForHud | null {
   let prdPath = join(directory, 'prd.json');
 
   if (!existsSync(prdPath)) {
-    // Check .omc
+    // Check .skc
     prdPath = join(directory, '.skc', 'prd.json');
 
     if (!existsSync(prdPath)) {

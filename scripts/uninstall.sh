@@ -86,10 +86,10 @@ rm -f "$CLAUDE_CONFIG_DIR/hooks/silent-auto-update.sh"
 
 # Remove version, state, and config files
 echo -e "${BLUE}Removing state and config files...${NC}"
-rm -f "$CLAUDE_CONFIG_DIR/.omc-version.json"
-rm -f "$CLAUDE_CONFIG_DIR/.omc-silent-update.json"
-rm -f "$CLAUDE_CONFIG_DIR/.omc-update.log"
-rm -f "$CLAUDE_CONFIG_DIR/.omc-config.json"
+rm -f "$CLAUDE_CONFIG_DIR/.skc-version.json"
+rm -f "$CLAUDE_CONFIG_DIR/.skc-silent-update.json"
+rm -f "$CLAUDE_CONFIG_DIR/.skc-update.log"
+rm -f "$CLAUDE_CONFIG_DIR/.skc-config.json"
 
 # Remove hook configurations from settings.json
 SETTINGS_FILE="$CLAUDE_CONFIG_DIR/settings.json"
@@ -150,11 +150,11 @@ else
     fi
 fi
 
-# Remove .omc directory if it exists (plans, notepads, drafts)
-if [ -d "$CLAUDE_CONFIG_DIR/../.omc" ] || [ -d ".omc" ]; then
-    echo -e "${YELLOW}Note: .omc directory (plans/notepads) was not removed.${NC}"
+# Remove .skc directory if it exists (plans, notepads, drafts)
+if [ -d "$CLAUDE_CONFIG_DIR/../.skc" ] || [ -d ".skc" ]; then
+    echo -e "${YELLOW}Note: .skc directory (plans/notepads) was not removed.${NC}"
     echo "  To remove project plans and notepads, run:"
-    echo "    rm -rf .omc"
+    echo "    rm -rf .skc"
 fi
 
 echo ""

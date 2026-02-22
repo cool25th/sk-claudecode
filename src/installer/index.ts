@@ -596,7 +596,7 @@ export function install(options: InstallOptions = {}): InstallResult {
         '    } else {',
         '      console.log(`[SKC HUD] Plugin dist/ exists but HUD not found. Run: cd "${pluginCacheDir}" && npm run build`);',
         '    }',
-        '  } else if (existsSync(pluginCacheBase)) {',
+        '  } else if (pluginCachePaths.some(p => existsSync(p))) {',
         '    // Plugin cache directory exists but no versions',
         '    console.log(`[SKC HUD] Plugin cache found but no versions installed. Run: /sk-claudecode:skc-setup`);',
         '  } else {',

@@ -100,14 +100,14 @@ function activateState(directory, prompt, stateName, sessionId) {
   };
 
   // Write to local .skc/state directory
-  const localDir = join(directory, '.omc', 'state');
+  const localDir = join(directory, '.skc', 'state');
   if (!existsSync(localDir)) {
     try { mkdirSync(localDir, { recursive: true }); } catch {}
   }
   try { writeFileSync(join(localDir, `${stateName}-state.json`), JSON.stringify(state, null, 2)); } catch {}
 
   // Write to global .skc/state directory
-  const globalDir = join(homedir(), '.omc', 'state');
+  const globalDir = join(homedir(), '.skc', 'state');
   if (!existsSync(globalDir)) {
     try { mkdirSync(globalDir, { recursive: true }); } catch {}
   }
@@ -119,8 +119,8 @@ function activateState(directory, prompt, stateName, sessionId) {
  */
 function clearStateFiles(directory, modeNames) {
   for (const name of modeNames) {
-    const localPath = join(directory, '.omc', 'state', `${name}-state.json`);
-    const globalPath = join(homedir(), '.omc', 'state', `${name}-state.json`);
+    const localPath = join(directory, '.skc', 'state', `${name}-state.json`);
+    const globalPath = join(homedir(), '.skc', 'state', `${name}-state.json`);
     try { if (existsSync(localPath)) unlinkSync(localPath); } catch {}
     try { if (existsSync(globalPath)) unlinkSync(globalPath); } catch {}
   }

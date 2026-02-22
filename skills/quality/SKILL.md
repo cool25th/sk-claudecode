@@ -1,12 +1,6 @@
 ---
 name: quality
-description: Code quality, testing, and verification skills
-triggers:
-  - "test"
-  - "tdd"
-  - "verify"
-  - "quality"
-  - "coverage"
+description: Code quality, testing, and verification skills. Triggers on test, tdd, verify, quality, or coverage tasks.
 ---
 
 # Quality Skills

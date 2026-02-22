@@ -204,7 +204,7 @@ function detectWriteFailure(output) {
 
 // Get agent completion summary from tracking state
 function getAgentCompletionSummary(directory) {
-  const trackingFile = join(directory, '.omc', 'state', 'subagent-tracking.json');
+  const trackingFile = join(directory, '.skc', 'state', 'subagent-tracking.json');
   try {
     if (existsSync(trackingFile)) {
       const data = JSON.parse(readFileSync(trackingFile, 'utf-8'));

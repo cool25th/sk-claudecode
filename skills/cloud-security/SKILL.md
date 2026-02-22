@@ -1,6 +1,7 @@
-| name | description |
-|------|-------------|
-| cloud-infrastructure-security | Use this skill when deploying to cloud platforms, configuring infrastructure, managing IAM policies, setting up logging/monitoring, or implementing CI/CD pipelines. Provides cloud security checklist aligned with best practices. |
+---
+name: cloud-infrastructure-security
+description: Cloud infrastructure security checklist and best practices. Use this skill when deploying to cloud platforms, configuring infrastructure, managing IAM policies, setting up logging/monitoring, or implementing CI/CD pipelines. Covers AWS, Vercel, Railway, Cloudflare, Terraform, and CloudFormation security patterns.
+---
 
 # Cloud & Infrastructure Security Skill
 

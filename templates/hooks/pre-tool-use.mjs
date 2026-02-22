@@ -16,7 +16,7 @@ const { readStdin } = await import(path.join(__dirname, 'lib', 'stdin.mjs'));
 
 // Allowed path patterns (no warning)
 const ALLOWED_PATH_PATTERNS = [
-  /\.omc\//,
+  /\.skc\//,
   /\.claude\//,
   /\/\.claude\//,
   /CLAUDE\.md$/,

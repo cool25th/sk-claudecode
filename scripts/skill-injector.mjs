@@ -26,8 +26,8 @@ try {
 
 // Constants (used by fallback)
 const USER_SKILLS_DIR = join(homedir(), '.claude', 'skills', 'omc-learned');
-const GLOBAL_SKILLS_DIR = join(homedir(), '.omc', 'skills');
-const PROJECT_SKILLS_SUBDIR = join('.omc', 'skills');
+const GLOBAL_SKILLS_DIR = join(homedir(), '.skc', 'skills');
+const PROJECT_SKILLS_SUBDIR = join('.skc', 'skills');
 const SKILL_EXTENSION = '.md';
 const MAX_SKILLS_PER_SESSION = 5;
 

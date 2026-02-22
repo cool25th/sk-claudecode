@@ -105,7 +105,7 @@ function getStateFilePath(directory: string): string {
 }
 
 /**
- * Ensure the .omc directory exists
+ * Ensure the .skc directory exists
  */
 function ensureStateDir(directory: string): void {
   const stateDir = join(directory, ".skc", "state");

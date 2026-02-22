@@ -1,11 +1,6 @@
 ---
 name: docs
-description: Documentation writing and technical writing
-triggers:
-  - "document"
-  - "readme"
-  - "docs"
-  - "write"
+description: Documentation writing and technical writing. Use for document, readme, docs, and writing tasks.
 ---
 
 # Documentation Skill

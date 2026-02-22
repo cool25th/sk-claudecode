@@ -1,10 +1,6 @@
 ---
 name: quant-strategy
-description: Quantitative trading strategy development and backtesting
-triggers:
-  - "quant"
-  - "strategy"
-  - "backtest"
+description: Quantitative trading strategy development and backtesting. Triggers on quant, strategy, or backtest tasks.
 ---
 
 # Quant Strategy Skill

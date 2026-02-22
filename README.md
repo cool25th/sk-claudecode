@@ -8,13 +8,14 @@
 
 ```bash
 # Marketplace (Recommended)
-/plugin install sk-claudecode
+claude plugin marketplace add cool25th/sk-claudecode
+claude plugin install sk-claudecode
 /sk-claudecode:skc-setup
 
-# Direct
-claude /install-plugin https://github.com/cool25th/sk-claudecode
+# NPM (Direct)
+npm install -g sk-claudecode
 
-# Local
+# Local (Development)
 git clone https://github.com/cool25th/sk-claudecode && cd sk-claudecode
 npm install && npm run build && npm run setup
 ```

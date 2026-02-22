@@ -1,6 +1,6 @@
 ---
 name: review
-description: Review a plan with Critic
+description: Review an implementation plan or design document with the Critic agent. Use when validating architecture decisions, reviewing PRDs, or getting a second opinion on technical approaches before implementation.
 ---
 
 # Review Skill

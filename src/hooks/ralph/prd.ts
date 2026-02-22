@@ -81,14 +81,14 @@ export function getPrdPath(directory: string): string {
 }
 
 /**
- * Get the path to the prd.json in .omc subdirectory
+ * Get the path to the prd.json in .skc subdirectory
  */
 export function getOmcPrdPath(directory: string): string {
   return join(directory, '.skc', PRD_FILENAME);
 }
 
 /**
- * Find prd.json in a directory (checks both root and .omc)
+ * Find prd.json in a directory (checks both root and .skc)
  */
 export function findPrdPath(directory: string): string | null {
   const rootPath = getPrdPath(directory);
@@ -132,7 +132,7 @@ export function readPrd(directory: string): PRD | null {
  * Write PRD to disk
  */
 export function writePrd(directory: string, prd: PRD): boolean {
-  // Prefer writing to existing location, or .omc by default
+  // Prefer writing to existing location, or .skc by default
   let prdPath = findPrdPath(directory);
 
   if (!prdPath) {

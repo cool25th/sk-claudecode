@@ -133,7 +133,7 @@ export const notepadWritePriorityTool: ToolDefinition<{
     try {
       const root = validateWorkingDirectory(workingDirectory);
 
-      // Ensure .omc directory exists
+      // Ensure .skc directory exists
       ensureOmcDir('', root);
 
       const result = setPriorityContext(root, content);
@@ -189,7 +189,7 @@ export const notepadWriteWorkingTool: ToolDefinition<{
     try {
       const root = validateWorkingDirectory(workingDirectory);
 
-      // Ensure .omc directory exists
+      // Ensure .skc directory exists
       ensureOmcDir('', root);
 
       const success = addWorkingMemoryEntry(root, content);
@@ -240,7 +240,7 @@ export const notepadWriteManualTool: ToolDefinition<{
     try {
       const root = validateWorkingDirectory(workingDirectory);
 
-      // Ensure .omc directory exists
+      // Ensure .skc directory exists
       ensureOmcDir('', root);
 
       const success = addManualEntry(root, content);

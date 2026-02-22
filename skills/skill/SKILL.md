@@ -1,7 +1,6 @@
 ---
 name: skill
 description: Manage local skills - list, add, remove, search, edit
-argument-hint: "<command> [args]"
 ---
 
 # Skill Management CLI

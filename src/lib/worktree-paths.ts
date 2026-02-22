@@ -9,7 +9,7 @@ import { execSync } from 'child_process';
 import { existsSync, mkdirSync, realpathSync } from 'fs';
 import { resolve, normalize, relative, sep, join, isAbsolute } from 'path';
 
-/** Standard .omc subdirectories */
+/** Standard .skc subdirectories */
 export const OmcPaths = {
   ROOT: '.skc',
   STATE: '.skc/state',
@@ -161,7 +161,7 @@ export function getWorktreeProjectMemoryPath(worktreeRoot?: string): string {
 }
 
 /**
- * Get the .omc root directory path.
+ * Get the .skc root directory path.
  */
 export function getOmcRoot(worktreeRoot?: string): string {
   const root = worktreeRoot || getWorktreeRoot() || process.cwd();
@@ -207,7 +207,7 @@ export function resolveWisdomPath(planName: string, worktreeRoot?: string): stri
 }
 
 /**
- * Check if an absolute path is under the .omc directory.
+ * Check if an absolute path is under the .skc directory.
  * @param absolutePath - Absolute path to check
  */
 export function isPathUnderOmc(absolutePath: string, worktreeRoot?: string): boolean {
@@ -219,7 +219,7 @@ export function isPathUnderOmc(absolutePath: string, worktreeRoot?: string): boo
 }
 
 /**
- * Ensure all standard .omc subdirectories exist.
+ * Ensure all standard .skc subdirectories exist.
  */
 export function ensureAllOmcDirs(worktreeRoot?: string): void {
   const root = worktreeRoot || getWorktreeRoot() || process.cwd();

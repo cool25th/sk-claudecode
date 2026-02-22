@@ -1,6 +1,6 @@
 ---
 name: deepsearch
-description: Thorough codebase search
+description: Thorough codebase search using multi-pass grep, AST analysis, and cross-reference tracing. Use when a simple search is insufficient, when tracking down all usages of a symbol, or when understanding complex call chains across the codebase.
 ---
 
 # Deep Search Mode

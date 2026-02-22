@@ -1,11 +1,6 @@
 ---
 name: market-kr
-description: Korean market trading rules and regulations
-triggers:
-  - "kospi"
-  - "kosdaq"
-  - "korea"
-  - "한국"
+description: Korean market trading rules and regulations. Triggers on kospi, kosdaq, korea, or Korean market topics.
 ---
 
 # Korean Market Skill

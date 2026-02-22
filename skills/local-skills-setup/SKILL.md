@@ -1,7 +1,6 @@
 ---
 name: local-skills-setup
 description: Set up and manage local skills for automatic matching and invocation
-argument-hint: "[list|add|scan]"
 ---
 
 # Local Skills Setup

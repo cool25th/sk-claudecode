@@ -1,13 +1,6 @@
 ---
 name: ios-patterns
-description: iOS development patterns with Swift, SwiftUI, and modern Apple frameworks
-triggers:
-  - "ios"
-  - "swift"
-  - "swiftui"
-  - "xcode"
-  - "iphone"
-  - "ipad"
+description: iOS development patterns with Swift, SwiftUI, and modern Apple frameworks. Triggers on ios, swift, swiftui, xcode, iphone, or ipad tasks.
 ---
 
 # iOS Development Patterns

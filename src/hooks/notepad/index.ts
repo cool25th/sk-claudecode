@@ -88,7 +88,7 @@ export const MANUAL_HEADER = "## MANUAL";
 // ============================================================================
 
 /**
- * Get the path to notepad.md in .omc subdirectory
+ * Get the path to notepad.md in .skc subdirectory
  */
 export function getNotepadPath(directory: string): string {
   return join(directory, ".skc", NOTEPAD_FILENAME);

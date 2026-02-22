@@ -32,7 +32,7 @@ function extractJsonField(input, field, defaultValue = '') {
 
 // Get agent tracking info from state file
 function getAgentTrackingInfo(directory) {
-  const trackingFile = join(directory, '.omc', 'state', 'subagent-tracking.json');
+  const trackingFile = join(directory, '.skc', 'state', 'subagent-tracking.json');
   try {
     if (existsSync(trackingFile)) {
       const data = JSON.parse(readFileSync(trackingFile, 'utf-8'));
@@ -50,7 +50,7 @@ function getTodoStatus(directory) {
 
   // Check project-local todos
   const localPaths = [
-    join(directory, '.omc', 'todos.json'),
+    join(directory, '.skc', 'todos.json'),
     join(directory, '.claude', 'todos.json')
   ];
 

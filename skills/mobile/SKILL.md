@@ -1,10 +1,6 @@
 ---
 name: mobile
-description: Mobile development patterns for iOS and Android
-triggers:
-  - "mobile"
-  - "app"
-  - "native"
+description: Mobile development patterns for iOS and Android. Triggers on mobile, app, or native development tasks.
 ---
 
 # Mobile Development Skill

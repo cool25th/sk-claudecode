@@ -1,11 +1,6 @@
 ---
 name: memory
-description: Persistent memory and context management for Claude Code sessions
-triggers:
-  - "remember"
-  - "memory"
-  - "context"
-  - "persist"
+description: Persistent memory and context management for Claude Code sessions. Use for remember, memory, context, and persist operations.
 ---
 
 # Memory Skill

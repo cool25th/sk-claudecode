@@ -181,7 +181,7 @@ function countIncompleteTodos(sessionId, projectDir) {
 
   // Project-local todos only
   for (const path of [
-    join(projectDir, ".omc", "todos.json"),
+    join(projectDir, ".skc", "todos.json"),
     join(projectDir, ".claude", "todos.json"),
   ]) {
     try {
@@ -274,7 +274,7 @@ async function main() {
 
     const directory = data.directory || process.cwd();
     const sessionId = data.sessionId || data.session_id || "";
-    const stateDir = join(directory, ".omc", "state");
+    const stateDir = join(directory, ".skc", "state");
 
     // CRITICAL: Never block context-limit stops.
     // Blocking these causes a deadlock where Claude Code cannot compact.

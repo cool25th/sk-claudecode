@@ -1,10 +1,6 @@
 ---
 name: trading-execution
-description: Trade execution and order management
-triggers:
-  - "execute"
-  - "order"
-  - "trade"
+description: Trade execution and order management. Triggers on execute, order, or trade tasks.
 ---
 
 # Trading Execution Skill

@@ -75,7 +75,7 @@ function getPluginVersion() {
 // Get npm global package version
 function getNpmVersion() {
   try {
-    const versionFile = join(homedir(), '.claude', '.omc-version.json');
+    const versionFile = join(homedir(), '.claude', '.skc-version.json');
     const data = readJsonFile(versionFile);
     return data?.version || null;
   } catch { return null; }
@@ -128,7 +128,7 @@ function detectVersionDrift() {
 
 // Check if we should notify (once per unique drift combination)
 function shouldNotifyDrift(driftInfo) {
-  const stateFile = join(homedir(), '.claude', '.omc', 'update-state.json');
+  const stateFile = join(homedir(), '.claude', '.skc', 'update-state.json');
   const driftKey = `plugin:${driftInfo.pluginVersion}-npm:${driftInfo.npmVersion}-claude:${driftInfo.claudeMdVersion}`;
 
   try {
@@ -136,24 +136,24 @@ function shouldNotifyDrift(driftInfo) {
       const state = JSON.parse(readFileSync(stateFile, 'utf-8'));
       if (state.lastNotifiedDrift === driftKey) return false;
     }
-  } catch {}
+  } catch { }
 
   // Save new drift state
   try {
-    const dir = join(homedir(), '.claude', '.omc');
+    const dir = join(homedir(), '.claude', '.skc');
     if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
     writeFileSync(stateFile, JSON.stringify({
       lastNotifiedDrift: driftKey,
       lastNotifiedAt: new Date().toISOString()
     }));
-  } catch {}
+  } catch { }
 
   return true;
 }
 
 // Check npm registry for available update (with 24h cache)
 async function checkNpmUpdate(currentVersion) {
-  const cacheFile = join(homedir(), '.claude', '.omc', 'update-check.json');
+  const cacheFile = join(homedir(), '.claude', '.skc', 'update-check.json');
   const CACHE_DURATION = 24 * 60 * 60 * 1000;
   const now = Date.now();
 
@@ -167,7 +167,7 @@ async function checkNpmUpdate(currentVersion) {
           : null;
       }
     }
-  } catch {}
+  } catch { }
 
   // Fetch from npm registry with 2s timeout
   try {
@@ -185,10 +185,10 @@ async function checkNpmUpdate(currentVersion) {
 
     // Update cache
     try {
-      const dir = join(homedir(), '.claude', '.omc');
+      const dir = join(homedir(), '.claude', '.skc');
       if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
       writeFileSync(cacheFile, JSON.stringify({ timestamp: now, latestVersion, currentVersion, updateAvailable }));
-    } catch {}
+    } catch { }
 
     return updateAvailable ? { currentVersion, latestVersion } : null;
   } catch { return null; }
@@ -254,7 +254,7 @@ async function main() {
   try {
     const input = await readStdin();
     let data = {};
-    try { data = JSON.parse(input); } catch {}
+    try { data = JSON.parse(input); } catch { }
 
     const directory = data.directory || process.cwd();
     const sessionId = data.sessionId || data.session_id || '';
@@ -281,7 +281,7 @@ async function main() {
           messages.push(`<session-restore>\n\n[OMC UPDATE AVAILABLE]\n\nA new version of oh-my-claudecode is available: v${updateInfo.latestVersion} (current: v${updateInfo.currentVersion})\n\nTo update, run: omc update\n(This syncs plugin, npm package, and CLAUDE.md together)\n\n</session-restore>\n\n---\n`);
         }
       }
-    } catch {}
+    } catch { }
 
     // Check HUD installation (one-time setup guidance)
     const hudCheck = await checkHudInstallation();
@@ -292,8 +292,8 @@ async function main() {
     }
 
     // Check for ultrawork state - only restore if session matches (issue #311)
-    const ultraworkState = readJsonFile(join(directory, '.omc', 'state', 'ultrawork-state.json'))
-      || readJsonFile(join(homedir(), '.omc', 'state', 'ultrawork-state.json'));
+    const ultraworkState = readJsonFile(join(directory, '.skc', 'state', 'ultrawork-state.json'))
+      || readJsonFile(join(homedir(), '.skc', 'state', 'ultrawork-state.json'));
 
     if (ultraworkState?.active && (!ultraworkState.session_id || ultraworkState.session_id === sessionId)) {
       messages.push(`<session-restore>
@@ -312,7 +312,7 @@ Continue working in ultrawork mode until all tasks are complete.
     }
 
     // Check for ralph loop state
-    const ralphState = readJsonFile(join(directory, '.omc', 'ralph-state.json'));
+    const ralphState = readJsonFile(join(directory, '.skc', 'ralph-state.json'));
     if (ralphState?.active) {
       messages.push(`<session-restore>
 
@@ -335,7 +335,7 @@ Continue working until the task is verified complete.
     // That directory accumulates todo files from ALL past sessions across all
     // projects, causing phantom task counts in fresh sessions (see issue #354).
     const localTodoPaths = [
-      join(directory, '.omc', 'todos.json'),
+      join(directory, '.skc', 'todos.json'),
       join(directory, '.claude', 'todos.json')
     ];
     let incompleteCount = 0;
@@ -345,7 +345,7 @@ Continue working until the task is verified complete.
           const data = readJsonFile(todoFile);
           const todos = data?.todos || (Array.isArray(data) ? data : []);
           incompleteCount += todos.filter(t => t.status !== 'completed' && t.status !== 'cancelled').length;
-        } catch {}
+        } catch { }
       }
     }
 
@@ -364,7 +364,7 @@ Please continue working on these tasks.
     }
 
     // Check for notepad Priority Context
-    const notepadPath = join(directory, '.omc', 'notepad.md');
+    const notepadPath = join(directory, '.skc', 'notepad.md');
     if (existsSync(notepadPath)) {
       try {
         const notepadContent = readFileSync(notepadPath, 'utf-8');
@@ -397,10 +397,10 @@ ${cleanContent}
         for (const version of toRemove) {
           try {
             rmSync(join(cacheBase, version), { recursive: true, force: true });
-          } catch {}
+          } catch { }
         }
       }
-    } catch {}
+    } catch { }
 
     if (messages.length > 0) {
       console.log(JSON.stringify({

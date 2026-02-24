@@ -123,5 +123,5 @@ Create detailed steps with:
 ## Related Skills
 
 - `/skill plan` - Structured planning workflow
-- `/skill ralplan` - Ralph planning mode
+- `/skill plan --consensus` - Planning consensus loop (Planner → Architect → Critic)
 - `/skill roadmap` - Roadmap generation

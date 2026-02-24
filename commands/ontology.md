@@ -17,8 +17,8 @@ Guide mode loads: `docs/Agents-ontology-explain.md`
 
 ## Available Skills (8)
 
-**Design:** `ontology`, `ontology-traditional`, `ontology-palantir`, `ontology-storage`
-**Implementation:** `ontology-object-types`, `ontology-links`, `ontology-actions`, `ontology-functions`
+**Design:** `ontology`, `ontology/traditional`, `ontology/palantir`, `ontology/storage`
+**Implementation:** `ontology/object-types`, `ontology/links`, `ontology/actions`, `ontology/functions`
 
 ## Instructions
 

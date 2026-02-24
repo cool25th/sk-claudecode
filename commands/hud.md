@@ -140,7 +140,7 @@ async function main() {
   if (pluginCacheDir) {
     console.log(`[SKC] HUD not built. Run: cd "${pluginCacheDir}" && npm install`);
   } else {
-    console.log("[SKC] Plugin not found. Run: /sk-claudecode:skc-setup");
+    console.log("[SKC] Plugin not found. Run: /sk-claudecode:setup");
   }
 }
 

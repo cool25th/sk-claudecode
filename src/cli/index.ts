@@ -363,7 +363,7 @@ Examples:
   $ omc init --force             Overwrite existing config`)
   .action(async (options) => {
     console.log(chalk.yellow('⚠️  DEPRECATED: The init command is deprecated.'));
-    console.log(chalk.gray('Configuration is now managed automatically. Use /sk-claudecode:skc-setup instead.\n'));
+    console.log(chalk.gray('Configuration is now managed automatically. Use /sk-claudecode:setup instead.\n'));
 
     const paths = getConfigPaths();
     const targetPath = options.global ? paths.user : paths.project;

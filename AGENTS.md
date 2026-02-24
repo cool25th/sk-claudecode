@@ -1,166 +1,59 @@
 # sk-claudecode
 
-**SK-ClaudeCode** - A comprehensive multi-agent orchestration system merging the best from 5 projects.
+**SK-ClaudeCode** is a multi-agent orchestration system merged from multiple upstream repositories.
 
----
+## Current scope
 
-## Overview
-
-SK-ClaudeCode is a unified agent and skill system combining:
-
-| Source | Contribution |
-|--------|--------------|
-| **sk-claudecode** | 46 agents (with tier variants), execution modes |
-| **everything-claude-code**| Language-specific patterns, specialized reviewers, continuous learning |
-| **claude-scientific-skills** | 141 scientific skill categories |
-| **claude-mem** | Persistent memory system |
-| **oh-my-opencode** | Hook system (keyword-detector, etc.) |
-
----
+- **Agents**
+  - 28 prompt files in `agents/`
+  - 45 registry definitions in `src/agents/definitions.ts`
+  - Legacy names remain supported through prompt alias fallback (for migration compatibility)
+- **Skills**
+  - 69 built-in skills loaded from `skills/*/SKILL.md` (standard install mode)
 
 ## Structure
 
 ```
 sk-claudecode/
-├── AGENTS.md               # This file
-├── agents/                  # 46 agents (including tiered variants)
-├── skills/
-│   ├── workflow/           # Workflow skills
-│   ├── execution-modes/    # 8 execution modes
-│   ├── quality/            # Code quality, TDD, Verification
-│   ├── backend/            # Consolidated Backend patterns
-│   ├── frontend/           # Consolidated Frontend UI/UX
-│   ├── language/           # Go, Python, Java, Django, SpringBoot
-│   ├── database/           # Postgres, Clickhouse
-│   ├── scientific/         # 141 scientific skill categories
-│   ├── memory/             # Persistent memory modes
-│   ├── continuous-learning/# Session pattern extraction
-│   └── ...
-├── hooks/                   # Event-driven hooks
-└── docs/                   # Documentation
+├── AGENTS.md
+├── agents/                 # 28 prompt markdown files
+├── commands/               # command prompts
+├── skills/                 # 69 skill folders and SKILL.md metadata
+├── hooks/                  # runtime hooks and event handlers
+├── src/                   # orchestrator, registry, installer, tools
+└── docs/                   # operator documentation
 ```
 
----
+## Agent Summary
 
-## Agents (46 total)
+- Core analysis and execution agents: `architect`, `executor`, `planner`, `critic`, `researcher`, `designer`, `writer`, `vision`, `qa-tester`, `ultra-executor`
+- Domain specialists: `finance`, `mobile-developer`, `ontology`, `go-reviewer`, `python-reviewer`, `database-reviewer`
+- Review and quality: `code-reviewer`, `tdd-guide`, `security-reviewer`, `build-fixer`, `scientist`, `researcher`, `designer-reviewer`, `document-writer`, `e2e-runner`
+- Additional alias routes resolved at runtime: tiered variants (`-low`, `-medium`, `-high`) and consolidated role aliases (e.g., `finance-expert` -> `finance`)
 
-| Category | Agents | Purpose |
-|----------|--------|---------|
-| **Orchestration** | `planner`, `architect` (base, low, medium), `critic` | Strategic planning and system design |
-| **Execution** | `executor` (base, low), `ultra-executor` | Task execution |
-| **Specialized Dev** | `designer` (base, low, high), `vision`, `e2e-runner` | Feature implementation and specialized tasks |
-| **Review & Quality**| `code-reviewer` (base, low), `database-reviewer`, `go-reviewer`, `python-reviewer`, `security-reviewer` (base, low), `qa-tester` (base, high), `tdd-guide` (base, low), `designer-reviewer`, `ontology-reviewer`, `scientist-reviewer` | Multi-layered quality assurance |
-| **Research & Docs** | `researcher` (base, low), `scientist` (base, low, high), `writer`, `document-writer` | Analysis and documentation |
-| **Tools & Fixes** | `build-fixer` (base, low), `refactor-cleaner`, `git-master` | Maintenance and problem resolution |
-| **Domain** | `mobile-developer` (base, low, high), `finance-developer`, `finance-expert`, `ontology-developer`, `ontology-expert` | Domain-specific expertise |
+## Skill Summary (sample)
 
----
+Core workflow: `orchestrate`, `plan`, `strategic-compact`, `continuous-learning`, `brainstorming`, `quality`, `verification-before-completion`
 
-## Skills (102 total)
+Backend + language: `backend`, `springboot`, `django`, `golang`, `python-patterns`, `jpa-patterns`, `coding-standards`, `postgres-patterns`, `clickhouse-io`
 
-### Core Workflow & Execution
+Domain: `finance`, `ontology`, `mobile`, `humanizer`, `documentation`
 
-| Skill | Purpose |
-|-------|---------|
-| `brainstorming` | Interactive design refinement |
-| `continuous-learning` | Automatic pattern extraction from sessions |
-| `strategic-compact` | Managed context compaction at logical boundaries |
-| `verification-loop` | Comprehensive build/test/lint verification |
-| `ultra-plan` / `plan` | High-density project planning |
-| `ultra-execute` | Reliable batch task execution |
-| `memory` | Persistent cross-session context |
+## Execution modes still provided
 
-### Technical Domains
+- `autopilot`, `ultrawork`, `ralph`, `pipeline`, `swarm`, `ultrapilot`, `ultraqa`, `ultra-executor`, `ecomode`
 
-| Domain | Skills Included |
-|--------|-----------------|
-| **Backend** | `backend` (consolidated), `springboot-*`, `django-*`, `jpa-patterns` |
-| **Frontend** | `frontend` (consolidated), `frontend-patterns`, `frontend-ui-ux` (BM25 data-driven) |
-| **Database** | `postgres-patterns`, `clickhouse-io` |
-| **Languages** | `golang-*`, `python-*`, `java-coding-standards` |
-| **Quality** | `verify`, `verification-loop`, `tdd-workflow`, `security-review` |
-| **Markets** | `market-kr`, `market-us`, `trading`, `quant` |
-| **Document** | `document-processing` (PDF, PPTX, XLSX, DOCX, CSV), `humanizer` |
+## Notes
 
-### Scientific Skills (141 categories)
-Categories include: `biopython`, `rdkit`, `pytorch-lightning`, `scanpy`, `pubmed-database`, `literature-review`, `statistical-analysis`, and 134 more.
-
-### Execution Modes (from sk-claudecode)
-
-| Mode | Purpose |
-|------|---------|
-| `autopilot` | Full autonomous execution |
-| `ralph` | Persistence until verified |
-| `ultrawork` | Maximum parallel agents |
-| `swarm` | N coordinated agents |
-| `ecomode` | Token-efficient execution |
-| `pipeline` | Sequential chaining |
-| `ultrapilot` | Parallel with file ownership |
-| `ultraqa` | QA cycling until goal met |
-
-### Memory System (from claude-mem)
-
-- Persistent context across sessions
-- Progressive disclosure for token efficiency
-- Skill-based search with natural language
-
----
-
-## Hooks
-
-### From oh-my-opencode
-
-| Hook | Purpose |
-|------|---------|
-| `directory-agents-injector` | Auto-inject AGENTS.md on file read |
-| `keyword-detector` | Trigger skills by keywords |
-| `session-recovery` | Recover from session interruptions |
-
-### From claude-mem
-
-| Hook | Purpose |
-|------|---------|
-| `PostToolUse` | Capture observations |
-| `SessionStart` | Load context |
-| `SessionEnd` | Persist memory |
-
----
-
-## Usage
-
-### Invoking Skills
-
-```bash
-# Workflow skills
-/sk-claudecode:brainstorming
-/sk-claudecode:test-driven-development
-
-# Execution modes
-/sk-claudecode:autopilot
-/sk-claudecode:ralph
-
-# Scientific skills
-/sk-claudecode:literature-review
-```
-
-### Agent Delegation
-
-Agents are automatically selected based on task context, or explicitly via:
-- Tier selection for cost/performance balance
-- Direct agent invocation
-
----
+- For alias migration details, keep `src/agents/utils.ts` and `src/agents/definitions.ts` aligned.
+- For registry updates, ensure frontmatter is mirrored in prompt files and tests that read `/agents/*.md`.
+- For skill updates, add/modify `skills/<skill>/SKILL.md` and ensure `createBuiltinSkills()` expectations reflect intended count.
 
 ## Sources
 
-| Project | GitHub | License |
-|---------|--------|---------|
-| sk-claudecode | [code-yeongyu/sk-claudecode](https://github.com/code-yeongyu/sk-claudecode) | MIT |
-| oh-my-opencode | [code-yeongyu/oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode) | MIT |
-| sk-claudecode | [obra/sk-claudecode](https://github.com/obra/sk-claudecode) | MIT |
-| claude-scientific-skills | [K-Dense-AI/claude-scientific-skills](https://github.com/K-Dense-AI/claude-scientific-skills) | MIT |
-| claude-mem | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | AGPL-3.0 |
+- [sk-claudecode](https://github.com/code-yeongyu/sk-claudecode)
+- [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)
+- [claude-scientific-skills](https://github.com/K-Dense-AI/claude-scientific-skills)
+- [claude-mem](https://github.com/thedotmack/claude-mem)
 
----
-
-*Updated: 2026-02-08*
+*Updated: 2026-02-23*

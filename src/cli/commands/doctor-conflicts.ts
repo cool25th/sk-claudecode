@@ -143,7 +143,7 @@ export function checkConfigIssues(): ConflictReport['configIssues'] {
       'permissions',
       'magicKeywords',
       'routing',
-      // SisyphusConfig fields (from auto-update.ts / skc-setup)
+      // SisyphusConfig fields (from auto-update.ts / setup)
       'silentAutoUpdate',
       'configuredAt',
       'configVersion',
@@ -238,7 +238,7 @@ export function formatReport(report: ConflictReport, json: boolean): string {
       }
     } else {
       lines.push(`  ${colors.yellow('⚠')} No SKC markers found`);
-      lines.push(`    ${colors.gray('Run /sk-claudecode:skc-setup to add markers')}`);
+      lines.push(`    ${colors.gray('Run /sk-claudecode:setup to add markers')}`);
       if (report.claudeMdStatus.hasUserContent) {
         lines.push(`  ${colors.blue('ℹ')} User content present - will be preserved`);
       }
@@ -282,7 +282,7 @@ export function formatReport(report: ConflictReport, json: boolean): string {
   lines.push(colors.gray('━'.repeat(60)));
   if (report.hasConflicts) {
     lines.push(`${colors.yellow('⚠')} Potential conflicts detected`);
-    lines.push(`${colors.gray('Review the issues above and run /sk-claudecode:skc-setup if needed')}`);
+    lines.push(`${colors.gray('Review the issues above and run /sk-claudecode:setup if needed')}`);
   } else {
     lines.push(`${colors.green('✓')} No conflicts detected`);
     lines.push(`${colors.gray('SKC is properly configured')}`);

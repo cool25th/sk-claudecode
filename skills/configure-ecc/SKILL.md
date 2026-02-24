@@ -86,20 +86,13 @@ For each selected category, print the full list of skills below and ask the user
 |-------|-------------|
 | `backend-patterns` | Backend architecture, API design, server-side best practices for Node.js/Express/Next.js |
 | `coding-standards` | Universal coding standards for TypeScript, JavaScript, React, Node.js |
-| `django-patterns` | Django architecture, REST API with DRF, ORM, caching, signals, middleware |
-| `django-security` | Django security: auth, CSRF, SQL injection, XSS prevention |
-| `django-tdd` | Django testing with pytest-django, factory_boy, mocking, coverage |
-| `django-verification` | Django verification loop: migrations, linting, tests, security scans |
+| `django` | Django architecture, REST API with DRF, ORM, caching, signals, middleware, verification, and testing |
 | `frontend-patterns` | React, Next.js, state management, performance, UI patterns |
-| `golang-patterns` | Idiomatic Go patterns, conventions for robust Go applications |
-| `golang-testing` | Go testing: table-driven tests, subtests, benchmarks, fuzzing |
-| `java-coding-standards` | Java coding standards for Spring Boot: naming, immutability, Optional, streams |
+| `golang` | Go patterns, conventions, and testing: table-driven tests, subtests, benchmarks, fuzzing |
+| `coding-standards` | Java coding standards for Spring Boot: naming, immutability, Optional, streams |
 | `python-patterns` | Pythonic idioms, PEP 8, type hints, best practices |
 | `python-testing` | Python testing with pytest, TDD, fixtures, mocking, parametrization |
-| `springboot-patterns` | Spring Boot architecture, REST API, layered services, caching, async |
-| `springboot-security` | Spring Security: authn/authz, validation, CSRF, secrets, rate limiting |
-| `springboot-tdd` | Spring Boot TDD with JUnit 5, Mockito, MockMvc, Testcontainers |
-| `springboot-verification` | Spring Boot verification: build, static analysis, tests, security scans |
+| `springboot` | Spring Boot architecture, security, TDD, and verification for robust services |
 
 **Category: Database (3 skills)**
 
@@ -113,14 +106,13 @@ For each selected category, print the full list of skills below and ask the user
 
 | Skill | Description |
 |-------|-------------|
-| `continuous-learning` | Auto-extract reusable patterns from sessions as learned skills |
-| `continuous-learning-v2` | Instinct-based learning with confidence scoring, evolves into skills/commands/agents |
+| `continuous-learning` | Instinct-based learning with confidence scoring, auto-extraction of reusable skills, and evolution into skills/commands/agents |
 | `eval-harness` | Formal evaluation framework for eval-driven development (EDD) |
 | `iterative-retrieval` | Progressive context refinement for subagent context problem |
 | `security-review` | Security checklist: auth, input, secrets, API, payment features |
 | `strategic-compact` | Suggests manual context compaction at logical intervals |
-| `tdd-workflow` | Enforces TDD with 80%+ coverage: unit, integration, E2E |
-| `verification-loop` | Verification and quality loop patterns |
+| `tdd` | Enforces test-driven development with quality checks across unit, integration, and E2E |
+| `verify` | Verification and quality loop patterns |
 
 **Standalone**
 
@@ -135,7 +127,7 @@ For each selected skill, copy the entire skill directory:
 cp -r $ECC_ROOT/skills/<skill-name> $TARGET/skills/
 ```
 
-Note: `continuous-learning` and `continuous-learning-v2` have extra files (config.json, hooks, scripts) — ensure the entire directory is copied, not just SKILL.md.
+Note: `continuous-learning` includes extra files (config.json, hooks, scripts) — ensure the entire directory is copied, not just SKILL.md.
 
 ---
 
@@ -197,11 +189,11 @@ grep -rn "skills/" $TARGET/skills/
 ### 4c: Check Cross-References Between Skills
 
 Some skills reference others. Verify these dependencies:
-- `django-tdd` may reference `django-patterns`
-- `springboot-tdd` may reference `springboot-patterns`
-- `continuous-learning-v2` references `~/.claude/homunculus/` directory
+- `django` may reference `django` subcomponents
+- `springboot` may reference `springboot` subcomponents
+- `continuous-learning` references `~/.claude/homunculus/` directory
 - `python-testing` may reference `python-patterns`
-- `golang-testing` may reference `golang-patterns`
+- `golang` may reference `golang` subcomponents
 - Language-specific rules reference `common/` counterparts
 
 ### 4d: Report Issues
@@ -295,4 +287,4 @@ Then print a summary report:
 
 ### "Path reference errors after project-level install"
 - Some skills assume `~/.claude/` paths. Run Step 4 verification to find and fix these.
-- For `continuous-learning-v2`, the `~/.claude/homunculus/` directory is always user-level — this is expected and not an error.
+- For `continuous-learning`, the `~/.claude/homunculus/` directory is always user-level — this is expected and not an error.

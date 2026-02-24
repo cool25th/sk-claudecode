@@ -1,16 +1,16 @@
 ## Help Text
 
-When user runs `/sk-claudecode:skc-setup --help` or just `--help`, display:
+When user runs `/sk-claudecode:setup --help` or just `--help`, display:
 
 ```
 SKC Setup - Configure sk-claudecode
 
 USAGE:
-  /sk-claudecode:skc-setup           Run initial setup wizard (or update if already configured)
-  /sk-claudecode:skc-setup --local   Configure local project (.claude/CLAUDE.md)
-  /sk-claudecode:skc-setup --global  Configure global settings (~/.claude/CLAUDE.md)
-  /sk-claudecode:skc-setup --force   Force full setup wizard even if already configured
-  /sk-claudecode:skc-setup --help    Show this help
+  /sk-claudecode:setup           Run initial setup wizard (or update if already configured)
+  /sk-claudecode:setup --local   Configure local project (.claude/CLAUDE.md)
+  /sk-claudecode:setup --global  Configure global settings (~/.claude/CLAUDE.md)
+  /sk-claudecode:setup --force   Force full setup wizard even if already configured
+  /sk-claudecode:setup --help    Show this help
 
 MODES:
   Initial Setup (no flags)
@@ -40,10 +40,10 @@ MODES:
     - Use when you want to reconfigure preferences
 
 EXAMPLES:
-  /sk-claudecode:skc-setup           # First time setup (or update CLAUDE.md if configured)
-  /sk-claudecode:skc-setup --local   # Update this project
-  /sk-claudecode:skc-setup --global  # Update all projects
-  /sk-claudecode:skc-setup --force   # Re-run full setup wizard
+  /sk-claudecode:setup           # First time setup (or update CLAUDE.md if configured)
+  /sk-claudecode:setup --local   # Update this project
+  /sk-claudecode:setup --global  # Update all projects
+  /sk-claudecode:setup --force   # Re-run full setup wizard
 
 For more info: https://github.com/Yeachan-Heo/sk-claudecode
 ```

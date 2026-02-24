@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { getAgentDefinitions } from '../agents/definitions.js';
+import { loadAgentPrompt } from '../agents/utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,10 +16,9 @@ describe('Agent Registry Validation', () => {
 
   test('all agents have .md prompt files', () => {
     const agents = Object.keys(getAgentDefinitions());
-    const agentsDir = path.join(__dirname, '../../agents');
     for (const name of agents) {
-      const mdPath = path.join(agentsDir, `${name}.md`);
-      expect(fs.existsSync(mdPath), `Missing .md file for agent: ${name}`).toBe(true);
+      const prompt = loadAgentPrompt(name);
+      expect(prompt, `Prompt unavailable for agent: ${name}`).not.toContain('Prompt unavailable');
     }
   });
 

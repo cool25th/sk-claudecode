@@ -69,12 +69,12 @@ If found, this is an upgrade from 2.x.
 
 After installing sk-claudecode updates (via npm or plugin update):
 
-**Automatic**: Just run `/sk-claudecode:skc-setup` - it will detect you've already configured and offer a quick "Update CLAUDE.md only" option that skips the full wizard.
+**Automatic**: Just run `/sk-claudecode:setup` - it will detect you've already configured and offer a quick "Update CLAUDE.md only" option that skips the full wizard.
 
 **Manual options**:
-- `/sk-claudecode:skc-setup --local` to update project config only
-- `/sk-claudecode:skc-setup --global` to update global config only
-- `/sk-claudecode:skc-setup --force` to re-run the full wizard (reconfigure preferences)
+- `/sk-claudecode:setup --local` to update project config only
+- `/sk-claudecode:setup --global` to update global config only
+- `/sk-claudecode:setup --force` to re-run the full wizard (reconfigure preferences)
 
 This ensures you have the newest features and agent configurations without the token cost of repeating the full setup.
 

@@ -8,11 +8,10 @@ describe('Builtin Skills', () => {
   });
 
   describe('createBuiltinSkills()', () => {
-    it('should return correct number of skills (94)', () => {
+    it('should return correct number of skills (69)', () => {
       const skills = createBuiltinSkills();
-      // 90 skills including: core workflow skills (autopilot, ralph, ultrawork, etc.)
-      // plus domain-specific skills (django-patterns, golang-patterns, trading, mobile, etc.)
-      expect(skills).toHaveLength(102);
+      // 69 skills after consolidation
+      expect(skills).toHaveLength(69);
     });
 
     it('should return an array of BuiltinSkill objects', () => {
@@ -72,22 +71,37 @@ describe('Builtin Skills', () => {
       // Core skills that must be present
       const expectedCoreSkills = [
         'backend',
+        'build-fix',
+        'coding-standards',
+        'continuous-learning',
+        'django',
+        'finance',
         'frontend-ui-ux',
+        'golang',
         'git-master',
         'local-skills-setup',
-        'mcp-setup',
         'memory',
+        'mobile',
+        'mcp-setup',
+        'ontology',
         'orchestrate',
         'plan',
-        'security-review',
         'quality',
-        'tdd-workflow',
+        'security-review',
+        'skill-creator',
+        'springboot',
+        'skill',
+        'swarm',
+        'strategic-compact',
+        'tdd',
+        'using-sk-claudecode',
+        'writer-memory',
       ];
 
       const actualSkillNames = skills.map((s) => s.name);
       expect(actualSkillNames).toEqual(expect.arrayContaining(expectedCoreSkills));
       // Total skill count
-      expect(actualSkillNames.length).toBe(102);
+      expect(actualSkillNames.length).toBe(69);
     });
 
     it('should not have duplicate skill names', () => {
@@ -127,13 +141,10 @@ describe('Builtin Skills', () => {
   describe('listBuiltinSkillNames()', () => {
     it('should return all skill names', () => {
       const names = listBuiltinSkillNames();
-      expect(names).toHaveLength(102);
+      expect(names).toHaveLength(69);
       // Core workflow skills (from sk-claudecode)
       expect(names).toContain('orchestrate');
       expect(names).toContain('plan');
-      expect(names).toContain('autopilot');
-      expect(names).toContain('ralph');
-      expect(names).toContain('ultrawork');
       // Domain-specific skills
       expect(names).toContain('frontend-ui-ux');
       expect(names).toContain('git-master');

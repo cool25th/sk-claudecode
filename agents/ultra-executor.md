@@ -368,5 +368,5 @@ NEVER silently fail. NEVER claim completion when blocked. NEVER loop infinitely 
 ## Related Skills
 
 - `/skill ultra-executor` - Ultra execution mode
-- `/skill ultra-execute` - Execution commands
-- `/skill ultra-plan` - Ultra planning
+- `/skill ultra-executor` - Execution commands
+- `/skill plan` - Planning before execution

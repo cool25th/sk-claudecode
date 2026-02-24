@@ -315,7 +315,7 @@ async function main(): Promise<void> {
 
     if (!stdin) {
       // No stdin - suggest setup
-      console.log("[SKC] run /skc-setup to install properly");
+      console.log("[SKC] run /sk-claudecode:setup to install properly");
       return;
     }
 
@@ -405,7 +405,7 @@ async function main(): Promise<void> {
         error.message.includes("Cannot find module"));
 
     if (isInstallError) {
-      console.log("[SKC] run /skc-setup to install properly");
+      console.log("[SKC] run /sk-claudecode:setup to install properly");
     } else {
       // Output fallback message to stdout for status line visibility
       console.log("[SKC] HUD error - check stderr");

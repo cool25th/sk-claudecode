@@ -86,7 +86,7 @@ export interface SisyphusConfig {
     /** Inject usage instructions at session start (default: true) */
     injectInstructions?: boolean;
   };
-  /** Preferred execution mode for parallel work (set by skc-setup Step 3.7) */
+  /** Preferred execution mode for parallel work (set by setup Step 3.7) */
   defaultExecutionMode?: 'ultrawork' | 'ecomode';
   /** Ecomode-specific configuration */
   ecomode?: {

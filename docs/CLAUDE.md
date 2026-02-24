@@ -14,16 +14,15 @@ The orchestrator delegates tasks to specialized agents rather than doing everyth
 
 ## Agent Tier Matrix
 
-Agents are available at different tiers based on task complexity:
+Agents are available at different tiers. Legacy tiered names are kept for compatibility and map to consolidated prompts.
 
 | Agent | Tier | Model | Use Case |
 |-------|------|-------|----------|
-| `architect` | High | Opus | Complex system design |
+| `architect` | Medium | Sonnet | Architecture planning and design |
 | `architect-medium` | Medium | Sonnet | Standard architecture review |
 | `architect-low` | Low | Haiku | Quick architecture checks |
 | `executor` | Medium | Sonnet | Standard implementation |
-| `executor-high` | High | Opus | Complex implementation |
-| `executor-low` | Low | Haiku | Simple changes |
+| `executor-low` | Low | Haiku | Simple code changes |
 | `explore` | Low | Haiku | Code exploration |
 | `designer` | Medium | Sonnet | UI/UX implementation |
 | `designer-low` | Low | Haiku | Simple UI changes |
@@ -31,14 +30,14 @@ Agents are available at different tiers based on task complexity:
 | `researcher` | Medium | Sonnet | Research tasks |
 | `researcher-low` | Low | Haiku | Quick lookups |
 | `writer` | Low | Haiku | Documentation |
-| `critic` | High | Opus | Plan review |
-| `analyst` | High | Opus | Requirements analysis |
+| `critic` | High | Opus | Plan and quality review |
 | `planner` | High | Opus | Work planning |
 | `qa-tester` | Medium | Sonnet | Testing |
+| `qa-tester-high` | High | Opus | Deep testing and verification |
 
 ## Smart Model Routing
 
-Agents use different models based on complex:
+Agents use different models based on task complexity:
 
 - **haiku**: Fast, cost-effective for simple tasks
 - **sonnet**: Balanced for most work
@@ -52,10 +51,11 @@ Skills provide reusable workflows that can be triggered by keywords or slash com
 |-------|---------|-------------|
 | orchestrate | Start a task | Multi-agent orchestration |
 | plan | Create a plan | Work planning workflow |
-| ralph | ralph, ralplan | Continuous work loop |
-| ultrawork | ulw | Deep work mode |
-| analyze | Analyze code | Code analysis |
-| research | Research topic | Deep research |
+| continuous-learning | cl | Consolidate and replay learned patterns |
+| strategy | strategy | Managed context and compacting |
+| check | check | Structured verification checks |
+| research | research | Deep research workflow |
+| tdd | tdd | Test-driven development execution |
 
 ## Cancellation
 
@@ -75,6 +75,9 @@ This will:
 - Deactivate all active modes (ralph, ultrawork, autopilot, etc.)
 - Clean up state files in `.skc/state/`
 - Allow the session to end normally
+
+Legacy compatibility shortcuts:
+- `ralph`, `ralplan`, `ulw`
 
 ## File Structure
 

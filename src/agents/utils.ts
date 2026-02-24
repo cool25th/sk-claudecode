@@ -7,7 +7,7 @@
  * Ported from oh-my-opencode's agent utils.
  */
 
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { join, dirname, resolve, relative, isAbsolute } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -48,11 +48,76 @@ export function loadAgentPrompt(agentName: string): string {
 
   try {
     const agentsDir = join(getPackageDir(), 'agents');
-    const agentPath = join(agentsDir, `${agentName}.md`);
+    const resolvedAgentsDir = resolve(agentsDir);
+
+    const resolvePromptName = (name: string, depth = 0): string => {
+      if (depth > 4) {
+        return name;
+      }
+
+      const candidate = join(agentsDir, `${name}.md`);
+      const resolvedPath = resolve(candidate);
+      const rel = relative(resolvedAgentsDir, resolvedPath);
+      if (!rel.startsWith('..') && !isAbsolute(rel) && existsSync(candidate)) {
+        return name;
+      }
+
+      if (/-low$/.test(name) || /-medium$/.test(name) || /-high$/.test(name)) {
+        return resolvePromptName(name.replace(/-(low|medium|high)$/, ''), depth + 1);
+      }
+
+      if (name === 'finance-expert' || name === 'finance-developer') {
+        return resolvePromptName('finance', depth + 1);
+      }
+
+      if (name === 'ontology-expert' || name === 'ontology-developer') {
+        return resolvePromptName('ontology', depth + 1);
+      }
+
+      if (name === 'mobile-developer-high' || name === 'mobile-developer-low') {
+        return resolvePromptName('mobile-developer', depth + 1);
+      }
+
+      if (name === 'scientist-high' || name === 'scientist-low') {
+        return resolvePromptName('scientist', depth + 1);
+      }
+
+      if (name === 'build-fixer-low') {
+        return resolvePromptName('build-fixer', depth + 1);
+      }
+
+      if (name === 'tdd-guide-low') {
+        return resolvePromptName('tdd-guide', depth + 1);
+      }
+
+      if (name === 'qa-tester-high') {
+        return resolvePromptName('qa-tester', depth + 1);
+      }
+
+      if (name === 'ontology-reviewer') {
+        return resolvePromptName('ontology', depth + 1);
+      }
+
+      if (name === 'deep-executor') {
+        return resolvePromptName('ultra-executor', depth + 1);
+      }
+
+      if (name === 'code-reviewer-low') {
+        return resolvePromptName('code-reviewer', depth + 1);
+      }
+
+      if (name === 'security-reviewer-low') {
+        return resolvePromptName('security-reviewer', depth + 1);
+      }
+
+      return name;
+    };
+
+    const resolvedName = resolvePromptName(agentName);
+    const agentPath = join(agentsDir, `${resolvedName}.md`);
 
     // Security: Verify resolved path is within the agents directory
     const resolvedPath = resolve(agentPath);
-    const resolvedAgentsDir = resolve(agentsDir);
     const rel = relative(resolvedAgentsDir, resolvedPath);
     if (rel.startsWith('..') || isAbsolute(rel)) {
       throw new Error(`Invalid agent name: path traversal detected`);

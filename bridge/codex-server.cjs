@@ -13795,9 +13795,58 @@ function loadAgentPrompt(agentName) {
   }
   try {
     const agentsDir = (0, import_path2.join)(getPackageDir(), "agents");
-    const agentPath = (0, import_path2.join)(agentsDir, `${agentName}.md`);
-    const resolvedPath = (0, import_path2.resolve)(agentPath);
     const resolvedAgentsDir = (0, import_path2.resolve)(agentsDir);
+    const resolvePromptName = (name, depth = 0) => {
+      if (depth > 4) {
+        return name;
+      }
+      const candidate = (0, import_path2.join)(agentsDir, `${name}.md`);
+      const resolvedPath2 = (0, import_path2.resolve)(candidate);
+      const rel2 = (0, import_path2.relative)(resolvedAgentsDir, resolvedPath2);
+      if (!rel2.startsWith("..") && !(0, import_path2.isAbsolute)(rel2) && (0, import_fs2.existsSync)(candidate)) {
+        return name;
+      }
+      if (/-low$/.test(name) || /-medium$/.test(name) || /-high$/.test(name)) {
+        return resolvePromptName(name.replace(/-(low|medium|high)$/, ""), depth + 1);
+      }
+      if (name === "finance-expert" || name === "finance-developer") {
+        return resolvePromptName("finance", depth + 1);
+      }
+      if (name === "ontology-expert" || name === "ontology-developer") {
+        return resolvePromptName("ontology", depth + 1);
+      }
+      if (name === "mobile-developer-high" || name === "mobile-developer-low") {
+        return resolvePromptName("mobile-developer", depth + 1);
+      }
+      if (name === "scientist-high" || name === "scientist-low") {
+        return resolvePromptName("scientist", depth + 1);
+      }
+      if (name === "build-fixer-low") {
+        return resolvePromptName("build-fixer", depth + 1);
+      }
+      if (name === "tdd-guide-low") {
+        return resolvePromptName("tdd-guide", depth + 1);
+      }
+      if (name === "qa-tester-high") {
+        return resolvePromptName("qa-tester", depth + 1);
+      }
+      if (name === "ontology-reviewer") {
+        return resolvePromptName("ontology", depth + 1);
+      }
+      if (name === "deep-executor") {
+        return resolvePromptName("ultra-executor", depth + 1);
+      }
+      if (name === "code-reviewer-low") {
+        return resolvePromptName("code-reviewer", depth + 1);
+      }
+      if (name === "security-reviewer-low") {
+        return resolvePromptName("security-reviewer", depth + 1);
+      }
+      return name;
+    };
+    const resolvedName = resolvePromptName(agentName);
+    const agentPath = (0, import_path2.join)(agentsDir, `${resolvedName}.md`);
+    const resolvedPath = (0, import_path2.resolve)(agentPath);
     const rel = (0, import_path2.relative)(resolvedAgentsDir, resolvedPath);
     if (rel.startsWith("..") || (0, import_path2.isAbsolute)(rel)) {
       throw new Error(`Invalid agent name: path traversal detected`);

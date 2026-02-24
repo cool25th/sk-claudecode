@@ -270,6 +270,6 @@ Review with the mindset: "Would this code pass review at Google or a top Go shop
 
 ## Related Skills
 
-- `/skill golang-patterns` - Go best practices
-- `/skill golang-testing` - Go testing patterns
+- `/skill golang` - Go best practices
+- `/skill golang` - Go testing patterns
 - `/skill code-review` - Code review workflow

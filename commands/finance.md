@@ -8,12 +8,17 @@ description: Finance — domain audit (expert) and trading systems development (
 
 | Mode | Trigger | Agent | Focus |
 |------|---------|-------|-------|
-| **Audit** | (default) or "audit", "검토", "review" | `finance-expert` (Opus) | KR/US market audit, compliance, risk |
-| **Build** | `--build` or "implement", "개발", "build" | `finance-developer` (Opus) | Trading systems, financial models |
+| **Audit** | (default) or "audit", "검토", "review" | `finance` (Opus) | KR/US market audit, compliance, risk |
+| **Build** | `--build` or "implement", "개발", "build" | `finance` (Opus) | Trading systems, financial models |
 
 ## Available Skills
-- `finance-expert` - KR/US market analysis & audit
-- `trading` - Trading system patterns
+- `finance` - KR/US market analysis, trading system patterns, and quantitative workflows
+
+Related component skill files:
+- `finance/market-kr` - Korean market rules
+- `finance/market-us` - US market rules
+- `finance/quant` - Quant strategy patterns
+- `finance/trading` - Trading execution and systems patterns
 
 ## Instructions
 

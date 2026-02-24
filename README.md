@@ -10,7 +10,7 @@
 # Marketplace (Recommended)
 claude plugin marketplace add cool25th/sk-claudecode
 claude plugin install sk-claudecode
-/sk-claudecode:skc-setup
+/sk-claudecode:setup
 
 # NPM (Direct)
 npm install -g sk-claudecode
@@ -22,9 +22,9 @@ npm install && npm run build && npm run setup
 
 | Install Mode | Command | Size |
 |-------------|---------|------|
-| **Standard** | `/sk-claudecode:skc-setup` | ~2MB |
-| **Minimal** | `/sk-claudecode:skc-setup --minimal` | ~1MB |
-| **Full** | `/sk-claudecode:skc-setup --full` | ~17MB |
+| **Standard** | `/sk-claudecode:setup` | ~2MB |
+| **Minimal** | `/sk-claudecode:setup --minimal` | ~1MB |
+| **Full** | `/sk-claudecode:setup --full` | ~17MB |
 
 ---
 

@@ -102,15 +102,15 @@ function calculateOrderTotal(order: Order): number {
 ## Related Skills
 
 **Approach-Specific:**
-- `/skill ontology-traditional` - OWL/RDF/SPARQL patterns
-- `/skill ontology-palantir` - Kinetic layer & digital twin
+- `/skill ontology/traditional` - OWL/RDF/SPARQL patterns
+- `/skill ontology/palantir` - Kinetic layer & digital twin
 
 **Component-Specific:**
-- `/skill ontology-object-types` - Detailed Object Type patterns
-- `/skill ontology-actions` - Action design and validation
-- `/skill ontology-functions` - TypeScript function development
-- `/skill ontology-links` - Link modeling strategies
-- `/skill ontology-storage` - DB, GraphDB, GraphRAG patterns
+- `/skill ontology/object-types` - Detailed Object Type patterns
+- `/skill ontology/actions` - Action design and validation
+- `/skill ontology/functions` - TypeScript function development
+- `/skill ontology/links` - Link modeling strategies
+- `/skill ontology/storage` - DB, GraphDB, GraphRAG patterns
 
 ## Related Agent
 

@@ -105,20 +105,31 @@ describe('Installer Constants', () => {
       }
     });
 
-    it('should contain tiered agent variants', () => {
-      const tieredAgents = [
+    it('should not contain removed legacy tiered agent variants', () => {
+      const legacyAgents = [
         'architect-medium.md',
         'architect-low.md',
         'executor-low.md',
         'researcher-low.md',
         'designer-low.md',
-    'designer-reviewer.md',
         'designer-high.md',
+        'finance-developer.md',
+        'finance-expert.md',
+        'ontology-developer.md',
+        'ontology-expert.md',
+        'mobile-developer-high.md',
+        'mobile-developer-low.md',
+        'scientist-high.md',
+        'scientist-low.md',
+        'build-fixer-low.md',
+        'security-reviewer-low.md',
+        'code-reviewer-low.md',
+        'tdd-guide-low.md',
+        'qa-tester-high.md',
       ];
 
-      for (const agent of tieredAgents) {
-        expect(AGENT_DEFINITIONS).toHaveProperty(agent);
-        expect(typeof AGENT_DEFINITIONS[agent]).toBe('string');
+      for (const agent of legacyAgents) {
+        expect(AGENT_DEFINITIONS).not.toHaveProperty(agent);
       }
     });
 
@@ -151,31 +162,42 @@ describe('Installer Constants', () => {
         const nameMatch = (content as string).match(/^name:\s+(\S+)/m);
         if (!nameMatch) continue;
         const name = nameMatch[1];
-        // Allow some duplicates from agent variants
         names.add(name);
       }
-      // Just verify we found some names
-      expect(names.size).toBeGreaterThan(30);
+      // Current consolidated agent set uses 28 unique agent names
+      expect(names.size).toBe(28);
     });
 
     it('should have consistent model assignments', () => {
       const modelExpectations: Record<string, string> = {
         'architect.md': 'opus',
-        'architect-medium.md': 'sonnet',
-        'architect-low.md': 'haiku',
-        'researcher.md': 'sonnet',
-        'researcher-low.md': 'haiku',
+        'build-fixer.md': 'sonnet',
+        'code-reviewer.md': 'opus',
+        'critic.md': 'opus',
+        'database-reviewer.md': 'opus',
+        'designer-reviewer.md': 'opus',
+        'designer.md': 'sonnet',
+        'document-writer.md': 'sonnet',
+        'e2e-runner.md': 'opus',
         'explore.md': 'sonnet',
         'executor.md': 'sonnet',
-        'executor-low.md': 'haiku',
-        'designer.md': 'sonnet',
-        'designer-low.md': 'haiku',
-        'designer-high.md': 'opus',
-        'writer.md': 'haiku',
-        'vision.md': 'sonnet',
-        'critic.md': 'opus',
+        'finance.md': 'opus',
+        'git-master.md': 'sonnet',
+        'go-reviewer.md': 'opus',
+        'mobile-developer.md': 'sonnet',
+        'ontology.md': 'sonnet',
         'planner.md': 'opus',
+        'python-reviewer.md': 'opus',
+        'researcher.md': 'sonnet',
+        'writer.md': 'haiku',
         'qa-tester.md': 'sonnet',
+        'refactor-cleaner.md': 'opus',
+        'vision.md': 'sonnet',
+        'scientist.md': 'sonnet',
+        'scientist-reviewer.md': 'opus',
+        'security-reviewer.md': 'opus',
+        'tdd-guide.md': 'opus',
+        'ultra-executor.md': 'opus',
       };
 
       for (const [filename, expectedModel] of Object.entries(modelExpectations)) {
@@ -402,7 +424,7 @@ describe('Installer Constants', () => {
     });
 
     it('should have read-only agents not include Edit/Write tools', () => {
-      const readOnlyAgents = ['architect.md', 'architect-medium.md', 'architect-low.md', 'critic.md'];
+      const readOnlyAgents = ['architect.md', 'critic.md', 'vision.md'];
 
       for (const agent of readOnlyAgents) {
         const content = AGENT_DEFINITIONS[agent];
@@ -420,7 +442,6 @@ describe('Installer Constants', () => {
       const implementationAgents = [
         'executor.md',
         'ultra-executor.md',
-        'executor-low.md',
         'designer.md',
         'writer.md',
       ];

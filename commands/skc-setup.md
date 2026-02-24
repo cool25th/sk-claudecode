@@ -3,7 +3,10 @@ description: One-time setup for sk-claudecode (the ONLY command you need to lear
 argument-hint: "[--minimal | --full]"
 ---
 
-# SKC Setup
+# SKC Setup (Legacy Alias)
+
+Canonical command is now `/sk-claudecode:setup`.  
+This legacy command remains for backward compatibility.
 
 This is the **only command you need to learn**. After running this, everything else is automatic.
 

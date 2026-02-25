@@ -62,6 +62,14 @@ export interface PluginConfig {
     search?: string[];
     analyze?: string[];
     ultrathink?: string[];
+    refactor?: string[];
+    tdd?: string[];
+    security?: string[];
+    plan?: string[];
+    review?: string[];
+    docs?: string[];
+    perf?: string[];
+    ecomode?: string[];
   };
 
   // Intelligent model routing configuration

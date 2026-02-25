@@ -9,7 +9,7 @@
 /**
  * Agent type for task execution, determines model complexity
  */
-export type AgentType = 'executor-low' | 'executor' | 'executor-high';
+export type AgentType = 'executor-low' | 'executor' | 'ultra-executor';
 
 /**
  * Model tier for agent execution
@@ -165,7 +165,7 @@ DECOMPOSITION RULES:
 4. AGENT/MODEL SELECTION:
    - executor-low/haiku: Simple changes, single file, straightforward logic
    - executor/sonnet: Standard implementation, moderate complexity (DEFAULT)
-   - executor-high/opus: Complex refactoring, architectural changes, multi-file coordination
+   - executor-high → use ultra-executor/opus: Complex refactoring, architectural changes, multi-file coordination
 
 5. SUBTASK GUIDELINES:
    - Maximum ${maxSubtasks} subtasks
@@ -304,7 +304,7 @@ export function parseDecompositionResult(response: string): DecompositionResult 
       st.blockedBy = [];
     }
     // Validate and default agentType
-    const validAgentTypes = ['executor-low', 'executor', 'executor-high'];
+    const validAgentTypes = ['executor-low', 'executor', 'ultra-executor'];
     if (!st.agentType || !validAgentTypes.includes(st.agentType as string)) {
       st.agentType = 'executor';
     }

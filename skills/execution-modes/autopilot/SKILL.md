@@ -11,7 +11,7 @@ Full autonomous execution from idea to working code.
 
 Autopilot is the ultimate hands-off mode. Give it a brief product idea (2-3 lines) and it handles everything:
 
-1. **Understands** your requirements (Analyst)
+1. **Understands** your requirements (Planner)
 2. **Designs** the technical approach (Architect)
 3. **Plans** the implementation (Critic-validated)
 4. **Builds** with parallel agents (Ralph + Ultrawork)
@@ -41,7 +41,7 @@ These phrases auto-activate autopilot:
 **Goal:** Turn vague idea into detailed spec
 
 **Agents:**
-- Analyst (Opus) - Extract requirements
+- Planner (Opus) - Extract requirements
 - Architect (Opus) - Technical specification
 
 **Output:** `.skc/autopilot/spec.md`

@@ -26,7 +26,7 @@ This skill enhances Claude's capabilities by:
 | Read files for context | ✓ | |
 | Track progress (TODO) | ✓ | |
 | Spawn parallel agents | ✓ | |
-| **ANY code change** | ✗ NEVER | executor-low/executor/executor-high |
+| **ANY code change** | ✗ NEVER | executor-low/executor/ultra-executor |
 | **UI work** | ✗ NEVER | designer/designer-high |
 | **Docs** | ✗ NEVER | writer |
 
@@ -43,13 +43,13 @@ The PreToolUse hook will warn you if you attempt direct code changes.
 | Domain | LOW (Haiku) | MEDIUM (Sonnet) | HIGH (Opus) |
 |--------|-------------|-----------------|-------------|
 | **Analysis** | `architect-low` | `architect-medium` | `architect` |
-| **Execution** | `executor-low` | `executor` | `executor-high` |
+| **Execution** | `executor-low` | `executor` | `ultra-executor` |
 | **Search** | `explore` | `explore` | - |
 | **Research** | `researcher-low` | `researcher` | - |
 | **Frontend** | `designer-low` | `designer` | `designer-high` |
 | **Docs** | `writer` | - | - |
 | **Visual** | - | `vision` | - |
-| **Planning** | - | - | `planner`, `critic`, `analyst` |
+| **Planning** | - | - | `planner`, `critic` |
 | **Testing** | - | `qa-tester` | - |
 
 ### Tier Selection Guide
@@ -72,7 +72,7 @@ Task(subagent_type="architect-low", model="haiku", prompt="What does this functi
 Task(subagent_type="executor", model="sonnet", prompt="Add error handling to login")
 
 // Complex refactoring → HIGH tier
-Task(subagent_type="executor-high", model="opus", prompt="Refactor auth module using JWT across 5 files")
+Task(subagent_type="ultra-executor", model="opus", prompt="Refactor auth module using JWT across 5 files")
 
 // Quick file lookup → LOW tier
 Task(subagent_type="explore", model="haiku", prompt="Find where UserService is defined")

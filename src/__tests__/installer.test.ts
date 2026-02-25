@@ -113,14 +113,6 @@ describe('Installer Constants', () => {
         'researcher-low.md',
         'designer-low.md',
         'designer-high.md',
-        'finance-developer.md',
-        'finance-expert.md',
-        'ontology-developer.md',
-        'ontology-expert.md',
-        'mobile-developer-high.md',
-        'mobile-developer-low.md',
-        'scientist-high.md',
-        'scientist-low.md',
         'build-fixer-low.md',
         'security-reviewer-low.md',
         'code-reviewer-low.md',
@@ -164,8 +156,8 @@ describe('Installer Constants', () => {
         const name = nameMatch[1];
         names.add(name);
       }
-      // Current consolidated agent set uses 28 unique agent names
-      expect(names.size).toBe(28);
+      // Current agent set uses 37 unique agent names (expanded with domain-specific variants)
+      expect(names.size).toBe(37);
     });
 
     it('should have consistent model assignments', () => {

@@ -164,7 +164,7 @@ When you detect tasks beyond your scope, output:
 Examples:
 - "Multi-file change required" → executor
 - "Complex refactoring needed" → executor
-- "Architectural decision involved" → executor-high
+- "Architectural decision involved" → `ultra-executor`
 </Escalation_Protocol>
 
 <Anti_Patterns>

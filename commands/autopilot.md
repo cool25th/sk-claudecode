@@ -99,8 +99,8 @@ During execution, you MUST follow these rules:
 | Read files for context | ✓ | |
 | Track progress (TODO) | ✓ | |
 | Communicate status | ✓ | |
-| **ANY code change** | ✗ NEVER | executor-low/executor/executor-high |
-| **Multi-file refactor** | ✗ NEVER | executor-high |
+| **ANY code change** | ✗ NEVER | executor-low/executor/ultra-executor |
+| **Multi-file refactor** | ✗ NEVER | ultra-executor |
 | **UI/frontend work** | ✗ NEVER | designer/designer-high |
 | **Documentation** | ✗ NEVER | writer |
 
@@ -118,7 +118,7 @@ During execution, you MUST follow these rules:
 3. Use appropriate agent tiers:
    - Simple/single-file → `executor-low` (haiku)
    - Standard feature → `executor` (sonnet)
-   - Complex/multi-file → `executor-high` (opus)
+   - Complex/multi-file → `ultra-executor` (opus)
 
 ```
 // Example: Delegate implementation

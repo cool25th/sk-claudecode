@@ -2,7 +2,7 @@
 
 > Unified agent and skill system for Claude Code
 
-**46 agents** · **102 skills** · **141 scientific domains** · **35 commands** — all in one package.
+**37 agents** · **102 skills** · **141 scientific domains** · **12 magic keywords** — all in one package.
 
 ## 🚀 Installation
 
@@ -46,18 +46,15 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 
 ---
 
-## 🤖 Agents (46)
+## 🤖 Agents (37)
 
 ### 🧠 Think — Plan before you build
 
 | Agent | Model | When to use |
 |-------|-------|-------------|
 | `architect` | Opus | System architecture, debugging strategy |
-| `architect-medium` | Sonnet | Medium-complexity design questions |
-| `architect-low` | Haiku | Quick code questions |
 | `planner` | Opus | Feature planning, requirements analysis |
 | `critic` | Opus | Review and challenge a work plan |
-| `designer-high` | Opus | UI/UX design planning, style & tone review |
 | `scientist-high` | Opus | Research planning, experiment design |
 | `ontology-expert` | Opus | Ontology architecture & domain analysis |
 | `finance-expert` | Opus | Finance domain audit (KR/US markets) |
@@ -67,12 +64,9 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | Agent | Model | When to use |
 |-------|-------|-------------|
 | `executor` | Sonnet | General implementation tasks |
-| `executor-low` | Haiku | Simple single-file changes |
 | `ultra-executor` | Opus | Complex multi-file autonomous tasks |
 | `designer` | Sonnet | UI/UX development |
-| `designer-low` | Haiku | Minor styling tweaks |
 | `build-fixer` | Sonnet | Fix build errors (TS, Go, etc.) |
-| `build-fixer-low` | Haiku | Trivial type errors |
 | `git-master` | Sonnet | Commits, rebasing, history management |
 | `scientist` | Sonnet | Data analysis, research |
 | `scientist-low` | Haiku | Quick data inspection |
@@ -88,16 +82,12 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | Agent | Model | When to use |
 |-------|-------|-------------|
 | `code-reviewer` | Opus | Comprehensive code review |
-| `code-reviewer-low` | Haiku | Quick review of small changes |
 | `security-reviewer` | Opus | Security vulnerabilities (OWASP Top 10) |
-| `security-reviewer-low` | Haiku | Fast security scan |
 | `database-reviewer` | Opus | SQL optimization, schema design |
 | `go-reviewer` | Opus | Go-specific best practices |
 | `python-reviewer` | Opus | Python-specific (PEP 8, type hints) |
 | `qa-tester` | Sonnet | Interactive CLI testing (tmux) |
-| `qa-tester-high` | Opus | Production-ready QA |
 | `tdd-guide` | Opus | Test-Driven Development |
-| `tdd-guide-low` | Haiku | Quick test suggestions |
 | `e2e-runner` | Opus | End-to-end browser testing |
 | `scientist-reviewer` | Opus | Research methodology & statistics validation |
 | `designer-reviewer` | Opus | UI/UX accessibility, consistency, responsiveness |
@@ -109,7 +99,6 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 |-------|-------|-------------|
 | `explore` | Sonnet | Search codebase for files and patterns |
 | `researcher` | Sonnet | External docs and reference research |
-| `researcher-low` | Haiku | Quick documentation lookups |
 | `writer` | Haiku | README, API docs, comments |
 | `vision` | Sonnet | Analyze images, PDFs, diagrams |
 | `refactor-cleaner` | Opus | Find and remove dead code |
@@ -195,15 +184,22 @@ Which agents to use for each domain, organized by Think → Build → Check → 
 
 ## 🪄 Magic Keywords
 
-Type these anywhere in your prompt — no slash command needed:
+Type these anywhere in your prompt — no slash command needed. All keywords support Korean triggers (한국어 지원).
 
-| Keyword | Effect |
-|---------|--------|
-| `ultrawork` | Activates parallel agent execution |
-| `ultrapilot` | File ownership parallelization |
-| `search` | Deep codebase search mode |
-| `analyze` | Comprehensive code analysis |
-| `research` | Extended research workflow |
+| Keyword | Triggers | Effect |
+|---------|----------|--------|
+| **ultrawork** | `ultrawork` `ulw` `uw` | Maximum performance, parallel agent orchestration |
+| **search** | `search` `find` `grep` `검색` `찾아` | Exhaustive parallel codebase search |
+| **analyze** | `analyze` `debug` `audit` `분석` `디버그` | Deep analysis with context gathering |
+| **ultrathink** | `ultrathink` `think` `reason` | Extended reasoning, consider all edge cases |
+| **refactor** | `refactor` `cleanup` `리팩터` `정리` | Safe refactoring with plan-first gate + review |
+| **tdd** | `tdd` `write test` `테스트 작성` | RED→GREEN→REFACTOR cycle enforced |
+| **security** | `security` `owasp` `xss` `보안` | OWASP Top 10 checklist + security-reviewer |
+| **plan** | `plan` `spec` `blueprint` `기획` | Spec-first — no code until plan approved |
+| **review** | `code review` `cr` `코드 리뷰` | Structured code review with checklist |
+| **docs** | `document` `jsdoc` `readme` `문서화` | Documentation mode with writer agent |
+| **perf** | `optimize` `slow` `bottleneck` `성능` | Measure-first optimization protocol |
+| **ecomode** | `ecomode` `cheap` `절약` | Haiku-first routing, minimize token usage |
 
 ---
 

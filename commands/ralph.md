@@ -21,7 +21,7 @@ Ralph automatically activates Ultrawork for maximum parallel execution. You MUST
 | Read files for context | ✓ | |
 | Track progress (TODO) | ✓ | |
 | Spawn agents | ✓ | |
-| **ANY code change** | ✗ NEVER | executor-low/executor/executor-high |
+| **ANY code change** | ✗ NEVER | executor-low/executor/ultra-executor |
 | **UI work** | ✗ NEVER | designer/designer-high |
 | **Docs** | ✗ NEVER | writer |
 
@@ -45,7 +45,7 @@ Ralph automatically activates Ultrawork for maximum parallel execution. You MUST
 | Domain | LOW (Haiku) | MEDIUM (Sonnet) | HIGH (Opus) |
 |--------|-------------|-----------------|-------------|
 | **Analysis** | `architect-low` | `architect-medium` | `architect` |
-| **Execution** | `executor-low` | `executor` | `executor-high` |
+| **Execution** | `executor-low` | `executor` | `ultra-executor` |
 | **Search** | `explore` | `explore` | - |
 | **Research** | `researcher-low` | `researcher` | - |
 | **Frontend** | `designer-low` | `designer` | `designer-high` |
@@ -53,7 +53,7 @@ Ralph automatically activates Ultrawork for maximum parallel execution. You MUST
 | **Visual** | - | `vision` | - |
 | **Planning** | - | - | `planner` |
 | **Critique** | - | - | `critic` |
-| **Pre-Planning** | - | - | `analyst` |
+| **Pre-Planning** | - | - | `planner` |
 | **Testing** | - | `qa-tester` | - |
 | **Security** | `security-reviewer-low` | - | `security-reviewer` |
 | **Build** | `build-fixer-low` | `build-fixer` | - |

@@ -70,6 +70,7 @@ export {
 export {
   databaseReviewerAgent,
   e2eRunnerAgent,
+  documentWriterAgent,
   financeDeveloperAgent,
   financeExpertAgent,
   goReviewerAgent,

@@ -24,7 +24,7 @@ I will ask clarifying questions to fully understand your requirements before cre
 
 ### What Happens Next
 1. **Interview** - I'll ask questions about your goals, constraints, and preferences
-2. **Analysis** - Analyst will analyze for hidden requirements and risks
+2. **Analysis** - Planner will analyze for hidden requirements and risks
 3. **Planning** - I'll create a comprehensive work plan
 4. **Review** (optional) - Critic can review the plan for quality
 

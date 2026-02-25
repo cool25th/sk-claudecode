@@ -220,6 +220,17 @@ export const e2eRunnerAgent: AgentConfig = {
 };
 
 /**
+ * Document-Writer Agent - Structured Document Creation (Sonnet)
+ */
+export const documentWriterAgent: AgentConfig = {
+  name: 'document-writer',
+  description: 'Document creation, editing, and analysis specialist (Sonnet). PPTX, XLSX, PDF, DOCX.',
+  prompt: loadAgentPrompt('document-writer'),
+  model: 'sonnet',
+  defaultModel: 'sonnet'
+};
+
+/**
  * Finance-Developer Agent - Trading Systems (Opus)
  */
 export const financeDeveloperAgent: AgentConfig = {
@@ -509,6 +520,7 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
     // Domain agents (Finance, Mobile, Ontology, Language-specific)
     'database-reviewer': databaseReviewerAgent,
     'e2e-runner': e2eRunnerAgent,
+    'document-writer': documentWriterAgent,
     'finance-developer': financeDeveloperAgent,
     'finance-expert': financeExpertAgent,
     'go-reviewer': goReviewerAgent,
@@ -563,9 +575,8 @@ You coordinate specialized subagents to accomplish complex software engineering 
 - **writer**: Technical writing (use for documentation)
 - **vision**: Visual analysis (use for image/screenshot analysis)
 - **critic**: Plan reviewer (use for critical evaluation)
-- **analyst**: Pre-planning consultant (use for hidden requirement analysis)
 - **executor**: Focused executor (use for direct implementation)
-- **planner**: Strategic planner (use for comprehensive planning)
+- **planner**: Strategic planner with requirements analysis (use for comprehensive planning and hidden requirement analysis)
 - **qa-tester**: CLI testing specialist (use for interactive CLI/service testing with tmux)
 
 ## Orchestration Principles

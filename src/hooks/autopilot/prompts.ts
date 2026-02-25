@@ -7,7 +7,7 @@
 
 /**
  * Generate the expansion phase prompt (Phase 0)
- * Analyst extracts requirements, Architect creates technical spec
+ * Planner extracts requirements, Architect creates technical spec
  */
 export function getExpansionPrompt(idea: string): string {
   return `## AUTOPILOT PHASE 0: IDEA EXPANSION
@@ -16,7 +16,7 @@ Your task: Expand this product idea into detailed requirements and technical spe
 
 **Original Idea:** "${idea}"
 
-### Step 1: Spawn Analyst for Requirements
+### Step 1: Spawn Planner for Requirements
 
 \`\`\`
 Task(
@@ -34,11 +34,11 @@ Output as structured markdown with clear sections."
 )
 \`\`\`
 
-WAIT for Analyst to complete before proceeding.
+WAIT for Planner to complete before proceeding.
 
 ### Step 2: Spawn Architect for Technical Spec
 
-After Analyst completes, spawn Architect:
+After Planner completes, spawn Architect:
 
 \`\`\`
 Task(
@@ -59,7 +59,7 @@ Output as structured markdown."
 
 ### Step 3: Save Combined Spec
 
-Combine Analyst requirements + Architect technical spec into a single document.
+Combine Planner requirements + Architect technical spec into a single document.
 Save to: \`.skc/autopilot/spec.md\`
 
 ### Step 4: Signal Completion
@@ -181,7 +181,7 @@ Task(subagent_type="sk-claudecode:executor-low", model="haiku", prompt="...")
 Task(subagent_type="sk-claudecode:executor", model="sonnet", prompt="...")
 
 // For complex work (architecture, debugging, refactoring)
-Task(subagent_type="sk-claudecode:executor-high", model="opus", prompt="...")
+Task(subagent_type="sk-claudecode:ultra-executor", model="opus", prompt="...")
 \`\`\`
 
 ### Progress Tracking

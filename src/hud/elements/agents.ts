@@ -33,7 +33,7 @@ const AGENT_TYPE_CODES: Record<string, string> = {
 
   // Explore variants - 'E' for Explore
   explore: 'e',             // haiku
-      // explore-medium removed    // sonnet
+  // explore-medium removed    // sonnet
 
   // Designer variants - 'D' for Designer
   designer: 'd',            // sonnet
@@ -49,7 +49,7 @@ const AGENT_TYPE_CODES: Record<string, string> = {
   // Critic - 'C' for Critic
   critic: 'C',              // opus
 
-  // Analyst - 'T' for meTis (A taken by Architect)
+  // (analyst removed — planner handles requirements analysis)
 
   // Executor variants - 'X' for eXecutor
   executor: 'x',            // sonnet
@@ -279,7 +279,7 @@ function getShortAgentName(agentType: string): string {
     // Collapse tier variants to base name
     'architect-low': 'arch',
     'architect-medium': 'arch',
-        // explore-medium removed
+    // explore-medium removed
     'researcher-low': 'research',
     // QA variants
     'qa-tester': 'qa',

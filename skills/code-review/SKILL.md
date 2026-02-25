@@ -209,6 +209,6 @@ Parallel code review across multiple files.
 
 ## Related Agents
 
-- `code-reviewer` - Code review specialist (Sonnet)
+- `code-reviewer` - Code review specialist (Opus)
 - `code-reviewer-low` - Quick code review (Haiku)
 - `critic` - Critical analysis

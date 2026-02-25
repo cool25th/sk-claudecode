@@ -325,6 +325,257 @@ Use maximum cognitive effort before responding.`;
 };
 
 /**
+ * Refactor mode enhancement
+ * Safe refactoring with mandatory planning and review gate
+ */
+const refactorEnhancement: MagicKeyword = {
+  triggers: ['refactor', 'cleanup', 'clean up', 'restructure', 'reorganize', 'consolidate', 'simplify', '리팩터', '정리', '재구성'],
+  description: 'Safe refactoring mode with planning gate and code-reviewer verification',
+  action: (prompt: string) => {
+    const pattern = /\b(refactor|cleanup|clean\s*up|restructure|reorganize|consolidate|simplify)\b|리팩터|정리|재구성/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}
+
+[refactor-mode]
+SAFE REFACTORING PROTOCOL:
+1. PLAN FIRST: Document current state and proposed changes in .skc/refactor-plan.md before touching any code
+2. SCOPE LOCK: Change ONLY what is in the plan. No opportunistic fixes.
+3. ONE THING AT A TIME: Single logical change per commit.
+4. TESTS MUST PASS: Run full test suite after each batch. If tests break, revert immediately.
+5. REVIEW GATE: Spawn code-reviewer agent when complete:
+   Task(subagent_type="sk-claudecode:code-reviewer", model="opus", prompt="Review refactoring changes for regressions and correctness")
+6. NO BEHAVIOR CHANGES: Refactoring must be purely structural. If behavior must change, flag it explicitly.
+
+ANTI-PATTERNS TO AVOID:
+- Deleting code you "think" is unused without grep verification
+- Renaming public APIs without updating all callers
+- Combining commits that touch different concerns`;
+  }
+};
+
+/**
+ * TDD mode enhancement
+ * Enforces test-first development cycle
+ */
+const tddEnhancement: MagicKeyword = {
+  triggers: ['tdd', 'test-driven', 'test first', 'write test', 'add test', 'failing test', '테스트 작성', '테스트 먼저'],
+  description: 'Enforces RED-GREEN-REFACTOR cycle — test must be written before implementation',
+  action: (prompt: string) => {
+    const pattern = /\b(tdd|test[\s-]driven|test\s+first|write\s+test|add\s+test|failing\s+test)\b|테스트\s*작성|테스트\s*먼저/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}
+
+[tdd-mode]
+TEST-DRIVEN DEVELOPMENT ENFORCED:
+
+🔴 RED — Write a failing test FIRST:
+1. Write the test that describes the desired behavior
+2. Run it: confirm it FAILS with the expected failure reason
+3. NEVER write implementation before seeing the test fail
+
+🟢 GREEN — Implement the minimum to make it pass:
+4. Write the simplest code that makes the test pass
+5. Run tests: confirm ALL pass, including new one
+6. Show test output as evidence
+
+🔵 REFACTOR — Clean up without breaking anything:
+7. Improve code quality while tests stay green
+8. Run full suite: zero regressions permitted
+
+SPAWN tdd-guide agent for complex test architecture:
+   Task(subagent_type="sk-claudecode:tdd-guide", model="sonnet", prompt="Design test strategy for: [feature]")
+
+ZERO TOLERANCE: NEVER skip the RED phase. If you cannot make a test fail first, reconsider the test.`;
+  }
+};
+
+/**
+ * Security mode enhancement
+ * Activates OWASP-aware security review mode
+ */
+const securityEnhancement: MagicKeyword = {
+  triggers: ['security', 'secure', 'vulnerability', 'vuln', 'pentest', 'owasp', 'injection', 'xss', 'csrf', 'auth', '보안', '취약점', '인증'],
+  description: 'Security-first mode with OWASP checklist and automatic security-reviewer invocation',
+  action: (prompt: string) => {
+    const pattern = /\b(security|secure|vulnerability|vuln|pentest|owasp|injection|xss|csrf|authentication|authorization)\b|보안|취약점|인증/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}
+
+[security-mode]
+SECURITY-FIRST PROTOCOL:
+
+OWASP TOP 10 MANDATORY CHECKS:
+- [ ] Injection (SQL, NoSQL, Command, LDAP)
+- [ ] Broken Authentication / Session Management
+- [ ] Sensitive Data Exposure (PII, tokens, keys)
+- [ ] XML/JSON External Entities (XXE)
+- [ ] Broken Access Control
+- [ ] Security Misconfiguration
+- [ ] Cross-Site Scripting (XSS)
+- [ ] Insecure Deserialization
+- [ ] Using Components with Known Vulnerabilities
+- [ ] Insufficient Logging & Monitoring
+
+RULES:
+- NEVER log sensitive data (tokens, passwords, PII)
+- ALWAYS validate + sanitize ALL user input server-side
+- ALWAYS use parameterized queries — zero string concatenation in SQL
+- ALWAYS use HTTPS for any external communication
+- Secrets MUST be in environment variables, never hardcoded
+
+AFTER IMPLEMENTATION, spawn security reviewer:
+   Task(subagent_type="sk-claudecode:security-reviewer", model="opus", prompt="Security audit: [what was changed]")`;
+  }
+};
+
+/**
+ * Plan mode enhancement
+ * Spec-first mode — forces planning document before any implementation
+ */
+const planEnhancement: MagicKeyword = {
+  triggers: ['plan', 'spec', 'blueprint', 'design doc', 'requirements', 'roadmap', '기획', '계획', '설계'],
+  description: 'Spec-first mode — creates comprehensive work plan before any code is written',
+  action: (prompt: string) => {
+    const pattern = /\b(plan|spec|blueprint|design\s+doc|requirements|roadmap)\b|기획|계획|설계/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}
+
+[plan-mode]
+SPEC-FIRST PROTOCOL:
+1. NO CODE until the plan is approved
+2. Spawn planner agent to create structured work plan:
+   Task(subagent_type="sk-claudecode:planner", model="opus", prompt="Create work plan for: [task]")
+3. Plan must include: acceptance criteria, implementation steps, risk factors, verification approach
+4. Save to: .skc/plans/[feature].md
+5. Present plan for review — only proceed to implementation after explicit approval
+
+USE /sk-claudecode:ralplan for full iterative planning loop with Critic review.`;
+  }
+};
+
+/**
+ * Review mode enhancement
+ * Triggers dedicated code review with checklist
+ */
+const reviewEnhancement: MagicKeyword = {
+  triggers: ['review', 'code review', 'cr', 'lgtm', 'pr review', '리뷰', '코드 리뷰'],
+  description: 'Activates structured code review mode with code-reviewer agent',
+  action: (prompt: string) => {
+    // Only trigger for explicit review requests, not generic "review this" embedded in other contexts
+    const pattern = /\b(code\s+review|cr\b|lgtm|pr\s+review|review\s+this|review\s+my|review\s+the\s+code)\b|코드\s*리뷰|코드\s*검토/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}
+
+[review-mode]
+STRUCTURED CODE REVIEW:
+Spawn code-reviewer agent for thorough analysis:
+   Task(subagent_type="sk-claudecode:code-reviewer", model="opus", prompt="[Review focus]")
+
+REVIEW CHECKLIST:
+- [ ] Correctness: Does it do what it claims?
+- [ ] Edge cases: Empty inputs, nulls, overflow, concurrency
+- [ ] Error handling: All failure paths handled?
+- [ ] Security: No injection, exposure, or auth bypass
+- [ ] Performance: Any N+1 queries or O(n²) loops?
+- [ ] Tests: Coverage for critical paths?
+- [ ] Readability: Self-documenting or needs comments?
+- [ ] Breaking changes: Public API compatibility?`;
+  }
+};
+
+/**
+ * Docs mode enhancement
+ * Activates writer agent for documentation generation
+ */
+const docsEnhancement: MagicKeyword = {
+  triggers: ['document', 'docs', 'jsdoc', 'tsdoc', 'readme', 'api docs', 'comment', '문서', '문서화', '주석'],
+  description: 'Documentation mode — activates writer agent for structured doc generation',
+  action: (prompt: string) => {
+    const pattern = /\b(document|docs|jsdoc|tsdoc|readme|api\s+docs|write\s+comment|add\s+comment)\b|문서|문서화|주석/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}
+
+[docs-mode]
+DOCUMENTATION MODE:
+Spawn writer agent for structured output:
+   Task(subagent_type="sk-claudecode:writer", model="sonnet", prompt="Write documentation for: [target]")
+
+DOC STANDARDS:
+- JSDoc/TSDoc: Every public function/class needs @param, @returns, @example
+- README: Installation, usage, API reference, examples section
+- Inline comments: Explain WHY, not WHAT (the code shows what)
+- No obvious comments: // increment i by 1 → banned
+- Keep docs co-located with code — outdated docs are worse than no docs`;
+  }
+};
+
+/**
+ * Perf mode enhancement
+ * Measure-before-optimize discipline
+ */
+const perfEnhancement: MagicKeyword = {
+  triggers: ['optimize', 'performance', 'perf', 'slow', 'bottleneck', 'latency', 'throughput', 'benchmark', '최적화', '성능', '느려', '병목'],
+  description: 'Performance mode — mandates measurement before optimization, prevents premature optimization',
+  action: (prompt: string) => {
+    const pattern = /\b(optimize|performance|perf\b|slow\b|bottleneck|latency|throughput|benchmark)\b|최적화|성능\s*개선|느려|병목/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}
+
+[perf-mode]
+PERFORMANCE OPTIMIZATION PROTOCOL:
+
+⚠️  RULE #1: MEASURE FIRST, OPTIMIZE SECOND. Never optimize based on intuition.
+
+PHASE 1 — PROFILE:
+1. Establish baseline: measure current performance with concrete numbers
+2. Identify actual bottleneck (profiler, not guesses)
+3. Set target: "Reduce P99 latency from 800ms to <200ms"
+
+PHASE 2 — OPTIMIZE:
+4. Fix only the measured bottleneck
+5. Apply one optimization at a time
+6. Re-measure after each change
+
+PHASE 3 — VALIDATE:
+7. Confirm improvement with numbers
+8. Confirm no correctness regressions (tests pass)
+9. Document: what changed, why, measured before/after
+
+COMMON ANTI-PATTERNS (AVOID):
+- Caching everything without measuring cache hit rate
+- Premature micro-optimizations before finding the real bottleneck
+- Optimizing rarely-hit code paths instead of the hot path`;
+  }
+};
+
+/**
+ * Ecomode enhancement
+ * Token-efficient Haiku-first routing
+ */
+const ecomodeEnhancement: MagicKeyword = {
+  triggers: ['ecomode', 'eco', 'cheap', 'budget', 'save tokens', 'haiku', '절약', '저렴하게'],
+  description: 'Token-efficient mode — routes to Haiku by default, escalates only when necessary',
+  action: (prompt: string) => {
+    const pattern = /\b(ecomode|eco\b|cheap\b|budget\b|save\s+tokens|haiku\b)\b|절약|저렴하게/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    const cleanPrompt = removeTriggerWords(prompt, ['ecomode', 'eco', 'cheap', 'budget', 'haiku']);
+    return `[ECO MODE - TOKEN EFFICIENT]
+
+${cleanPrompt}
+
+ROUTING RULES FOR THIS TASK:
+- Default model: haiku (fastest, cheapest)
+- Escalate to sonnet ONLY if: multi-file changes, complex logic, or haiku fails
+- Escalate to opus ONLY if: architectural decisions, security, or sonnet fails
+- Prefer single-agent execution over spawning multiple agents
+- Skip verification architecture review unless changes are > 10 files
+- Prefer batch operations over iterative loops
+
+TARGET: Complete the task with minimum token usage while maintaining correctness.`;
+  }
+};
+
+/**
  * Remove trigger words from a prompt
  */
 function removeTriggerWords(prompt: string, triggers: string[]): string {
@@ -343,7 +594,15 @@ export const builtInMagicKeywords: MagicKeyword[] = [
   ultraworkEnhancement,
   searchEnhancement,
   analyzeEnhancement,
-  ultrathinkEnhancement
+  ultrathinkEnhancement,
+  refactorEnhancement,
+  tddEnhancement,
+  securityEnhancement,
+  planEnhancement,
+  reviewEnhancement,
+  docsEnhancement,
+  perfEnhancement,
+  ecomodeEnhancement
 ];
 
 /**
@@ -376,6 +635,27 @@ export function createMagicKeywordProcessor(config?: PluginConfig['magicKeywords
       const ultrathink = keywords.find(k => k.triggers.includes('ultrathink'));
       if (ultrathink) {
         ultrathink.triggers = config.ultrathink;
+      }
+    }
+  }
+
+  // Apply overrides for new keywords
+  const newKeywordMap: Record<string, string> = {
+    refactor: 'refactor',
+    tdd: 'tdd',
+    security: 'security',
+    plan: 'plan',
+    review: 'review',
+    docs: 'docs',
+    perf: 'optimize',
+    ecomode: 'ecomode'
+  };
+  if (config) {
+    for (const [configKey, triggerKey] of Object.entries(newKeywordMap)) {
+      const configValue = (config as Record<string, string[] | undefined>)[configKey];
+      if (configValue) {
+        const kw = keywords.find(k => k.triggers.includes(triggerKey));
+        if (kw) kw.triggers = configValue;
       }
     }
   }
@@ -442,7 +722,7 @@ export function detectMagicKeywords(prompt: string, config?: PluginConfig['magic
 /**
  * Extract prompt text from message parts (for hook usage)
  */
-export function extractPromptText(parts: Array<{ type: string; text?: string; [key: string]: unknown }>): string {
+export function extractPromptText(parts: Array<{ type: string; text?: string;[key: string]: unknown }>): string {
   return parts
     .filter(p => p.type === 'text')
     .map(p => p.text ?? '')

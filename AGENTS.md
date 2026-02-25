@@ -6,7 +6,7 @@
 
 - **Agents**
   - 28 prompt files in `agents/`
-  - 45 registry definitions in `src/agents/definitions.ts`
+  - 46 registry definitions in `src/agents/definitions.ts`
   - Legacy names remain supported through prompt alias fallback (for migration compatibility)
 - **Skills**
   - 69 built-in skills loaded from `skills/*/SKILL.md` (standard install mode)

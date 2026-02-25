@@ -4,7 +4,7 @@
  * Type definitions for the /autopilot command - autonomous execution from idea to working code.
  *
  * The autopilot feature orchestrates a complete development lifecycle:
- * 1. Expansion: Analyst + Architect expand the idea into detailed requirements
+ * 1. Expansion: Planner + Architect expand the idea into detailed requirements
  * 2. Planning: Architect creates comprehensive execution plan
  * 3. Execution: Ralph + Ultrawork implement the plan
  * 4. QA: UltraQA ensures build/lint/tests pass
@@ -54,7 +54,7 @@ export interface ValidationResult {
  * State tracking for the expansion phase
  */
 export interface AutopilotExpansion {
-  /** Whether analyst has completed requirements gathering */
+  /** Whether planner has completed requirements gathering */
   /** Whether architect has completed technical design */
   architect_complete: boolean;
   /** Path to generated specification document */

@@ -228,6 +228,8 @@ function loadLazySkillsFolder(folderName: string): BuiltinSkill[] {
       if (existsSync(subSkillPath)) {
         const skill = loadSkillFromFile(subSkillPath, `${folderName}/${entry.name}`);
         if (skill) {
+          // Override name to use folder-qualified path for consistent lazy-load resolution
+          skill.name = `${folderName}/${entry.name}`;
           skills.push(skill);
         }
       }

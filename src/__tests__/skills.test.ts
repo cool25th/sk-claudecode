@@ -175,7 +175,8 @@ describe('Builtin Skills', () => {
       clearSkillsCache();
 
       const fullNames = listBuiltinSkillNames();
-      expect(fullNames).toHaveLength(STANDARD_SKILL_COUNT);
+      // In full mode, scientific skills are loaded eagerly, so count may be >= STANDARD_SKILL_COUNT
+      expect(fullNames.length).toBeGreaterThanOrEqual(STANDARD_SKILL_COUNT);
       expect(listBuiltinSkillNames(true)).toContain('scientific (lazy-loaded)');
       expect(getBuiltinSkill('scientific/alphafold-database')?.name).toBe('scientific/alphafold-database');
     });

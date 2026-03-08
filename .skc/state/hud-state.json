@@ -1,52 +1,29 @@
 {
-  "timestamp": "2026-03-08T05:05:46.082Z",
+  "timestamp": "2026-03-08T07:02:19.045Z",
   "backgroundTasks": [
-    {
-      "id": "task-1772933110163-838pml",
-      "description": "pkill -f something",
-      "startedAt": "2026-03-08T01:25:10.164Z",
-      "status": "failed",
-      "completedAt": "2026-03-08T05:05:46.082Z"
-    },
-    {
-      "id": "task-1772934055770-gltd48",
-      "description": "pkill -f something",
-      "startedAt": "2026-03-08T01:40:55.771Z",
-      "status": "failed",
-      "completedAt": "2026-03-08T05:05:46.082Z"
-    },
-    {
-      "id": "task-1772934166331-1sow2m",
-      "description": "pkill -f something",
-      "startedAt": "2026-03-08T01:42:46.332Z",
-      "status": "failed",
-      "completedAt": "2026-03-08T05:05:46.082Z"
-    },
-    {
-      "id": "task-1772934189007-ll0bzd",
-      "description": "pkill -f something",
-      "startedAt": "2026-03-08T01:43:09.008Z",
-      "status": "failed",
-      "completedAt": "2026-03-08T05:05:46.082Z"
-    },
-    {
-      "id": "task-1772934240136-vdnknj",
-      "description": "pkill -f something",
-      "startedAt": "2026-03-08T01:44:00.137Z",
-      "status": "failed",
-      "completedAt": "2026-03-08T05:05:46.082Z"
-    },
-    {
-      "id": "task-1772934358300-eucrcr",
-      "description": "pkill -f something",
-      "startedAt": "2026-03-08T01:45:58.305Z",
-      "status": "failed",
-      "completedAt": "2026-03-08T05:05:46.082Z"
-    },
     {
       "id": "task-1772946346079-s59hg5",
       "description": "pkill -f something",
       "startedAt": "2026-03-08T05:05:46.082Z",
+      "status": "failed",
+      "completedAt": "2026-03-08T06:59:02.878Z"
+    },
+    {
+      "id": "task-1772953142876-v0blfz",
+      "description": "pkill -f something",
+      "startedAt": "2026-03-08T06:59:02.878Z",
+      "status": "running"
+    },
+    {
+      "id": "task-1772953166579-qbwmr8",
+      "description": "pkill -f something",
+      "startedAt": "2026-03-08T06:59:26.581Z",
+      "status": "running"
+    },
+    {
+      "id": "task-1772953339043-dmivtr",
+      "description": "pkill -f something",
+      "startedAt": "2026-03-08T07:02:19.045Z",
       "status": "running"
     }
   ]

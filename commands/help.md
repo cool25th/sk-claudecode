@@ -16,49 +16,86 @@ description: Guide on using sk-claudecode plugin
 | Work on UI/frontend | Activate design sensibility |
 | Say "stop" or "cancel" | Intelligently stop current operation |
 
-## Magic Keywords (Optional Shortcuts)
+## Quick Start: Agent Commands
 
-You can include these words naturally in your request for explicit control:
+Use `/sk-claudecode:<agent>` to invoke a specific agent:
 
-| Keyword | Effect | Example |
-|---------|--------|---------|
-| **ralph** | Persistence mode | "ralph: fix all the bugs" |
-| **ralplan** | Iterative planning | "ralplan this feature" |
-| **ulw** | Max parallelism | "ulw refactor the API" |
-| **plan** | Planning interview | "plan the new endpoints" |
+### 🧠 Think (Plan & Review)
+| Command | Agent | Description |
+|---------|-------|-------------|
+| `/sk-claudecode:architect` | Opus | Architecture planning & design (read-only) |
+| `/sk-claudecode:critic` | Opus | Plan & quality review |
+| `/sk-claudecode:plan` | Opus | Work planning workflow |
 
-**ralph includes ultrawork:** When you activate ralph mode, it automatically includes ultrawork's parallel execution. No need to combine keywords.
+### ⚡ Build (Implement)
+| Command | Agent | Description |
+|---------|-------|-------------|
+| `/sk-claudecode:executor` | Sonnet | Standard code implementation |
+| `/sk-claudecode:ultra-executor` | Opus | Complex autonomous execution |
+| `/sk-claudecode:designer` | Sonnet | UI/UX implementation |
+| `/sk-claudecode:build-fix` | Sonnet | Build error resolution |
+| `/sk-claudecode:git-master` | Sonnet | Git operations expert |
+
+### 🔬 Domain Specialists
+| Command | Agent | Domain |
+|---------|-------|--------|
+| `/sk-claudecode:finance` | Opus | Trading, market analysis, quant |
+| `/sk-claudecode:ontology` | Sonnet | Ontology design & implementation |
+| `/sk-claudecode:mobile` | Sonnet | iOS/Android development |
+| `/sk-claudecode:scientist` | Sonnet | Data analysis & research |
+
+### 🔍 Check (Review & Test)
+| Command | Agent | Description |
+|---------|-------|-------------|
+| `/sk-claudecode:code-review` | Opus | Expert code review |
+| `/sk-claudecode:security-reviewer` | Opus | Security vulnerability detection |
+| `/sk-claudecode:tdd` | Opus | Test-driven development |
+| `/sk-claudecode:qa-tester` | Sonnet | Interactive CLI testing |
+
+### 📚 Help (Search & Document)
+| Command | Agent | Description |
+|---------|-------|-------------|
+| `/sk-claudecode:explore` | Sonnet | Codebase search |
+| `/sk-claudecode:research` | Sonnet | Deep research workflow |
+| `/sk-claudecode:writer` | Haiku | Documentation writing |
+
+## Execution Modes
+
+| Command | Keyword | Description |
+|---------|---------|-------------|
+| `/sk-claudecode:ralph` | **ralph** | Persistent loop until task complete |
+| `/sk-claudecode:ralplan` | **ralplan** | Iterative planning with consensus |
+| `/sk-claudecode:ultrawork` | **ulw** | Max parallelism mode |
+| `/sk-claudecode:autopilot` | - | Full autonomous execution |
+| `/sk-claudecode:swarm` | - | N coordinated agents on shared tasks |
+
+## Magic Keywords (Natural Language Shortcuts)
+
+Include these words naturally in your request:
+
+| Keyword | Effect |
+|---------|--------|
+| **ralph** | Persistence mode |
+| **ralplan** | Iterative planning |
+| **ulw** / **ultrawork** | Max parallelism |
+| **plan** | Planning interview |
+| **tdd** | Test-driven development |
+| **review** | Code review mode |
+| **security** / **보안** | Security review |
+| **refactor** / **정리** | Safe refactoring |
+| **analyze** / **research** | Deep analysis mode |
 
 ## Stopping Things
 
-Just say:
-- "stop"
-- "cancel"
-- "abort"
-
-I'll figure out what to stop based on context.
+Just say "stop", "cancel", or "abort". Or use:
+```
+/sk-claudecode:cancel
+```
 
 ## First Time Setup
-
-If you haven't configured SKC yet:
 
 ```
 /sk-claudecode:setup
 ```
 
-This is the **only command** you need to know. It downloads the configuration and you're done.
-
-## For 2.x Users
-
-Your old commands still work! `/ralph`, `/ultrawork`, `/plan`, etc. all function exactly as before.
-
-But now you don't NEED them - everything is automatic.
-
-## Need More Help?
-
-- **README**: https://github.com/Yeachan-Heo/sk-claudecode
-- **Issues**: https://github.com/Yeachan-Heo/sk-claudecode/issues
-
----
-
-*Version: 4.0.0*
+This is the **only command** you need to know to get started.

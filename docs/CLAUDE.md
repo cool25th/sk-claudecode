@@ -53,6 +53,51 @@ Agents are available at different tiers. Legacy tiered names are kept for compat
 | `refactor-cleaner` | High | Opus | Dead code removal |
 | `git-master` | Medium | Sonnet | Git operations expert |
 
+## Slash Commands (Quick Start)
+
+Use `/sk-claudecode:<command>` to invoke any agent or workflow:
+
+### Domain Specialists
+| Command | Description |
+|---------|-------------|
+| `/sk-claudecode:finance` | Trading, market analysis, quant strategy |
+| `/sk-claudecode:ontology` | Ontology design & implementation |
+| `/sk-claudecode:mobile` | iOS/Android development |
+| `/sk-claudecode:scientist` | Data analysis & research |
+| `/sk-claudecode:research` | Orchestrate parallel research |
+
+### Build & Fix
+| Command | Description |
+|---------|-------------|
+| `/sk-claudecode:executor` | Standard code implementation |
+| `/sk-claudecode:designer` | UI/UX development |
+| `/sk-claudecode:build-fix` | Build error resolution |
+| `/sk-claudecode:git-master` | Git operations expert |
+| `/sk-claudecode:writer` | Documentation writing |
+
+### Review
+| Command | Description |
+|---------|-------------|
+| `/sk-claudecode:code-review` | General code review (auto-detects language) |
+| `/sk-claudecode:tdd` | Test-driven development |
+| `/sk-claudecode:qa-tester` | Interactive CLI testing |
+
+### Execution Modes
+| Command | Shortcut | Description |
+|---------|----------|-------------|
+| `/sk-claudecode:ultrawork` | `ulw` | Max parallelism |
+| `/sk-claudecode:ralph` | `ralph` | Persist until done |
+| `/sk-claudecode:autopilot` | - | Full autonomous |
+| `/sk-claudecode:swarm` | - | N coordinated agents |
+
+### Utility
+| Command | Description |
+|---------|-------------|
+| `/sk-claudecode:help` | Full usage guide |
+| `/sk-claudecode:plan` | Planning workflow |
+| `/sk-claudecode:explore` | Codebase search |
+| `/sk-claudecode:cancel` | Stop any active mode |
+
 ## Smart Model Routing
 
 Agents use different models based on task complexity:
@@ -63,7 +108,7 @@ Agents use different models based on task complexity:
 
 ## All Skills
 
-Skills provide reusable workflows that can be triggered by keywords or slash commands.
+Skills provide reusable workflows activated by keywords or agent context.
 
 | Skill | Trigger | Description |
 |-------|---------|-------------|
@@ -74,11 +119,7 @@ Skills provide reusable workflows that can be triggered by keywords or slash com
 | check | check | Structured verification checks |
 | research | research | Deep research workflow |
 | tdd | tdd | Test-driven development execution |
-| finance | finance | Finance domain: Korean/US market rules, quant strategy, trading execution |
-| finance/market-kr | market-kr | Korean market (KOSPI/KOSDAQ) regulations and trading |
-| finance/market-us | market-us | US market (NYSE/NASDAQ) regulations and trading |
-| finance/quant | quant | Quantitative strategy backtesting workflow |
-| finance/trading | trading | Trade execution with order management |
+| finance | finance | Korean/US market rules, quant strategy, trading execution |
 | ontology | ontology | Ontology design, implementation, and review |
 | mobile | mobile | Mobile development patterns |
 

@@ -2,7 +2,7 @@
 
 > Unified agent and skill system for Claude Code
 
-**28 agents** · **69 core skills** (standard mode, +141 scientific domains in full mode) · **12 magic keywords** — all in one package.
+**28 agents** · **69 core skills** (standard mode, +141 scientific domains in full mode) · **17 magic keywords** — all in one package.
 
 ## 🚀 Installation
 
@@ -147,6 +147,25 @@ Which agents to use for each domain, organized by Think → Build → Check → 
 
 ## 📋 Commands
 
+### Quick Start
+
+| Category | Command | Description |
+|----------|---------|-------------|
+| **Domain** | `/sk-claudecode:finance` | Trading, market analysis, quant strategy |
+| | `/sk-claudecode:ontology` | Ontology design & implementation |
+| | `/sk-claudecode:mobile` | iOS / Android / Flutter |
+| | `/sk-claudecode:scientist` | Data analysis & research |
+| **Build** | `/sk-claudecode:executor` | Standard code implementation |
+| | `/sk-claudecode:designer` | UI/UX development |
+| | `/sk-claudecode:build-fix` | Build error resolution |
+| **Review** | `/sk-claudecode:code-review` | General code review (auto-detects language) |
+| | `/sk-claudecode:tdd` | Test-driven development |
+| **Mode** | `/sk-claudecode:ultrawork` | Max parallelism (shortcut: `ulw`) |
+| | `/sk-claudecode:ralph` | Persist until done |
+| **Utility** | `/sk-claudecode:help` | Full usage guide |
+| | `/sk-claudecode:plan` | Planning workflow |
+| | `/sk-claudecode:cancel` | Stop any active mode |
+
 ### Product Management
 
 | Command | Category | What it does |
@@ -159,19 +178,16 @@ Which agents to use for each domain, organized by Think → Build → Check → 
 ### Key Skills
 
 | Skill | Command | Purpose |
-|-------|---------|---------| 
+|-------|---------|---------|
 | Planning | `/sk-claudecode:plan` | High-density project planning |
 | TDD | `/sk-claudecode:tdd` | Test-first workflow |
 | Verification | `/sk-claudecode:ultraqa` | Build/test/lint verification loop |
 | Memory | `/sk-claudecode:learner` | Persistent cross-session learning |
-| Backend | `/sk-claudecode:code-review` | Backend code review patterns |
-| Frontend | `/sk-claudecode:build-fix` | Build error resolution |
-| Scientific | `/sk-claudecode:scientist` | 141 scientific domains |
-| Finance | `/sk-claudecode:finance` | KR/US market audit & development |
+| Finance | `/sk-claudecode:finance` | KR/US market rules, quant strategy, trading |
 | Mobile | `/sk-claudecode:mobile` | iOS / Android / Flutter |
 | Ontology | `/sk-claudecode:ontology` | Palantir-style ontology (design/build/review) |
+| Scientific | `/sk-claudecode:scientist` | 141 scientific domains |
 | Document | `@document-writer` | PDF, PPTX, XLSX, DOCX, CSV creation & analysis |
-| Humanizer | `/sk-claudecode:humanizer` | Remove AI writing patterns from text |
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: quant-strategy
+name: quant
 description: Quantitative trading strategy development and backtesting. Triggers on quant, strategy, or backtest tasks.
 ---
 

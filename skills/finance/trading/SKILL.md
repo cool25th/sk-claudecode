@@ -1,5 +1,5 @@
 ---
-name: trading-execution
+name: trading
 description: Trade execution and order management. Triggers on execute, order, or trade tasks.
 ---
 

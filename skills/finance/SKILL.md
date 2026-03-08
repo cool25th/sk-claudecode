@@ -1,12 +1,24 @@
 ---
 name: finance
-description: Finance domain guidance across market research, trading strategy, and quantitative workflow.
+description: Finance domain guidance covering Korean/US stock market regulations, quantitative strategy backtesting, and trade execution. Use when working with KOSPI, KOSDAQ, NYSE, NASDAQ, market rules, quant strategies, portfolio management, or order execution.
 ---
 
-# Korean Market Skill
+# Finance Skill
 
-## Purpose
-Reference for Korean market (KOSPI/KOSDAQ) regulations, trading hours, and rules.
+Comprehensive reference for financial market operations across Korean and US markets.
+
+## Sub-Skills
+
+| Skill | Trigger | Description |
+|-------|---------|-------------|
+| `finance/market-kr` | kospi, kosdaq, korean market | Korean market regulations and trading |
+| `finance/market-us` | nyse, nasdaq, us market, sec | US market regulations and trading |
+| `finance/quant` | quant, backtest, strategy | Quantitative strategy development |
+| `finance/trading` | execute, order, trade | Trade execution and order management |
+
+---
+
+# Korean Market (KOSPI/KOSDAQ)
 
 ## Trading Hours
 
@@ -37,23 +49,9 @@ Reference for Korean market (KOSPI/KOSDAQ) regulations, trading hours, and rules
 | 10,000-50,000 | 50 |
 | > 50,000 | 100+ |
 
-## Related Agent
-- `finance`
-
 ---
 
-## Related Agents
-
-- `finance` - Finance domain specialist (Opus)
-
-
-## Merged from `market-us`
-
-
-# US Market Skill
-
-## Purpose
-Reference for US market (NYSE/NASDAQ) regulations, trading hours, and SEC rules.
+# US Market (NYSE/NASDAQ)
 
 ## Trading Hours (Eastern Time)
 
@@ -82,22 +80,9 @@ Reference for US market (NYSE/NASDAQ) regulations, trading hours, and SEC rules.
 ### Wash Sale Rule
 - 30-day window for tax purposes
 
-## Related Agent
-- `finance`
-
 ---
 
-## Related Agents
-
-- `finance` - Finance domain specialist (Opus)
-
-
-## Merged from `quant`
-
-
-# Quant Strategy Skill
-
-## Purpose
+# Quant Strategy
 
 Develop and validate quantitative trading strategies with proper backtesting.
 
@@ -117,19 +102,15 @@ Develop and validate quantitative trading strategies with proper backtesting.
 ```python
 # Example using vectorbt
 import vectorbt as vbt
-import pandas as pd
 
-# Fetch data
 price = vbt.YFData.download('SPY', start='2020-01-01').get('Close')
 
-# Define signals
 fast_ma = vbt.MA.run(price, window=10)
 slow_ma = vbt.MA.run(price, window=50)
 
 entries = fast_ma.ma_crossed_above(slow_ma)
 exits = fast_ma.ma_crossed_below(slow_ma)
 
-# Run backtest
 portfolio = vbt.Portfolio.from_signals(price, entries, exits)
 print(portfolio.stats())
 ```
@@ -147,8 +128,7 @@ print(portfolio.stats())
 | Win Rate | > 50% |
 | Profit Factor | > 1.5 |
 
-## Best Practices
-
+### Best Practices
 - No look-ahead bias
 - Include transaction costs
 - Test multiple market regimes
@@ -156,29 +136,17 @@ print(portfolio.stats())
 
 ---
 
-## Related Agents
-
-- `finance` - Finance domain specialist (Opus)
-
-
-## Merged from `trading`
-
-
-# Trading Execution Skill
-
-## Purpose
+# Trading Execution
 
 Execute trades efficiently with minimal market impact and proper order management.
 
-## Workflow
-
-### 1. Pre-Trade Checks
+## Pre-Trade Checks
 - [ ] Market is open
 - [ ] Symbol is not halted
 - [ ] Position limits OK
 - [ ] Margin requirements met
 
-### 2. Order Sizing
+## Order Sizing
 ```python
 def calculate_position_size(
     capital: float,
@@ -191,7 +159,7 @@ def calculate_position_size(
     return min(position_value, capital * 0.1)  # Max 10% per position
 ```
 
-### 3. Execution Algorithms
+## Execution Algorithms
 
 | Algorithm | Use Case |
 |-----------|----------|
@@ -200,31 +168,6 @@ def calculate_position_size(
 | **TWAP** | Large orders, low urgency |
 | **VWAP** | Match benchmark |
 | **Iceberg** | Hide size |
-
-### 4. Order Submission
-```python
-async def submit_order(order: Order) -> OrderResult:
-    # Validate
-    validate_order(order)
-    
-    # Check market status
-    if not is_market_open():
-        raise MarketClosedError()
-    
-    # Submit
-    result = await broker.place_order(order)
-    
-    # Log
-    logger.info(f"Order {result.order_id}: {result.status}")
-    
-    return result
-```
-
-### 5. Post-Trade
-- Confirm fills
-- Update positions
-- Calculate slippage
-- Log for analysis
 
 ## Risk Limits
 
@@ -235,7 +178,6 @@ async def submit_order(order: Order) -> OrderResult:
 | Max slippage alert | 0.5% |
 
 ## Error Handling
-
 - Retry transient failures (3x)
 - Alert on repeated failures
 - Cancel on timeout
@@ -243,6 +185,6 @@ async def submit_order(order: Order) -> OrderResult:
 
 ---
 
-## Related Agents
+## Related Agent
 
 - `finance` - Finance domain specialist (Opus)

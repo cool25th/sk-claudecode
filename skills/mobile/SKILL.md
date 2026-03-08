@@ -71,5 +71,5 @@ class ViewModel @Inject constructor(
 
 ## Related Agents
 - `mobile-developer`
-- `mobile-developer-low`
-- `mobile-developer-high`
+- `mobile-developer`
+- `mobile-developer`

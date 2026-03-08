@@ -6,9 +6,9 @@ When stages analyze different data sources:
 
 ```
 // All fire simultaneously
-Task(subagent_type="sk-claudecode:scientist-low", model="haiku", prompt="[STAGE:1] Analyze src/api/...")
-Task(subagent_type="sk-claudecode:scientist-low", model="haiku", prompt="[STAGE:2] Analyze src/utils/...")
-Task(subagent_type="sk-claudecode:scientist-low", model="haiku", prompt="[STAGE:3] Analyze src/components/...")
+Task(subagent_type="sk-claudecode:scientist", model="haiku", prompt="[STAGE:1] Analyze src/api/...")
+Task(subagent_type="sk-claudecode:scientist", model="haiku", prompt="[STAGE:2] Analyze src/utils/...")
+Task(subagent_type="sk-claudecode:scientist", model="haiku", prompt="[STAGE:3] Analyze src/components/...")
 ```
 
 ### Hypothesis Battery (Parallel)
@@ -31,7 +31,7 @@ When verification depends on all findings:
 [stages complete]
 
 // Then sequential verification
-Task(subagent_type="sk-claudecode:scientist-high", model="opus", prompt="
+Task(subagent_type="sk-claudecode:scientist", model="opus", prompt="
 [CROSS_VALIDATION]
 Validate consistency across all findings:
 - Finding 1: ...

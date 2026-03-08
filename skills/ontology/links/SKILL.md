@@ -281,4 +281,4 @@ order → supplier (direct link for common access)
 
 ## Related Agents
 
-- `ontology-developer` - Ontology implementation (Sonnet)
+- `ontology` - Ontology specialist (Sonnet)

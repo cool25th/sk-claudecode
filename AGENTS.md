@@ -6,7 +6,7 @@
 
 - **Agents**
   - 28 prompt files in `agents/`
-  - 46 registry definitions in `src/agents/definitions.ts`
+  - 28 registry definitions in `src/agents/definitions.ts` (includes base + specialization variants)
   - Legacy names remain supported through prompt alias fallback (for migration compatibility)
 - **Skills**
   - 69 built-in skills loaded from `skills/*/SKILL.md` (standard install mode)
@@ -29,7 +29,7 @@ sk-claudecode/
 - Core analysis and execution agents: `architect`, `executor`, `planner`, `critic`, `researcher`, `designer`, `writer`, `vision`, `qa-tester`, `ultra-executor`
 - Domain specialists: `finance`, `mobile-developer`, `ontology`, `go-reviewer`, `python-reviewer`, `database-reviewer`
 - Review and quality: `code-reviewer`, `tdd-guide`, `security-reviewer`, `build-fixer`, `scientist`, `researcher`, `designer-reviewer`, `document-writer`, `e2e-runner`
-- Additional alias routes resolved at runtime: tiered variants (`-low`, `-medium`, `-high`) and consolidated role aliases (e.g., `finance-expert` -> `finance`)
+- Additional runtime fallback routes resolved at load time: tiered variants (`-low`, `-medium`, `-high`) and legacy role aliases (e.g., removed/rebased names fallback to active agent prompts when needed)
 
 ## Skill Summary (sample)
 
@@ -56,4 +56,4 @@ Domain: `finance`, `ontology`, `mobile`, `humanizer`, `documentation`
 - [claude-scientific-skills](https://github.com/K-Dense-AI/claude-scientific-skills)
 - [claude-mem](https://github.com/thedotmack/claude-mem)
 
-*Updated: 2026-02-23*
+*Updated: 2026-03-08*

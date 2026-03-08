@@ -138,27 +138,7 @@ export const qaTesterHighAgent: AgentConfig = {
   defaultModel: 'opus'
 };
 
-/**
- * Scientist-Low Agent - Quick Data Inspection (Haiku)
- */
-export const scientistLowAgent: AgentConfig = {
-  name: 'scientist-low',
-  description: 'Quick data inspection and simple statistics (Haiku). Use for fast, simple queries.',
-  prompt: loadAgentPrompt('scientist-low'),
-  model: 'haiku',
-  defaultModel: 'haiku'
-};
-
-/**
- * Scientist-High Agent - Complex Research (Opus)
- */
-export const scientistHighAgent: AgentConfig = {
-  name: 'scientist-high',
-  description: 'Research planner for experiment design, hypothesis formulation, and methodology planning (Opus). Use for deep analysis.',
-  prompt: loadAgentPrompt('scientist-high'),
-  model: 'opus',
-  defaultModel: 'opus'
-};
+// scientist-low and scientist-high removed — merged into scientist
 
 /**
  * Scientist-Reviewer Agent - Research Methodology Review (Opus)
@@ -182,16 +162,7 @@ export const designerReviewerAgent: AgentConfig = {
   defaultModel: 'opus'
 };
 
-/**
- * Ontology-Reviewer Agent - Ontology Validation (Opus)
- */
-export const ontologyReviewerAgent: AgentConfig = {
-  name: 'ontology-reviewer',
-  description: 'Ontology reviewer for schema validation, consistency, and best practice compliance (Opus).',
-  prompt: loadAgentPrompt('ontology-reviewer'),
-  model: 'opus',
-  defaultModel: 'opus'
-};
+// ontology-reviewer removed — merged into ontology
 
 // ============================================================
 // SPECIALIZED AGENTS (Security, Build, TDD, Code Review, Domain)
@@ -231,26 +202,17 @@ export const documentWriterAgent: AgentConfig = {
 };
 
 /**
- * Finance-Developer Agent - Trading Systems (Opus)
+ * Finance Agent - Unified finance specialist (Opus)
  */
-export const financeDeveloperAgent: AgentConfig = {
-  name: 'finance-developer',
-  description: 'Trading systems and financial infrastructure developer (Opus).',
-  prompt: loadAgentPrompt('finance-developer'),
+export const financeAgent: AgentConfig = {
+  name: 'finance',
+  description: 'Finance domain specialist covering strategy implementation, market logic, and review/auditing (Opus).',
+  prompt: loadAgentPrompt('finance'),
   model: 'opus',
   defaultModel: 'opus'
 };
 
-/**
- * Finance-Expert Agent - Finance Domain Audit (Opus)
- */
-export const financeExpertAgent: AgentConfig = {
-  name: 'finance-expert',
-  description: 'Finance domain expert for market analysis, risk, and audit (Opus).',
-  prompt: loadAgentPrompt('finance-expert'),
-  model: 'opus',
-  defaultModel: 'opus'
-};
+// finance-developer and finance-expert removed — merged into finance
 
 /**
  * Go-Reviewer Agent - Go Best Practices (Opus)
@@ -285,49 +247,20 @@ export const mobileDeveloperAgent: AgentConfig = {
   defaultModel: 'sonnet'
 };
 
-/**
- * Mobile-Developer-High Agent - Complex Mobile Architecture (Opus)
- */
-export const mobileDeveloperHighAgent: AgentConfig = {
-  name: 'mobile-developer-high',
-  description: 'Complex mobile architecture and cross-platform specialist (Opus).',
-  prompt: loadAgentPrompt('mobile-developer-high'),
-  model: 'opus',
-  defaultModel: 'opus'
-};
+// mobile-developer-high and mobile-developer-low removed — merged into mobile-developer
 
 /**
- * Mobile-Developer-Low Agent - Quick Mobile Fixes (Haiku)
+ * Ontology Agent - Unified ontology specialist (Sonnet)
  */
-export const mobileDeveloperLowAgent: AgentConfig = {
-  name: 'mobile-developer-low',
-  description: 'Quick mobile fixes and simple UI changes (Haiku).',
-  prompt: loadAgentPrompt('mobile-developer-low'),
-  model: 'haiku',
-  defaultModel: 'haiku'
-};
-
-/**
- * Ontology-Developer Agent - Ontology Implementation (Sonnet)
- */
-export const ontologyDeveloperAgent: AgentConfig = {
-  name: 'ontology-developer',
-  description: 'Ontology schema implementation and development specialist (Sonnet).',
-  prompt: loadAgentPrompt('ontology-developer'),
+export const ontologyAgent: AgentConfig = {
+  name: 'ontology',
+  description: 'Ontology specialist covering design, implementation, architecture and schema validation (Sonnet).',
+  prompt: loadAgentPrompt('ontology'),
   model: 'sonnet',
   defaultModel: 'sonnet'
 };
 
-/**
- * Ontology-Expert Agent - Ontology Architecture (Opus)
- */
-export const ontologyExpertAgent: AgentConfig = {
-  name: 'ontology-expert',
-  description: 'Ontology architecture and domain analysis expert (Opus).',
-  prompt: loadAgentPrompt('ontology-expert'),
-  model: 'opus',
-  defaultModel: 'opus'
-};
+// ontology-developer and ontology-expert removed — merged into ontology
 
 /**
  * Refactor-Cleaner Agent - Dead Code Removal (Opus)
@@ -502,11 +435,8 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
     'designer-low': designerLowAgent,
     'designer-high': designerHighAgent,
     'qa-tester-high': qaTesterHighAgent,
-    'scientist-low': scientistLowAgent,
-    'scientist-high': scientistHighAgent,
     'scientist-reviewer': scientistReviewerAgent,
     'designer-reviewer': designerReviewerAgent,
-    'ontology-reviewer': ontologyReviewerAgent,
     // Specialized agents (Security, Build, TDD, Code Review)
     'security-reviewer': securityReviewerAgent,
     'security-reviewer-low': securityReviewerLowAgent,
@@ -521,15 +451,11 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
     'database-reviewer': databaseReviewerAgent,
     'e2e-runner': e2eRunnerAgent,
     'document-writer': documentWriterAgent,
-    'finance-developer': financeDeveloperAgent,
-    'finance-expert': financeExpertAgent,
+    finance: financeAgent,
     'go-reviewer': goReviewerAgent,
     'python-reviewer': pythonReviewerAgent,
     'mobile-developer': mobileDeveloperAgent,
-    'mobile-developer-high': mobileDeveloperHighAgent,
-    'mobile-developer-low': mobileDeveloperLowAgent,
-    'ontology-developer': ontologyDeveloperAgent,
-    'ontology-expert': ontologyExpertAgent,
+    ontology: ontologyAgent,
     'refactor-cleaner': refactorCleanerAgent
   };
 

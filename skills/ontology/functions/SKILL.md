@@ -246,5 +246,5 @@ const customers = await ontology.objects.Customer
 
 ## Related Agents
 
-- `ontology-developer` - Ontology implementation (Sonnet)
-- `ontology-expert` - Ontology architecture (Opus)
+- `ontology` - Ontology specialist (Sonnet)
+- 

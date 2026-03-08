@@ -46,11 +46,8 @@ export {
   designerLowAgent,
   designerHighAgent,
   qaTesterHighAgent,
-  scientistLowAgent,
-  scientistHighAgent,
   scientistReviewerAgent,
-  designerReviewerAgent,
-  ontologyReviewerAgent
+  designerReviewerAgent
 } from './definitions.js';
 
 // Specialized agents (Security, Build, TDD, Code Review, Git)
@@ -71,15 +68,11 @@ export {
   databaseReviewerAgent,
   e2eRunnerAgent,
   documentWriterAgent,
-  financeDeveloperAgent,
-  financeExpertAgent,
+  financeAgent,
   goReviewerAgent,
   pythonReviewerAgent,
   mobileDeveloperAgent,
-  mobileDeveloperHighAgent,
-  mobileDeveloperLowAgent,
-  ontologyDeveloperAgent,
-  ontologyExpertAgent,
+  ontologyAgent,
   refactorCleanerAgent
 } from './definitions.js';
 

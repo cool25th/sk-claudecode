@@ -157,7 +157,7 @@ feature-name/
 ### Testing Requirements
 
 ```bash
-npm test -- --grep "features"
+npm run test:unit -- --grep "features"
 ```
 
 ## Dependencies

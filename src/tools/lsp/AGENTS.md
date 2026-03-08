@@ -98,7 +98,7 @@ LSP tests require language servers to be installed:
 npm i -g typescript-language-server typescript
 
 # Run tests
-npm test -- --grep "lsp"
+npm run test:unit -- --grep "lsp"
 ```
 
 ## Dependencies

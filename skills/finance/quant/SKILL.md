@@ -66,5 +66,4 @@ print(portfolio.stats())
 
 ## Related Agents
 
-- `finance-developer` - Finance development (Sonnet)
-- `finance-expert` - Financial analysis (Opus)
+- `finance` - Finance domain specialist (Opus)

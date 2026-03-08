@@ -2,7 +2,7 @@
 
 > Unified agent and skill system for Claude Code
 
-**37 agents** · **102 skills** · **141 scientific domains** · **12 magic keywords** — all in one package.
+**28 agents** · **69 core skills** (standard mode, +141 scientific domains in full mode) · **12 magic keywords** — all in one package.
 
 ## 🚀 Installation
 
@@ -46,7 +46,7 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 
 ---
 
-## 🤖 Agents (37)
+## 🤖 Agents (28)
 
 ### 🧠 Think — Plan before you build
 
@@ -55,9 +55,6 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | `architect` | Opus | System architecture, debugging strategy |
 | `planner` | Opus | Feature planning, requirements analysis |
 | `critic` | Opus | Review and challenge a work plan |
-| `scientist-high` | Opus | Research planning, experiment design |
-| `ontology-expert` | Opus | Ontology architecture & domain analysis |
-| `finance-expert` | Opus | Finance domain audit (KR/US markets) |
 
 ### ⚡ Build — Write and implement code
 
@@ -68,13 +65,10 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | `designer` | Sonnet | UI/UX development |
 | `build-fixer` | Sonnet | Fix build errors (TS, Go, etc.) |
 | `git-master` | Sonnet | Commits, rebasing, history management |
-| `scientist` | Sonnet | Data analysis, research |
-| `scientist-low` | Haiku | Quick data inspection |
-| `mobile-developer` | Sonnet | iOS / Android apps |
-| `mobile-developer-high` | Opus | Complex mobile architecture |
-| `mobile-developer-low` | Haiku | Quick mobile fixes |
-| `finance-developer` | Opus | Trading systems development |
-| `ontology-developer` | Sonnet | Ontology implementation |
+| `scientist` | Sonnet | Data analysis, research, experiment design |
+| `mobile-developer` | Sonnet | iOS / Android / Flutter apps |
+| `finance` | Opus | Trading systems, portfolio management, audit |
+| `ontology` | Sonnet | Ontology design, implementation, review |
 | `document-writer` | Sonnet | Document creation/editing (PDF, PPTX, XLSX, DOCX) |
 
 ### 🔍 Check — Review and test code
@@ -91,7 +85,6 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | `e2e-runner` | Opus | End-to-end browser testing |
 | `scientist-reviewer` | Opus | Research methodology & statistics validation |
 | `designer-reviewer` | Opus | UI/UX accessibility, consistency, responsiveness |
-| `ontology-reviewer` | Opus | Ontology schema validation & consistency |
 
 ### 📚 Help — Search and document
 
@@ -143,9 +136,9 @@ Which agents to use for each domain, organized by Think → Build → Check → 
 |--------|---------|---------|---------|--------|
 | **Code** | `architect` `planner` | `executor` `ultra-executor` | `/code-review` `/code-review --security` | `explore` `researcher` |
 | **Product** | `planner` + `/plan --spec` | `executor` | `critic` | `writer` + `stakeholder-comms` |
-| **Data** | `scientist-high` | `/scientist` `/scientist --query` | `/code-review` | `researcher` |
-| **Design** | `designer-high` | `designer` | `/code-review` | `/explore --vision` |
-| **Mobile** | `mobile-developer-high` | `mobile-developer` | `/code-review` | `researcher` |
+| **Data** | `scientist` | `/scientist` `/scientist --query` | `/code-review` | `researcher` |
+| **Design** | `designer` | `designer` | `/code-review` | `/explore --vision` |
+| **Mobile** | `mobile-developer` | `mobile-developer` | `/code-review` | `researcher` |
 | **Finance** | `/finance` (audit) | `/finance --build` | `/code-review` | `researcher` |
 | **Ontology** | `/ontology` (design) | `/ontology --build` | `/ontology --review` | `explore` |
 | **Document** | — | `document-writer` | — | `writer` + `humanizer` |
@@ -267,3 +260,10 @@ MIT License — Components retain their original licenses.
 ---
 
 **Made with ❤️ by merging the best of Claude Code ecosystems**
+
+## Testing Commands
+
+- `npm test` : run all tests once (`test:unit`)
+- `npm run test:unit -- --grep "module-name"` : run filtered tests
+- `npm run test:full` : lint + all tests (recommended release/checkpoint command)
+- `npm run test:ci` : CI-safe full check (`lint + test`)

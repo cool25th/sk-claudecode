@@ -250,6 +250,9 @@ function loadLazySkillsFolder(folderName: string): BuiltinSkill[] {
  * Use getBuiltinSkill('scientific/...') to load them on demand.
  */
 export function createBuiltinSkills(): BuiltinSkill[] {
+  if (!configLoaded) {
+    loadInstallModeFromConfig();
+  }
   if (cachedSkills === null) {
     cachedSkills = loadSkillsFromDirectory();
   }
@@ -287,6 +290,10 @@ export function getBuiltinSkill(name: string): BuiltinSkill | undefined {
  * Pass includeAll=true to include lazy-loaded skill names.
  */
 export function listBuiltinSkillNames(includeAll = false): string[] {
+  if (!configLoaded) {
+    loadInstallModeFromConfig();
+  }
+
   const names = createBuiltinSkills().map(s => s.name);
 
   if (includeAll || currentInstallMode === 'full') {

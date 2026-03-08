@@ -8,9 +8,9 @@ description: Ontology — design, implement, review, and learn ontology developm
 
 | Mode | Trigger | Agent | Phase |
 |------|---------|-------|-------|
-| **Design** | (default) or "design", "설계", "architecture" | `ontology-expert` (Opus) | 🧠 Think |
-| **Build** | `--build` or "implement", "구현", "build" | `ontology-developer` (Sonnet) | ⚡ Build |
-| **Review** | `--review` or "review", "검증", "validate" | `ontology-reviewer` (Opus) | 🔍 Check |
+| **Design** | (default) or "design", "설계", "architecture" | `ontology` (Opus) | 🧠 Think |
+| **Build** | `--build` or "implement", "구현", "build" | `ontology` (Sonnet) | ⚡ Build |
+| **Review** | `--review` or "review", "검증", "validate" | `ontology` (Opus) | 🔍 Check |
 | **Guide** | `--guide` or "guide", "가이드", "how to" | — | 📚 Help |
 
 Guide mode loads: `docs/Agents-ontology-explain.md`

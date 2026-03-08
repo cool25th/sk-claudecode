@@ -38,14 +38,13 @@ Reference for Korean market (KOSPI/KOSDAQ) regulations, trading hours, and rules
 | > 50,000 | 100+ |
 
 ## Related Agent
-- `finance-expert`
+- `finance`
 
 ---
 
 ## Related Agents
 
-- `finance-developer` - Finance development (Sonnet)
-- `finance-expert` - Financial analysis (Opus)
+- `finance` - Finance domain specialist (Opus)
 
 
 ## Merged from `market-us`
@@ -84,14 +83,13 @@ Reference for US market (NYSE/NASDAQ) regulations, trading hours, and SEC rules.
 - 30-day window for tax purposes
 
 ## Related Agent
-- `finance-expert`
+- `finance`
 
 ---
 
 ## Related Agents
 
-- `finance-developer` - Finance development (Sonnet)
-- `finance-expert` - Financial analysis (Opus)
+- `finance` - Finance domain specialist (Opus)
 
 
 ## Merged from `quant`
@@ -160,8 +158,7 @@ print(portfolio.stats())
 
 ## Related Agents
 
-- `finance-developer` - Finance development (Sonnet)
-- `finance-expert` - Financial analysis (Opus)
+- `finance` - Finance domain specialist (Opus)
 
 
 ## Merged from `trading`
@@ -248,5 +245,4 @@ async def submit_order(order: Order) -> OrderResult:
 
 ## Related Agents
 
-- `finance-developer` - Finance development (Sonnet)
-- `finance-expert` - Financial analysis (Opus)
+- `finance` - Finance domain specialist (Opus)

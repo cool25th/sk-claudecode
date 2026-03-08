@@ -28,9 +28,9 @@ Update version in all locations:
 
 ### 2. Run Tests
 ```bash
-npm run test:run
+npm run test:full
 ```
-All 231+ tests must pass before proceeding.
+All tests and lint checks must pass before proceeding.
 
 ### 3. Commit Version Bump
 ```bash

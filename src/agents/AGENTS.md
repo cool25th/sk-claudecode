@@ -5,7 +5,7 @@ Consolidated agent set for sk-claudecode.
 ## Current state
 
 - **28 agent prompt files** in `/agents`
-- **45 agent definitions** in `src/agents/definitions.ts`  
+- **28 agent definitions** in `src/agents/definitions.ts`  
   (legacy tier/alias names are supported through fallback prompt resolution in `loadAgentPrompt`)
 
 ## Prompt Files
@@ -34,8 +34,8 @@ python-reviewer.md
 qa-tester.md
 refactor-cleaner.md
 researcher.md
-scientist-reviewer.md
 scientist.md
+scientist-reviewer.md
 security-reviewer.md
 tdd-guide.md
 ultra-executor.md

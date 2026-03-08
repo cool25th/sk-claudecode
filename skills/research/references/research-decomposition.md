@@ -18,13 +18,13 @@ Fire independent stages in parallel via Task tool:
 
 ```
 // Stage 1 - Simple data gathering
-Task(subagent_type="sk-claudecode:scientist-low", model="haiku", prompt="[RESEARCH_STAGE:1] Investigate...")
+Task(subagent_type="sk-claudecode:scientist", model="haiku", prompt="[RESEARCH_STAGE:1] Investigate...")
 
 // Stage 2 - Standard analysis
 Task(subagent_type="sk-claudecode:scientist", model="sonnet", prompt="[RESEARCH_STAGE:2] Analyze...")
 
 // Stage 3 - Complex reasoning
-Task(subagent_type="sk-claudecode:scientist-high", model="opus", prompt="[RESEARCH_STAGE:3] Deep analysis of...")
+Task(subagent_type="sk-claudecode:scientist", model="opus", prompt="[RESEARCH_STAGE:3] Deep analysis of...")
 ```
 
 ### Smart Model Routing
@@ -33,9 +33,9 @@ Task(subagent_type="sk-claudecode:scientist-high", model="opus", prompt="[RESEAR
 
 | Task Complexity | Agent | Model | Use For |
 |-----------------|-------|-------|---------|
-| Data gathering | `scientist-low` | haiku | File enumeration, pattern counting, simple lookups |
+| Data gathering | `scientist` | haiku | File enumeration, pattern counting, simple lookups |
 | Standard analysis | `scientist` | sonnet | Code analysis, pattern detection, documentation review |
-| Complex reasoning | `scientist-high` | opus | Architecture analysis, cross-cutting concerns, hypothesis validation |
+| Complex reasoning | `scientist` | opus | Architecture analysis, cross-cutting concerns, hypothesis validation |
 
 ### Routing Decision Guide
 

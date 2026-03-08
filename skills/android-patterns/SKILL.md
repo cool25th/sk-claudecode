@@ -10,14 +10,14 @@ Modern Android development patterns with Kotlin and Jetpack Compose for building
 
 ## Related Agent
 - `mobile-developer`
-- `mobile-developer-high`
+- `mobile-developer`
 
 ---
 
 ## Related Agents
 
 - `mobile-developer` - Mobile development (Sonnet)
-- `mobile-developer-high` - Complex mobile arch (Opus)
+- `mobile-developer` - Complex mobile arch (Opus)
 
 ## Detailed References
 

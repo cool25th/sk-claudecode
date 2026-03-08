@@ -10,7 +10,7 @@ Modern Flutter development patterns with Dart for building beautiful cross-platf
 
 ## Related Agents
 - `mobile-developer`
-- `mobile-developer-high`
+- `mobile-developer`
 
 ## Related Skills
 - `ios-patterns` - Native iOS patterns for comparison

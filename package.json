@@ -36,8 +36,11 @@
         "dev": "tsc --watch",
         "start": "node dist/index.js",
         "setup": "node scripts/setup.mjs",
-        "test": "vitest",
+        "test": "npm run test:unit",
         "test:run": "vitest run",
+        "test:unit": "npm run test:run",
+        "test:full": "npm run lint && npm run test:run",
+        "test:ci": "npm run lint && npm run test:run",
         "lint": "eslint src",
         "prepare": "npm run build"
     },

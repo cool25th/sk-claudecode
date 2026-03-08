@@ -156,8 +156,8 @@ describe('Installer Constants', () => {
         const name = nameMatch[1];
         names.add(name);
       }
-      // Current agent set uses 37 unique agent names (expanded with domain-specific variants)
-      expect(names.size).toBe(37);
+      // Current agent set uses 28 unique agent names (consolidated from 37)
+      expect(names.size).toBe(28);
     });
 
     it('should have consistent model assignments', () => {

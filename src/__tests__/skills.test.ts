@@ -1,17 +1,19 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { createBuiltinSkills, getBuiltinSkill, listBuiltinSkillNames, clearSkillsCache } from '../features/builtin-skills/skills.js';
+import { createBuiltinSkills, getBuiltinSkill, listBuiltinSkillNames, clearSkillsCache, setInstallMode } from '../features/builtin-skills/skills.js';
+
+const STANDARD_SKILL_COUNT = 69;
 
 describe('Builtin Skills', () => {
   // Clear cache before each test to ensure fresh loads
   beforeEach(() => {
     clearSkillsCache();
+    setInstallMode('standard');
   });
 
   describe('createBuiltinSkills()', () => {
     it('should return correct number of skills (69)', () => {
       const skills = createBuiltinSkills();
-      // 69 skills after consolidation
-      expect(skills).toHaveLength(69);
+      expect(skills).toHaveLength(STANDARD_SKILL_COUNT);
     });
 
     it('should return an array of BuiltinSkill objects', () => {
@@ -22,9 +24,8 @@ describe('Builtin Skills', () => {
   });
 
   describe('Skill properties', () => {
-    const skills = createBuiltinSkills();
-
     it('should have required properties (name, description, template)', () => {
+      const skills = createBuiltinSkills();
       skills.forEach((skill) => {
         expect(skill).toHaveProperty('name');
         expect(skill).toHaveProperty('description');
@@ -33,6 +34,7 @@ describe('Builtin Skills', () => {
     });
 
     it('should have non-empty name for each skill', () => {
+      const skills = createBuiltinSkills();
       skills.forEach((skill) => {
         expect(skill.name).toBeTruthy();
         expect(typeof skill.name).toBe('string');
@@ -41,6 +43,7 @@ describe('Builtin Skills', () => {
     });
 
     it('should have non-empty description for each skill', () => {
+      const skills = createBuiltinSkills();
       // Some skills may have empty descriptions (cloud-security, project-guidelines-example, verification-loop)
       const skillsWithDescriptions = skills.filter((s) => s.description);
       const skillsWithoutDescriptions = skills.filter((s) => !s.description);
@@ -57,6 +60,7 @@ describe('Builtin Skills', () => {
     });
 
     it('should have non-empty template for each skill', () => {
+      const skills = createBuiltinSkills();
       skills.forEach((skill) => {
         expect(skill.template).toBeTruthy();
         expect(typeof skill.template).toBe('string');
@@ -101,7 +105,7 @@ describe('Builtin Skills', () => {
       const actualSkillNames = skills.map((s) => s.name);
       expect(actualSkillNames).toEqual(expect.arrayContaining(expectedCoreSkills));
       // Total skill count
-      expect(actualSkillNames.length).toBe(69);
+      expect(actualSkillNames.length).toBe(STANDARD_SKILL_COUNT);
     });
 
     it('should not have duplicate skill names', () => {
@@ -136,12 +140,51 @@ describe('Builtin Skills', () => {
       const skill = getBuiltinSkill('non-existent-skill');
       expect(skill).toBeUndefined();
     });
+
+    it('should resolve nested scientific skill on demand', () => {
+      const skill = getBuiltinSkill('scientific/alphafold-database');
+      expect(skill).toBeDefined();
+      expect(skill?.name).toBe('scientific/alphafold-database');
+    });
+  });
+
+  describe('Install mode behavior', () => {
+    it('should maintain base skill count across minimal/standard modes', () => {
+      setInstallMode('minimal');
+      clearSkillsCache();
+      const minimalSkills = createBuiltinSkills();
+      setInstallMode('standard');
+      clearSkillsCache();
+      const standardSkills = createBuiltinSkills();
+
+      expect(minimalSkills).toHaveLength(STANDARD_SKILL_COUNT);
+      expect(standardSkills).toHaveLength(STANDARD_SKILL_COUNT);
+      expect(minimalSkills.map(s => s.name)).toEqual(expect.arrayContaining(standardSkills.map(s => s.name)));
+    });
+
+    it('should include lazy-loaded scientific descriptor when requested', () => {
+      const baseNames = listBuiltinSkillNames();
+      expect(baseNames).not.toContain('scientific (lazy-loaded)');
+
+      const expandedNames = listBuiltinSkillNames(true);
+      expect(expandedNames).toContain('scientific (lazy-loaded)');
+    });
+
+    it('should load scientific subskills on demand in full mode', () => {
+      setInstallMode('full');
+      clearSkillsCache();
+
+      const fullNames = listBuiltinSkillNames();
+      expect(fullNames).toHaveLength(STANDARD_SKILL_COUNT);
+      expect(listBuiltinSkillNames(true)).toContain('scientific (lazy-loaded)');
+      expect(getBuiltinSkill('scientific/alphafold-database')?.name).toBe('scientific/alphafold-database');
+    });
   });
 
   describe('listBuiltinSkillNames()', () => {
     it('should return all skill names', () => {
       const names = listBuiltinSkillNames();
-      expect(names).toHaveLength(69);
+      expect(names).toHaveLength(STANDARD_SKILL_COUNT);
       // Core workflow skills (from sk-claudecode)
       expect(names).toContain('orchestrate');
       expect(names).toContain('plan');
@@ -164,15 +207,15 @@ describe('Builtin Skills', () => {
   });
 
   describe('Template strings', () => {
-    const skills = createBuiltinSkills();
-
     it('should have non-empty templates', () => {
+      const skills = createBuiltinSkills();
       skills.forEach((skill) => {
         expect(skill.template.trim().length).toBeGreaterThan(0);
       });
     });
 
     it('should have substantial template content (> 100 chars)', () => {
+      const skills = createBuiltinSkills();
       skills.forEach((skill) => {
         expect(skill.template.length).toBeGreaterThan(100);
       });

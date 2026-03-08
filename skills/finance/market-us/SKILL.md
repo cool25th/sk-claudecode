@@ -36,11 +36,10 @@ Reference for US market (NYSE/NASDAQ) regulations, trading hours, and SEC rules.
 - 30-day window for tax purposes
 
 ## Related Agent
-- `finance-expert`
+- `finance`
 
 ---
 
 ## Related Agents
 
-- `finance-developer` - Finance development (Sonnet)
-- `finance-expert` - Financial analysis (Opus)
+- `finance` - Finance domain specialist (Opus)

@@ -9,9 +9,37 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 describe('Agent Registry Validation', () => {
+  const aliasMappings: Array<[string, string]> = [
+    ['architect-low', 'architect'],
+    ['architect-medium', 'architect'],
+    ['executor-low', 'executor'],
+    ['researcher-low', 'researcher'],
+    ['designer-low', 'designer'],
+    ['designer-high', 'designer'],
+    ['explore-low', 'explore'],
+    ['explore-medium', 'explore'],
+    ['explore-high', 'explore'],
+    ['qa-tester-high', 'qa-tester'],
+    ['scientist-low', 'scientist'],
+    ['scientist-high', 'scientist'],
+    ['security-reviewer-low', 'security-reviewer'],
+    ['build-fixer-low', 'build-fixer'],
+    ['tdd-guide-low', 'tdd-guide'],
+    ['code-reviewer-low', 'code-reviewer'],
+    ['finance-expert', 'finance'],
+    ['finance-developer', 'finance'],
+    ['ontology-expert', 'ontology'],
+    ['ontology-developer', 'ontology'],
+    ['ontology-reviewer', 'ontology'],
+    ['mobile-developer-low', 'mobile-developer'],
+    ['mobile-developer-high', 'mobile-developer'],
+    ['deep-executor', 'ultra-executor']
+  ];
+
   test('agent count matches documentation', () => {
     const agents = getAgentDefinitions();
-    expect(Object.keys(agents).length).toBe(46);
+    // 28 prompt files + 11 tier/alias variants = 39 total definitions
+    expect(Object.keys(agents).length).toBe(39);
   });
 
   test('all agents have .md prompt files', () => {
@@ -19,6 +47,14 @@ describe('Agent Registry Validation', () => {
     for (const name of agents) {
       const prompt = loadAgentPrompt(name);
       expect(prompt, `Prompt unavailable for agent: ${name}`).not.toContain('Prompt unavailable');
+    }
+  });
+
+  test('agent aliases resolve to canonical prompt content', () => {
+    for (const [alias, canonical] of aliasMappings) {
+      const aliasPrompt = loadAgentPrompt(alias);
+      const canonicalPrompt = loadAgentPrompt(canonical);
+      expect(aliasPrompt, `${alias} should resolve to ${canonical} prompt`).toBe(canonicalPrompt);
     }
   });
 

@@ -142,10 +142,10 @@ The `lsp_diagnostics_directory` tool supports two strategies:
 
 ```bash
 # Test LSP tools (requires language server installed)
-npm test -- --grep "lsp"
+npm run test:unit -- --grep "lsp"
 
 # Test AST tools
-npm test -- --grep "ast"
+npm run test:unit -- --grep "ast"
 ```
 
 ### Common Patterns

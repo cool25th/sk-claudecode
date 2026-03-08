@@ -188,7 +188,7 @@ writeState('autopilot-state', state);
 
 ### Testing Requirements
 
-- Test specific hooks with `npm test -- --grep "hook-name"`
+- Test specific hooks with `npm run test:unit -- --grep "hook-name"`
 - Test execution modes end-to-end with skill invocation
 - Verify state persistence in `.skc/state/`
 - For security hooks, follow `templates/rules/security.md` checklist

@@ -474,9 +474,15 @@ export class McpBridge extends EventEmitter {
         },
       });
 
-      // Send the request
+      // Send the request with error handling for EPIPE
       const message = JSON.stringify(request) + '\n';
-      connection.process.stdin?.write(message);
+      connection.process.stdin?.write(message, (err) => {
+        if (err) {
+          connection.pendingRequests.delete(id);
+          clearTimeout(timer);
+          reject(err);
+        }
+      });
     });
   }
 
@@ -494,7 +500,9 @@ export class McpBridge extends EventEmitter {
     };
 
     const message = JSON.stringify(notification) + '\n';
-    connection.process.stdin?.write(message);
+    connection.process.stdin?.write(message, () => {
+      // Silently ignore write errors for notifications (fire-and-forget)
+    });
   }
 
   /**

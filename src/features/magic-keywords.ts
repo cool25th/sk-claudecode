@@ -549,6 +549,76 @@ COMMON ANTI-PATTERNS (AVOID):
 };
 
 /**
+ * Browser automation enhancement
+ * Routes browser/E2E tasks to e2e-runner agent with agent-browser skill
+ */
+const browserEnhancement: MagicKeyword = {
+  triggers: ['browser', 'e2e', 'end-to-end', 'playwright', 'scrape', 'crawl', 'screenshot', 'headless', '브라우저', '스크린샷', '스크래핑', '크롤링', 'E2E테스트'],
+  description: 'Browser automation mode — routes to e2e-runner agent with agent-browser skill',
+  action: (prompt: string) => {
+    const pattern = /\b(browser\s+automat\w*|e2e\s+test|end[\s-]to[\s-]end|playwright\s+test|scrape\s+data|crawl\s+site|take\s+screenshot|headless\s+browser|open\s+(a\s+)?website|fill\s+(out\s+)?(a\s+)?form|click\s+(a\s+)?button|login\s+to|navigate\s+to)|브라우저\s*(열|테스트|자동)|스크린샷|스크래핑|크롤링|E2E\s*테스트|웹\s*테스트/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}\n\n[browser-mode]\nBROWSER AUTOMATION PROTOCOL:\n\nPRIMARY TOOL: agent-browser CLI (preferred over raw Playwright)\n- Install: npm i -g agent-browser && agent-browser install\n- Pattern: open → snapshot -i → interact with @refs → verify\n\nFor simple interactions, use agent-browser directly.\nFor comprehensive E2E test suites, spawn e2e-runner agent:\n   Task(subagent_type="sk-claudecode:e2e-runner", model="opus", prompt="[test scenario]")\n\nThe agent-browser skill provides: snapshot-based element selection, session management,\nauthentication vault, visual debugging, and command chaining.`;
+  }
+};
+
+/**
+ * Deep Interview enhancement
+ * Socratic requirement extraction before coding
+ */
+const deepInterviewEnhancement: MagicKeyword = {
+  triggers: ['deep-interview', 'interview', 'clarify', 'requirements', 'what should I build', '인터뷰', '요구사항'],
+  description: 'Socratic requirement extraction — clarifies vague ideas before coding',
+  action: (prompt: string) => {
+    const pattern = /\b(deep[\s-]interview|clarify\s+requirements|what\s+should\s+I\s+build|help\s+me\s+think|unclear\s+requirements|vague\s+idea)|요구사항\s*(정리|추출|분석)|뭘\s*만들|인터뷰/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `[DEEP INTERVIEW MODE]\n\n${prompt}\n\nSOCRATIC REQUIREMENT EXTRACTION PROTOCOL:\n1. Ask clarifying questions ONE AT A TIME to expose hidden assumptions\n2. Challenge vague answers — quantify everything ("fast" → "under 100ms?")\n3. Score clarity across 5 dimensions (Problem, Users, Scope, Constraints, Success Criteria)\n4. Only hand off to planner when clarity ≥ 4.0/5\n5. Output: structured requirements document to .skc/interviews/{topic}.md\n6. NEVER write code during an interview — output is a document, not implementation`;
+  }
+};
+
+/**
+ * AI Slop Cleaner enhancement
+ * Detect and remove AI-generated code anti-patterns
+ */
+const aiSlopCleanerEnhancement: MagicKeyword = {
+  triggers: ['slop', 'clean-slop', 'ai-slop', 'over-engineered', 'simplify', '슬로프', '과잉'],
+  description: 'AI slop cleaner — removes AI-generated code anti-patterns',
+  action: (prompt: string) => {
+    const pattern = /\b(clean\s+slop|ai[\s-]slop|remove\s+ai\s+patterns|over[\s-]engineer|simplify\s+code)|슬로프\s*(제거|정리)|과잉\s*추상화|AI.*(정리|패턴)/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `[AI SLOP CLEANER MODE]\n\n${prompt}\n\nAI SLOP DETECTION & REMOVAL PROTOCOL:\n1. SCAN: Captain Obvious comments, useless try/catch, premature abstractions, verbose types\n2. RUN tests BEFORE cleanup\n3. Remove Critical slop first (always safe), then evaluate Moderate slop\n4. RUN tests AFTER cleanup\n5. Report: files analyzed, slop found, lines removed, code reduction %\nCRITICAL: No behavior changes. Logic must stay identical.`;
+  }
+};
+
+/**
+ * Tracer enhancement
+ * Runtime execution tracing and performance profiling
+ */
+const tracerEnhancement: MagicKeyword = {
+  triggers: ['trace', 'profile', 'bottleneck', 'race-condition', 'memory-leak', '추적', '프로파일', '병목'],
+  description: 'Runtime tracing mode — traces execution flow and profiles performance',
+  action: (prompt: string) => {
+    const pattern = /\b(trace\s+execut|profil\w+\s+(code|app|server|function)|find\s+bottleneck|race\s+condition|memory\s+leak|execution\s+flow)|실행\s*추적|프로파일|병목\s*(현상|분석)|메모리\s*누수/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}\n\n[TRACER MODE]\nRUNTIME TRACING PROTOCOL:\n1. OBSERVE first (read logs, map execution flow) — READ-ONLY\n2. Add minimal instrumentation\n3. Produce structured trace report: Timeline, Bottleneck, Root Cause, Recommended Fix\n4. QUANTIFY everything — use numbers\n5. Hand off to executor for implementation fixes\n\nDelegate to tracer agent: Task(subagent_type="sk-claudecode:tracer", model="opus", prompt="[trace scenario]")`;
+  }
+};
+
+/**
+ * Handoff enhancement
+ * Session context handoff for seamless continuation
+ */
+const handoffEnhancement: MagicKeyword = {
+  triggers: ['handoff', 'hand-off', 'session handoff', '핸드오프', '세션 이관', '인수인계'],
+  description: 'Session handoff — generates structured context document for continuation in new session',
+  action: (prompt: string) => {
+    const pattern = /\b(handoff|hand[\s-]?off|session\s+handoff|wrap\s+up\s+session|continue\s+later)\b|핸드오프|세션\s*이관|인수\s*인계/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}\n\n[HANDOFF MODE]\nSESSION HANDOFF PROTOCOL:\n1. Review conversation history — identify original objective\n2. Run \`git diff --name-only\` to list modified files\n3. Classify each work item: ✅ Completed, 🔄 In Progress, 📋 Remaining\n4. Generate handoff document at .skc/handoffs/{timestamp}-{topic}.md\n5. Be SPECIFIC — file paths, function names, exact next steps\n6. Include decisions made and rationale (most likely to be lost)\n7. End with copy-pasteable resume prompt\n\nUse the handoff skill for full template and protocol.`;
+  }
+};
+
+/**
  * Ecomode enhancement
  * Token-efficient Haiku-first routing
  */
@@ -602,6 +672,11 @@ export const builtInMagicKeywords: MagicKeyword[] = [
   reviewEnhancement,
   docsEnhancement,
   perfEnhancement,
+  browserEnhancement,
+  deepInterviewEnhancement,
+  aiSlopCleanerEnhancement,
+  tracerEnhancement,
+  handoffEnhancement,
   ecomodeEnhancement
 ];
 

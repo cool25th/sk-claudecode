@@ -38,8 +38,8 @@ describe('Agent Registry Validation', () => {
 
   test('agent count matches documentation', () => {
     const agents = getAgentDefinitions();
-    // 28 prompt files + 11 tier/alias variants = 39 total definitions
-    expect(Object.keys(agents).length).toBe(39);
+    // 29 prompt files + 11 tier/alias variants = 40 total definitions
+    expect(Object.keys(agents).length).toBe(40);
   });
 
   test('all agents have .md prompt files', () => {

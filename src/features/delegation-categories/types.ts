@@ -16,6 +16,7 @@ export type DelegationCategory =
   | 'artistry'
   | 'quick'
   | 'writing'
+  | 'browser-automation'
   | 'unspecified-low'
   | 'unspecified-high';
 

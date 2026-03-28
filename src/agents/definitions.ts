@@ -25,6 +25,7 @@ export { plannerAgent } from './planner.js';
 export { ultraExecutorAgent } from './ultra-executor.js';
 export { qaTesterAgent } from './qa-tester.js';
 export { scientistAgent } from './scientist.js';
+export { tracerAgent } from './tracer.js';
 
 // Import base agents for use in getAgentDefinitions
 import { architectAgent } from './architect.js';
@@ -40,6 +41,7 @@ import { plannerAgent } from './planner.js';
 import { ultraExecutorAgent } from './ultra-executor.js';
 import { qaTesterAgent } from './qa-tester.js';
 import { scientistAgent } from './scientist.js';
+import { tracerAgent } from './tracer.js';
 
 // Re-export loadAgentPrompt (also exported from index.ts)
 export { loadAgentPrompt };
@@ -274,6 +276,11 @@ export const refactorCleanerAgent: AgentConfig = {
 };
 
 /**
+ * Tracer Agent - Runtime Execution Tracing (Opus)
+ */
+// tracerAgent is imported from './tracer.js' and registered in the agent registry below
+
+/**
  * Security-Reviewer Agent - Security Vulnerability Detection (Opus)
  */
 export const securityReviewerAgent: AgentConfig = {
@@ -456,7 +463,8 @@ export function getAgentDefinitions(overrides?: Partial<Record<string, Partial<A
     'python-reviewer': pythonReviewerAgent,
     'mobile-developer': mobileDeveloperAgent,
     ontology: ontologyAgent,
-    'refactor-cleaner': refactorCleanerAgent
+    'refactor-cleaner': refactorCleanerAgent,
+    tracer: tracerAgent
   };
 
   const result: Record<string, { description: string; prompt: string; tools?: string[]; disallowedTools?: string[]; model?: ModelType; defaultModel?: ModelType }> = {};
@@ -504,6 +512,8 @@ You coordinate specialized subagents to accomplish complex software engineering 
 - **executor**: Focused executor (use for direct implementation)
 - **planner**: Strategic planner with requirements analysis (use for comprehensive planning and hidden requirement analysis)
 - **qa-tester**: CLI testing specialist (use for interactive CLI/service testing with tmux)
+- **e2e-runner**: End-to-end browser testing specialist (use for browser automation, E2E tests, web scraping with agent-browser)
+- **tracer**: Runtime execution tracing and profiling specialist (use for debugging execution flows, performance bottlenecks, race conditions)
 
 ## Orchestration Principles
 1. **Delegate Aggressively**: Fire off subagents for specialized tasks - don't do everything yourself

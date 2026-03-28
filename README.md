@@ -2,7 +2,7 @@
 
 > Unified agent and skill system for Claude Code
 
-**28 agents** · **69 core skills** (standard mode, +141 scientific domains in full mode) · **17 magic keywords** — all in one package.
+**29 agents** · **73 core skills** (+141 scientific domains in full mode) · **17 magic keywords** — all in one package.
 
 ## 🚀 Installation
 
@@ -20,17 +20,15 @@ git clone https://github.com/cool25th/sk-claudecode && cd sk-claudecode
 npm install && npm run build && npm run setup
 ```
 
-| Install Mode | Command | Size |
-|-------------|---------|------|
-| **Standard** | `/sk-claudecode:setup` | ~2MB |
-| **Minimal** | `/sk-claudecode:setup --minimal` | ~1MB |
-| **Full** | `/sk-claudecode:setup --full` | ~17MB |
+| Mode | Command | Size |
+|------|---------|------|
+| Standard | `/sk-claudecode:setup` | ~2MB |
+| Minimal | `/sk-claudecode:setup --minimal` | ~1MB |
+| Full | `/sk-claudecode:setup --full` | ~17MB |
 
 ---
 
 ## 💡 Core Concept: Think → Build → Check
-
-Every workflow follows the same cycle. Pick agents from each phase, or let an **orchestration mode** do it for you.
 
 ```
 🧠 Think          ⚡ Build          🔍 Check          📚 Help
@@ -46,9 +44,9 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 
 ---
 
-## 🤖 Agents (28)
+## 🤖 Agents (29)
 
-### 🧠 Think — Plan before you build
+### 🧠 Think
 
 | Agent | Model | When to use |
 |-------|-------|-------------|
@@ -56,7 +54,7 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | `planner` | Opus | Feature planning, requirements analysis |
 | `critic` | Opus | Review and challenge a work plan |
 
-### ⚡ Build — Write and implement code
+### ⚡ Build
 
 | Agent | Model | When to use |
 |-------|-------|-------------|
@@ -67,11 +65,11 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | `git-master` | Sonnet | Commits, rebasing, history management |
 | `scientist` | Sonnet | Data analysis, research, experiment design |
 | `mobile-developer` | Sonnet | iOS / Android / Flutter apps |
-| `finance` | Opus | Trading systems, portfolio management, audit |
+| `finance` | Opus | Trading systems, portfolio management |
 | `ontology` | Sonnet | Ontology design, implementation, review |
-| `document-writer` | Sonnet | Document creation/editing (PDF, PPTX, XLSX, DOCX) |
+| `document-writer` | Sonnet | Document creation (PDF, PPTX, XLSX, DOCX) |
 
-### 🔍 Check — Review and test code
+### 🔍 Check
 
 | Agent | Model | When to use |
 |-------|-------|-------------|
@@ -83,10 +81,11 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 | `qa-tester` | Sonnet | Interactive CLI testing (tmux) |
 | `tdd-guide` | Opus | Test-Driven Development |
 | `e2e-runner` | Opus | End-to-end browser testing |
-| `scientist-reviewer` | Opus | Research methodology & statistics validation |
-| `designer-reviewer` | Opus | UI/UX accessibility, consistency, responsiveness |
+| `tracer` | Opus | Runtime tracing, profiling, race conditions |
+| `scientist-reviewer` | Opus | Research methodology validation |
+| `designer-reviewer` | Opus | UI/UX accessibility, consistency |
 
-### 📚 Help — Search and document
+### 📚 Help
 
 | Agent | Model | When to use |
 |-------|-------|-------------|
@@ -100,148 +99,103 @@ Every workflow follows the same cycle. Pick agents from each phase, or let an **
 
 ## 🚀 Orchestration Modes
 
-Agents do one thing well. **Modes** chain them into complete Think → Build → Check workflows automatically.
-
-| Command | Covers | How it works |
-|---------|--------|-------------|
-| | **🔄 Full Cycle** | |
-| `/sk-claudecode:ralph` | 🧠→⚡→🔍 **+ retry** | Full cycle, **retries until all checks pass** |
-| `/sk-claudecode:autopilot` | 🧠→⚡→🔍 auto | Auto-selects best agents for each phase |
-| `/sk-claudecode:pipeline` | 🧠→⚡→🔍 chain | You define the agent chain explicitly |
-| `/sk-claudecode:ecomode` | 🧠→⚡→🔍 cheap | Same cycle, Haiku/Sonnet only (60%+ cheaper) |
-| | **⚡ Parallel** | |
-| `/sk-claudecode:ultrawork` | 🧠⚡🔍 **∥** | All phases in parallel across files |
-| `/sk-claudecode:ultrapilot` | ⚡🔍 **∥ partitioned** | Splits files by owner, parallel per partition |
-| `/sk-claudecode:swarm` | 🧠⚡🔍 **∥ N agents** | N coordinated agents share the cycle |
-| | **🔍 Check-Focused** | |
-| `/sk-claudecode:ultraqa` | ⚡→🔍 **loop** | Build → Check → **loops until all pass** |
-
-### How Modes Run the Cycle
+| Command | How it works |
+|---------|-------------|
+| **🔄 Full Cycle** | |
+| `ralph` | 🧠→⚡→🔍 + **retry until all pass** |
+| `autopilot` | 🧠→⚡→🔍 auto-selects best agents |
+| `pipeline` | 🧠→⚡→🔍 you define the agent chain |
+| `ecomode` | 🧠→⚡→🔍 Haiku/Sonnet only (60%+ cheaper) |
+| **⚡ Parallel** | |
+| `ultrawork` | All phases in parallel across files |
+| `ultrapilot` | Splits by file owner, parallel per partition |
+| `swarm` | N coordinated agents share the cycle |
+| **🔍 Check** | |
+| `ultraqa` | Build → Check → **loop until pass** |
 
 ```
 ralph:       @planner → @executor → @code-reviewer ── fail? → @build-fixer → retry
-ultrawork:   ┌─ @planner → @executor → @code-reviewer     (all 3 lanes
-             ├─ @planner → @executor → @security-reviewer   run in
-             └─ @designer → @designer → @designer-reviewer  parallel)
-pipeline:    @architect → @planner → @executor → @code-reviewer → @qa-tester
+ultrawork:   ┌─ @executor → @code-reviewer       (3 lanes
+             ├─ @executor → @security-reviewer     in parallel)
+             └─ @designer → @designer-reviewer
 ```
 
 ---
 
-## 🗂 Domain Matrix
+## 📋 Commands & Skills
 
-Which agents to use for each domain, organized by Think → Build → Check → Help:
-
-| Domain | 🧠 Think | ⚡ Build | 🔍 Check | 📚 Help |
-|--------|---------|---------|---------|--------|
-| **Code** | `architect` `planner` | `executor` `ultra-executor` | `/code-review` `/code-review --security` | `explore` `researcher` |
-| **Product** | `planner` + `/plan --spec` | `executor` | `critic` | `writer` + `stakeholder-comms` |
-| **Data** | `scientist` | `/scientist` `/scientist --query` | `/code-review` | `researcher` |
-| **Design** | `designer` | `designer` | `/code-review` | `/explore --vision` |
-| **Mobile** | `mobile-developer` | `mobile-developer` | `/code-review` | `researcher` |
-| **Finance** | `/finance` (audit) | `/finance --build` | `/code-review` | `researcher` |
-| **Ontology** | `/ontology` (design) | `/ontology --build` | `/ontology --review` | `explore` |
-| **Document** | — | `document-writer` | — | `writer` + `humanizer` |
-
----
-
-## 📋 Commands
-
-### Quick Start
-
-| Category | Command | Description |
-|----------|---------|-------------|
-| **Domain** | `/sk-claudecode:finance` | Trading, market analysis, quant strategy |
-| | `/sk-claudecode:ontology` | Ontology design & implementation |
-| | `/sk-claudecode:mobile` | iOS / Android / Flutter |
-| | `/sk-claudecode:scientist` | Data analysis & research |
-| **Build** | `/sk-claudecode:executor` | Standard code implementation |
-| | `/sk-claudecode:designer` | UI/UX development |
-| | `/sk-claudecode:build-fix` | Build error resolution |
-| **Review** | `/sk-claudecode:code-review` | General code review (auto-detects language) |
-| | `/sk-claudecode:tdd` | Test-driven development |
-| **Mode** | `/sk-claudecode:ultrawork` | Max parallelism (shortcut: `ulw`) |
-| | `/sk-claudecode:ralph` | Persist until done |
-| **Utility** | `/sk-claudecode:help` | Full usage guide |
-| | `/sk-claudecode:plan` | Planning workflow |
-| | `/sk-claudecode:cancel` | Stop any active mode |
-
-### Product Management
-
-| Command | Category | What it does |
-|---------|----------|--------------|
-| `/plan --spec` | 🧠 Think | Structured PRD with user stories & acceptance criteria |
-| `/roadmap` | 🧠 Think | Roadmap planning with RICE/ICE/MoSCoW prioritization |
-| `/scientist --query` | ⚡ Build | Optimized SQL query generation |
-| `/scientist --viz` | ⚡ Build | Data visualization with chart type selection |
-
-### Key Skills
-
-| Skill | Command | Purpose |
-|-------|---------|---------|
-| Planning | `/sk-claudecode:plan` | High-density project planning |
-| TDD | `/sk-claudecode:tdd` | Test-first workflow |
-| Verification | `/sk-claudecode:ultraqa` | Build/test/lint verification loop |
-| Memory | `/sk-claudecode:learner` | Persistent cross-session learning |
-| Finance | `/sk-claudecode:finance` | KR/US market rules, quant strategy, trading |
-| Mobile | `/sk-claudecode:mobile` | iOS / Android / Flutter |
-| Ontology | `/sk-claudecode:ontology` | Palantir-style ontology (design/build/review) |
-| Scientific | `/sk-claudecode:scientist` | 141 scientific domains |
-| Document | `@document-writer` | PDF, PPTX, XLSX, DOCX, CSV creation & analysis |
+| Command | Purpose |
+|---------|---------|
+| `/sk-claudecode:ralph` | Full cycle, retry until done |
+| `/sk-claudecode:ultrawork` | Max parallelism (`ulw`) |
+| `/sk-claudecode:plan` | Project planning with spec |
+| `/sk-claudecode:code-review` | Code review (auto-detects language) |
+| `/sk-claudecode:tdd` | Test-driven development |
+| `/sk-claudecode:ultraqa` | Build/test/lint verification loop |
+| `/sk-claudecode:deep-interview` | Socratic requirement extraction |
+| `/sk-claudecode:ai-slop-cleaner` | Remove AI-generated anti-patterns |
+| `/sk-claudecode:handoff` | Session handoff for continuation |
+| `/sk-claudecode:learner` | Persistent cross-session learning |
+| `/sk-claudecode:finance` | KR/US market, quant strategy |
+| `/sk-claudecode:mobile` | iOS / Android / Flutter |
+| `/sk-claudecode:ontology` | Palantir-style ontology |
+| `/sk-claudecode:scientist` | 141 scientific domains |
+| `/sk-claudecode:cancel` | Stop any active mode |
 
 ---
 
 ## 🪄 Magic Keywords
 
-Type these anywhere in your prompt — no slash command needed. All keywords support Korean triggers (한국어 지원).
+Type anywhere in your prompt — no slash command needed. 한국어 지원.
 
 | Keyword | Triggers | Effect |
 |---------|----------|--------|
-| **ultrawork** | `ultrawork` `ulw` `uw` | Maximum performance, parallel agent orchestration |
-| **search** | `search` `find` `grep` `검색` `찾아` | Exhaustive parallel codebase search |
-| **analyze** | `analyze` `debug` `audit` `분석` `디버그` | Deep analysis with context gathering |
-| **ultrathink** | `ultrathink` `think` `reason` | Extended reasoning, consider all edge cases |
-| **refactor** | `refactor` `cleanup` `리팩터` `정리` | Safe refactoring with plan-first gate + review |
-| **tdd** | `tdd` `write test` `테스트 작성` | RED→GREEN→REFACTOR cycle enforced |
-| **security** | `security` `owasp` `xss` `보안` | OWASP Top 10 checklist + security-reviewer |
-| **plan** | `plan` `spec` `blueprint` `기획` | Spec-first — no code until plan approved |
-| **review** | `code review` `cr` `코드 리뷰` | Structured code review with checklist |
-| **docs** | `document` `jsdoc` `readme` `문서화` | Documentation mode with writer agent |
-| **perf** | `optimize` `slow` `bottleneck` `성능` | Measure-first optimization protocol |
-| **ecomode** | `ecomode` `cheap` `절약` | Haiku-first routing, minimize token usage |
+| **ultrawork** | `ultrawork` `ulw` `uw` | Parallel agent orchestration |
+| **search** | `search` `find` `grep` `검색` | Exhaustive codebase search |
+| **analyze** | `analyze` `debug` `audit` `분석` | Deep analysis with context |
+| **ultrathink** | `ultrathink` `think` `reason` | Extended reasoning |
+| **refactor** | `refactor` `cleanup` `리팩터` | Plan-first safe refactoring |
+| **tdd** | `tdd` `write test` `테스트 작성` | RED→GREEN→REFACTOR cycle |
+| **security** | `security` `owasp` `보안` | OWASP Top 10 checklist |
+| **plan** | `plan` `spec` `blueprint` `기획` | Spec-first, no code until approved |
+| **review** | `code review` `cr` `코드 리뷰` | Structured code review |
+| **docs** | `document` `readme` `문서화` | Documentation mode |
+| **perf** | `optimize` `slow` `성능` | Measure-first optimization |
+| **browser** | `browser` `e2e` `브라우저` | Browser automation |
+| **deep-interview** | `interview` `clarify` `인터뷰` | Requirement extraction |
+| **ai-slop** | `slop` `over-engineered` `슬로프` | Remove AI code patterns |
+| **tracer** | `trace` `profile` `추적` | Runtime tracing & profiling |
+| **handoff** | `handoff` `인수인계` `세션 이관` | Session context handoff |
+| **ecomode** | `ecomode` `cheap` `절약` | Haiku-first, minimize tokens |
 
 ---
 
 ## 💻 Usage Examples
 
 ```bash
-# 🔄 Full Cycle — "just make it work"
+# Full Cycle — retry until done
 /sk-claudecode:ralph implement user profile page with avatar upload
 
-# ⚡ Parallel — maximum speed across files
+# Parallel — maximum speed
 /sk-claudecode:ultrawork refactor authentication to use OAuth2
 
-# 🔗 Pipeline — explicit agent chain
-/sk-claudecode:pipeline architect → planner → executor → code-reviewer
-
-# 💰 Eco — save tokens (60%+ cheaper)
+# Save tokens (60%+ cheaper)
 /sk-claudecode:ecomode fix all lint errors in src/
 
-# 📋 Product — PRD + roadmap
-/sk-claudecode:plan --spec Design the payment flow
-/sk-claudecode:roadmap Q2 feature prioritization
+# Clarify before coding
+/sk-claudecode:deep-interview "I want to build a task management app"
 
-# 🔬 Data — query + visualize
-/sk-claudecode:scientist --query Monthly churn by cohort
-/sk-claudecode:scientist --viz Revenue trends by region
+# Remove AI slop
+clean slop in src/services/
 
-# 🧬 Domain workflows
-@planner "Design authentication with JWT and OAuth2"
-@executor "Implement the auth middleware from the plan"
-@code-reviewer "Review all changes in src/auth/"
+# Runtime profiling
+trace execution of the login flow to find the bottleneck
+
+# 📦 Session Handoff — preserve context for next session
+handoff this session
 ```
 
-> 💡 **Tip:** Use `/sk-claudecode:ralph` to automate the entire Think → Build → Check cycle — it keeps iterating until everything passes.
+> 💡 **Tip:** `ralph` automates Think → Build → Check and keeps iterating until everything passes.
 
 ---
 
@@ -261,25 +215,21 @@ Type these anywhere in your prompt — no slash command needed. All keywords sup
 
 ## 🙏 Inspired By
 
-| Project | Contribution |
-|---------|-------------|
-| [oh-my-claudecode](https://github.com/code-yeongyu/oh-my-claudecode) | HUD, Model Routing, Swarm |
-| [superpowers](https://github.com/obra/superpowers) | Workflow skills, execution modes |
-| [claude-scientific-skills](https://github.com/K-Dense-AI/claude-scientific-skills) | 141 scientific domains |
-| [claude-mem](https://github.com/thedotmack/claude-mem) | Persistent memory system |
-| [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode) | Sisyphus prompt patterns |
+[oh-my-claudecode](https://github.com/code-yeongyu/oh-my-claudecode) · [superpowers](https://github.com/obra/superpowers) · [claude-scientific-skills](https://github.com/K-Dense-AI/claude-scientific-skills) · [claude-mem](https://github.com/thedotmack/claude-mem) · [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)
 
 ## 📜 License
 
-MIT License — Components retain their original licenses.
+MIT — Components retain their original licenses.
 
 ---
 
 **Made with ❤️ by merging the best of Claude Code ecosystems**
 
-## Testing Commands
+## Testing
 
-- `npm test` : run all tests once (`test:unit`)
-- `npm run test:unit -- --grep "module-name"` : run filtered tests
-- `npm run test:full` : lint + all tests (recommended release/checkpoint command)
-- `npm run test:ci` : CI-safe full check (`lint + test`)
+```bash
+npm test                                    # run all tests
+npm run test:unit -- --grep "module-name"   # filtered tests
+npm run test:full                           # lint + all tests
+npm run test:ci                             # CI-safe full check
+```

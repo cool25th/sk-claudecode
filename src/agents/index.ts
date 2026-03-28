@@ -35,6 +35,7 @@ export { criticAgent, CRITIC_PROMPT_METADATA } from './critic.js';
 export { plannerAgent, PLANNER_PROMPT_METADATA } from './planner.js';
 export { qaTesterAgent, QA_TESTER_PROMPT_METADATA } from './qa-tester.js';
 export { scientistAgent, SCIENTIST_PROMPT_METADATA } from './scientist.js';
+export { tracerAgent, TRACER_PROMPT_METADATA } from './tracer.js';
 export { ultraExecutorAgent, ULTRA_EXECUTOR_PROMPT_METADATA } from './ultra-executor.js';
 
 // Tiered agent variants (prompts loaded dynamically from /agents/*.md)

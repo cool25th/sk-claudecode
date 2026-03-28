@@ -67,6 +67,13 @@ export const CATEGORY_CONFIGS: Record<DelegationCategory, CategoryConfig> = {
     description: 'Documentation, technical writing, content creation',
     promptAppend: 'Focus on clarity, completeness, and proper structure. Use appropriate technical terminology while remaining accessible.',
   },
+  'browser-automation': {
+    tier: 'HIGH',
+    temperature: 0.4,
+    thinkingBudget: 'high',
+    description: 'Browser automation, E2E testing, web scraping, and interactive web tasks',
+    promptAppend: 'Use agent-browser CLI for browser automation (preferred over raw Playwright). Follow snapshot→ref→interact pattern. Delegate to e2e-runner agent for comprehensive E2E test suites.',
+  },
   'unspecified-low': {
     tier: 'LOW',
     temperature: 0.3,
@@ -124,6 +131,11 @@ const CATEGORY_KEYWORDS: Record<DelegationCategory, string[]> = {
   'writing': [
     'document', 'readme', 'comment', 'explain', 'describe',
     'write', 'draft', 'article', 'guide', 'tutorial', 'docs',
+  ],
+  'browser-automation': [
+    'browser', 'e2e', 'end-to-end', 'selenium', 'playwright', 'puppeteer',
+    'screenshot', 'scrape', 'crawl', 'headless', 'web test', 'click button',
+    'fill form', 'login to', 'open website', 'navigate to', 'agent-browser',
   ],
   'unspecified-low': [],
   'unspecified-high': [],
@@ -190,6 +202,7 @@ export function detectCategoryFromPrompt(taskPrompt: string): DelegationCategory
     'artistry': 0,
     'quick': 0,
     'writing': 0,
+    'browser-automation': 0,
     'unspecified-low': 0,
     'unspecified-high': 0,
   };

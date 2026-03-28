@@ -156,8 +156,8 @@ describe('Installer Constants', () => {
         const name = nameMatch[1];
         names.add(name);
       }
-      // Current agent set uses 28 unique agent names (consolidated from 37)
-      expect(names.size).toBe(28);
+      // Current agent set uses 29 unique agent names (consolidated from 37)
+      expect(names.size).toBe(29);
     });
 
     it('should have consistent model assignments', () => {
@@ -189,6 +189,7 @@ describe('Installer Constants', () => {
         'scientist-reviewer.md': 'opus',
         'security-reviewer.md': 'opus',
         'tdd-guide.md': 'opus',
+        'tracer.md': 'opus',
         'ultra-executor.md': 'opus',
       };
 

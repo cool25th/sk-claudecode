@@ -14,12 +14,13 @@ Pick the lightest approach that works:
 ```
 1. Public API exists?      → Use API directly (fastest, most reliable)
 2. Static HTML?            → httpx + selectolax/BeautifulSoup
-3. JS-rendered SPA?        → Playwright (async)
+3. JS-rendered SPA?        → agent-browser CLI (AI-optimized) or Playwright (async)
 4. Hidden API in Network?  → Reverse engineer the XHR/fetch calls
 ```
 
 > **Rule**: Always prefer API > Static > Reverse-engineered API > Dynamic browser.
 > Browser automation is the last resort — it's 10-100× slower and more fragile.
+> For browser-heavy tasks, use the `agent-browser` skill which provides snapshot-based element selection, session management, and AI-optimized interaction patterns.
 
 ## Quick Start Patterns
 

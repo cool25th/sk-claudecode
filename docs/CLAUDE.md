@@ -81,6 +81,7 @@ Use `/sk-claudecode:<command>` to invoke any agent or workflow:
 | `/sk-claudecode:code-review` | General code review (auto-detects language) |
 | `/sk-claudecode:tdd` | Test-driven development |
 | `/sk-claudecode:qa-tester` | Interactive CLI testing |
+| `/sk-claudecode:e2e-runner` | Browser automation & E2E testing (agent-browser) |
 
 ### Execution Modes
 | Command | Shortcut | Description |
@@ -122,6 +123,7 @@ Skills provide reusable workflows activated by keywords or agent context.
 | finance | finance | Korean/US market rules, quant strategy, trading execution |
 | ontology | ontology | Ontology design, implementation, and review |
 | mobile | mobile | Mobile development patterns |
+| agent-browser | browser, e2e, scrape, screenshot | Browser automation CLI for AI agents |
 
 ## Cancellation
 

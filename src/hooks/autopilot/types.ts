@@ -150,6 +150,9 @@ export interface AutopilotState {
   qa: AutopilotQA;
   validation: AutopilotValidation;
 
+  /** Per-phase iteration counts to detect stuck phases */
+  phase_iterations?: Record<string, number>;
+
   /** Metrics and timestamps */
   started_at: string;
   completed_at: string | null;

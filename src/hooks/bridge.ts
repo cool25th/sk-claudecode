@@ -573,6 +573,38 @@ function processPreToolUse(input: HookInput): HookOutput {
     }
   }
 
+  // Proactive TODO warning: When agent uses TaskUpdate (completing items) or
+  // Write/Edit tools in an active persistent mode, remind about remaining tasks.
+  // This "soft nudge" approach reduces reliance on costly Stop-hook enforcement.
+  if (
+    (input.toolName === "TaskUpdate" || input.toolName === "TodoWrite") &&
+    input.sessionId
+  ) {
+    const ultraState = readUltraworkState(directory);
+    const isInPersistentMode =
+      (ultraState?.active && ultraState.session_id === input.sessionId);
+
+    if (isInPersistentMode && input.sessionId) {
+      // checkIncompleteTasks is synchronous (reads files directly)
+      // Already imported at top of file from './todo-continuation/index.js'
+      const { checkIncompleteTasks } = require("./todo-continuation/index.js");
+      try {
+        const taskResult = checkIncompleteTasks(input.sessionId);
+        if (taskResult.count > 1) {
+          // More than 1 because the current one is being completed
+          const reminder = `[PRE-COMPLETION REMINDER] ${taskResult.count - 1} tasks still pending after this one. Continue working on the next task.`;
+          const baseMessage = enforcementResult.message || "";
+          const combined = baseMessage
+            ? `${baseMessage}\n\n${reminder}`
+            : reminder;
+          return { continue: true, message: combined };
+        }
+      } catch {
+        // Non-critical: don't let this break the main flow
+      }
+    }
+  }
+
   // Inject agent dashboard for Task tool calls (debugging parallel agents)
   if (input.toolName === "Task") {
     const dashboard = getAgentDashboard(directory);

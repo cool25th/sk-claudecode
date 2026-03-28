@@ -135,6 +135,9 @@ function getNextPhase(current: AutopilotPhase): AutopilotPhase | null {
  * Check autopilot state and determine if it should continue
  * This is the main enforcement function called by persistent-mode hook
  */
+/** Max iterations within a single phase before declaring it stuck */
+const MAX_PHASE_ITERATIONS = 15;
+
 export async function checkAutopilot(
   sessionId?: string,
   directory?: string
@@ -178,10 +181,30 @@ export async function checkAutopilot(
     };
   }
 
+  // Per-phase iteration tracking: detect stuck phases
+  if (!state.phase_iterations) {
+    state.phase_iterations = {};
+  }
+  const phaseCount = (state.phase_iterations[state.phase] ?? 0) + 1;
+  state.phase_iterations[state.phase] = phaseCount;
+
+  if (phaseCount > MAX_PHASE_ITERATIONS) {
+    transitionPhase(workingDir, 'failed');
+    return {
+      shouldBlock: false,
+      message: `[AUTOPILOT STUCK] Phase "${state.phase}" repeated ${MAX_PHASE_ITERATIONS} times without completion signal. ` +
+               `The phase signal may be lost due to transcript compaction. Consider restarting autopilot.`,
+      phase: 'failed'
+    };
+  }
+
   // Check for phase completion signal
   const expectedSignal = getExpectedSignalForPhase(state.phase);
   if (expectedSignal && sessionId && detectSignal(sessionId, expectedSignal)) {
-    // Phase complete - transition to next phase
+    // Phase complete - reset phase iteration count and transition
+    state.phase_iterations[state.phase] = 0;
+    writeAutopilotState(workingDir, state);
+
     const nextPhase = getNextPhase(state.phase);
     if (nextPhase) {
       // Handle special transitions
@@ -214,6 +237,9 @@ export async function checkAutopilot(
       }
     }
   }
+
+  // Save updated phase iteration count
+  writeAutopilotState(workingDir, state);
 
   // No signal detected - continue current phase
   return generateContinuationPrompt(state, workingDir);

@@ -36,4 +36,5 @@ This removes all state files:
 - `.skc/state/subagent-tracker.lock`
 - `.skc/state/rate-limit-daemon.pid`
 - `.skc/state/rate-limit-daemon.log`
+- `.skc/state/budget-guard-state.json`
 - `.skc/state/checkpoints/` (directory)

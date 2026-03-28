@@ -68,9 +68,9 @@ export function createContinuationHook(): HookDefinition {
 
 /**
  * System prompt addition for continuation enforcement
- * ENHANCED: Much stronger persistence language from oh-my-opencode patterns
+ * Full version (~1200 tokens) for first injection
  */
-export const continuationSystemPromptAddition = `
+const FULL_CONTINUATION_PROMPT = `
 ## CONTINUATION ENFORCEMENT - THE BOULDER NEVER STOPS
 
 ### YOU ARE BOUND TO YOUR TODO LIST
@@ -114,14 +114,6 @@ You may ONLY stop when:
 2. **User Override**: User explicitly says "stop", "cancel", or "that's enough"
 3. **Clean Exit**: You run \`/sk-claudecode:cancel\` to properly exit the active mode and clean up state files
 
-### ANTI-STOPPING MECHANISMS
-
-The system monitors your behavior:
-- Premature conclusion claims are detected and rejected
-- Incomplete task lists trigger continuation reminders
-- Vague completion statements ("I think I'm done") are flagged
-- Only concrete verification passes the completion gate
-
 ### THE SISYPHEAN OATH
 
 "I will not rest until my work is done.
@@ -131,6 +123,43 @@ The boulder stops at the summit, or not at all."
 
 ${getBackgroundTaskGuidance(DEFAULT_MAX_BACKGROUND_TASKS)}
 `;
+
+/**
+ * Compact version (~200 tokens) for repeated injections to save tokens
+ */
+const COMPACT_CONTINUATION_PROMPT = `
+## CONTINUATION ENFORCED
+
+**DO NOT STOP.** Incomplete tasks remain.
+1. Check todo list → work on next pending item
+2. Verify each task before marking complete
+3. Only stop when 100% complete or user says "stop"
+4. Exit cleanly via \`/sk-claudecode:cancel\`
+
+${getBackgroundTaskGuidance(DEFAULT_MAX_BACKGROUND_TASKS)}
+`;
+
+/** Track whether full prompt has been shown per session */
+const fullPromptShown = new Set<string>();
+
+/**
+ * Get appropriately sized continuation prompt.
+ * First call per session returns the full ~1200 token version.
+ * Subsequent calls return the compact ~200 token version.
+ */
+export function getContinuationPrompt(sessionId?: string): string {
+  const key = sessionId || 'default';
+  if (fullPromptShown.has(key)) {
+    return COMPACT_CONTINUATION_PROMPT;
+  }
+  fullPromptShown.add(key);
+  return FULL_CONTINUATION_PROMPT;
+}
+
+/**
+ * Legacy export for backward compatibility — always returns full prompt
+ */
+export const continuationSystemPromptAddition = FULL_CONTINUATION_PROMPT;
 
 /**
  * Check prompt for signals that all work is done

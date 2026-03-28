@@ -495,7 +495,14 @@ export function formatLearningsForContext(directory: string): string {
 }
 
 /**
+ * Maximum characters for progress context injection (~2000 tokens)
+ * Prevents unbounded context growth across many Ralph iterations
+ */
+const MAX_PROGRESS_CONTEXT_CHARS = 8000;
+
+/**
  * Get full context injection for ralph
+ * Applies size limit to prevent context bloat across iterations
  */
 export function getProgressContext(directory: string): string {
   const patterns = formatPatternsForContext(directory);
@@ -506,5 +513,21 @@ export function getProgressContext(directory: string): string {
     return '';
   }
 
-  return [patterns, learnings, recent].filter(Boolean).join('\n');
+  let combined = [patterns, learnings, recent].filter(Boolean).join('\n');
+
+  // Enforce size limit - prioritize patterns > learnings > recent progress
+  if (combined.length > MAX_PROGRESS_CONTEXT_CHARS) {
+    // Try with just patterns + learnings
+    combined = [patterns, learnings].filter(Boolean).join('\n');
+    if (combined.length > MAX_PROGRESS_CONTEXT_CHARS) {
+      // Just patterns
+      combined = patterns || learnings || '';
+    }
+    // Hard truncate if still too long
+    if (combined.length > MAX_PROGRESS_CONTEXT_CHARS) {
+      combined = combined.slice(0, MAX_PROGRESS_CONTEXT_CHARS) + '\n...(truncated for context efficiency)';
+    }
+  }
+
+  return combined;
 }

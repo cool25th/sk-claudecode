@@ -22,6 +22,8 @@ export interface UltraworkState {
   project_path?: string;
   /** Number of times the mode has been reinforced (for metrics) */
   reinforcement_count: number;
+  /** Maximum reinforcements before auto-deactivation (prevents infinite loops) */
+  max_reinforcements?: number;
   /** Last time the mode was checked/reinforced */
   last_checked_at: string;
   /** Whether this ultrawork session is linked to a ralph-loop session */

@@ -55,6 +55,12 @@ const COUNTDOWN_SECONDS = 2
 const TOAST_DURATION_MS = 900
 const COUNTDOWN_GRACE_PERIOD_MS = 500
 
+/** Maximum continuation attempts per session to prevent infinite idle→inject→idle loops */
+const MAX_CONTINUATION_ATTEMPTS = 10
+
+/** Track continuation attempts per session (reset when todo count changes = progress) */
+const continuationAttemptTracker = new Map<string, { attempts: number; lastTodoCount: number }>()
+
 function getMessageDir(sessionID: string): string | null {
   if (!existsSync(MESSAGE_STORAGE)) return null
 
@@ -195,7 +201,27 @@ export function createTodoContinuationEnforcer(
     const freshIncompleteCount = getIncompleteCount(todos)
     if (freshIncompleteCount === 0) {
       log(`[${HOOK_NAME}] Skipped injection: no incomplete todos`, { sessionID })
+      // Reset attempt tracker on completion
+      continuationAttemptTracker.delete(sessionID)
       return
+    }
+
+    // Track continuation attempts to prevent infinite loops
+    const tracker = continuationAttemptTracker.get(sessionID)
+    if (tracker) {
+      if (tracker.lastTodoCount !== freshIncompleteCount) {
+        // Progress was made (todo count changed) - reset attempts
+        tracker.attempts = 0
+        tracker.lastTodoCount = freshIncompleteCount
+        log(`[${HOOK_NAME}] Progress detected, reset attempts`, { sessionID, newCount: freshIncompleteCount })
+      }
+      tracker.attempts++
+      if (tracker.attempts > MAX_CONTINUATION_ATTEMPTS) {
+        log(`[${HOOK_NAME}] Max continuation attempts (${MAX_CONTINUATION_ATTEMPTS}) reached, stopping`, { sessionID })
+        return
+      }
+    } else {
+      continuationAttemptTracker.set(sessionID, { attempts: 1, lastTodoCount: freshIncompleteCount })
     }
 
     let agentName = resolvedInfo?.agent

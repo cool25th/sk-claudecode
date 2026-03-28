@@ -82,6 +82,7 @@ if [[ "$FORCE_MODE" == "true" ]]; then
   rm -f .skc/state/subagent-tracker.lock
   rm -f .skc/state/rate-limit-daemon.pid
   rm -f .skc/state/rate-limit-daemon.log
+  rm -f .skc/state/budget-guard-state.json
   rm -rf .skc/state/checkpoints/
 
   # Stop rate-limit daemon if running

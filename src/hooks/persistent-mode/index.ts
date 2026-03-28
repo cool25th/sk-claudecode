@@ -39,6 +39,7 @@ import {
   isAutopilotActive
 } from '../autopilot/index.js';
 import { checkAutopilot } from '../autopilot/enforcement.js';
+import { checkBudget } from './budget-guard.js';
 
 export interface ToolErrorState {
   tool_name: string;
@@ -390,6 +391,9 @@ ${newState.prompt ? `Original task: ${newState.prompt}` : ''}
   };
 }
 
+/** Default max reinforcements to prevent infinite loops (matches template behavior) */
+const DEFAULT_MAX_ULTRAWORK_REINFORCEMENTS = 50;
+
 /**
  * Check Ultrawork state and determine if it should reinforce
  */
@@ -409,7 +413,19 @@ async function checkUltrawork(
     return null;
   }
 
-  // Reinforce ultrawork mode - ALWAYS continue while active.
+  // Safety limit: prevent infinite reinforcement (matches template persistent-mode.mjs)
+  const maxReinforcements = state.max_reinforcements ?? DEFAULT_MAX_ULTRAWORK_REINFORCEMENTS;
+  if (state.reinforcement_count >= maxReinforcements) {
+    deactivateUltrawork(directory);
+    return {
+      shouldBlock: false,
+      message: `[ULTRAWORK LIMIT] Max reinforcements (${maxReinforcements}) reached. Mode auto-deactivated. ` +
+               `If work remains, restart ultrawork mode.`,
+      mode: 'none'
+    };
+  }
+
+  // Reinforce ultrawork mode - continue while active and under limit.
   // This prevents false stops from bash errors, transient failures, etc.
   const newState = incrementReinforcement(directory);
   if (!newState) {
@@ -533,6 +549,20 @@ export async function checkPersistentModes(
   // Note: stopContext already checked above, but pass it for consistency
   const todoResult = await checkIncompleteTodos(sessionId, workingDir, stopContext);
   const hasIncompleteTodos = todoResult.count > 0;
+
+  // BUDGET GUARD: Global safety net across all persistent modes.
+  // If total stop-blocks or estimated injected tokens exceed session limits,
+  // allow the stop to prevent runaway token consumption.
+  if (sessionId) {
+    const budgetCheck = checkBudget(workingDir, sessionId, 500); // ~500 chars per typical block message
+    if (budgetCheck.exceeded) {
+      return {
+        shouldBlock: false,
+        message: budgetCheck.reason || '[BUDGET GUARD] Session budget exceeded.',
+        mode: 'none'
+      };
+    }
+  }
 
   // Priority 1: Ralph (explicit loop mode)
   const ralphResult = await checkRalphLoop(sessionId, workingDir);

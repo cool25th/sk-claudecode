@@ -50,6 +50,7 @@ Agents are available at different tiers. Legacy tiered names are kept for compat
 | `designer-reviewer` | High | Opus | UI/UX design review |
 | `document-writer` | Medium | Sonnet | PPTX, XLSX, PDF, DOCX creation |
 | `e2e-runner` | High | Opus | End-to-end browser testing |
+| `tracer` | High | Opus | Runtime tracing and profiling |
 | `refactor-cleaner` | High | Opus | Dead code removal |
 | `git-master` | Medium | Sonnet | Git operations expert |
 
@@ -124,6 +125,7 @@ Skills provide reusable workflows activated by keywords or agent context.
 | ontology | ontology | Ontology design, implementation, and review |
 | mobile | mobile | Mobile development patterns |
 | agent-browser | browser, e2e, scrape, screenshot | Browser automation CLI for AI agents |
+| web-search-browser | websearch, 웹검색, 웹서치 | Browser-based web search via agent-browser (DuckDuckGo/Google) |
 
 ## Cancellation
 

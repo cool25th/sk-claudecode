@@ -2,7 +2,7 @@
 
 > Unified agent and skill system for Claude Code
 
-**29 agents** · **73 core skills** (+141 scientific domains in full mode) · **17 magic keywords** — all in one package.
+**29 agents** · **74 core skills** (+141 scientific domains in full mode) · **18 magic keywords** — all in one package.
 
 ## 🚀 Installation
 
@@ -140,6 +140,7 @@ ultrawork:   ┌─ @executor → @code-reviewer       (3 lanes
 | `/sk-claudecode:mobile` | iOS / Android / Flutter |
 | `/sk-claudecode:ontology` | Palantir-style ontology |
 | `/sk-claudecode:scientist` | 141 scientific domains |
+| `/sk-claudecode:web-search-browser` | Browser-based web search (agent-browser) |
 | `/sk-claudecode:cancel` | Stop any active mode |
 
 ---
@@ -162,6 +163,7 @@ Type anywhere in your prompt — no slash command needed. 한국어 지원.
 | **docs** | `document` `readme` `문서화` | Documentation mode |
 | **perf** | `optimize` `slow` `성능` | Measure-first optimization |
 | **browser** | `browser` `e2e` `브라우저` | Browser automation |
+| **websearch** | `websearch` `web-search` `웹검색` | Browser-based web search |
 | **deep-interview** | `interview` `clarify` `인터뷰` | Requirement extraction |
 | **ai-slop** | `slop` `over-engineered` `슬로프` | Remove AI code patterns |
 | **tracer** | `trace` `profile` `추적` | Runtime tracing & profiling |

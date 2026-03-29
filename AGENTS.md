@@ -9,7 +9,7 @@
   - 28 registry definitions in `src/agents/definitions.ts` (includes base + specialization variants)
   - Legacy names remain supported through prompt alias fallback (for migration compatibility)
 - **Skills**
-  - 69 built-in skills loaded from `skills/*/SKILL.md` (standard install mode)
+  - 74 built-in skills loaded from `skills/*/SKILL.md` (standard install mode)
 
 ## Structure
 
@@ -18,7 +18,7 @@ sk-claudecode/
 ├── AGENTS.md
 ├── agents/                 # 28 prompt markdown files
 ├── commands/               # command prompts
-├── skills/                 # 69 skill folders and SKILL.md metadata
+├── skills/                 # 74 skill folders and SKILL.md metadata
 ├── hooks/                  # runtime hooks and event handlers
 ├── src/                   # orchestrator, registry, installer, tools
 └── docs/                   # operator documentation
@@ -43,6 +43,13 @@ Domain: `finance`, `ontology`, `mobile`, `humanizer`, `documentation`
 
 - `autopilot`, `ultrawork`, `ralph`, `pipeline`, `swarm`, `ultrapilot`, `ultraqa`, `ultra-executor`, `ecomode`
 
+## Web Search
+
+- Built-in `WebSearch` tool for quick lookups
+- `agent-browser` CLI for browser-based web search (JS rendering, multi-page extraction)
+- `web-search-browser` skill for search workflow patterns
+- DuckDuckGo preferred over Google to avoid CAPTCHA
+
 ## Notes
 
 - For alias migration details, keep `src/agents/utils.ts` and `src/agents/definitions.ts` aligned.
@@ -56,4 +63,4 @@ Domain: `finance`, `ontology`, `mobile`, `humanizer`, `documentation`
 - [claude-scientific-skills](https://github.com/K-Dense-AI/claude-scientific-skills)
 - [claude-mem](https://github.com/thedotmack/claude-mem)
 
-*Updated: 2026-03-08*
+*Updated: 2026-03-29*

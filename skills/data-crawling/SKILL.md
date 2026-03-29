@@ -21,6 +21,7 @@ Pick the lightest approach that works:
 > **Rule**: Always prefer API > Static > Reverse-engineered API > Dynamic browser.
 > Browser automation is the last resort — it's 10-100× slower and more fragile.
 > For browser-heavy tasks, use the `agent-browser` skill which provides snapshot-based element selection, session management, and AI-optimized interaction patterns.
+> For **web search** scenarios (searching Google/DuckDuckGo and extracting results), use the `web-search-browser` skill which provides search → click → extract workflows with agent-browser.
 
 ## Quick Start Patterns
 

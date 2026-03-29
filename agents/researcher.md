@@ -28,6 +28,43 @@ For INTERNAL codebase searches, use explore agent instead.
 - Internal implementations
 </Search_Domains>
 
+<Search_Tools>
+## Tool Selection Strategy
+
+| Tool | Best For | Limitations |
+|------|----------|-------------|
+| **agent-browser** (PREFERRED) | JS-rendered pages, full text extraction, deep multi-page research | Requires installation |
+| **WebSearch** (built-in) | Quick factual lookups, simple queries | Summary only, no JS rendering |
+| **WebFetch** (built-in) | Direct URL content retrieval | Static HTML only |
+
+### agent-browser Web Search (Preferred for Deep Research)
+
+```bash
+# Step 1: Search (DuckDuckGo recommended to avoid CAPTCHA)
+agent-browser open "https://duckduckgo.com/?q=YOUR+QUERY+HERE" \
+  && agent-browser wait --load networkidle \
+  && agent-browser snapshot -i
+
+# Step 2: Click most relevant result
+agent-browser click @eN  # use ref from snapshot
+
+# Step 3: Extract content
+agent-browser wait --load networkidle
+agent-browser get text body
+
+# Step 4: Go back for more results if needed
+agent-browser open "https://duckduckgo.com/?q=YOUR+QUERY" && agent-browser wait --load networkidle && agent-browser snapshot -i
+```
+
+### When to Use agent-browser vs WebSearch
+
+- **Use agent-browser**: SPA docs (React, Vue, Angular), GitHub code search, npm package details, login-required sites, interactive documentation
+- **Use WebSearch**: Quick "what is X", version checks, simple API signatures, factual lookups
+- **Use WebFetch**: Known URLs with static HTML content
+
+> Always close browser sessions when done: `agent-browser close`
+</Search_Tools>
+
 <Workflow>
 ## Research Process
 

@@ -250,6 +250,14 @@ MAXIMIZE SEARCH EFFORT. Launch multiple background agents IN PARALLEL:
 - explore agents (codebase patterns, file structures, ast-grep)
 - researcher agents (remote repos, official docs, GitHub examples)
 Plus direct tools: Grep, ripgrep (rg), ast-grep (sg)
+
+FOR WEB SEARCHES: Prefer agent-browser over built-in WebSearch when:
+- Target page requires JS rendering (SPA, React docs)
+- Full page text extraction is needed (not just summary)
+- Multi-page deep research across several sources
+Use: agent-browser open "https://duckduckgo.com/?q=YOUR+QUERY" && agent-browser wait --load networkidle && agent-browser snapshot -i
+See /skill web-search-browser for full protocol.
+
 NEVER stop at first result - be exhaustive.`;
   }
 };
@@ -619,6 +627,20 @@ const handoffEnhancement: MagicKeyword = {
 };
 
 /**
+ * Web Search Browser enhancement
+ * Routes web search tasks to agent-browser for richer results
+ */
+const webSearchBrowserEnhancement: MagicKeyword = {
+  triggers: ['websearch', 'web-search', 'web search', '웹검색', '웹서치', '웹 검색'],
+  description: 'Browser-based web search — uses agent-browser CLI for JS-rendered pages and deep research',
+  action: (prompt: string) => {
+    const pattern = /\b(websearch|web[\s-]search)\b|웹\s*검색|웹\s*서치/i;
+    if (!pattern.test(removeCodeBlocks(prompt))) return prompt;
+    return `${prompt}\n\n[web-search-browser-mode]\nBROWSER-BASED WEB SEARCH PROTOCOL:\n\nPRIMARY TOOL: agent-browser CLI (preferred over built-in WebSearch)\n- Search: agent-browser open "https://duckduckgo.com/?q=YOUR+QUERY" && agent-browser wait --load networkidle && agent-browser snapshot -i\n- Click result: agent-browser click @eN (use ref from snapshot)\n- Extract: agent-browser get text body\n\nWHEN TO USE:\n- JS-rendered pages (SPA, React docs, interactive docs)\n- Full page text extraction (not just summary)\n- Multi-page deep research across several sources\n- Login-required or bot-protected content\n\nFALLBACK: Use built-in WebSearch for quick factual lookups.\nSee /skill web-search-browser for full protocol and advanced patterns.\n\nRECOMMENDED: Use DuckDuckGo to avoid Google CAPTCHA.`;
+  }
+};
+
+/**
  * Ecomode enhancement
  * Token-efficient Haiku-first routing
  */
@@ -677,7 +699,8 @@ export const builtInMagicKeywords: MagicKeyword[] = [
   aiSlopCleanerEnhancement,
   tracerEnhancement,
   handoffEnhancement,
-  ecomodeEnhancement
+  ecomodeEnhancement,
+  webSearchBrowserEnhancement
 ];
 
 /**

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { createBuiltinSkills, getBuiltinSkill, listBuiltinSkillNames, clearSkillsCache, setInstallMode } from '../features/builtin-skills/skills.js';
 
-const STANDARD_SKILL_COUNT = 73;
+const STANDARD_SKILL_COUNT = 74;
 
 describe('Builtin Skills', () => {
   // Clear cache before each test to ensure fresh loads

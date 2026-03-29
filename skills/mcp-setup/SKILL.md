@@ -25,6 +25,8 @@ Present the user with available MCP server options using AskUserQuestion:
 5. **All of the above** - Configure all recommended MCP servers
 6. **Custom** - Add a custom MCP server
 
+> **💡 Alternative Web Search (No API Key):** If you don't have an Exa API key, you can use `agent-browser` CLI for browser-based web search. Install with `npm i -g agent-browser && agent-browser install`. See `/skill web-search-browser` for search workflows.
+
 ## Step 2: Gather Required Information
 
 ### For Context7:

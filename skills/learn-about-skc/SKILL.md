@@ -80,7 +80,7 @@ Based on patterns found, output recommendations:
 - "Use security-reviewer after auth/API changes"
 
 **If defaultExecutionMode not set:**
-- "Set defaultExecutionMode in /skc-setup for consistent behavior"
+- "Set defaultExecutionMode in /setup for consistent behavior"
 
 ### Step 4: Output Report
 
@@ -100,7 +100,7 @@ No token tracking found. To enable tracking:
 1. Ensure ~/.skc/state/ directory exists
 2. Run any SKC command to start tracking
 
-Tip: Run /skc-setup to configure SKC properly.
+Tip: Run /setup to configure SKC properly.
 ```
 
 ## Example Output

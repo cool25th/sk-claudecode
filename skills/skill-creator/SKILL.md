@@ -1,6 +1,6 @@
 ---
 name: skill-creator
-description: Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.
+description: "Guide for creating effective skills. Use when creating new skills, updating existing skills, or extracting repeatable workflows into reusable skill drafts (skillify). Triggers on 'create skill', 'make this a skill', 'skillify', 'save this workflow'."
 license: Complete terms in LICENSE.txt
 ---
 
@@ -527,3 +527,41 @@ If you follow TDD for code, follow it for skills. It's the same discipline appli
 - **RED-GREEN-REFACTOR for Skills**: See [references/red-green-refactor-for-skills.md](references/red-green-refactor-for-skills.md)
 - **Anti-Patterns**: See [references/anti-patterns.md](references/anti-patterns.md)
 - **Skill Creation Checklist (TDD Adapted)**: See [references/skill-creation-checklist-tdd-adapted.md](references/skill-creation-checklist-tdd-adapted.md)
+
+## Skillify: Extract Workflow → Skill (Absorbed from skillify skill)
+
+Meta-workflow for capturing successful multi-step patterns discovered during a session into reusable skill drafts.
+
+### When to Skillify
+
+- After completing a complex, multi-step task that others would encounter again
+- When user says "skillify", "make this a skill", "save this workflow"
+- After discovering a non-obvious pattern worth preserving
+
+### Quality Gate (ALL THREE must be YES)
+
+| Question | Required |
+|----------|----------|
+| "Could someone Google this in 5 minutes?" | **NO** |
+| "Is this specific to this codebase/domain?" | **YES** |
+| "Did this take real effort to discover?" | **YES** |
+
+If any answer doesn't match → suggest documentation instead.
+
+### Skillify Steps
+
+1. **Identify**: Extract inputs, ordered steps, success criteria, constraints, triggers
+2. **Classify**: Project skill (`skills/<name>/SKILL.md`) vs Reference (`skills/references/<name>.md`) vs Documentation
+3. **Draft**: Use the standard SKILL.md template (see Step 4 above)
+4. **Validate**: Steps concrete? Criteria measurable? No duplicates?
+5. **Note Uncertainties**: Mark as DRAFT with "Open Questions" if unresolved branches exist
+
+### Output Format
+
+```
+## Skill Extracted
+- **Name**: <proposed name>
+- **Location**: skills/<name>/SKILL.md
+- **Steps**: <count>
+- **Status**: READY / DRAFT (with N open questions)
+```

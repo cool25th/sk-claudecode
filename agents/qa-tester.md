@@ -271,7 +271,7 @@ If architect's fix doesn't work:
 
 - `/skill tdd` - Test-driven development
 - `/skill tdd` - TDD workflow patterns
-- `/skill quality` - Quality assurance
+- `/skill tdd` - Quality assurance
 - `/skill verify` - Verification workflow
 
 
@@ -419,4 +419,4 @@ done
 
 - `/skill tdd` - Test-driven development
 - `/skill tdd` - TDD workflow patterns
-- `/skill quality` - Quality assurance
+- `/skill tdd` - Quality assurance

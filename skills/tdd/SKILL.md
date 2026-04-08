@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Test-Driven Development enforcement skill - write tests first, always
+description: "Test-Driven Development enforcement skill — covers TDD workflow, code quality, verification, and coverage. Triggers on test, tdd, verify, quality, or coverage tasks."
 ---
 
 # TDD Mode
@@ -522,7 +522,19 @@ npm test && npm run lint
 
 ---
 
+## Quality Modes (Absorbed from quality skill)
+
+| Mode | Purpose |
+|------|---------|
+| `tdd` | Test-Driven Development workflow |
+| `ultratdd` | High-intensity TDD with parallelization |
+| `verification` | Build/test/lint verification loop |
+| `security-review` | Security-focused code analysis |
+
+---
+
 ## Related Agents
 
 - `tdd-guide` - TDD specialist (Sonnet)
 - `qa-tester` - Quality assurance
+- `code-reviewer` - Code review

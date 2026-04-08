@@ -211,7 +211,7 @@ APPROVE / REQUEST CHANGES / COMMENT
 
 - `/skill code-review` - Code review workflow
 - `/skill coding-standards` - Code quality standards
-- `/skill quality` - Quality assurance
+- `/skill tdd` - Quality assurance
 
 
 <!-- Merged from `code-reviewer-low` -->

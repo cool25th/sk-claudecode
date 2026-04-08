@@ -311,4 +311,4 @@ After cleanup session:
 
 - `/skill code-review` - Code review workflow
 - `/skill coding-standards` - Code quality standards
-- `/skill quality` - Quality assurance
+- `/skill tdd` - Quality assurance

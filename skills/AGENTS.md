@@ -64,7 +64,7 @@ Skills are reusable workflow templates that can be invoked via `/sk-claudecode:s
 | `cancel/SKILL.md` | cancel | Cancel any active SKC mode |
 | `hud/SKILL.md` | hud | Configure HUD display |
 | `doctor/SKILL.md` | doctor | Diagnose installation issues |
-| `skc-setup/SKILL.md` | skc-setup | One-time setup wizard |
+| `setup/SKILL.md` | setup | One-time setup wizard |
 | `mcp-setup/SKILL.md` | mcp-setup | Configure MCP servers |
 | `help/SKILL.md` | help | Usage guide |
 | `learn-about-skc/SKILL.md` | learn-about-skc | Usage pattern analysis |
@@ -183,7 +183,7 @@ None - pure markdown files.
 | Planning | plan, ralplan, review, analyze, ralph-init | "plan this", "analyze" |
 | Quality | code-review, security-review, tdd, build-fix | "review", "security", "tdd" |
 | Exploration | deepsearch, deepinit, research | "search", "research" |
-| Utility | learner, note, cancel, hud, doctor, skc-setup, mcp-setup, help | "stop", "cancel" |
+| Utility | learner, note, cancel, hud, doctor, setup, mcp-setup, help | "stop", "cancel" |
 | Domain | frontend-ui-ux, git-master, psm, writer-memory, release | UI context, git context |
 
 ## Auto-Activation

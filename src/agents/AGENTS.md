@@ -20,7 +20,7 @@ critic.md
 database-reviewer.md
 designer-reviewer.md
 designer.md
-document-writer.md
+writer.md
 e2e-runner.md
 executor.md
 explore.md

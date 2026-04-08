@@ -48,7 +48,7 @@ Agents are available at different tiers. Legacy tiered names are kept for compat
 | `go-reviewer` | High | Opus | Go best practices review |
 | `python-reviewer` | High | Opus | Python best practices review |
 | `designer-reviewer` | High | Opus | UI/UX design review |
-| `document-writer` | Medium | Sonnet | PPTX, XLSX, PDF, DOCX creation |
+| `writer` | Medium | Sonnet | PPTX, XLSX, PDF, DOCX creation |
 | `e2e-runner` | High | Opus | End-to-end browser testing |
 | `tracer` | High | Opus | Runtime tracing and profiling |
 | `refactor-cleaner` | High | Opus | Dead code removal |

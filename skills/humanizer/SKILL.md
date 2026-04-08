@@ -468,5 +468,5 @@ Key insight from Wikipedia: "LLMs use statistical algorithms to guess what shoul
 
 ## Related Agents
 
-- `document-writer` - Document specialist with humanizer integration (Sonnet)
+- `writer` - Document specialist with humanizer integration (Sonnet)
 - `writer` - Technical documentation writer

@@ -17,9 +17,9 @@
 
 ### Phase 1: 완전 중복 삭제
 
-#### 1-1. `skc-setup` 삭제 (setup과 동일)
+#### 1-1. `setup` 삭제 (setup과 동일)
 - `diff` 결과 이름만 다름 (95줄 완전 동일)
-- **삭제**: `skills/skc-setup/` → `skills/setup/`만 유지
+- **삭제**: `skills/setup/` → `skills/setup/`만 유지
 
 #### 1-2. `execution-modes/` 내 sub-skill과 중복되는 standalone 삭제
 `execution-modes/`가 이미 autopilot, ecomode, pipeline, ralph, swarm, ultrapilot, ultraqa, ultrawork를 sub-directory로 포함합니다.
@@ -201,7 +201,7 @@ find skills/ -mindepth 1 -maxdepth 1 -type d \
   done
 
 # 2. 삭제된 skill이 여전히 참조되는지 확인
-for deleted in skc-setup tdd-workflow verification-loop continuous-learning-v2 \
+for deleted in setup tdd-workflow verification-loop continuous-learning-v2 \
   ultra-subagent ultra-plan ralplan ultra-execute ultra-skill-writing \
   java-coding-standards django-patterns django-security django-tdd django-verification \
   springboot-patterns springboot-security springboot-tdd springboot-verification \
@@ -222,5 +222,5 @@ npm test 2>&1 | tail -20
 ```
 
 ### Manual Verification
-- `/setup` 명령어 정상 동작 확인 (skc-setup 삭제 후)
+- `/setup` 명령어 정상 동작 확인 (setup 삭제 후)
 - 병합된 SKILL.md가 원본 핵심 내용을 모두 포함하는지 샘플 리뷰

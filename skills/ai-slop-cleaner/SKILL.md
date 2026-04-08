@@ -1,207 +1,156 @@
 ---
 name: ai-slop-cleaner
-description: "Detect and remove AI-generated code patterns (slop). Use when code feels over-engineered, has excessive comments, unnecessary abstractions, or verbose try/catch blocks. Triggers: 'clean slop', 'remove AI patterns', 'simplify code', 'over-engineered', '슬로프 제거', 'AI가 만든 코드 정리', '과잉 추상화'"
+description: Clean AI-generated code slop with a regression-safe, deletion-first workflow
 ---
 
-# AI Slop Cleaner — Detect and Remove AI-Generated Anti-Patterns
+# AI Slop Cleaner
 
-AI code generation produces systematic anti-patterns ("slop") that inflate codebases with unnecessary complexity. This skill identifies and removes them.
+Bounded cleanup workflow for AI-generated code that works but feels bloated, repetitive, weakly tested, or over-abstracted. Focuses on simplification without changing behavior.
 
 ## When to Use
 
-- After significant AI-generated code additions
-- When code feels bloated or over-engineered
-- During refactoring/cleanup sprints
-- Before code review to preemptively fix common AI slop
-- When `refactor-cleaner` agent flags verbose code
+- After AI-assisted coding sessions that left noisy, repetitive, or over-abstracted code
+- When the user says "deslop", "anti-slop", "AI slop", or "clean up the AI code"
+- When code has duplicate logic, dead code, wrapper layers, or boundary leaks
+- Post-implementation cleanup when the feature works but the code quality is poor
+- When the goal is simplification, not new feature delivery
 
-## Detection Checklist
+## When NOT to Use
 
-### 🔴 Critical Slop (Always Remove)
+- New feature development or product changes
+- Broad redesigns (use `plan` → `executor`)
+- Generic refactoring with no simplification intent
+- Simple formatting or style fixes (use linter)
+- Code with unclear behavior that can't be protected by tests
 
-#### 1. Captain Obvious Comments
-```diff
-- // Get the user by ID
-  function getUserById(id: string) {
--   // Create a variable to store the user
-    const user = await db.users.findOne({ id });
--   // Return the user
-    return user;
-  }
+## Core Principles
+
+1. **Preserve behavior** — Unless explicitly asked for behavior changes
+2. **Lock before edit** — Write regression tests first, then clean
+3. **Plan before code** — Write a cleanup plan before touching files
+4. **Deletion over addition** — Prefer removing code over adding code
+5. **Reuse over create** — Use existing utilities before introducing new ones
+6. **Small diffs** — Keep changes reversible and smell-focused
+
+## Workflow
+
+### Step 1: Protect Current Behavior
+
+Before editing anything:
+
+1. Identify what must stay the same
+2. Add or run the narrowest regression tests needed
+3. If tests can't come first, record the verification plan explicitly
+
+```
+## Behavior Lock
+- Feature X: [test file / manual verification steps]
+- Feature Y: [test file / manual verification steps]
+- Edge case Z: [test file / manual verification steps]
 ```
 
-#### 2. Unnecessary Try/Catch Wrapping
-```diff
-  async function fetchData(url: string) {
--   try {
-      const response = await fetch(url);
-      return response.json();
--   } catch (error) {
--     console.error('Error fetching data:', error);
--     throw error;  // ← Just re-throws! Useless.
--   }
-  }
+### Step 2: Write a Cleanup Plan
+
+Bound the pass to specific files/areas:
+
+```
+## Cleanup Plan
+- Scope: [files / feature area]
+- Smells to remove:
+  1. [specific smell with file:line reference]
+  2. [specific smell with file:line reference]
+- Order: safest deletion → riskier consolidation
 ```
 
-#### 3. Premature Abstraction (1-caller patterns)
-```diff
-- // Abstract base class for a single implementation
-- abstract class BaseNotificationService {
--   abstract send(msg: string): Promise<void>;
-- }
--
-- class EmailNotificationService extends BaseNotificationService {
-+ class EmailService {
-    async send(msg: string) { /* ... */ }
-  }
+### Step 3: Classify the Slop
+
+| Category | Description | Examples |
+|----------|-------------|---------|
+| **Duplication** | Repeated logic, copy-paste branches | Two handlers doing the same validation |
+| **Dead code** | Unused code, unreachable branches | Exported function with zero callers |
+| **Needless abstraction** | Pass-through wrappers, speculative indirection | `fetchData()` that just calls `fetch()` |
+| **Boundary violations** | Hidden coupling, misplaced responsibilities | UI component importing DB utilities |
+| **Missing tests** | Behavior not locked, weak regression coverage | Core function with zero test coverage |
+
+### Step 4: Run Smell-Focused Passes
+
+Execute **one pass at a time**, in this order:
+
+| Pass | Focus | Verification |
+|------|-------|-------------|
+| **Pass 1** | Dead code deletion | Run tests after |
+| **Pass 2** | Duplicate removal | Run tests after |
+| **Pass 3** | Naming and error handling cleanup | Run tests after |
+| **Pass 4** | Test reinforcement | Verify coverage improves |
+
+> **DO NOT** bundle unrelated refactors into the same edit set.
+
+### Step 5: Run Quality Gates
+
+After each pass:
+- [ ] Regression tests green
+- [ ] Lint passes
+- [ ] Type check passes
+- [ ] No new warnings introduced
+
+If a gate fails → fix or back out, don't force through.
+
+### Step 6: Close with Evidence Report
+
+```
+## Cleanup Report
+
+### Changed Files
+- [list of modified files]
+
+### Simplifications
+- Removed N unused functions (-X lines)
+- Consolidated M duplicate helpers (-Y lines)
+- Eliminated K wrapper layers (-Z lines)
+
+### Behavior Lock / Verification
+- All regression tests passing
+- [specific test suite]: ✅
+
+### Remaining Risks
+- [anything that couldn't be safely cleaned]
 ```
 
-#### 4. Verbose Type Gymnastics
-```diff
-- const result: Array<{ id: string; name: string; email: string }> =
--   users.map((user: { id: string; name: string; email: string }) => ({
--     id: user.id,
--     name: user.name,
--     email: user.email,
--   }));
-+ const result = users.map(user => ({
-+   id: user.id, name: user.name, email: user.email,
-+ }));
-```
+## Review Mode
 
-### 🟡 Moderate Slop (Context-Dependent)
+For post-cleanup quality review (separate from the editing pass):
 
-#### 5. Over-Defensive Null Checks
-```diff
-  function getName(user: User): string {
--   if (!user) throw new Error('User is required');  // ← TypeScript already enforces this
--   if (!user.name) return '';  // ← Only if name is truly optional
-    return user.name;
-  }
-```
+1. Do **NOT** edit files
+2. Review the cleanup plan, changed files, and regression coverage
+3. Check for:
+   - Leftover dead code or unused exports
+   - Duplicate logic that should have been consolidated
+   - Needless wrappers that still blur boundaries
+   - Missing tests for preserved behavior
+   - Cleanup that accidentally changed behavior
+4. Produce a reviewer verdict with required follow-ups
+5. Hand needed changes back to a separate editing pass
 
-#### 6. Gratuitous Constants
-```diff
-- const MAX_RETRIES = 3;
-- const RETRY_DELAY_MS = 1000;
-- const DEFAULT_TIMEOUT = 5000;
--
-  // Only used once, inline them
-- for (let i = 0; i < MAX_RETRIES; i++) {
-+ for (let i = 0; i < 3; i++) {
-```
+## Red Flags
 
-#### 7. Utility Function Graveyards
-```diff
-- // utils.ts — 200 lines of functions, 3 actually used
-- export function capitalize(s: string) { ... }     // Used 0 times
-- export function truncate(s: string, n: number) { ... }  // Used 0 times
-- export function slugify(s: string) { ... }        // Used 1 time — inline it
-```
+- Cleaning code without regression tests in place
+- Bundling "bonus" behavior changes into cleanup
+- Adding new abstractions during a simplification pass
+- Expanding scope beyond the declared cleanup plan
+- Skipping the plan and jumping directly to editing
 
-### ⚪ Stylistic Slop (Optional Cleanup)
+## Verification
 
-#### 8. Excessive Logging
-```diff
-  function processOrder(order: Order) {
--   console.log('Processing order:', order.id);
--   console.log('Order items:', order.items.length);
-    const total = calculateTotal(order);
--   console.log('Calculated total:', total);
-    const result = submitOrder(order, total);
--   console.log('Order submitted:', result);
-    return result;
-  }
-```
+After a complete cleanup session:
+- [ ] All regression tests pass
+- [ ] Net line count is reduced (or justified if increased)
+- [ ] No new dependencies added
+- [ ] Cleanup report generated with evidence
+- [ ] Behavior is unchanged (unless explicitly intended)
 
-#### 9. README-Style File Headers
-```diff
-- /**
--  * UserService.ts
--  *
--  * This module provides the UserService class which handles all user-related
--  * operations including creation, retrieval, updating, and deletion of users.
--  * It integrates with the database layer and provides validation logic.
--  *
--  * @module UserService
--  * @author AI Assistant
--  * @created 2026-01-15
--  */
-  export class UserService {
-```
+## Related
 
-## Execution Protocol
-
-### Step 1: Scan
-```bash
-# Find large files (likely AI-generated)
-find src -name '*.ts' -o -name '*.tsx' | xargs wc -l | sort -rn | head -20
-
-# Find comment-heavy files
-grep -rcl '// ' src/ | xargs grep -c '// ' | sort -t: -k2 -rn | head -10
-
-# Find unused exports
-npx ts-unused-exports tsconfig.json
-```
-
-### Step 2: Categorize
-For each file, categorize slop into 🔴 Critical / 🟡 Moderate / ⚪ Stylistic.
-
-### Step 3: Clean
-Apply fixes in order:
-1. Remove 🔴 Critical slop (always safe)
-2. Remove 🟡 Moderate slop (verify each case)
-3. Optionally clean ⚪ Stylistic slop
-
-### Step 4: Verify
-```bash
-# Run tests to ensure nothing broke
-npm test
-
-# Check TypeScript compilation
-npx tsc --noEmit
-
-# Verify no dead code was missed
-npx ts-prune
-```
-
-## Output Format
-
-```markdown
-## AI Slop Report
-
-### Files Analyzed: 12
-### Slop Instances Found: 47
-
-| Category | Count | Lines Removed | Example |
-|----------|-------|---------------|---------|
-| 🔴 Captain Obvious Comments | 18 | 54 | `// Return the result` |
-| 🔴 Useless Try/Catch | 5 | 25 | `catch { throw error }` |
-| 🔴 Premature Abstraction | 2 | 40 | `BaseService` with 1 child |
-| 🟡 Over-Defensive Nulls | 8 | 16 | `if (!x) throw Error` |
-| 🟡 Gratuitous Constants | 6 | 12 | `MAX_RETRIES = 3` used once |
-| ⚪ Excessive Logging | 8 | 24 | 5 console.logs in 10-line fn |
-
-**Total Lines Removed: 171**
-**Code Reduction: 12%**
-```
-
-## Critical Rules
-
-1. **Tests first** — Run tests before AND after cleanup. If tests break, revert.
-2. **No behavior changes** — Slop cleanup is cosmetic. Logic must stay identical.
-3. **One commit per category** — Separate "remove dead comments" from "inline abstractions".
-4. **Keep meaningful comments** — API docs, regex explanations, workaround notes are NOT slop.
-5. **Team conventions override** — If the team prefers verbose constants, don't inline them.
-
-## Integration with refactor-cleaner
-
-This skill complements the `refactor-cleaner` agent:
-- **ai-slop-cleaner**: Identifies and removes AI-specific patterns (comments, abstractions)
-- **refactor-cleaner**: General dead code removal, code health, structural cleanup
-
-Use both together for comprehensive code hygiene:
-```
-1. /skill ai-slop-cleaner  → Remove AI patterns
-2. /agent refactor-cleaner → Deep structural cleanup
-```
+- `skills/self-improve` — For autonomous multi-candidate improvement
+- `skills/incremental-implementation` — For scope discipline
+- `/agent refactor-cleaner` — For mechanical refactoring execution
+- `skills/references/testing-patterns.md` — For regression test patterns

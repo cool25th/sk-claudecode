@@ -28,7 +28,7 @@ sk-claudecode/
 
 - Core analysis and execution agents: `architect`, `executor`, `planner`, `critic`, `researcher`, `designer`, `writer`, `vision`, `qa-tester`, `ultra-executor`
 - Domain specialists: `finance`, `mobile-developer`, `ontology`, `go-reviewer`, `python-reviewer`, `database-reviewer`
-- Review and quality: `code-reviewer`, `tdd-guide`, `security-reviewer`, `build-fixer`, `scientist`, `researcher`, `designer-reviewer`, `document-writer`, `e2e-runner`
+- Review and quality: `code-reviewer`, `tdd-guide`, `security-reviewer`, `build-fixer`, `scientist`, `researcher`, `designer-reviewer`, `writer`, `e2e-runner`
 - Additional runtime fallback routes resolved at load time: tiered variants (`-low`, `-medium`, `-high`) and legacy role aliases (e.g., removed/rebased names fallback to active agent prompts when needed)
 
 ## Skill Summary (sample)

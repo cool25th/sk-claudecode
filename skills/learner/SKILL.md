@@ -131,5 +131,5 @@ If code helps, show it - but as illustration of the principle, not copy-paste ma
 
 ## Related Commands
 
-- /sk-claudecode:note - Save quick notes that survive compaction (less formal than skills)
+- /sk-claudecode:memory note - Save quick notes that survive compaction (less formal than skills)
 - /sk-claudecode:ralph - Start a development loop with learning capture

@@ -136,5 +136,5 @@ Before delivering any document:
 
 ## Related Agents
 
-- `document-writer` - Document creation and analysis specialist (Sonnet)
+- `writer` - Document creation and analysis specialist (Sonnet)
 - `writer` - Technical documentation writer

@@ -1,6 +1,6 @@
 ---
 name: orchestrate
-description: Activate multi-agent orchestration mode
+description: "Activate multi-agent orchestration mode — includes parallel agent dispatch, subagent-driven development, and task delegation. Use when facing 2+ independent tasks, multi-agent coordination, or plan execution with review gates."
 ---
 
 # Orchestrate Skill
@@ -406,6 +406,66 @@ If the user's approach seems problematic:
 - Prefer small, focused changes over large refactors
 - When uncertain about scope, ask
 </Constraints>
+
+## Parallel Agent Dispatch (Absorbed from subagent skill)
+
+When facing 2+ independent problems, dispatch one agent per domain for parallel resolution.
+
+### When to Dispatch Parallel
+
+| Condition | Action |
+|-----------|--------|
+| 3+ failures with different root causes | Dispatch one agent per problem |
+| Multiple subsystems broken independently | Parallel agents |
+| Failures are related (fix one may fix others) | **Don't parallelize** — investigate together |
+| Agents would edit same files | **Don't parallelize** — sequential |
+
+### Dispatch Pattern
+
+```
+Agent 1 → Fix agent-tool-abort.test.ts (timing issues)
+Agent 2 → Fix batch-completion.test.ts (event structure)
+Agent 3 → Fix tool-approval-race.test.ts (async completion)
+```
+
+### Agent Prompt Structure (MANDATORY)
+
+1. **Scope**: One clear problem domain
+2. **Context**: Error messages, test names, file paths
+3. **Constraints**: "Do NOT change other code"
+4. **Output**: "Return summary of root cause and changes"
+
+### After Agents Return
+
+1. Review each summary
+2. Check for conflicts (same files edited?)
+3. Run full test suite
+4. Integrate all changes
+
+## Subagent-Driven Development (Absorbed from subagent skill)
+
+Execute plan by dispatching fresh subagent per task, with two-stage review.
+
+### Process
+
+1. Read plan → extract all tasks → create TodoWrite
+2. **Per task**: Dispatch implementer → spec reviewer → code quality reviewer
+3. After all tasks: Final code reviewer → finish
+
+### Review Gates (NON-NEGOTIABLE)
+
+| Stage | Reviewer | Checks |
+|-------|----------|--------|
+| 1 | **Spec Compliance** | Code matches spec? Nothing extra? Nothing missing? |
+| 2 | **Code Quality** | Clean code? No magic numbers? Good patterns? |
+
+### Red Flags
+
+- Never start on main/master without user consent
+- Never skip reviews (spec OR quality)
+- Never dispatch multiple implementation subagents in parallel (conflicts)
+- Never let implementer self-review replace actual review
+- **Start code quality review ONLY after spec compliance ✅**
 
 ---
 

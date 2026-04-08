@@ -1,6 +1,6 @@
 ---
 name: memory
-description: Persistent memory and context management for Claude Code sessions. Use for remember, memory, context, and persist operations.
+description: "Persistent memory and context management for Claude Code sessions. Use for remember, memory, context, persist, and note operations."
 ---
 
 # Memory Skill
@@ -31,6 +31,26 @@ Located in `modes/` subdirectory:
 # Or explicit invocation:
 /sk-claudecode:memory/recall "authentication patterns"
 ```
+
+## Notepad (Absorbed from note skill)
+
+Save important context to `.skc/notepad.md` that survives conversation compaction.
+
+| Command | Action |
+|---------|--------|
+| `/sk-claudecode:memory note <content>` | Add to Working Memory with timestamp |
+| `/sk-claudecode:memory note --priority <content>` | Add to Priority Context (always loaded) |
+| `/sk-claudecode:memory note --manual <content>` | Add to MANUAL section (never pruned) |
+| `/sk-claudecode:memory note --show` | Display current notepad contents |
+| `/sk-claudecode:memory note --prune` | Remove entries older than 7 days |
+
+### Notepad Sections
+
+| Section | Behavior | Use For |
+|---------|----------|---------|
+| **Priority Context** (500 char limit) | Always injected on session start | Critical facts: "Project uses pnpm", "API in src/api/client.ts" |
+| **Working Memory** | Timestamped, auto-pruned after 7 days | Debugging breadcrumbs, temporary findings |
+| **MANUAL** | Never auto-pruned | Team contacts, deployment info |
 
 ## Related
 - `continuous-learning` skill for pattern extraction

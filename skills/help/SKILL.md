@@ -44,7 +44,7 @@ I'll figure out what to stop based on context.
 If you haven't configured SKC yet:
 
 ```
-/sk-claudecode:skc-setup
+/sk-claudecode:setup
 ```
 
 This is the **only command** you need to know. It downloads the configuration and you're done.

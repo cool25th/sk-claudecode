@@ -17,5 +17,5 @@ Use `/sk-claudecode:setup` to run the setup flow.
 /sk-claudecode:setup --full
 ```
 
-It is functionally equivalent to the previous `skc-setup` workflow and is the canonical command name going forward.
+It is functionally equivalent to the previous `setup` workflow and is the canonical command name going forward.
 

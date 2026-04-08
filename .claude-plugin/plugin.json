@@ -13,9 +13,8 @@
         "plugin",
         "multi-agent",
         "orchestration",
-        "scientific",
-        "quant",
-        "trading"
+        "skills",
+        "workflow"
     ],
     "commands": "./commands/",
     "skills": "./skills/",

@@ -67,7 +67,7 @@ npm install && npm run build && npm run setup
 | `mobile-developer` | Sonnet | iOS / Android / Flutter apps |
 | `finance` | Opus | Trading systems, portfolio management |
 | `ontology` | Sonnet | Ontology design, implementation, review |
-| `document-writer` | Sonnet | Document creation (PDF, PPTX, XLSX, DOCX) |
+| `writer` | Sonnet | Document creation (PDF, PPTX, XLSX, DOCX) |
 
 ### 🔍 Check
 

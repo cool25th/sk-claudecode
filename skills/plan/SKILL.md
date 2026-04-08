@@ -45,6 +45,51 @@ When `--review` is specified or user says "review this plan":
 - Concrete implementation approach described
 - User explicitly says "skip interview" or "just plan"
 
+### Phase 0: Specify (Spec-Driven Foundation)
+
+Before planning, ensure requirements are concrete. If a spec doesn't exist yet, create one.
+
+**Surface assumptions immediately.** Before writing any spec content, list what you're assuming:
+
+```
+ASSUMPTIONS I'M MAKING:
+1. This is a web application (not native mobile)
+2. Authentication uses session-based cookies (not JWT)
+3. The database is PostgreSQL (based on existing schema)
+4. We're targeting modern browsers only (no IE11)
+→ Correct me now or I'll proceed with these.
+```
+
+**Spec must cover these 6 Core Areas:**
+
+1. **Objective** — What are we building and why? Who is the user? What does success look like?
+2. **Commands** — Full executable commands: build, test, lint, dev
+3. **Project Structure** — Where source code lives, where tests go, where docs belong
+4. **Code Style** — One real code snippet showing your style beats paragraphs describing it
+5. **Testing Strategy** — Framework, locations, coverage expectations, test levels
+6. **Boundaries** — Three-tier:
+   - **Always do:** Run tests before commits, follow naming conventions, validate inputs
+   - **Ask first:** Schema changes, adding dependencies, changing CI config
+   - **Never do:** Commit secrets, edit vendor dirs, remove failing tests without approval
+
+**Reframe vague instructions as success criteria:**
+
+```
+REQUIREMENT: "Make the dashboard faster"
+
+REFRAMED SUCCESS CRITERIA:
+- Dashboard LCP < 2.5s on 4G connection
+- Initial data load completes in < 500ms
+- No layout shift during load (CLS < 0.1)
+→ Are these the right targets?
+```
+
+**When spec exists:** Skip Phase 0 and proceed to Interview/Direct Planning.
+
+**When spec doesn't exist:** Create it first, get human approval, then plan against it.
+
+---
+
 ### Interview Mode Workflow
 
 When requirements are unclear, activate interview mode:
@@ -332,7 +377,7 @@ After saving the plan, offer execution choice:
 **Which approach?"**
 
 **If Subagent-Driven chosen:**
-- **REQUIRED SUB-SKILL:** Use sk-claudecode:subagent-driven-development
+- **REQUIRED SUB-SKILL:** Use sk-claudecode:orchestrate
 - Stay in this session
 - Fresh subagent per task + code review
 
